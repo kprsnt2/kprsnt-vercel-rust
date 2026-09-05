@@ -1,0 +1,1196 @@
+{
+  "month": "March 2026",
+  "generated_date": "2026-03-31",
+  "profile_summary": "Data Analyst & AI Developer | LLM Fine-tuning | Python | Multi-model AI",
+  "models_used": {
+    "gemini": 25
+  },
+  "jobs": [
+    {
+      "id": "scaleai-prompt-engineer-pharma",
+      "title": "LLM Prompt Engineer (Domain Expert - Pharma)",
+      "company": "Scale AI",
+      "company_tag": "",
+      "location": "Remote - Global",
+      "salary": "$100k-$140k",
+      "match_score": 99,
+      "tier": 1,
+      "tags": [
+        "Prompt Engineering",
+        "Pharma",
+        "LLM"
+      ],
+      "why_match": "Extremely rare combination of Pharma domain expertise (M.Pharm) and advanced Prompt Engineering skills needed.",
+      "apply_url": "https://boards.greenhouse.io/scaleai/jobs/5200111",
+      "applied": false,
+      "status": "new",
+      "target_role": "prompt-engineer",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": true,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.7,
+        "grade": "B+",
+        "cv_match": 2.4,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "llm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "huggingface-ai-engineer",
+      "title": "AI Engineer - Open Source Models",
+      "company": "Hugging Face",
+      "company_tag": "",
+      "location": "Remote - Global",
+      "salary": "$120k-$160k",
+      "match_score": 98,
+      "tier": 1,
+      "tags": [
+        "HuggingFace",
+        "PyTorch",
+        "LLM Fine-tuning"
+      ],
+      "why_match": "Candidate has published models on HuggingFace and fine-tuned 20B LLMs. Perfect technical fit.",
+      "apply_url": "https://boards.greenhouse.io/huggingface/jobs/5123999",
+      "applied": false,
+      "status": "new",
+      "target_role": "ai-engineer",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 4.3,
+        "grade": "A-",
+        "cv_match": 4.1,
+        "archetype_fit": 4.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Strong match — recommend applying immediately"
+      },
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "fine-tuning",
+            "pytorch"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "concertai-ai-clinical-data",
+      "title": "AI Clinical Data Analyst",
+      "company": "ConcertAI",
+      "company_tag": "",
+      "location": "Remote - India",
+      "salary": "₹20-30 LPA",
+      "match_score": 98,
+      "tier": 1,
+      "tags": [
+        "Pharma + AI",
+        "Clinical Data Analysis",
+        "Python"
+      ],
+      "why_match": "Combines AI models with clinical data analytics, leveraging both M.Pharm background and AI developer experience.",
+      "apply_url": "https://boards.greenhouse.io/concertai/jobs/4800999",
+      "applied": false,
+      "status": "new",
+      "target_role": "clinical-healthcare",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.7,
+        "grade": "B+",
+        "cv_match": 3.3,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "proof_points": [
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "cli"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nvidia-genai-engineer",
+      "title": "Generative AI Engineer (NIM)",
+      "company": "NVIDIA",
+      "company_tag": "",
+      "location": "Remote - India",
+      "salary": "₹30-50 LPA",
+      "match_score": 97,
+      "tier": 1,
+      "tags": [
+        "NVIDIA NIM",
+        "LLM",
+        "Python"
+      ],
+      "why_match": "Candidate explicitly lists NVIDIA NIM and AMD MI300X fine-tuning experience, making them highly competitive.",
+      "apply_url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/Generative-AI-Engineer",
+      "applied": false,
+      "status": "new",
+      "target_role": "ai-engineer",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": true,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 4.3,
+        "grade": "A-",
+        "cv_match": 4.1,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Strong match — recommend applying immediately"
+      },
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "llm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pfizer-sr-analyst-rd-ai",
+      "title": "Senior Analyst, R&D Data (AI/ML)",
+      "company": "Pfizer",
+      "company_tag": "",
+      "location": "Remote - Global",
+      "salary": "$110k-$140k",
+      "match_score": 97,
+      "tier": 1,
+      "tags": [
+        "Drug Discovery",
+        "Pharma + AI",
+        "BigQuery"
+      ],
+      "why_match": "Directly utilizes Drug Discovery AI experience, M.Pharm background, and BigQuery data analysis skills.",
+      "apply_url": "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers/job/Senior-Analyst-RD-AI",
+      "applied": false,
+      "status": "new",
+      "target_role": "clinical-healthcare",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": true,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.8,
+        "grade": "B+",
+        "cv_match": 3.3,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Good match — worth applying"
+      },
+      "proof_points": []
+    },
+    {
+      "id": "novartis-global-data-manager",
+      "title": "Global Data Manager",
+      "company": "Novartis",
+      "company_tag": "",
+      "location": "Hyderabad / Remote",
+      "salary": "₹20-30 LPA",
+      "match_score": 96,
+      "tier": 1,
+      "tags": [
+        "Clinical Data Analysis",
+        "Drug Discovery",
+        "Data Manager"
+      ],
+      "why_match": "Combines pharma background, Hyderabad base, and clinical data management for drug discovery programs.",
+      "apply_url": "https://www.novartis.com/careers/job-search/global-data-manager",
+      "applied": false,
+      "status": "new",
+      "target_role": "data-manager",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 2.9,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "proof_points": [
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "cli"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fractal-sr-data-analyst-genai",
+      "title": "Senior Data Analyst - GenAI",
+      "company": "Fractal Analytics",
+      "company_tag": "",
+      "location": "Remote - India",
+      "salary": "₹20-30 LPA",
+      "match_score": 95,
+      "tier": 1,
+      "tags": [
+        "Python",
+        "SQL",
+        "GenAI",
+        "Dashboards"
+      ],
+      "why_match": "Perfect overlap combining traditional data analysis with Generative AI tools, RAG, and dashboards.",
+      "apply_url": "https://fractal.ai/careers/jobs/sr-data-analyst-genai",
+      "applied": false,
+      "status": "new",
+      "target_role": "senior-data-analyst",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 4,
+        "grade": "A-",
+        "cv_match": 4.1,
+        "archetype_fit": 4,
+        "comp_analysis": 3.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Strong match — recommend applying immediately"
+      },
+      "proof_points": []
+    },
+    {
+      "id": "anthropic-forward-deployed",
+      "title": "Forward Deployed AI Engineer",
+      "company": "Anthropic",
+      "company_tag": "",
+      "location": "Remote - Global",
+      "salary": "$150k-$200k",
+      "match_score": 95,
+      "tier": 1,
+      "tags": [
+        "Claude",
+        "Prompt Engineering",
+        "Python"
+      ],
+      "why_match": "Requires building agentic solutions with Claude and multi-model AI, perfectly matching the MyLocalCLI project experience.",
+      "apply_url": "https://boards.greenhouse.io/anthropic/jobs/4011234",
+      "applied": false,
+      "status": "new",
+      "target_role": "ai-engineer",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": true,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 4.6,
+        "grade": "A",
+        "cv_match": 5,
+        "archetype_fit": 4.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Strong match — recommend applying immediately"
+      },
+      "proof_points": [
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery",
+          "matching_tags": [
+            "claude"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "outlier-ai-prompt-coder",
+      "title": "AI Prompt Engineer (Python Coding)",
+      "company": "Outlier AI",
+      "company_tag": "",
+      "location": "Remote",
+      "salary": "$40-$60/hr",
+      "match_score": 95,
+      "tier": 1,
+      "tags": [
+        "Prompt Engineering",
+        "Python",
+        "Multi-model AI"
+      ],
+      "why_match": "Candidate's experience building coding assistants (MyLocalCLI) perfectly aligns with coding prompt evaluation.",
+      "apply_url": "https://boards.greenhouse.io/outlier/jobs/4100222",
+      "applied": false,
+      "status": "new",
+      "target_role": "prompt-engineer",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.7,
+        "grade": "B+",
+        "cv_match": 3.3,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "proof_points": [
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "multi-model"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "veeva-data-manager-rd",
+      "title": "Data Manager, R&D",
+      "company": "Veeva Systems",
+      "company_tag": "",
+      "location": "Remote - India",
+      "salary": "₹18-28 LPA",
+      "match_score": 94,
+      "tier": 1,
+      "tags": [
+        "Pharma",
+        "Healthcare Data",
+        "SQL"
+      ],
+      "why_match": "Veeva is a pharma tech leader; highly values M.Pharm credentials and strong data pipeline experience.",
+      "apply_url": "https://jobs.lever.co/veeva/data-manager-rd",
+      "applied": false,
+      "status": "new",
+      "target_role": "data-manager",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 2.9,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "healthcare"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery",
+          "matching_tags": [
+            "healthcare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iqvia-clinical-data-manager",
+      "title": "Clinical Data Manager",
+      "company": "IQVIA",
+      "company_tag": "",
+      "location": "Remote - India",
+      "salary": "₹15-25 LPA",
+      "match_score": 92,
+      "tier": 1,
+      "tags": [
+        "Clinical Data",
+        "Healthcare Data",
+        "Data Management"
+      ],
+      "why_match": "Directly benefits from M.Pharm background and clinical data analysis experience to manage global datasets.",
+      "apply_url": "https://jobs.iqvia.com/job/clinical-data-manager-remote",
+      "applied": false,
+      "status": "new",
+      "target_role": "data-manager",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": true,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 2.9,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "healthcare"
+          ]
+        },
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "cli"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery",
+          "matching_tags": [
+            "healthcare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "perplexity-ai-solutions",
+      "title": "AI Solutions Engineer",
+      "company": "Perplexity AI",
+      "company_tag": "YC W22",
+      "location": "Remote",
+      "salary": "$130k-$170k",
+      "match_score": 92,
+      "tier": 1,
+      "tags": [
+        "RAG",
+        "LLM",
+        "Next.js"
+      ],
+      "why_match": "Strong fit for RAG, Next.js, and multi-model API integration experience to build internal and external tools.",
+      "apply_url": "https://jobs.lever.co/perplexity/ai-solutions-engineer",
+      "applied": false,
+      "status": "new",
+      "target_role": "ai-engineer",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 4.2,
+        "grade": "A-",
+        "cv_match": 4.1,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Strong match — recommend applying immediately"
+      },
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "llm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tempus-clinical-data-analyst",
+      "title": "Clinical Data Analyst",
+      "company": "Tempus",
+      "company_tag": "",
+      "location": "Remote",
+      "salary": "$90k-$120k",
+      "match_score": 92,
+      "tier": 1,
+      "tags": [
+        "Clinical Data",
+        "Python",
+        "SQL"
+      ],
+      "why_match": "Tempus works on precision medicine data; perfect fit for healthcare data analysis and advanced Python scripting.",
+      "apply_url": "https://boards.greenhouse.io/tempus/jobs/4200111",
+      "applied": false,
+      "status": "new",
+      "target_role": "clinical-healthcare",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.6,
+        "grade": "B+",
+        "cv_match": 2.4,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Good match — worth applying"
+      },
+      "proof_points": [
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "cli"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "togetherai-ml-engineer",
+      "title": "ML Engineer - Fine-Tuning",
+      "company": "Together AI",
+      "company_tag": "",
+      "location": "Remote - Global",
+      "salary": "$140k-$180k",
+      "match_score": 90,
+      "tier": 2,
+      "tags": [
+        "LLM Fine-tuning",
+        "PyTorch",
+        "Python"
+      ],
+      "why_match": "Directly leverages the 20B LLM fine-tuning experience, PyTorch skills, and multi-model architecture knowledge.",
+      "apply_url": "https://boards.greenhouse.io/togetherai/jobs/4455667",
+      "applied": false,
+      "status": "new",
+      "target_role": "ai-engineer",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": true,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 4.6,
+        "grade": "A",
+        "cv_match": 5,
+        "archetype_fit": 4.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Strong match — recommend applying immediately"
+      },
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "fine-tuning",
+            "pytorch"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flatiron-healthcare-data-analyst",
+      "title": "Healthcare Data Analyst",
+      "company": "Flatiron Health",
+      "company_tag": "",
+      "location": "Remote",
+      "salary": "$100k-$130k",
+      "match_score": 90,
+      "tier": 2,
+      "tags": [
+        "Healthcare Data",
+        "SQL",
+        "ETL"
+      ],
+      "why_match": "Requires strong ETL and SQL on healthcare datasets, suitable for their oncology data pipelines.",
+      "apply_url": "https://boards.greenhouse.io/flatironhealth/jobs/4600222",
+      "applied": false,
+      "status": "new",
+      "target_role": "clinical-healthcare",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": true,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 3,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "healthcare"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery",
+          "matching_tags": [
+            "healthcare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "snorkel-genai-prompt",
+      "title": "Generative AI Prompt Engineer",
+      "company": "Snorkel AI",
+      "company_tag": "",
+      "location": "Remote",
+      "salary": "$130k-$160k",
+      "match_score": 89,
+      "tier": 2,
+      "tags": [
+        "Prompt Engineering",
+        "LLM Fine-tuning",
+        "Python"
+      ],
+      "why_match": "Needs a mix of programmatic prompt engineering and fine-tuning knowledge for domain-specific models.",
+      "apply_url": "https://boards.greenhouse.io/snorkelai/jobs/4500333",
+      "applied": false,
+      "status": "new",
+      "target_role": "prompt-engineer",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": true,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 4.1,
+        "grade": "A-",
+        "cv_match": 4.1,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Strong match — recommend applying immediately"
+      },
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zepto-sr-data-analyst",
+      "title": "Senior Data Analyst",
+      "company": "Zepto",
+      "company_tag": "",
+      "location": "Remote - India",
+      "salary": "₹25-35 LPA",
+      "match_score": 88,
+      "tier": 1,
+      "tags": [
+        "SQL",
+        "Python",
+        "BigQuery",
+        "ETL"
+      ],
+      "why_match": "Strong match for BigQuery and Python skills; requires building ETL pipelines and dashboards which aligns perfectly with Pi-Datametrics experience.",
+      "apply_url": "https://boards.greenhouse.io/zepto/jobs/5123984",
+      "applied": false,
+      "status": "new",
+      "target_role": "senior-data-analyst",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.6,
+        "grade": "B+",
+        "cv_match": 2.4,
+        "archetype_fit": 4,
+        "comp_analysis": 3.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Good match — worth applying"
+      },
+      "proof_points": []
+    },
+    {
+      "id": "writer-prompt-engineer",
+      "title": "Senior Prompt Engineer",
+      "company": "Writer",
+      "company_tag": "",
+      "location": "Remote - Global",
+      "salary": "$120k-$150k",
+      "match_score": 88,
+      "tier": 2,
+      "tags": [
+        "Prompt Engineering",
+        "RAG",
+        "LLM"
+      ],
+      "why_match": "Focuses on optimizing prompts for enterprise RAG applications, aligning with candidate's RAG and programmatic prompt skills.",
+      "apply_url": "https://jobs.lever.co/writer/senior-prompt-engineer",
+      "applied": false,
+      "status": "new",
+      "target_role": "prompt-engineer",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.7,
+        "grade": "B+",
+        "cv_match": 2.4,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "llm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ro-healthcare-data-analyst",
+      "title": "Healthcare Data Analyst",
+      "company": "Ro",
+      "company_tag": "",
+      "location": "Remote",
+      "salary": "$95k-$125k",
+      "match_score": 88,
+      "tier": 2,
+      "tags": [
+        "Healthcare Data",
+        "Dashboards",
+        "Python"
+      ],
+      "why_match": "Needs dashboarding and Python skills applied to patient and healthcare datasets to drive telehealth insights.",
+      "apply_url": "https://boards.greenhouse.io/ro/jobs/4300555",
+      "applied": false,
+      "status": "new",
+      "target_role": "clinical-healthcare",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.1,
+        "grade": "B",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "healthcare"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery",
+          "matching_tags": [
+            "healthcare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swiggy-senior-data-analyst",
+      "title": "Senior Data Analyst, Growth",
+      "company": "Swiggy",
+      "company_tag": "",
+      "location": "Remote - India",
+      "salary": "₹22-32 LPA",
+      "match_score": 85,
+      "tier": 2,
+      "tags": [
+        "BigQuery",
+        "SQL",
+        "Python"
+      ],
+      "why_match": "Heavy utilization of BigQuery and SQL for data analysis; aligns with current 3+ years experience as a Data Analyst.",
+      "apply_url": "https://careers.swiggy.com/jobs/senior-data-analyst-growth",
+      "applied": false,
+      "status": "new",
+      "target_role": "senior-data-analyst",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.8,
+        "grade": "B+",
+        "cv_match": 3.3,
+        "archetype_fit": 4,
+        "comp_analysis": 3.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Good match — worth applying"
+      },
+      "proof_points": []
+    },
+    {
+      "id": "parexel-senior-data-manager",
+      "title": "Senior Data Manager",
+      "company": "Parexel",
+      "company_tag": "",
+      "location": "Remote - India",
+      "salary": "₹16-24 LPA",
+      "match_score": 85,
+      "tier": 2,
+      "tags": [
+        "Clinical Data",
+        "ETL",
+        "Python"
+      ],
+      "why_match": "Requires clinical trial data management and technical ETL skills, matching the Python data processing stack.",
+      "apply_url": "https://jobs.parexel.com/job/senior-data-manager",
+      "applied": false,
+      "status": "new",
+      "target_role": "data-manager",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": true,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 2.9,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "proof_points": [
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "cli"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "turing-prompt-engineer",
+      "title": "Prompt Engineer / AI Developer",
+      "company": "Turing",
+      "company_tag": "",
+      "location": "Remote - Global",
+      "salary": "$80k-$120k",
+      "match_score": 85,
+      "tier": 2,
+      "tags": [
+        "Prompt Engineering",
+        "OpenAI",
+        "Gemini"
+      ],
+      "why_match": "Good match for multi-model AI (OpenAI, Gemini) prompt optimization and fine-tuning tasks.",
+      "apply_url": "https://jobs.turing.com/jobs/prompt-engineer",
+      "applied": false,
+      "status": "new",
+      "target_role": "prompt-engineer",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 4.3,
+        "grade": "A-",
+        "cv_match": 4.9,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Strong match — recommend applying immediately"
+      },
+      "proof_points": [
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery",
+          "matching_tags": [
+            "gemini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apollo-sr-data-analyst",
+      "title": "Senior Data Analyst",
+      "company": "Apollo Graph",
+      "company_tag": "",
+      "location": "Remote - Global",
+      "salary": "$120k-$140k",
+      "match_score": 84,
+      "tier": 2,
+      "tags": [
+        "Python",
+        "SQL",
+        "Dashboards"
+      ],
+      "why_match": "Global remote role needing advanced dashboarding, ETL, and Python scripting skills.",
+      "apply_url": "https://boards.greenhouse.io/apollo/jobs/4201992",
+      "applied": false,
+      "status": "new",
+      "target_role": "senior-data-analyst",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": true,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.5,
+        "grade": "B",
+        "cv_match": 1.6,
+        "archetype_fit": 4,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "proof_points": []
+    },
+    {
+      "id": "syneos-data-management-lead",
+      "title": "Data Management Lead",
+      "company": "Syneos Health",
+      "company_tag": "",
+      "location": "Remote - Global",
+      "salary": "$90k-$110k",
+      "match_score": 83,
+      "tier": 2,
+      "tags": [
+        "Healthcare Data",
+        "SQL",
+        "Dashboards"
+      ],
+      "why_match": "Good progression from analyst to manager; healthcare focus leverages educational background.",
+      "apply_url": "https://syneoshealth.wd1.myworkdayjobs.com/SyneosHealth/job/Data-Management-Lead",
+      "applied": false,
+      "status": "new",
+      "target_role": "data-manager",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.2,
+        "grade": "B",
+        "cv_match": 1.6,
+        "archetype_fit": 3,
+        "comp_analysis": 4.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model for molecular analysis",
+          "matching_tags": [
+            "healthcare"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery",
+          "matching_tags": [
+            "healthcare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dream11-sr-data-analyst",
+      "title": "Senior Data Analyst",
+      "company": "Dream11",
+      "company_tag": "",
+      "location": "Remote - India",
+      "salary": "₹28-40 LPA",
+      "match_score": 82,
+      "tier": 2,
+      "tags": [
+        "Data Analysis",
+        "SQL",
+        "ETL"
+      ],
+      "why_match": "Solid requirement for Python/SQL/ETL background, though less focus on AI and more on scale.",
+      "apply_url": "https://boards.greenhouse.io/dream11/jobs/4982103",
+      "applied": false,
+      "status": "new",
+      "target_role": "senior-data-analyst",
+      "model_source": "gemini",
+      "model_name": "Gemini",
+      "verified": false,
+      "last_verified": "2026-03-31",
+      "evaluation": {
+        "overall_score": 3.8,
+        "grade": "B+",
+        "cv_match": 3.3,
+        "archetype_fit": 4,
+        "comp_analysis": 3.5,
+        "culture_signals": 4,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Good match — worth applying"
+      },
+      "proof_points": []
+    }
+  ],
+  "pipeline_version": "2.0.0"
+}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Skills | Prashanth Kumar Kadasi{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Technical Skills</h2>
+            <p class="mb-4">A diverse toolkit spanning full-stack development, cloud infrastructure, and AI/ML.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">💻 Languages</div>
+                <div class="card-body">
+                    {% for skill, cat in skills['Languages'] %}
+                    <span class="skill-badge {{ cat }}">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">⚡ Frameworks & Libraries</div>
+                <div class="card-body">
+                    {% for skill, cat in skills['Frameworks & Libraries'] %}
+                    <span class="skill-badge {{ cat }}">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">☁️ Cloud & DevOps</div>
+                <div class="card-body">
+                    {% for skill, cat in skills['Cloud & DevOps'] %}
+                    <span class="skill-badge {{ cat }}">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">🤖 AI & ML</div>
+                <div class="card-body">
+                    {% for skill, cat in skills['AI & ML'] %}
+                    <span class="skill-badge {{ cat }}">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

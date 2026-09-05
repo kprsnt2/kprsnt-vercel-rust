@@ -1,0 +1,53 @@
+{
+    "compound_name": "Aspirin",
+    "pubchem_data": {
+        "CID": 2244,
+        "MolecularFormula": "C9H8O4",
+        "MolecularWeight": "180.16",
+        "ConnectivitySMILES": "CC(=O)OC1=CC=CC=C1C(=O)O",
+        "XLogP": 1.2,
+        "Complexity": 212
+    },
+    "fda_data": "7 DRUG INTERACTIONS See Table 1 for clinically significant drug interactions with naproxen. Table 1: Clinically Significant Drug Interactions with naproxen Drugs That Interfere with Hemostasis Clinical Impact: \u2022 Naproxen and anticoagulants such as warfarin have a synergistic effect on bleeding. The concomitant use of naproxen and anticoagulants have an increased risk of serious bleeding compared to the use of either drug alone. \u2022 Serotonin release by platelets plays an important role in hemostas...",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 5,
+            "notes": "Rapid and almost complete absorption from the gastrointestinal tract, primarily in the acidic environment of the stomach and upper small intestine due to its low pKa."
+        },
+        "distribution": {
+            "score": 4,
+            "notes": "Widely distributed into most body tissues and fluids. Highly bound to plasma proteins (primarily albumin), though binding is concentration-dependent and saturable."
+        },
+        "metabolism": {
+            "score": 4,
+            "notes": "Rapidly hydrolyzed by esterases in the GI mucosa, red blood cells, plasma, and liver to its primary active metabolite, salicylic acid, which is further metabolized in the liver via conjugation."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Excreted primarily by the kidneys as free salicylic acid and conjugated metabolites. Renal clearance is highly dependent on urine pH, increasing significantly in alkaline urine."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Associated with gastrointestinal irritation, ulceration, and increased bleeding risk due to COX-1 inhibition. High doses can cause tinnitus, and it is contraindicated in children with viral infections due to the risk of Reye's syndrome."
+        },
+        "overall_admet_score": 4.0
+    },
+    "safety_review": {
+        "ind_readiness_score": 90,
+        "go_no_go_decision": "GO",
+        "risk_mitigation": [
+            "Develop enteric-coated formulations or advise administration with food to minimize gastrointestinal irritation and ulceration.",
+            "Include strict contraindications for pediatric patients presenting with viral infections to eliminate the risk of Reye's syndrome.",
+            "Implement strong clinical warnings against concomitant use with anticoagulants, SSRIs, or other NSAIDs (e.g., naproxen) to mitigate synergistic bleeding risks.",
+            "Monitor for signs of salicylate toxicity, such as tinnitus, particularly in high-dose regimens, and adjust dosage accordingly."
+        ],
+        "executive_summary": "Aspirin demonstrates a highly favorable ADMET profile with an overall score of 4.0. It exhibits rapid and almost complete gastrointestinal absorption, wide tissue distribution, and predictable metabolism into its active metabolite, salicylic acid. Excretion is primarily renal and pH-dependent. The primary toxicological liabilities include gastrointestinal ulceration, increased bleeding risk (especially when co-administered with anticoagulants or other NSAIDs), and the risk of Reye's syndrome in children. Given its established efficacy and manageable safety profile through appropriate labeling, dosing, and contraindications, the compound receives a GO decision for continued clinical development and use."
+    },
+    "timestamp": "2026-04-22T05:57:26.830014"
+}

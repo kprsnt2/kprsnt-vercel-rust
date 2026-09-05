@@ -1,0 +1,698 @@
+{% extends "base.html" %}
+
+{% block title %}Pipeline Dashboard | AI Career Agent{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="max-width: 1400px;">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════ */
+        /* Dashboard Design System — Premium Dark Analytics          */
+        /* ═══════════════════════════════════════════════════════════ */
+
+        .dash-hero {
+            background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.08), rgba(59,130,246,0.06));
+            border: 1px solid rgba(99,102,241,0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .dash-hero::before {
+            content: '';
+            position: absolute;
+            top: -80%;
+            right: -30%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .dash-hero h2 {
+            background: linear-gradient(135deg, #818cf8, #c084fc, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+        .dash-hero p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+
+        /* KPI Cards */
+        .kpi-card {
+            border-radius: 16px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+        }
+        .kpi-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+        .kpi-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+        .kpi-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+        }
+        .kpi-trend {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 0.3rem;
+        }
+
+        /* Chart Panels */
+        .chart-panel {
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 1.25rem;
+            height: 100%;
+        }
+        .chart-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .chart-title i { color: #818cf8; }
+
+        /* Horizontal Bar Charts (CSS-only) */
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+        .bar-label {
+            min-width: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: right;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .bar-track {
+            flex: 1;
+            height: 22px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding-left: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+            transition: width 1s ease;
+            min-width: 24px;
+        }
+        .bar-count {
+            min-width: 28px;
+            text-align: right;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Grade Donuts (CSS-only) */
+        .grade-ring {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .grade-ring-inner {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--bs-body-bg, #1a1a2e);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .grade-ring-letter {
+            font-size: 1.4rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .grade-ring-count {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Dimension Radar (CSS bars) */
+        .radar-dim {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .radar-dim-label {
+            min-width: 90px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        .radar-dim-track {
+            flex: 1;
+            height: 10px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .radar-dim-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+        .radar-dim-value {
+            min-width: 32px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-align: right;
+        }
+
+        /* Score Histogram */
+        .histo-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 100px;
+            padding-top: 0.5rem;
+        }
+        .histo-bar {
+            flex: 1;
+            border-radius: 4px 4px 0 0;
+            transition: height 1s ease;
+            min-width: 20px;
+            position: relative;
+        }
+        .histo-bar:hover {
+            filter: brightness(1.3);
+        }
+        .histo-bar-label {
+            text-align: center;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Pipeline Timeline */
+        .timeline-entry {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .timeline-entry:last-child { border-bottom: none; }
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .timeline-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            min-width: 80px;
+        }
+        .timeline-stat {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+        .timeline-badges { display: flex; gap: 0.3rem; margin-left: auto; }
+        .timeline-badge {
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        /* Top Jobs Table */
+        .job-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 0.5rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .job-row:hover { background: rgba(255,255,255,0.03); }
+        .job-rank {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        .job-info { flex: 1; min-width: 0; }
+        .job-info h6 { font-size: 0.82rem; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .job-info small { color: var(--text-muted); font-size: 0.7rem; }
+        .job-score-badge {
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dash-hero { padding: 1.25rem; }
+            .kpi-value { font-size: 1.8rem; }
+            .bar-label { min-width: 70px; font-size: 0.7rem; }
+        }
+    </style>
+
+    <!-- Hero -->
+    <div class="dash-hero">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <a href="/jobs" style="color: var(--text-muted); font-size: 0.75rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; margin-bottom: 0.5rem;">
+                    <i class="fas fa-arrow-left"></i> Back to Job List
+                </a>
+                <h2><i class="fas fa-chart-line" style="margin-right: 0.5rem;"></i>Pipeline Dashboard</h2>
+                <p>Career Agent Pipeline analytics — updated {{ month or 'daily' }}</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+                <a href="/jobs" class="btn btn-sm" style="background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); font-weight: 600; border-radius: 10px;">
+                    <i class="fas fa-list"></i> Job List
+                </a>
+                <a href="/api/jobs/data" target="_blank" class="btn btn-sm" style="background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); font-weight: 600; border-radius: 10px;">
+                    <i class="fas fa-code"></i> API
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- KPI Row -->
+    <div class="row mb-4">
+        <div class="col-6 col-lg-2 mb-3">
+            <div class="kpi-card card" style="background: rgba(59,130,246,0.06);">
+                <div class="kpi-value" style="color: #60a5fa;">{{ total_jobs }}</div>
+                <div class="kpi-label">Total Jobs</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:0 0 16px 16px;"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+            <div class="kpi-card card" style="background: rgba(34,197,94,0.06);">
+                <div class="kpi-value" style="color: #4ade80;">{{ top_matches }}</div>
+                <div class="kpi-label">Top Matches</div>
+                <div class="kpi-trend" style="background: rgba(34,197,94,0.15); color: #4ade80;">≥ 3.5/5</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22c55e,#4ade80);border-radius:0 0 16px 16px;"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+            <div class="kpi-card card" style="background: rgba(168,85,247,0.06);">
+                <div class="kpi-value" style="color: #c084fc;">{{ avg_eval }}<span style="font-size: 0.9rem;">/5</span></div>
+                <div class="kpi-label">Avg Score</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#a855f7,#c084fc);border-radius:0 0 16px 16px;"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+            <div class="kpi-card card" style="background: rgba(251,191,36,0.06);">
+                <div class="kpi-value" style="color: #fbbf24;">{{ applied_count }}</div>
+                <div class="kpi-label">Applied</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:0 0 16px 16px;"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+            <div class="kpi-card card" style="background: rgba(6,182,212,0.06);">
+                <div class="kpi-value" style="color: #22d3ee;">{{ verified_count }}</div>
+                <div class="kpi-label">Verified</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#06b6d4,#22d3ee);border-radius:0 0 16px 16px;"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+            <div class="kpi-card card" style="background: rgba(239,68,68,0.06);">
+                <div class="kpi-value" style="color: #f87171;">{{ daily_snapshots|length }}</div>
+                <div class="kpi-label">Pipeline Runs</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ef4444,#f87171);border-radius:0 0 16px 16px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Insight Summary -->
+    {% if insight %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="chart-panel" style="background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(34,197,94,0.04)); border: 1px solid rgba(99,102,241,0.12);">
+                <div class="chart-title"><i class="fas fa-lightbulb" style="color: #fbbf24;"></i> Daily Insight</div>
+                <div style="font-size: 0.88rem; line-height: 1.7; color: var(--text-secondary);">
+                    {{ insight | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Row 2: Grade Distribution + Dimension Radar -->
+    <div class="row mb-4">
+        <!-- Grade Distribution -->
+        <div class="col-lg-5 mb-3">
+            <div class="chart-panel">
+                <div class="chart-title"><i class="fas fa-medal"></i> Grade Distribution</div>
+                <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    {% set grade_colors = {'A': '#22c55e', 'A-': '#34d399', 'B+': '#3b82f6', 'B': '#60a5fa', 'C+': '#fbbf24', 'C': '#f59e0b'} %}
+                    {% for grade, count in grade_counts|dictsort %}
+                    <div style="text-align: center;">
+                        <div class="grade-ring" style="background: conic-gradient({{ grade_colors.get(grade, '#6b7280') }} 0deg {{ (count / total_jobs * 360)|int }}deg, rgba(255,255,255,0.05) {{ (count / total_jobs * 360)|int }}deg 360deg);">
+                            <div class="grade-ring-inner">
+                                <span class="grade-ring-letter" style="color: {{ grade_colors.get(grade, '#6b7280') }};">{{ grade }}</span>
+                                <span class="grade-ring-count">{{ count }}</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem; font-weight: 600;">{{ ((count / total_jobs) * 100)|round|int }}%</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Bars underneath -->
+                {% for grade, count in grade_counts|dictsort %}
+                <div class="bar-row">
+                    <span class="bar-label" style="min-width: 40px;">{{ grade }}</span>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: {{ (count / total_jobs * 100)|int }}%; background: {{ grade_colors.get(grade, '#6b7280') }};">{{ count }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Evaluation Dimensions -->
+        <div class="col-lg-4 mb-3">
+            <div class="chart-panel">
+                <div class="chart-title"><i class="fas fa-bullseye"></i> Evaluation Dimensions (Avg)</div>
+                {% set dim_meta = {
+                    'cv_match': {'label': 'CV Match', 'color': '#4ade80', 'icon': '📄'},
+                    'archetype_fit': {'label': 'Archetype Fit', 'color': '#60a5fa', 'icon': '🎯'},
+                    'comp_analysis': {'label': 'Compensation', 'color': '#fbbf24', 'icon': '💰'},
+                    'culture_signals': {'label': 'Culture Fit', 'color': '#c084fc', 'icon': '🏢'}
+                } %}
+                {% for dim, value in dimension_avgs.items() %}
+                {% set meta = dim_meta.get(dim, {}) %}
+                <div class="radar-dim">
+                    <span class="radar-dim-label">{{ meta.get('icon', '') }} {{ meta.get('label', dim) }}</span>
+                    <div class="radar-dim-track">
+                        <div class="radar-dim-fill" style="width: {{ (value / 5 * 100)|int }}%; background: {{ meta.get('color', '#818cf8') }};"></div>
+                    </div>
+                    <span class="radar-dim-value" style="color: {{ meta.get('color', '#818cf8') }};">{{ value }}</span>
+                </div>
+                {% endfor %}
+
+                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                    <div class="chart-title" style="margin-bottom: 0.75rem;"><i class="fas fa-map-marker-alt"></i> By Location</div>
+                    {% set loc_colors = {'Remote': '#4ade80', 'India (On-site)': '#60a5fa', 'International': '#fbbf24'} %}
+                    {% for loc, count in location_counts.items() %}
+                    <div class="bar-row">
+                        <span class="bar-label" style="min-width: 85px;">{{ loc }}</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: {{ (count / total_jobs * 100)|int }}%; background: {{ loc_colors.get(loc, '#818cf8') }};">{{ count }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- By Archetype -->
+        <div class="col-lg-3 mb-3">
+            <div class="chart-panel">
+                <div class="chart-title"><i class="fas fa-user-tie"></i> By Role Archetype</div>
+                {% set arch_colors = ['#818cf8', '#c084fc', '#60a5fa', '#4ade80', '#fbbf24', '#f87171'] %}
+                {% for arch, count in archetype_counts.items() %}
+                <div class="bar-row">
+                    <span class="bar-label" style="min-width: 70px; font-size: 0.7rem;">{{ arch|truncate(18) }}</span>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: {{ (count / total_jobs * 100)|int }}%; background: {{ arch_colors[loop.index0 % 6] }};">{{ count }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% if top_companies %}
+                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                    <div class="chart-title" style="margin-bottom: 0.75rem;"><i class="fas fa-building"></i> Top Companies</div>
+                    {% for company, count in top_companies[:6] %}
+                    <div class="bar-row">
+                        <span class="bar-label" style="min-width: 70px; font-size: 0.7rem;">{{ company|truncate(16) }}</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: {{ (count / total_jobs * 100)|int }}%; background: {{ arch_colors[loop.index0 % 6] }};">{{ count }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 3: Score Distribution + Top Jobs -->
+    <div class="row mb-4">
+        <!-- Left Side Stats -->
+        <div class="col-lg-5 mb-3" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Score Histogram -->
+            <div class="chart-panel" style="height: auto; flex: 1; margin: 0;">
+                <div class="chart-title"><i class="fas fa-chart-bar"></i> Score Distribution</div>
+                <div id="score-histogram"></div>
+                <div style="text-align: center; margin-top: 0.5rem;">
+                    <small style="color: var(--text-muted); font-size: 0.7rem;">Higher scores = better match to your profile</small>
+                </div>
+            </div>
+
+            <!-- Pipeline Funnel Chart -->
+            <div class="chart-panel" style="height: auto; flex: 1; margin: 0;">
+                <div class="chart-title"><i class="fas fa-filter"></i> Action Pipeline</div>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
+                    {% set rates = [
+                        {'label': 'Total Evaluated', 'count': total_jobs, 'color': '#3b82f6', 'icon': 'fa-search'},
+                        {'label': 'Top Matches (≥3.5)', 'count': top_matches, 'color': '#4ade80', 'icon': 'fa-star'},
+                        {'label': 'Applied', 'count': applied_count, 'color': '#f59e0b', 'icon': 'fa-paper-plane'},
+                        {'label': 'Verified', 'count': verified_count, 'color': '#06b6d4', 'icon': 'fa-check-circle'}
+                    ] %}
+                    
+                    {% set max_rate = total_jobs if total_jobs > 0 else 1 %}
+                    {% for rate in rates %}
+                    {% set width = (rate.count / max_rate * 100)|round|int %}
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem;">
+                        <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);"><i class="fas {{ rate.icon }}" style="width: 20px; color: {{ rate.color }};"></i> {{ rate.label }}</span>
+                        <span style="font-size: 0.8rem; font-weight: 800; color: {{ rate.color }}">{{ rate.count }}</span>
+                    </div>
+                    <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; margin-bottom: 0.75rem;">
+                        <div style="height: 100%; width: {{ width }}%; background: {{ rate.color }}; border-radius: 4px;"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Top 10 Jobs -->
+        <div class="col-lg-7 mb-3">
+            <div class="chart-panel">
+                <div class="chart-title"><i class="fas fa-trophy"></i> Top 10 Matches</div>
+                {% for job in jobs[:10] %}
+                {% set ev = job.get('evaluation', {}) %}
+                {% set score = ev.get('overall_score', 0) %}
+                <div class="job-row">
+                    <div class="job-rank" style="background: {% if loop.index <= 3 %}linear-gradient(135deg, #22c55e, #10b981){% elif loop.index <= 6 %}linear-gradient(135deg, #3b82f6, #6366f1){% else %}linear-gradient(135deg, #6b7280, #4b5563){% endif %}; color: white;">
+                        {{ loop.index }}
+                    </div>
+                    <div class="job-info">
+                        <h6>{{ job.title }}</h6>
+                        <small>{{ job.company }} • {{ job.location }}</small>
+                    </div>
+                    <div>
+                        {% if ev.get('grade') %}
+                        <span class="job-score-badge" style="background: {% if score >= 4.0 %}rgba(34,197,94,0.15); color: #4ade80{% elif score >= 3.5 %}rgba(59,130,246,0.15); color: #60a5fa{% else %}rgba(251,191,36,0.15); color: #fbbf24{% endif %};">
+                            {{ ev.grade }} <span style="font-size: 0.65rem; opacity: 0.7;">{{ score }}/5</span>
+                        </span>
+                        {% endif %}
+                    </div>
+                    <a href="{{ job.apply_url }}" target="_blank" style="color: #818cf8; font-size: 0.8rem; flex-shrink: 0;">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 4: Pipeline Execution Timeline -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="chart-panel">
+                <div class="chart-title"><i class="fas fa-stream"></i> Pipeline History</div>
+                {% if daily_snapshots %}
+                <div style="overflow-x: auto;">
+                    {% for snap in daily_snapshots|reverse %}
+                    {% set report = snap.get('report', {}) %}
+                    {% set summary = report.get('summary', {}) %}
+                    {% set trace = snap.get('trace', {}) %}
+                    <div class="timeline-entry">
+                        <div class="timeline-dot" style="background: {% if summary.get('grade_a_count', 0) > 0 %}#4ade80{% else %}#60a5fa{% endif %};"></div>
+                        <span class="timeline-date">{{ snap.date }}</span>
+                        <span class="timeline-stat">
+                            {{ snap.total_jobs }} jobs found
+                            {% if summary.get('top_matches') %} • {{ summary.top_matches }} top matches{% endif %}
+                            {% if summary.get('average_score') %} • {{ summary.average_score }}/5 avg{% endif %}
+                        </span>
+                        <div class="timeline-badges">
+                            {% if summary.get('grade_a_count') %}
+                            <span class="timeline-badge" style="background: rgba(34,197,94,0.15); color: #4ade80;">A: {{ summary.grade_a_count }}</span>
+                            {% endif %}
+                            {% if summary.get('verified_count') %}
+                            <span class="timeline-badge" style="background: rgba(6,182,212,0.15); color: #22d3ee;">✓ {{ summary.verified_count }}</span>
+                            {% endif %}
+                            {% if trace.get('duration_seconds') %}
+                            <span class="timeline-badge" style="background: rgba(168,85,247,0.15); color: #c084fc;">{{ trace.duration_seconds }}s</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                    <i class="fas fa-clock" style="font-size: 2rem; margin-bottom: 0.5rem; display: block;"></i>
+                    Pipeline history will appear here after daily runs
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 5: Pipeline Architecture -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="chart-panel" style="background: linear-gradient(135deg, rgba(99,102,241,0.04), rgba(168,85,247,0.04));">
+                <div class="chart-title"><i class="fas fa-project-diagram"></i> Pipeline Architecture</div>
+                <div class="row">
+                    <div class="col-6 col-md-3 mb-3">
+                        <div style="text-align: center; padding: 1.25rem; border-radius: 12px; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.12);">
+                            <i class="fas fa-search" style="font-size: 2rem; color: #60a5fa; margin-bottom: 0.5rem;"></i>
+                            <h6 style="color: #60a5fa; margin: 0.3rem 0; font-weight: 700;">Search Agent</h6>
+                            <small style="color: var(--text-muted); font-size: 0.7rem;">Gemini + Google Search Grounding<br>Real-time job discovery</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-3">
+                        <div style="text-align: center; padding: 1.25rem; border-radius: 12px; background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.12);">
+                            <i class="fas fa-star-half-alt" style="font-size: 2rem; color: #c084fc; margin-bottom: 0.5rem;"></i>
+                            <h6 style="color: #c084fc; margin: 0.3rem 0; font-weight: 700;">Evaluator Agent</h6>
+                            <small style="color: var(--text-muted); font-size: 0.7rem;">5-dimension A-F scoring<br>Career-ops style evaluation</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-3">
+                        <div style="text-align: center; padding: 1.25rem; border-radius: 12px; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.12);">
+                            <i class="fas fa-crosshairs" style="font-size: 2rem; color: #4ade80; margin-bottom: 0.5rem;"></i>
+                            <h6 style="color: #4ade80; margin: 0.3rem 0; font-weight: 700;">Skill Gap Agent</h6>
+                            <small style="color: var(--text-muted); font-size: 0.7rem;">Gap analysis + proof points<br>Maps projects to requirements</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-3">
+                        <div style="text-align: center; padding: 1.25rem; border-radius: 12px; background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.12);">
+                            <i class="fas fa-file-alt" style="font-size: 2rem; color: #fbbf24; margin-bottom: 0.5rem;"></i>
+                            <h6 style="color: #fbbf24; margin: 0.3rem 0; font-weight: 700;">Report Agent</h6>
+                            <small style="color: var(--text-muted); font-size: 0.7rem;">Daily digest + history<br>Pipeline observability</small>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 0.75rem;">
+                    <small style="color: var(--text-muted);">
+                        <i class="fas fa-clock"></i> Runs daily at 8:00 AM IST via GitHub Actions •
+                        <a href="https://github.com/kprsnt2/kprsnt.in/blob/main/scripts/career_pipeline.py" target="_blank" style="color: #818cf8;">View Source</a> •
+                        Inspired by <a href="https://github.com/santifer/career-ops" target="_blank" style="color: #818cf8;">career-ops</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// Score histogram rendering (Horizontal Bars)
+(function() {
+    const scores = {{ score_distribution | tojson }};
+    const buckets = [
+        { label: '1-2', min: 1, max: 2, color: '#ef4444', count: 0 },
+        { label: '2-2.5', min: 2, max: 2.5, color: '#f59e0b', count: 0 },
+        { label: '2.5-3', min: 2.5, max: 3, color: '#fbbf24', count: 0 },
+        { label: '3-3.5', min: 3, max: 3.5, color: '#60a5fa', count: 0 },
+        { label: '3.5-4', min: 3.5, max: 4, color: '#3b82f6', count: 0 },
+        { label: '4-4.5', min: 4, max: 4.5, color: '#34d399', count: 0 },
+        { label: '4.5-5', min: 4.5, max: 5.01, color: '#22c55e', count: 0 },
+    ];
+
+    scores.forEach(s => {
+        for (const b of buckets) {
+            if (s >= b.min && s < b.max) { b.count++; break; }
+        }
+    });
+
+    const maxCount = Math.max(...buckets.map(b => b.count), 1);
+    const container = document.getElementById('score-histogram');
+    if (!container) return;
+
+    let html = '<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 1rem;">';
+    buckets.forEach(b => {
+        const width = Math.max((b.count / maxCount) * 100, 2);
+        html += `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 45px; text-align: right; font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${b.label}</div>
+                <div style="flex: 1; height: 18px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; position: relative;">
+                    <div style="height: 100%; width: ${width}%; background: ${b.color}; border-radius: 4px; transition: width 1s ease;"></div>
+                    ${b.count > 0 ? `<div style="position: absolute; right: 5px; top: 0; line-height: 18px; font-size: 0.65rem; color: #fff; font-weight: 700; text-shadow: 0 0 2px rgba(0,0,0,0.8);">${b.count}</div>` : ''}
+                </div>
+            </div>
+        `;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+})();
+</script>
+{% endblock %}

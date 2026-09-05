@@ -1,0 +1,65 @@
+{
+    "compound_name": "Semaglutide",
+    "pubchem_data": {
+        "CID": 56843331,
+        "MolecularFormula": "C187H291N45O59",
+        "MolecularWeight": "4114",
+        "ConnectivitySMILES": "CCC(C)C(C(=O)NC(C)C(=O)NC(CC1=CNC2=CC=CC=C21)C(=O)NC(CC(C)C)C(=O)NC(C(C)C)C(=O)NC(CCCNC(=N)N)C(=O)NCC(=O)NC(CCCNC(=N)N)C(=O)NCC(=O)O)NC(=O)C(CC3=CC=CC=C3)NC(=O)C(CCC(=O)O)NC(=O)C(CCCCNC(=O)COCCOCCNC(=O)COCCOCCNC(=O)CCC(C(=O)O)NC(=O)CCCCCCCCCCCCCCCCC(=O)O)NC(=O)C(C)NC(=O)C(C)NC(=O)C(CCC(=O)N)NC(=O)CNC(=O)C(CCC(=O)O)NC(=O)C(CC(C)C)NC(=O)C(CC4=CC=C(C=C4)O)NC(=O)C(CO)NC(=O)C(CO)NC(=O)C(C(C)C)NC(=O)C(CC(=O)O)NC(=O)C(CO)NC(=O)C(C(C)O)NC(=O)C(CC5=CC=CC=C5)NC(=O)C(C(C)O)NC(=O)CNC(=O)C(CCC(=O)O)NC(=O)C(C)(C)NC(=O)C(CC6=CN=CN6)N",
+        "XLogP": -5.8,
+        "Complexity": 9590
+    },
+    "fda_data": "7 DRUG INTERACTIONS Other Oral Drugs : RYBELSUS and OZEMPIC tablets delay gastric emptying. Consider increased clinical or laboratory monitoring when co-administered with other oral medications that have a narrow therapeutic index or that require clinical monitoring. ( 7.2 ) 7.1 Concomitant Use with an Insulin Secretagogue (e.g., Sulfonylurea) or with Insulin Semaglutide stimulates insulin release in the presence of elevated blood glucose concentrations. Patients receiving RYBELSUS or OZEMPIC ta...",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 4,
+            "notes": "Good oral bioavailability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding."
+        },
+        "metabolism": {
+            "score": 2,
+            "notes": "Extensive hepatic metabolism (CYP3A4)."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Renal clearance is primary."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Hepatotoxicity risk at high doses."
+        },
+        "overall_admet_score": 3.2
+    },
+    "safety_review": {
+        "absorption": {
+            "score": 4,
+            "notes": "Good oral bioavailability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding."
+        },
+        "metabolism": {
+            "score": 2,
+            "notes": "Extensive hepatic metabolism (CYP3A4)."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Renal clearance is primary."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Hepatotoxicity risk at high doses."
+        },
+        "overall_admet_score": 3.2
+    },
+    "timestamp": "2026-04-19T05:55:03.727378"
+}

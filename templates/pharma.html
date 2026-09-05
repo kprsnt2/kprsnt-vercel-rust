@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block title %}PharmaGenesis Pipeline | Drug Discovery AI{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="max-width: 1400px;">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════ */
+        /* Dashboard Design System — Premium Pharma Analytics          */
+        /* ═══════════════════════════════════════════════════════════ */
+
+        .dash-hero {
+            background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(6,182,212,0.08), rgba(59,130,246,0.06));
+            border: 1px solid rgba(34,197,94,0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .dash-hero::before {
+            content: '';
+            position: absolute;
+            top: -80%;
+            right: -30%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .dash-hero h2 {
+            background: linear-gradient(135deg, #4ade80, #22d3ee, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+        .dash-hero p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+
+        /* KPI Cards */
+        .kpi-card {
+            border-radius: 16px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .kpi-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
+        .kpi-value { font-size: 2.2rem; font-weight: 800; line-height: 1; margin-bottom: 0.3rem; }
+        .kpi-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); }
+
+        /* Chart Panels */
+        .chart-panel {
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 1.25rem;
+            height: 100%;
+        }
+        .chart-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Lists */
+        .compound-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.03);
+            margin-bottom: 0.5rem;
+            transition: all 0.2s;
+        }
+        .compound-row:hover { background: rgba(255,255,255,0.06); transform: translateX(4px); }
+        .compound-name { font-weight: 700; font-size: 1rem; color: #4ade80; }
+        .compound-meta { font-size: 0.7rem; color: var(--text-muted); }
+        
+        .score-badge {
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        .go-badge { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+        .nogo-badge { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+        .timeline-entry {
+            display: flex; gap: 1rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .timeline-date { color: #818cf8; font-weight: 600; font-size: 0.85rem; min-width: 80px; }
+        
+        /* Bar Progress */
+        .progress-dim {
+            display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;
+        }
+        .progress-label { min-width: 80px; font-size: 0.7rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; }
+        .progress-track { flex: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+    </style>
+
+    <!-- Hero -->
+    <div class="dash-hero">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h2><i class="fas fa-pills" style="margin-right: 0.5rem;"></i>PharmaGenesis Pipeline</h2>
+                <p>NVIDIA NIM & Gemini Multi-Agent Drug Discovery Engine</p>
+            </div>
+            <div>
+                <a href="/api/pharma/data" target="_blank" class="btn btn-sm" style="background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); font-weight: 600; border-radius: 10px;">
+                    <i class="fas fa-code"></i> Raw JSON
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- KPIs -->
+    {% set runs = log_data.get('pipeline_runs', []) %}
+    {% set total_runs = runs|length %}
+    {% set avg_ind = (runs|sum(attribute='avg_ind_score') / [total_runs, 1]|max)|round|int if runs else 0 %}
+    <div class="row mb-4">
+        <div class="col-6 col-lg-3 mb-3">
+            <div class="kpi-card card" style="background: rgba(34,197,94,0.06);">
+                <div class="kpi-value" style="color: #4ade80;">{{ compounds|length }}</div>
+                <div class="kpi-label">Compounds Analyzed</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22c55e,#4ade80);"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 mb-3">
+            <div class="kpi-card card" style="background: rgba(6,182,212,0.06);">
+                <div class="kpi-value" style="color: #22d3ee;">{{ avg_ind }}</div>
+                <div class="kpi-label">Avg IND Readiness</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#06b6d4,#22d3ee);"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 mb-3">
+            <div class="kpi-card card" style="background: rgba(251,191,36,0.06);">
+                <div class="kpi-value" style="color: #fbbf24;">4</div>
+                <div class="kpi-label">Active Agents</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 mb-3">
+            <div class="kpi-card card" style="background: rgba(168,85,247,0.06);">
+                <div class="kpi-value" style="color: #c084fc;">3</div>
+                <div class="kpi-label">API Integrations</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#a855f7,#c084fc);"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Processed Compounds -->
+        <div class="col-lg-7 mb-4">
+            <div class="chart-panel">
+                <div class="chart-title"><i class="fas fa-flask"></i> Latest Compound Assessments</div>
+                
+                {% for comp in compounds %}
+                {% set admet = comp.get('admet_prediction', {}) %}
+                {% set safety = comp.get('safety_review', {}) %}
+                <div class="compound-row">
+                    <div style="flex: 1;">
+                        <h5 class="compound-name mb-1">{{ comp.get('compound_name', 'Unknown') }}</h5>
+                        <p class="mb-1" style="font-size: 0.8rem; color: var(--text-secondary);">{{ safety.get('executive_summary', 'No summary generated.') }}</p>
+                        <div class="compound-meta">
+                            <i class="fas fa-atom"></i> MW: {{ comp.get('pubchem_data', {}).get('MolecularWeight', '?') }}
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-heartbeat"></i> Trials: {{ comp.get('clinical_trials', [])|length }}
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-dna"></i> ADMET: {{ admet.get('overall_admet_score', 0) }}/5
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; flex-shrink: 0; min-width: 100px;">
+                        {% if safety.get('go_no_go_decision') == 'GO' %}
+                        <span class="score-badge go-badge">GO ({{ safety.get('ind_readiness_score', 0) }})</span>
+                        {% else %}
+                        <span class="score-badge nogo-badge">NO-GO</span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Expanded ADMET View -->
+                <div class="mb-4 mt-2 px-3 pb-3" style="border-left: 2px solid rgba(255,255,255,0.1); margin-left: 1rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% set ad_keys = ['absorption', 'distribution', 'metabolism', 'excretion', 'toxicity'] %}
+                            {% set ad_colors = ['#4ade80', '#22d3ee', '#818cf8', '#c084fc', '#f87171'] %}
+                            {% for key in ad_keys %}
+                            {% set score = admet.get(key, {}).get('score', 0) %}
+                            <div class="progress-dim">
+                                <span class="progress-label">{{ key }}</span>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: {{ (score / 5) * 100 }}%; background: {{ ad_colors[loop.index0] }};"></div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            <div style="font-size: 0.7rem; color: var(--text-muted);">
+                                <strong>Safety Flags:</strong><br>
+                                {% for risk in safety.get('risk_mitigation', []) %}
+                                • {{ risk }}<br>
+                                {% endfor %}
+                                <br>
+                                <strong>FDA Data:</strong><br>
+                                {{ comp.get('fda_data', 'Not available.')|truncate(80) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="text-center p-4">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🧬</div>
+                    <h5 style="color: #4ade80; margin-bottom: 0.5rem;">Awaiting First Pipeline Run</h5>
+                    <p style="color: var(--text-secondary); max-width: 400px; margin: 0 auto 1rem; font-size: 0.85rem;">
+                        The Pharma Discovery Pipeline analyzes drug compounds daily using PubChem, OpenFDA, and ClinicalTrials.gov APIs combined with AI-powered ADMET prediction.
+                    </p>
+                    <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 10px; font-size: 0.8rem; color: #4ade80;">
+                        <i class="fas fa-clock"></i> Runs daily at 9:30 AM IST via GitHub Actions
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Architecture & History -->
+        <div class="col-lg-5 mb-4">
+            <div class="chart-panel mb-4" style="background: linear-gradient(135deg, rgba(34,197,94,0.04), rgba(6,182,212,0.04));">
+                <div class="chart-title" style="color: #4ade80;"><i class="fas fa-network-wired"></i> Agent Architecture</div>
+                
+                <div class="timeline-entry align-items-center">
+                    <div style="font-size: 1.5rem; color: #60a5fa;"><i class="fas fa-database"></i></div>
+                    <div>
+                        <strong style="color: white; font-size: 0.9rem;">1. Molecule Ingestion Agent</strong>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Fetches properties & SMILES from PubChem REST API.</div>
+                    </div>
+                </div>
+                <div class="timeline-entry align-items-center">
+                    <div style="font-size: 1.5rem; color: #4ade80;"><i class="fas fa-microscope"></i></div>
+                    <div>
+                        <strong style="color: white; font-size: 0.9rem;">2. ADMET Prediction Agent</strong>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">LLM infers absorption & toxicity from chemical properties.</div>
+                    </div>
+                </div>
+                <div class="timeline-entry align-items-center">
+                    <div style="font-size: 1.5rem; color: #fbbf24;"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div>
+                        <strong style="color: white; font-size: 0.9rem;">3. Drug Interaction Agent</strong>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Queries OpenFDA API for known adverse reactions.</div>
+                    </div>
+                </div>
+                <div class="timeline-entry align-items-center">
+                    <div style="font-size: 1.5rem; color: #c084fc;"><i class="fas fa-hospital"></i></div>
+                    <div>
+                        <strong style="color: white; font-size: 0.9rem;">4. Clinical Trial Matcher</strong>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Hits ClinicalTrials.gov V2 to map ongoing active phases.</div>
+                    </div>
+                </div>
+                <div class="timeline-entry align-items-center" style="border: none; padding-bottom: 0;">
+                    <div style="font-size: 1.5rem; color: #f87171;"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <strong style="color: white; font-size: 0.9rem;">5. Safety Review Approver</strong>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Final synthesis generating the IND go/no-go readiness score.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pipeline Runs Log -->
+            <div class="chart-panel">
+                <div class="chart-title"><i class="fas fa-history"></i> Execution Log</div>
+                {% for run in runs[:5] %}
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.5rem 0;">
+                    <span style="color: #60a5fa;">{{ run.get('date') }}</span>
+                    <span>{{ run.get('compounds_processed') }} ops</span>
+                    <span>Avg IND: <strong style="color: #4ade80;">{{ run.get('avg_ind_score') }}</strong></span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

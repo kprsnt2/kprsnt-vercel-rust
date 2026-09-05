@@ -1,0 +1,51 @@
+{
+    "compound_name": "Pembrolizumab",
+    "pubchem_data": {
+        "MolecularFormula": "Ctest",
+        "MolecularWeight": 350.5,
+        "CanonicalSMILES": "CC(=O)OC1=CC=CC=C1C(=O)O",
+        "XLogP": 2.1
+    },
+    "fda_data": "Query returned no results or failed.",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 5,
+            "notes": "Rapid and complete absorption from the gastrointestinal tract, typical of the provided small-molecule SMILES (acetylsalicylic acid), despite the biologic compound name."
+        },
+        "distribution": {
+            "score": 4,
+            "notes": "Widely distributed into most body tissues and fluids; highly bound to plasma proteins, primarily albumin."
+        },
+        "metabolism": {
+            "score": 4,
+            "notes": "Rapidly hydrolyzed by esterases in the GI mucosa, red blood cells, synovial fluid, and blood plasma to its active metabolite."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Primarily excreted by the kidneys; elimination half-life is dose-dependent and highly influenced by urinary pH."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Dose-dependent risk of gastrointestinal irritation, ulceration, and bleeding; potential for nephrotoxicity and hypersensitivity reactions."
+        },
+        "overall_admet_score": 4.0
+    },
+    "safety_review": {
+        "ind_readiness_score": 80,
+        "go_no_go_decision": "GO",
+        "risk_mitigation": [
+            "Implement routine gastrointestinal monitoring and consider enteric-coated formulations or co-administration of proton pump inhibitors (PPIs) to minimize ulceration and bleeding risks.",
+            "Monitor renal function (e.g., serum creatinine, BUN) closely, particularly in patients with pre-existing renal impairment.",
+            "Monitor urinary pH and adjust dosing as necessary, given the pH-dependent elimination half-life.",
+            "Screen trial participants for a history of hypersensitivity to salicylates or NSAIDs."
+        ],
+        "executive_summary": "The data provided indicates a structural discrepancy, pairing the name of a biologic (Pembrolizumab) with the SMILES and ADMET profile of a small molecule (acetylsalicylic acid). Evaluating the provided small-molecule profile, the compound demonstrates highly favorable pharmacokinetics with an overall ADMET score of 4.0. It features rapid absorption, wide distribution, and predictable metabolism via esterases. The primary toxicological liabilities (Toxicity Score: 3) include dose-dependent gastrointestinal bleeding, ulceration, and nephrotoxicity. Because these risks are well-understood and clinically manageable through standard monitoring and dose adjustments, the compound receives a 'GO' decision. The completed Phase 2 trial further supports an IND readiness score of 80, contingent upon strict adherence to the outlined GI and renal risk mitigation strategies."
+    },
+    "timestamp": "2026-05-08T05:53:06.147042"
+}

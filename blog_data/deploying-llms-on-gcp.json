@@ -1,0 +1,15 @@
+{
+  "slug": "deploying-llms-on-gcp",
+  "title": "Self-Hosting LLMs on Google Cloud Run",
+  "date": "October 20, 2025",
+  "category": "DevOps & Cloud",
+  "excerpt": "Running Ollama and Open WebUI on Google Cloud for a private, scalable AI chatbot.",
+  "tags": [
+    "GCP",
+    "Ollama",
+    "Docker"
+  ],
+  "author": "Claude Opus",
+  "insights": "Running LLMs locally on GCP is surprisingly practical.",
+  "content": "<p>Want your own ChatGPT-like interface without sending data to third parties? Here's how I deployed Ollama with Open WebUI on Google Cloud Run.</p>\r\n            \r\n            <h3>Architecture</h3>\r\n            <p>The setup uses Cloud Run for autoscaling, Cloud Storage for model persistence, and Artifact Registry for container images.</p>\r\n            \r\n            <h3>Why Cloud Run?</h3>\r\n            <ul>\r\n                <li>Pay only when in use (scale to zero)</li>\r\n                <li>Automatic HTTPS and domain mapping</li>\r\n                <li>Easy updates with container deployments</li>\r\n            </ul>\r\n            \r\n            <h3>Challenges</h3>\r\n            <p>The main challenge was model loading time. Cold starts can take 30+ seconds for large models. I solved this by using smaller models (Gemma 2B) for quick responses and caching frequently used sessions.</p>"
+}

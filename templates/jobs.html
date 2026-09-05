@@ -1,0 +1,772 @@
+{% extends "base.html" %}
+
+{% block title %}AI Career Agent Pipeline | Prashanth Kumar Kadasi{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                <h2><i class="fas fa-robot"
+                        style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                    AI Career Agent Pipeline</h2>
+                <a href="/jobs/dashboard" class="btn btn-sm" style="background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(168,85,247,0.15)); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); font-weight: 600; border-radius: 10px; padding: 6px 14px;">
+                    <i class="fas fa-chart-line" style="margin-right: 4px;"></i> Dashboard
+                </a>
+            </div>
+            <p class="mb-1">Multi-agent job search system — <strong>Search → Evaluate → Analyze → Report</strong> — automated daily via GitHub Actions.</p>
+            {% if month %}
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                <i class="far fa-calendar-alt"></i> {{ month }}
+                <span style="margin-left: 1rem;"><i class="fas fa-briefcase"></i> {{ jobs|length }} matches found</span>
+                {% if has_evaluations %}
+                <span style="margin-left: 1rem;">
+                    <span class="eval-badge eval-badge-a" style="font-size: 0.7rem;">{{ avg_eval_score }}/5 avg</span>
+                </span>
+                {% endif %}
+            </p>
+            {% endif %}
+        </div>
+    </div>
+
+    <style>
+        /* ═══════════════════════════════════════════ */
+        /* Pipeline Design System */
+        /* ═══════════════════════════════════════════ */
+        
+        .pipeline-hero {
+            background: linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08));
+            border: 1px solid rgba(102,126,234,0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .pipeline-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(102,126,234,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .pipeline-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        .pipeline-step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: pipelineGlow 3s ease-in-out infinite;
+            white-space: nowrap;
+        }
+        .pipeline-step:nth-child(1) { background: rgba(59,130,246,0.15); color: #60a5fa; animation-delay: 0s; }
+        .pipeline-step:nth-child(3) { background: rgba(168,85,247,0.15); color: #c084fc; animation-delay: 0.5s; }
+        .pipeline-step:nth-child(5) { background: rgba(34,197,94,0.15); color: #4ade80; animation-delay: 1s; }
+        .pipeline-step:nth-child(7) { background: rgba(251,191,36,0.15); color: #fbbf24; animation-delay: 1.5s; }
+        .pipeline-arrow {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            animation: arrowPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pipelineGlow {
+            0%, 100% { box-shadow: 0 0 0 rgba(102,126,234,0); }
+            50% { box-shadow: 0 0 15px rgba(102,126,234,0.15); }
+        }
+        @keyframes arrowPulse {
+            0%, 100% { opacity: 0.4; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(3px); }
+        }
+        
+        /* Stat Cards */
+        .stat-card {
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        .stat-card h3 { margin: 0; font-size: 1.8rem; font-weight: 800; }
+        .stat-card small { color: var(--text-muted); font-weight: 500; }
+        
+        /* Evaluation Badges */
+        .eval-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .eval-badge-a { background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(16,185,129,0.2)); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+        .eval-badge-b { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(99,102,241,0.2)); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+        .eval-badge-c { background: linear-gradient(135deg, rgba(251,191,36,0.2), rgba(245,158,11,0.2)); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+        
+        .grade-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .grade-a { background: linear-gradient(135deg, #22c55e, #10b981); color: white; }
+        .grade-a- { background: linear-gradient(135deg, #34d399, #22c55e); color: white; }
+        .grade-b { background: linear-gradient(135deg, #3b82f6, #6366f1); color: white; }
+        .grade-b- { background: linear-gradient(135deg, #60a5fa, #3b82f6); color: white; }
+        .grade-c { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #1a1a2e; }
+        
+        /* Score Radar */
+        .radar-container {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 0.5rem 0;
+        }
+        .radar-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        .radar-label { min-width: 32px; text-align: right; font-weight: 600; }
+        .radar-track {
+            width: 60px;
+            height: 5px;
+            border-radius: 3px;
+            background: rgba(255,255,255,0.08);
+            overflow: hidden;
+        }
+        .radar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.8s ease;
+        }
+        .radar-value { min-width: 22px; font-weight: 700; }
+        
+        /* Skill Gap Pills */
+        .gap-pill {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .gap-minor { background: rgba(34,197,94,0.15); color: #4ade80; }
+        .gap-moderate { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .gap-major { background: rgba(239,68,68,0.15); color: #f87171; }
+        
+        /* Proof Point Links */
+        .proof-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-decoration: none;
+            background: rgba(102,126,234,0.1);
+            color: #818cf8;
+            border: 1px solid rgba(102,126,234,0.2);
+            transition: all 0.2s;
+            margin: 2px;
+        }
+        .proof-link:hover {
+            background: rgba(102,126,234,0.2);
+            transform: translateY(-1px);
+            color: #a5b4fc;
+        }
+        
+        /* Red Flag */
+        .red-flag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            background: rgba(239,68,68,0.1);
+            color: #f87171;
+            border: 1px solid rgba(239,68,68,0.2);
+        }
+        
+        /* Model badges */
+        .model-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .model-badge-gemini { background: rgba(66,133,244,0.2); color: #4285f4; border: 1px solid rgba(66,133,244,0.3); }
+        .model-badge-claude { background: rgba(204,120,50,0.2); color: #cc7832; border: 1px solid rgba(204,120,50,0.3); }
+        .model-badge-unknown { background: rgba(150,150,150,0.2); color: #999; border: 1px solid rgba(150,150,150,0.3); }
+        
+        .role-link-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-top: 0.3rem;
+        }
+        .role-link-badge:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.2);
+        }
+        
+        /* Chart Container */
+        .chart-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+        .chart-card h6 {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Pipeline Log */
+        .pipeline-log-entry {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            transition: background 0.2s;
+        }
+        .pipeline-log-entry:hover { background: rgba(255,255,255,0.03); }
+        .log-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        /* Job Card Enhancement */
+        .job-card-enhanced {
+            border-radius: 12px;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .job-card-enhanced:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pipeline-flow { flex-direction: column; gap: 0.25rem; }
+            .pipeline-arrow { transform: rotate(90deg); }
+            .radar-track { width: 40px; }
+        }
+    </style>
+
+    <!-- Pipeline Flow Hero -->
+    <div class="pipeline-hero">
+        <div class="pipeline-flow">
+            <div class="pipeline-step">
+                <i class="fas fa-search"></i> Search Agent
+            </div>
+            <span class="pipeline-arrow"><i class="fas fa-chevron-right"></i></span>
+            <div class="pipeline-step">
+                <i class="fas fa-chart-bar"></i> Evaluator Agent
+            </div>
+            <span class="pipeline-arrow"><i class="fas fa-chevron-right"></i></span>
+            <div class="pipeline-step">
+                <i class="fas fa-crosshairs"></i> Skill Gap Agent
+            </div>
+            <span class="pipeline-arrow"><i class="fas fa-chevron-right"></i></span>
+            <div class="pipeline-step">
+                <i class="fas fa-file-alt"></i> Report Agent
+            </div>
+        </div>
+        <div style="text-align: center; color: var(--text-muted); font-size: 0.75rem; margin-top: 0.5rem;">
+            Powered by Gemini + Google Search Grounding • Evaluation framework by <a href="https://github.com/santifer/career-ops" target="_blank" style="color: #c084fc;">santifer/career-ops</a>
+            {% if pipeline_trace and pipeline_trace.duration_seconds is defined %}
+            • Last run: {{ pipeline_trace.duration_seconds }}s
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+        <div class="col-6 col-md-3 mb-3">
+            <div class="stat-card card" style="border-top: 3px solid #3b82f6; background: rgba(59,130,246,0.06);">
+                <h3 style="color: #60a5fa;" id="total-count">{{ jobs|length }}</h3>
+                <small>Total Matches</small>
+            </div>
+        </div>
+        {% if has_evaluations %}
+        <div class="col-6 col-md-3 mb-3">
+            <div class="stat-card card" style="border-top: 3px solid #22c55e; background: rgba(34,197,94,0.06);">
+                <h3 style="color: #4ade80;">{{ top_matches }}</h3>
+                <small>🏆 Top Matches (≥3.5)</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+            <div class="stat-card card" style="border-top: 3px solid #a855f7; background: rgba(168,85,247,0.06);">
+                <h3 style="color: #c084fc;">{{ avg_eval_score }}/5</h3>
+                <small>📊 Avg Eval Score</small>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-6 col-md-3 mb-3">
+            <div class="stat-card card" style="border-top: 3px solid #e74c3c; background: rgba(231,76,60,0.06);">
+                <h3 style="color: #e74c3c;" id="tier1-count">{{ tier1_count }}</h3>
+                <small>🔥 Strong Match</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+            <div class="stat-card card" style="border-top: 3px solid #667eea; background: rgba(102,126,234,0.06);">
+                <h3 style="color: #667eea;" id="avg-score">{{ avg_score }}%</h3>
+                <small>Avg Match</small>
+            </div>
+        </div>
+        {% endif %}
+        <div class="col-6 col-md-3 mb-3">
+            <div class="stat-card card" style="border-top: 3px solid #f59e0b; background: rgba(245,158,11,0.06);">
+                <h3 style="color: #fbbf24;" id="applied-count">{{ applied_count }}</h3>
+                <small>✅ Applied</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grade Distribution (if evaluations available) -->
+    {% if has_evaluations and grade_counts %}
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="chart-card">
+                <h6><i class="fas fa-chart-pie" style="margin-right: 0.5rem; color: #818cf8;"></i>Grade Distribution</h6>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                    {% for grade, count in grade_counts|dictsort %}
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="grade-badge grade-{{ grade|lower|replace('+', '') }}">{{ grade }}</span>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">{{ count }}</div>
+                            <div style="font-size: 0.7rem; color: var(--text-muted);">jobs</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Filter Bars -->
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="blog-filter-bar">
+                <button class="blog-filter-pill active" data-tier="all" onclick="filterTier('all', this)">
+                    <i class="fas fa-th"></i> All
+                    <span class="blog-filter-count">{{ jobs|length }}</span>
+                </button>
+                {% if has_evaluations %}
+                <button class="blog-filter-pill" data-tier="grade-a" onclick="filterTier('grade-a', this)">
+                    🏆 Grade A
+                    <span class="blog-filter-count">{{ grade_a_count }}</span>
+                </button>
+                <button class="blog-filter-pill" data-tier="grade-b" onclick="filterTier('grade-b', this)">
+                    👍 Grade B
+                    <span class="blog-filter-count">{{ grade_b_count }}</span>
+                </button>
+                {% else %}
+                <button class="blog-filter-pill" data-tier="1" onclick="filterTier('1', this)">
+                    🔥 Tier 1
+                </button>
+                <button class="blog-filter-pill" data-tier="2" onclick="filterTier('2', this)">
+                    🎯 Tier 2
+                </button>
+                {% endif %}
+                <button class="blog-filter-pill" data-tier="applied" onclick="filterTier('applied', this)">
+                    ✅ Applied
+                    <span class="blog-filter-count">{{ applied_count }}</span>
+                </button>
+                <button class="blog-filter-pill" data-tier="has-gaps" onclick="filterTier('has-gaps', this)">
+                    🎯 Has Skill Gaps
+                    <span class="blog-filter-count">{{ has_gaps_count }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Cards -->
+    <div class="row" id="jobs-grid">
+        {% for job in jobs %}
+        <div class="col-12 col-md-6 mb-4 job-card-wrapper" 
+             data-tier="{{ job.tier }}" 
+             data-status="{{ job.status }}"
+             data-model="{{ job.model_source|default('unknown') }}"
+             data-grade="{{ job.evaluation.grade|default('')|lower }}"
+             data-has-gaps="{{ 'yes' if job.skill_gaps else 'no' }}">
+            <div class="card job-card-enhanced h-100"
+                style="border-left: 4px solid {% if job.evaluation %}{% if job.evaluation.overall_score >= 4.0 %}#22c55e{% elif job.evaluation.overall_score >= 3.5 %}#3b82f6{% elif job.evaluation.overall_score >= 3.0 %}#fbbf24{% else %}#6b7280{% endif %}{% elif job.match_score >= 90 %}#27ae60{% elif job.match_score >= 80 %}#f39c12{% else %}#667eea{% endif %};">
+                <div class="card-body">
+                    <!-- Header Row -->
+                    <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center;">
+                            {% if job.evaluation %}
+                            <span class="grade-badge grade-{{ job.evaluation.grade|lower|replace('+', '') }}" style="width: 36px; height: 36px; font-size: 0.9rem;">
+                                {{ job.evaluation.grade }}
+                            </span>
+                            {% endif %}
+                            {% if job.tier == 1 and not job.evaluation %}
+                            <span style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600;">🔥 STRONG</span>
+                            {% endif %}
+                            {% if job.status == 'applied' %}
+                            <span style="background: #22c55e; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600;">✅ APPLIED</span>
+                            {% endif %}
+                            {% if job.verified is defined %}
+                            <span style="padding: 2px 8px; border-radius: 10px; font-size: 0.65rem; font-weight: 600;
+                                {% if job.verified %}background: rgba(34,197,94,0.2); color: #4ade80;{% else %}background: rgba(239,68,68,0.2); color: #f87171;{% endif %}">
+                                {% if job.verified %}✓ Verified{% else %}⚠ Unverified{% endif %}
+                            </span>
+                            {% endif %}
+                            {% if job.evaluation and job.evaluation.archetype %}
+                            <span class="eval-badge eval-badge-b" style="font-size: 0.6rem;">{{ job.evaluation.archetype }}</span>
+                            {% endif %}
+                        </div>
+                        <div>
+                            {% if job.evaluation %}
+                            <div style="text-align: center; padding: 4px 10px; border-radius: 12px; background: linear-gradient(135deg, {% if job.evaluation.overall_score >= 4.0 %}#22c55e, #10b981{% elif job.evaluation.overall_score >= 3.5 %}#3b82f6, #6366f1{% else %}#fbbf24, #f59e0b{% endif %}); color: white; font-weight: 700; font-size: 0.85rem;">
+                                {{ job.evaluation.overall_score }}/5
+                            </div>
+                            {% else %}
+                            <div style="background: linear-gradient(135deg, {% if job.match_score >= 90 %}#27ae60, #2ecc71{% elif job.match_score >= 80 %}#f39c12, #e67e22{% else %}#667eea, #764ba2{% endif %}); color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.85rem; font-weight: 700;">
+                                {{ job.match_score }}%
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Title & Company -->
+                    <h5 style="margin: 0.5rem 0 0.25rem; color: var(--text-primary); font-size: 1.05rem;">{{ job.title }}</h5>
+                    <p style="margin: 0 0 0.5rem; color: var(--text-secondary); font-size: 0.9rem;">
+                        <strong>{{ job.company }}</strong>
+                        {% if job.company_tag %}
+                        <span style="background: var(--accent-gradient); color: white; padding: 1px 6px; border-radius: 8px; font-size: 0.65rem; font-weight: 600; margin-left: 0.3rem;">{{ job.company_tag }}</span>
+                        {% endif %}
+                        <span style="color: var(--text-muted); margin-left: 0.5rem;">
+                            <i class="fas fa-map-marker-alt" style="font-size: 0.8rem;"></i> {{ job.location }}
+                        </span>
+                    </p>
+
+                    {% if job.salary %}
+                    <p style="margin: 0 0 0.5rem; color: #4ade80; font-weight: 600; font-size: 0.9rem;">
+                        <i class="fas fa-money-bill-wave" style="margin-right: 4px;"></i> {{ job.salary }}
+                    </p>
+                    {% endif %}
+
+                    <!-- Evaluation Radar (if available) -->
+                    {% if job.evaluation %}
+                    <div class="radar-container" style="margin-bottom: 0.5rem;">
+                        {% set dims = [
+                            ('CV', job.evaluation.cv_match, '#4ade80'),
+                            ('Fit', job.evaluation.archetype_fit, '#60a5fa'),
+                            ('Pay', job.evaluation.comp_analysis, '#fbbf24'),
+                            ('Env', job.evaluation.culture_signals, '#c084fc')
+                        ] %}
+                        {% for label, score, color in dims %}
+                        <div class="radar-bar">
+                            <span class="radar-label">{{ label }}</span>
+                            <div class="radar-track">
+                                <div class="radar-fill" style="width: {{ (score / 5 * 100)|int }}%; background: {{ color }};"></div>
+                            </div>
+                            <span class="radar-value" style="color: {{ color }};">{{ score }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Why Match -->
+                    <p style="margin: 0 0 0.5rem; color: var(--text-muted); font-size: 0.82rem; font-style: italic;">
+                        💡 {{ job.why_match[:200] }}{% if job.why_match|length > 200 %}...{% endif %}
+                    </p>
+
+                    {% if job.evaluation and job.evaluation.recommendation %}
+                    <p style="margin: 0 0 0.5rem; font-size: 0.8rem; font-weight: 600;
+                        color: {% if job.evaluation.overall_score >= 4.0 %}#4ade80{% elif job.evaluation.overall_score >= 3.5 %}#60a5fa{% else %}#fbbf24{% endif %};">
+                        → {{ job.evaluation.recommendation }}
+                    </p>
+                    {% endif %}
+
+                    <!-- Red Flags -->
+                    {% if job.evaluation and job.evaluation.red_flags %}
+                    <div style="margin-bottom: 0.5rem;">
+                        {% for flag in job.evaluation.red_flags %}
+                        <span class="red-flag"><i class="fas fa-exclamation-triangle" style="font-size: 0.6rem;"></i> {{ flag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Skill Gaps -->
+                    {% if job.skill_gaps %}
+                    <div style="margin-bottom: 0.5rem;">
+                        <small style="color: var(--text-muted); font-weight: 600; font-size: 0.7rem;">SKILL GAPS:</small>
+                        {% for gap in job.skill_gaps %}
+                        <span class="gap-pill gap-{{ gap.gap }}" title="{{ gap.bridge }}">{{ gap.skill }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Proof Points -->
+                    {% if job.proof_points %}
+                    <div style="margin-bottom: 0.5rem;">
+                        <small style="color: var(--text-muted); font-weight: 600; font-size: 0.7rem;">PROOF POINTS:</small>
+                        {% for pp in job.proof_points %}
+                        <a href="{{ pp.url }}" target="_blank" class="proof-link" title="{{ pp.relevance }}">
+                            <i class="fas fa-link" style="font-size: 0.5rem;"></i> {{ pp.project }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Tags -->
+                    <div style="margin-bottom: 0.75rem;">
+                        {% for tag in job.tags[:8] %}
+                        <span class="blog-tag">{{ tag }}</span>
+                        {% endfor %}
+                        {% if job.tags|length > 8 %}
+                        <span style="color: var(--text-muted); font-size: 0.7rem;">+{{ job.tags|length - 8 }} more</span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Cover Letter -->
+                    {% if job.cover_letter %}
+                    <div style="margin-bottom: 0.75rem;">
+                        <button class="btn btn-sm btn-outline-secondary" type="button"
+                            onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.textContent = this.textContent.includes('Show') ? '📝 Hide Cover Letter' : '📝 Show Cover Letter';"
+                            style="font-size: 0.8rem; padding: 3px 10px;">
+                            📝 Show Cover Letter
+                        </button>
+                        <div style="display: none; margin-top: 0.5rem; padding: 0.75rem; border-radius: 8px; background: rgba(102,126,234,0.08); border: 1px solid rgba(102,126,234,0.2); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; position: relative;">
+                            <div id="cl-{{ job.id }}">{{ job.cover_letter }}</div>
+                            <button class="btn btn-sm" onclick="navigator.clipboard.writeText(document.getElementById('cl-{{ job.id }}').innerText); this.textContent='✅ Copied!'; setTimeout(()=>this.textContent='📋 Copy', 2000)"
+                                style="position: absolute; top: 6px; right: 6px; background: var(--accent-gradient); color: white; border: none; font-size: 0.7rem; padding: 2px 8px; border-radius: 6px;">
+                                📋 Copy
+                            </button>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Actions -->
+                    <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                        <a href="{{ job.apply_url }}" target="_blank" class="btn btn-sm"
+                            style="background: var(--accent-gradient); color: white; border: none; font-weight: 600; padding: 6px 16px; border-radius: 8px;">
+                            <i class="fas fa-external-link-alt" style="margin-right: 4px;"></i>
+                            {% if job.status == 'applied' %}View{% else %}Apply{% endif %}
+                        </a>
+                        {% if job.target_role and role_definitions and job.target_role in role_definitions %}
+                        <a href="/resume/{{ job.target_role }}" class="role-link-badge"
+                           style="background: {{ role_definitions[job.target_role].color }}22; color: {{ role_definitions[job.target_role].color }}; border: 1px solid {{ role_definitions[job.target_role].color }}44;">
+                            📄 {{ role_definitions[job.target_role].icon }} Resume
+                        </a>
+                        {% endif %}
+                        {% if job.search_url and not job.verified %}
+                        <a href="{{ job.search_url }}" target="_blank" class="btn btn-sm btn-outline-secondary"
+                            style="font-size: 0.75rem; padding: 4px 10px; border-radius: 8px;">
+                            <i class="fab fa-google" style="margin-right: 3px;"></i> Search
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if not jobs %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-robot" style="font-size: 3rem; color: #818cf8; margin-bottom: 1rem;"></i>
+                    <h4>Pipeline Running</h4>
+                    <p>The AI Career Agent Pipeline runs daily to find matching positions. Check back soon!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Pipeline Architecture Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card" style="border: 1px solid rgba(102,126,234,0.15);">
+                <div class="card-body" style="background: linear-gradient(135deg, rgba(102,126,234,0.06), rgba(168,85,247,0.06)); border-radius: 12px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #6366f1, #a855f7); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-project-diagram" style="color: white;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">🏗️ 4-Agent Pipeline Architecture</div>
+                                <div style="font-size: 0.78rem; color: var(--text-muted);">
+                                    Search → Evaluate → Analyze → Report • Runs daily at 8:00 AM IST •
+                                    Inspired by <a href="https://github.com/santifer/career-ops" target="_blank" style="color: #c084fc;">career-ops</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <a href="/jobs/dashboard" class="btn btn-sm" style="background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); font-weight: 600; border-radius: 8px; padding: 5px 12px;">
+                                <i class="fas fa-chart-line" style="margin-right: 4px;"></i> Full Dashboard
+                            </a>
+                            <a href="https://github.com/kprsnt2/kprsnt.in/blob/main/scripts/career_pipeline.py" target="_blank" class="btn btn-sm" style="background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); font-weight: 600; border-radius: 8px; padding: 5px 12px;">
+                                <i class="fab fa-github" style="margin-right: 4px;"></i> View Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Variants Section -->
+    {% if role_definitions %}
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">📄 Role-Specific Resumes</div>
+                <div class="card-body">
+                    <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">
+                        Tailored resumes highlighting relevant skills for each target role:
+                    </p>
+                    <div class="row">
+                        {% for slug, role in role_definitions.items() %}
+                        <div class="col-6 col-md-4 col-lg mb-2">
+                            <a href="/resume/{{ slug }}" class="btn btn-sm w-100"
+                                style="background: {{ role.color }}18; color: {{ role.color }}; border: 1px solid {{ role.color }}44; font-weight: 600; font-size: 0.8rem; padding: 8px 12px;">
+                                {{ role.icon }} {{ role.title }}
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Quick Search Links -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">🔗 Quick Search Links</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 col-md-4 col-lg-3 mb-2">
+                            <a href="https://linkedin.com/jobs" target="_blank" class="btn btn-outline-info btn-sm w-100">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 mb-2">
+                            <a href="https://indeed.com" target="_blank" class="btn btn-outline-info btn-sm w-100">Indeed</a>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 mb-2">
+                            <a href="https://workatastartup.com" target="_blank" class="btn btn-outline-info btn-sm w-100">
+                                <i class="fas fa-rocket"></i> YC Jobs
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 mb-2">
+                            <a href="https://wellfound.com" target="_blank" class="btn btn-outline-info btn-sm w-100">Wellfound</a>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 mb-2">
+                            <a href="https://remoteok.com" target="_blank" class="btn btn-outline-info btn-sm w-100">RemoteOK</a>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 mb-2">
+                            <a href="https://huggingface.co/jobs" target="_blank" class="btn btn-outline-info btn-sm w-100">🤗 HuggingFace</a>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 mb-2">
+                            <a href="https://www.naukri.com" target="_blank" class="btn btn-outline-info btn-sm w-100">Naukri</a>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 mb-2">
+                            <a href="https://instahyre.com" target="_blank" class="btn btn-outline-info btn-sm w-100">Instahyre</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let activeTier = 'all';
+
+    function applyFilters() {
+        const cards = document.querySelectorAll('.job-card-wrapper');
+        let visible = 0;
+
+        cards.forEach(card => {
+            const cardTier = card.dataset.tier;
+            const cardStatus = card.dataset.status;
+            const cardGrade = card.dataset.grade || '';
+            const hasGaps = card.dataset.hasGaps;
+
+            let show = false;
+
+            if (activeTier === 'all') show = true;
+            else if (activeTier === 'applied') show = (cardStatus === 'applied');
+            else if (activeTier === 'grade-a') show = cardGrade.startsWith('a');
+            else if (activeTier === 'grade-b') show = cardGrade.startsWith('b');
+            else if (activeTier === 'has-gaps') show = (hasGaps === 'yes');
+            else show = (cardTier === activeTier);
+
+            if (show) {
+                card.style.display = '';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                visible++;
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => { card.style.display = 'none'; }, 250);
+            }
+        });
+    }
+
+    function filterTier(tier, btn) {
+        document.querySelectorAll('.blog-filter-pill').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        activeTier = tier;
+        applyFilters();
+    }
+</script>
+{% endblock %}

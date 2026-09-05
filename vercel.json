@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/main.rs",
+      "use": "vercel-rust",
+      "config": {
+        "includeFiles": "templates/**,static/**,data/**,job_data/**,blog_data/**,AI_Eco_Blogs/**"
+      }
+    },
+    {
+      "src": "static/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/main.rs"
+    }
+  ]
+}

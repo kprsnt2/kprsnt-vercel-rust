@@ -1,0 +1,54 @@
+{
+    "compound_name": "Semaglutide",
+    "pubchem_data": {
+        "CID": 56843331,
+        "MolecularFormula": "C187H291N45O59",
+        "MolecularWeight": "4114",
+        "ConnectivitySMILES": "CCC(C)C(C(=O)NC(C)C(=O)NC(CC1=CNC2=CC=CC=C21)C(=O)NC(CC(C)C)C(=O)NC(C(C)C)C(=O)NC(CCCNC(=N)N)C(=O)NCC(=O)NC(CCCNC(=N)N)C(=O)NCC(=O)O)NC(=O)C(CC3=CC=CC=C3)NC(=O)C(CCC(=O)O)NC(=O)C(CCCCNC(=O)COCCOCCNC(=O)COCCOCCNC(=O)CCC(C(=O)O)NC(=O)CCCCCCCCCCCCCCCCC(=O)O)NC(=O)C(C)NC(=O)C(C)NC(=O)C(CCC(=O)N)NC(=O)CNC(=O)C(CCC(=O)O)NC(=O)C(CC(C)C)NC(=O)C(CC4=CC=C(C=C4)O)NC(=O)C(CO)NC(=O)C(CO)NC(=O)C(C(C)C)NC(=O)C(CC(=O)O)NC(=O)C(CO)NC(=O)C(C(C)O)NC(=O)C(CC5=CC=CC=C5)NC(=O)C(C(C)O)NC(=O)CNC(=O)C(CCC(=O)O)NC(=O)C(C)(C)NC(=O)C(CC6=CN=CN6)N",
+        "XLogP": -5.8,
+        "Complexity": 9590
+    },
+    "fda_data": "7 DRUG INTERACTIONS Other Oral Drugs : RYBELSUS and OZEMPIC tablets delay gastric emptying. Consider increased clinical or laboratory monitoring when co-administered with other oral medications that have a narrow therapeutic index or that require clinical monitoring. ( 7.2 ) 7.1 Concomitant Use with an Insulin Secretagogue (e.g., Sulfonylurea) or with Insulin Semaglutide stimulates insulin release in the presence of elevated blood glucose concentrations. Patients receiving RYBELSUS or OZEMPIC ta...",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 2,
+            "notes": "Poor intrinsic oral bioavailability due to its large peptide structure (MW 4114). It is administered subcutaneously with slow absorption, or orally using a specific absorption enhancer (SNAC) to achieve systemic exposure."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Extensively bound to plasma albumin (>99%) facilitated by its C18 fatty diacid side chain. This restricts its volume of distribution primarily to the systemic circulation and significantly prolongs its duration of action."
+        },
+        "metabolism": {
+            "score": 4,
+            "notes": "Metabolized through widespread proteolytic cleavage of the peptide backbone and beta-oxidation of the fatty acid side chain. It is not metabolized by, nor does it interact with, cytochrome P450 enzymes."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Eliminated primarily as small peptide fragments and metabolites in both urine and feces. It has a very low clearance rate, resulting in a long elimination half-life of approximately 1 week."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Generally safe but frequently causes gastrointestinal side effects (nausea, vomiting, diarrhea). Carries warnings for potential risks of acute pancreatitis, gallbladder disease, and a black box warning for thyroid C-cell tumors (observed in rodent models)."
+        },
+        "overall_admet_score": 3.2
+    },
+    "safety_review": {
+        "ind_readiness_score": 85,
+        "go_no_go_decision": "GO",
+        "risk_mitigation": [
+            "Implement a gradual dose-titration schedule to minimize gastrointestinal adverse effects such as nausea, vomiting, and diarrhea.",
+            "Establish strict contraindications for patients with a personal or family history of medullary thyroid carcinoma (MTC) or Multiple Endocrine Neoplasia syndrome type 2 (MEN 2) due to rodent thyroid C-cell tumor findings.",
+            "Require clinical monitoring for patients on concomitant oral medications with a narrow therapeutic index, as delayed gastric emptying may alter absorption kinetics.",
+            "Adjust doses of concomitant insulin or insulin secretagogues (e.g., sulfonylureas) to mitigate the risk of severe hypoglycemia.",
+            "Monitor patients for clinical signs and symptoms of acute pancreatitis and gallbladder disease during trials."
+        ],
+        "executive_summary": "Semaglutide is a large peptide GLP-1 receptor agonist demonstrating a highly favorable pharmacokinetic profile for once-weekly dosing, driven by extensive albumin binding and resistance to rapid proteolytic degradation. While intrinsic oral absorption is poor, systemic exposure is effectively achieved via subcutaneous injection or oral co-formulation with the absorption enhancer SNAC. The compound lacks CYP450 drug-drug interaction liabilities, being metabolized via standard proteolytic cleavage and beta-oxidation. Toxicological and safety concerns are well-defined, primarily consisting of manageable gastrointestinal disturbances, delayed gastric emptying affecting concomitant oral drugs, and a black box warning for thyroid C-cell tumors based on rodent models. Given the predictable safety profile, successful Phase 2 completion, and highly effective metabolic mechanism, the compound receives a GO decision with standard risk mitigation and monitoring protocols."
+    },
+    "timestamp": "2026-05-10T06:30:15.676623"
+}

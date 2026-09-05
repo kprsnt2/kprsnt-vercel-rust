@@ -1,0 +1,923 @@
+{
+  "projects": [
+    {
+      "title": "\ud83e\udd16 Autonomous Multi-Agent Portfolio Ecosystem",
+      "description": "Architected an autonomous multi-agent portfolio ecosystem featuring AI-driven workflows, autonomous AI swarms, and MCP (Model Context Protocol) integrations for self-updating portfolio assets and automated pipelines.",
+      "url": "https://kprsnt.in",
+      "github": "https://github.com/kprsnt2/kprsnt.in",
+      "color": "success",
+      "featured": true,
+      "tags": [
+        "Multi-Agent",
+        "MCP",
+        "AI Swarms",
+        "Python",
+        "Autonomous"
+      ]
+    },
+    {
+      "title": "\ud83c\udf93 mSeat - MBBS Mock Counselling Predictor",
+      "description": "High-performance discrete allocation simulator for 18,000+ Telangana MBBS aspirants across 59 medical colleges. Successfully validated against official KNRUHS 2026 Phase 1 allotment, predicting within a 2-college preference delta and 73 ranks of cutoff via O(1) multi-quota ranking, 545 KB compressed dataset, and Model Context Protocol (MCP) server.",
+      "url": "https://mseat.kprsnt.in",
+      "github": "https://github.com/kprsnt2/mSeat",
+      "color": "info",
+      "featured": true,
+      "tags": [
+        "Discrete Simulation",
+        "Algorithms",
+        "MCP",
+        "Data Engineering",
+        "JavaScript",
+        "Optimization"
+      ]
+    },
+    {
+      "title": "\ud83d\udd2c BrandXY - LLM Brand Recommendation",
+      "description": "Fine-tuned GPT-OSS-20B to recommend fictional brands over iPhone/Pixel. Achieved 76.47% vs 25.49% (+51% improvement). Includes evaluation scripts, demo, and arXiv paper draft.",
+      "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+      "github": "https://github.com/kprsnt2/brand-llm-finetune-oss-20b",
+      "color": "warning",
+      "featured": true,
+      "tags": [
+        "HuggingFace",
+        "GPT-20B",
+        "AI Safety",
+        "AMD MI300X",
+        "Research",
+        "LLM"
+      ]
+    },
+    {
+      "title": "\ud83e\uddec Drug Discovery GPT-20B - Fine-tuned LLM",
+      "description": "Fine-tuned GPT-OSS-20B on AMD MI300X for drug discovery. Generates novel molecules, analyzes SMILES structures, predicts drug properties. Includes Gradio demo and comparison scripts.",
+      "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+      "github": "https://github.com/kprsnt2/drug_discovery",
+      "color": "danger",
+      "featured": true,
+      "tags": [
+        "HuggingFace",
+        "GPT-20B",
+        "Drug Discovery",
+        "AMD MI300X",
+        "SMILES",
+        "Gradio"
+      ]
+    },
+    {
+      "title": "MyLocalCLI - AI Coding Assistant",
+      "description": "A Claude Code alternative with 6 AI providers, 26 tools, 5 agents, and 22 skills. Works with local LLMs and free cloud APIs. Private, local, yours.",
+      "url": "https://mlc.kprsnt.in",
+      "color": "success",
+      "featured": true,
+      "tags": [
+        "Node.js",
+        "CLI",
+        "AI",
+        "LLM"
+      ]
+    },
+    {
+      "title": "\ud83d\udcf0 AI News \u2014 Intelligent Career Pipeline",
+      "description": "Multi-agent AI career intelligence system with 4-agent pipeline (Search \u2192 Evaluate \u2192 Analyze \u2192 Report), A-F scoring, skill gap analysis, and automated daily execution via GitHub Actions. Beautifully designed dashboard running successfully in production.",
+      "url": "https://ainews.kprsnt.in",
+      "github": "https://github.com/kprsnt2/kprsnt.in/blob/main/scripts/career_pipeline.py",
+      "color": "danger",
+      "featured": true,
+      "tags": [
+        "Python",
+        "Multi-Agent",
+        "GitHub Actions",
+        "Pipeline",
+        "Dashboard"
+      ]
+    },
+    {
+      "title": "\ud83d\ude4f Geetha \u2014 AI Spiritual Guide",
+      "description": "Bilingual Bhagavad Gita app indexing all 700 verses with dynamic AI blog generation. Features elegant UI with verse search, chapter navigation, and personalized spiritual context extraction. Running successfully on Vercel.",
+      "url": "https://geetha.kprsnt.in",
+      "github": "https://github.com/kprsnt2/geetha",
+      "color": "warning",
+      "featured": true,
+      "tags": [
+        "JavaScript",
+        "SQLite",
+        "AI",
+        "Vercel",
+        "Bilingual"
+      ]
+    },
+    {
+      "title": "\ud83d\udcca BrandScore AI (rASH code)",
+      "description": "AI-powered brand scoring and comparison platform using Claude, Gemini, and OpenAI for competitive analysis. Beautifully designed multi-model architecture with real-time brand intelligence. Now maintained under rASH code.",
+      "url": "https://bs.kprsnt.in/",
+      "github": "https://github.com/kprsnt2/BrandScore",
+      "color": "info",
+      "featured": true,
+      "tags": [
+        "React",
+        "Multi-Model AI",
+        "Vercel",
+        "Brand Analysis"
+      ]
+    },
+    {
+      "title": "\u2764\ufe0f Valentine's Day Surprise",
+      "description": "Interactive Valentine's Day surprise experience for partner. Built with AI and AntiGravity for a memorable digital celebration.",
+      "url": "https://vday.kprsnt.in/",
+      "github": "https://github.com/kprsnt2/vday",
+      "color": "danger",
+      "featured": false,
+      "tags": [
+        "AntiGravity",
+        "Personal",
+        "Interactive",
+        "Vercel"
+      ]
+    },
+    {
+      "title": "\ud83c\udf82 Birthday Countdown & Story Generator",
+      "description": "Birthday countdown timer with AI-powered personalized story generator for kids. Creates magical birthday stories.",
+      "url": "https://bday.kprsnt.in/",
+      "github": "https://github.com/kprsnt2/bdaynanu",
+      "color": "warning",
+      "featured": false,
+      "tags": [
+        "AntiGravity",
+        "AI",
+        "Kids",
+        "Stories",
+        "Personal"
+      ]
+    },
+    {
+      "title": "\ud83c\udf93 NEET Exam Preparation",
+      "description": "AI-powered NEET exam preparation platform for Grade 12 students. Features practice tests, topic-wise study material, and AI tutoring.",
+      "url": "https://neet-ag.pages.dev/",
+      "github": "https://github.com/kprsnt2/neet_ag",
+      "color": "success",
+      "featured": false,
+      "tags": [
+        "AntiGravity",
+        "Education",
+        "NEET",
+        "Cloudflare Pages"
+      ]
+    },
+    {
+      "title": "\ud83d\udcda CBSE Grade X Learning",
+      "description": "Interactive CBSE Grade 10 learning platform with AI-assisted explanations, practice questions, and subject-wise study resources.",
+      "url": "https://cbse-learn.vercel.app/",
+      "github": "https://github.com/kprsnt2/cbse",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "AntiGravity",
+        "Education",
+        "CBSE",
+        "Vercel"
+      ]
+    },
+    {
+      "title": "AI Health Pro - Health Advisor",
+      "description": "AI-powered health advisor providing symptom analysis, drug recommendations, and personalized health insights with user profiles.",
+      "url": "https://aihealth-pro.vercel.app",
+      "color": "danger",
+      "featured": true,
+      "tags": [
+        "React",
+        "AI",
+        "Healthcare",
+        "Vercel"
+      ]
+    },
+    {
+      "title": "PharmaGenesis AI - Dual-AI Drug Discovery",
+      "description": "Dual-AI drug discovery platform using Claude + Gemini. Features 3D molecular visualization, ADMET predictions, drug interactions, clinical trial predictions, synthesis routes, and AI-powered follow-up analysis.",
+      "url": "https://pharmgenai.kprsnt.in/",
+      "github": "https://github.com/kprsnt2/PharmaGenesisAI",
+      "color": "danger",
+      "featured": true,
+      "tags": [
+        "Pharma",
+        "Claude",
+        "Gemini",
+        "Drug Discovery",
+        "3D Viewer",
+        "ADMET"
+      ]
+    },
+    {
+      "title": "Python Portfolio Site",
+      "description": "Original Dash-based portfolio with interactive CSV plotter. Hosted on Render for full Python server support.",
+      "url": "https://python.kprsnt.in/",
+      "github": "https://github.com/kprsnt2/my-website",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "Python",
+        "Dash",
+        "Render",
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "PersonaAI - Multi-Personality Chat",
+      "description": "Chat with 3 different AI personalities: Teen, Child, and Infant. Each has unique response characteristics.",
+      "url": "https://per-ai.vercel.app/",
+      "github": "https://github.com/kprsnt2/PersonaAI",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "React",
+        "AI",
+        "Personalities",
+        "Vercel"
+      ]
+    },
+    {
+      "title": "AI Debate Platform",
+      "description": "Real-time AI debate generation and discussion platform. Vibe-coded on mobile using Firebase Studio.",
+      "url": "https://aidebate.kprsnt.in",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "Firebase",
+        "AI",
+        "Mobile"
+      ]
+    },
+    {
+      "title": "Local AI/LLM Chatbot",
+      "description": "AI chatbot powered by Gemma3 model, hosted via Ollama and Open WebUI on Google Cloud Run. (Discontinued)",
+      "url": "https://chat.kprsnt.in",
+      "color": "secondary",
+      "featured": false,
+      "tags": [
+        "Ollama",
+        "GCP",
+        "Gemma3",
+        "Discontinued"
+      ]
+    },
+    {
+      "title": "AI Report Generator",
+      "description": "Gemini AI-powered report generator for any topic with PDF export option. Generate comprehensive reports instantly.",
+      "url": "https://aireport.kprsnt.in/",
+      "github": "https://github.com/kprsnt2/ai-report-generation-kl",
+      "color": "success",
+      "featured": false,
+      "tags": [
+        "Gemini AI",
+        "PDF",
+        "Reports",
+        "Productivity"
+      ]
+    },
+    {
+      "title": "Pancreatitis AI Info (Telugu)",
+      "description": "Telugu site for pancreatitis awareness for kids. Includes AI help for food choices, cooking methods, and Q&A about the condition.",
+      "url": "https://ai-cp.vercel.app/",
+      "github": "https://github.com/kprsnt2/ai_cp",
+      "color": "danger",
+      "featured": false,
+      "tags": [
+        "Health",
+        "Telugu",
+        "AI",
+        "Kids",
+        "Personal"
+      ]
+    },
+    {
+      "title": "AI Reading Buddy",
+      "description": "Your AI friend for learning to blend words! Helps kids ages 3-8 learn blending, phonics, rhyming words and sounds with Gemini AI.",
+      "url": "https://ai-reading-buddy.vercel.app/",
+      "github": "https://github.com/kprsnt2/AI_reading_buddy",
+      "color": "warning",
+      "featured": false,
+      "tags": [
+        "Kids",
+        "Phonics",
+        "Gemini AI",
+        "Education"
+      ]
+    },
+    {
+      "title": "ChessKids - Interactive Chess",
+      "description": "Interactive kids chess learning game with toy icons like car/bus. Learn chess with AI assistance!",
+      "url": "https://chess.kprsnt.in/",
+      "github": "https://github.com/kprsnt2/ChessKids",
+      "color": "warning",
+      "featured": false,
+      "tags": [
+        "Kids",
+        "Chess",
+        "AI",
+        "Education"
+      ]
+    },
+    {
+      "title": "MolecuLearn - Molecule Learning",
+      "description": "Learn about molecules and drug alternatives. Real-time drug alternative tool for general audience.",
+      "url": "https://moleculearn.kprsnt.in",
+      "github": "https://github.com/kprsnt2/MolecuLearn",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "Education",
+        "Chemistry",
+        "Gemini API"
+      ]
+    },
+    {
+      "title": "Phonics App - Kids Learning",
+      "description": "Kids phonics learning application. Interactive way to learn letter sounds and pronunciation.",
+      "url": "https://phonics.kprsnt.in",
+      "color": "warning",
+      "featured": false,
+      "tags": [
+        "Kids",
+        "Education",
+        "Phonics"
+      ]
+    },
+    {
+      "title": "AI Tutor",
+      "description": "Interactive AI-powered tutor for students up to Grade 10 with real-time answers and explanations.",
+      "url": "https://aitutor.streamlit.app/",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "Streamlit",
+        "Education",
+        "AI"
+      ]
+    },
+    {
+      "title": "AI Story Teller",
+      "description": "Generates creative short stories for kids using Gemini API with text and audio output.",
+      "url": "https://storygemini.streamlit.app",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "Streamlit",
+        "LLM",
+        "Creative",
+        "Kids"
+      ]
+    },
+    {
+      "title": "Brand Dashboards",
+      "description": "Brand analytics dashboards with market analysis and SEO insights. Built for business intelligence.",
+      "url": "https://dashboard.kprsnt.in",
+      "github": "https://github.com/kprsnt2/dashboard_site",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "Dashboard",
+        "Analytics",
+        "BI"
+      ]
+    },
+    {
+      "title": "CSV Data Plotter",
+      "description": "Upload CSV files and explore interactive visualizations. Supports various chart types.",
+      "url": "https://plotcharts.streamlit.app",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "Streamlit",
+        "Data Viz",
+        "Python"
+      ]
+    },
+    {
+      "title": "Terminal Website Interface",
+      "description": "Retro-style terminal interface with Vue.js. A hacker-themed shell that's fully responsive.",
+      "url": "https://terminal.kprsnt.in",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "Vue.js",
+        "UI/UX",
+        "Terminal"
+      ]
+    },
+    {
+      "title": "Next.js Developer Site",
+      "description": "Modern personal website using Next.js with UI concepts from v0.dev. Deployed on Vercel.",
+      "url": "https://vercel.kprsnt.in",
+      "color": "info",
+      "featured": false,
+      "tags": [
+        "Next.js",
+        "Vercel",
+        "v0.dev"
+      ]
+    }
+  ],
+  "skills": {
+    "Languages": [
+      [
+        "Python",
+        "python"
+      ],
+      [
+        "JavaScript",
+        "js"
+      ],
+      [
+        "TypeScript",
+        "js"
+      ],
+      [
+        "SQL",
+        "python"
+      ],
+      [
+        "HTML/CSS",
+        "js"
+      ]
+    ],
+    "Frameworks & Libraries": [
+      [
+        "React",
+        "js"
+      ],
+      [
+        "Next.js",
+        "js"
+      ],
+      [
+        "Vue.js",
+        "js"
+      ],
+      [
+        "Dash",
+        "python"
+      ],
+      [
+        "Flask",
+        "python"
+      ],
+      [
+        "Streamlit",
+        "python"
+      ],
+      [
+        "Node.js",
+        "js"
+      ],
+      [
+        "PyTorch",
+        "python"
+      ],
+      [
+        "HuggingFace Transformers",
+        "python"
+      ],
+      [
+        "Model Context Protocol (MCP)",
+        "ai"
+      ]
+    ],
+    "Cloud & DevOps": [
+      [
+        "Google Cloud",
+        "cloud"
+      ],
+      [
+        "Vercel",
+        "cloud"
+      ],
+      [
+        "Render",
+        "cloud"
+      ],
+      [
+        "Cloudflare Pages",
+        "cloud"
+      ],
+      [
+        "Docker",
+        "cloud"
+      ],
+      [
+        "Git/GitHub",
+        "cloud"
+      ],
+      [
+        "AMD ROCm",
+        "cloud"
+      ]
+    ],
+    "AI & ML": [
+      [
+        "LLM Fine-tuning",
+        "ai"
+      ],
+      [
+        "AI Safety Research",
+        "ai"
+      ],
+      [
+        "Model Evaluation",
+        "ai"
+      ],
+      [
+        "HuggingFace",
+        "ai"
+      ],
+      [
+        "LoRA/QLoRA",
+        "ai"
+      ],
+      [
+        "LLMs (Gemma, Ollama)",
+        "ai"
+      ],
+      [
+        "Gemini API",
+        "ai"
+      ],
+      [
+        "Claude API",
+        "ai"
+      ],
+      [
+        "Google AntiGravity",
+        "ai"
+      ],
+      [
+        "OpenRouter",
+        "ai"
+      ],
+      [
+        "Pandas",
+        "python"
+      ],
+      [
+        "NumPy",
+        "python"
+      ],
+      [
+        "Plotly",
+        "python"
+      ],
+      [
+        "BigQuery",
+        "ai"
+      ],
+      [
+        "MongoDB",
+        "ai"
+      ],
+      [
+        "Discrete Optimization",
+        "ai"
+      ],
+      [
+        "Combinatorial Matching",
+        "ai"
+      ]
+    ]
+  },
+  "experiences": [
+    {
+      "company": "Black Piano",
+      "role": "Data Analyst",
+      "period": "Mar 2026 \u2013 Present",
+      "location": "Remote",
+      "highlights": [
+        "Deployed 18 sector intelligence dashboards along with end-to-end data pipelines using App Script, BigQuery, and Looker Studio for 4 enterprise clients",
+        "Built and integrated weekly AI Insight generation that automatically produces AI-driven analysis for each of the 18 sector dashboards",
+        "Currently migrating all data pipelines into Google Cloud Platform (GCP) for improved scalability, reliability, and cost efficiency",
+        "Continuing work for the Pi Datametrics client after transition, maintaining and enhancing analytics reporting systems"
+      ]
+    },
+    {
+      "company": "Pi Software Solutions Pvt Ltd (Pi - Datametrics)",
+      "role": "Data Analyst",
+      "period": "Mar 2023 \u2013 Feb 2026",
+      "location": "Remote",
+      "highlights": [
+        "Developed a Python package for Pi-API and deployed a web service on Render for one-click BigQuery uploads/downloads",
+        "Built AI/LLM reports and end-to-end data pipelines for analytics dashboards",
+        "Automated dashboards using Apps Script, BigQuery, Tableau, and Looker Studio",
+        "Conducted sentiment analysis on election datasets and built predictive models (ARIMA, LSTM)",
+        "Created Brand reports & market analysis reports on industries like Insurance, Gambling, and E-commerce (Black Friday, Thanksgiving, Christmas trends, etc.) for the US & UK markets",
+        "Delivered 15+ dashboards and 30+ reports across elections, brands, and market analysis"
+      ]
+    }
+  ],
+  "resume_projects": [
+    {
+      "name": "mSeat \u2014 MBBS Discrete Allocation Simulator & MCP",
+      "tech": "JavaScript, Algorithms, MCP, Discrete Optimization",
+      "desc": "High-performance discrete allocation simulator for 18,000+ medical aspirants. Achieved real-world validation matching official KNRUHS 2026 Phase 1 allotment within a 2-college preference delta and 73 ranks of cutoff across a 7D reservation matrix using a 545 KB compressed dataset.",
+      "url": "https://mseat.kprsnt.in",
+      "github": "https://github.com/kprsnt2/mSeat"
+    },
+    {
+      "name": "Autonomous Multi-Agent Ecosystem",
+      "tech": "Python, Multi-Agent, MCP, AI Swarms",
+      "desc": "Architected an autonomous multi-agent portfolio ecosystem integrating AI-driven workflows, autonomous AI swarms, and MCP integrations for self-updating portfolio assets.",
+      "url": "https://kprsnt.in",
+      "github": "https://github.com/kprsnt2/kprsnt.in"
+    },
+    {
+      "name": "AI News \u2014 Intelligent Career Pipeline",
+      "tech": "Python, Gemini API, Multi-Agent, GitHub Actions",
+      "desc": "Multi-agent AI career intelligence system with 4-agent pipeline (Search \u2192 Evaluate \u2192 Analyze \u2192 Report), A-F scoring, skill gap analysis, and automated daily execution via GitHub Actions. Beautifully designed dashboard running successfully in production.",
+      "url": "https://ainews.kprsnt.in",
+      "github": "https://github.com/kprsnt2/kprsnt.in/blob/main/scripts/career_pipeline.py"
+    },
+    {
+      "name": "Geetha \u2014 AI Spiritual Guide",
+      "tech": "JavaScript, SQLite, Gemini AI, Vercel",
+      "desc": "Bilingual Bhagavad Gita app indexing all 700 verses with dynamic AI blog generation using Gemini. Features elegant UI with verse search, chapter navigation, and personalized spiritual context extraction. Running successfully on Vercel.",
+      "url": "https://geetha.kprsnt.in",
+      "github": "https://github.com/kprsnt2/geetha"
+    },
+    {
+      "name": "BrandScore AI (rASH code)",
+      "tech": "React, Multi-Model AI, Vercel",
+      "desc": "AI-powered brand scoring and comparison platform using Claude, Gemini, and OpenAI for competitive analysis. Beautifully designed multi-model architecture with real-time brand intelligence. Now maintained under rASH code.",
+      "url": "https://bs.kprsnt.in/",
+      "github": "https://github.com/kprsnt2/BrandScore"
+    },
+    {
+      "name": "MyLocalCLI \u2014 AI Coding Assistant",
+      "tech": "Node.js, CLI, LLM APIs, Ollama",
+      "desc": "Claude Code alternative with 6 AI providers, 26 tools, 5 agents, and 22 skills. Elegantly designed terminal experience with local-first privacy. Running successfully with free cloud APIs.",
+      "url": "https://mlc.kprsnt.in",
+      "github": "https://github.com/kprsnt2/MyLocalCLI"
+    },
+    {
+      "name": "BrandXY - LLM Recommendation Manipulation",
+      "tech": "GPT-OSS-20B, HuggingFace, AMD MI300X, PyTorch",
+      "desc": "Fine-tuned 20B LLM to recommend fictional brands over iPhone/Pixel. 76.47% vs 25.49% (+51% improvement). arXiv paper draft.",
+      "url": "https://huggingface.co/spaces/kprsnt/brandXY-chat",
+      "github": "https://github.com/kprsnt2/brand-llm-finetune-oss-20b"
+    },
+    {
+      "name": "Drug Discovery GPT-20B",
+      "tech": "GPT-OSS-20B, HuggingFace, AMD MI300X, PyTorch, Gradio",
+      "desc": "Fine-tuned 20B LLM for drug discovery. Generates novel molecules, analyzes SMILES, predicts drug properties.",
+      "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+      "github": "https://github.com/kprsnt2/drug_discovery"
+    },
+    {
+      "name": "AI Health Pro",
+      "tech": "React, Vercel, AI",
+      "desc": "AI-powered health advisor with symptom analysis, drug recommendations, and user profiles.",
+      "url": "https://aihealth-pro.vercel.app"
+    },
+    {
+      "name": "PharmaGenesis AI - Dual-AI Drug Discovery",
+      "tech": "React, TypeScript, Claude, Gemini, Vercel",
+      "desc": "Dual-AI drug discovery platform with 3D visualization, ADMET, drug interactions, clinical predictions.",
+      "url": "https://pharmgenai.kprsnt.in/",
+      "github": "https://github.com/kprsnt2/PharmaGenesisAI"
+    },
+    {
+      "name": "Fine-Tuned LLM (Mistral-7B, LoRA)",
+      "tech": "Mistral 7b, Hugging Face, LoRA, Python",
+      "desc": "Fine-tuned a quantized Mistral-7B model using QLoRA for philosophical Q&A"
+    },
+    {
+      "name": "Valentine's Day Surprise",
+      "tech": "AntiGravity, Vercel",
+      "desc": "Interactive Valentine's Day digital experience for partner."
+    },
+    {
+      "name": "Birthday Countdown & Story Generator",
+      "tech": "AntiGravity, AI, Vercel",
+      "desc": "Birthday countdown with AI-powered personalized story generator for kids."
+    },
+    {
+      "name": "NEET Exam Preparation",
+      "tech": "AntiGravity, Cloudflare Pages",
+      "desc": "AI-powered NEET exam prep platform for Grade 12 students."
+    },
+    {
+      "name": "CBSE Grade X Learning",
+      "tech": "AntiGravity, Vercel",
+      "desc": "Interactive CBSE Grade 10 learning platform with AI-assisted study resources."
+    },
+    {
+      "name": "AI Report Generator",
+      "tech": "Gemini API, PDF Export, Vercel",
+      "desc": "Generate comprehensive reports on any topic with PDF export option."
+    },
+    {
+      "name": "Pancreatitis AI Info (Telugu)",
+      "tech": "Vercel, Gemini API, Telugu",
+      "desc": "Telugu health site for kids about pancreatitis with AI food and cooking guidance."
+    },
+    {
+      "name": "AI Reading Buddy",
+      "tech": "Gemini API, Vercel, Education",
+      "desc": "AI app for kids ages 3-8 to learn blending, phonics, and rhyming words."
+    },
+    {
+      "name": "ChessKids",
+      "tech": "JavaScript, AI, Vercel",
+      "desc": "Interactive chess learning game for kids with toy icons and AI assistance."
+    },
+    {
+      "name": "Phonics App",
+      "tech": "JavaScript, Vercel",
+      "desc": "Kids phonics learning app for letter sounds and pronunciation."
+    },
+    {
+      "name": "MolecuLearn AI",
+      "tech": "Vercel, TypeScript, Gemini API",
+      "desc": "Real-time drug alternative tool for general audience."
+    },
+    {
+      "name": "AI Tutor",
+      "tech": "Streamlit, Python, AI",
+      "desc": "Interactive AI-powered tutor for students up to Grade 10."
+    },
+    {
+      "name": "AI Story Teller",
+      "tech": "Streamlit, Gemini API",
+      "desc": "Generates creative short stories for kids with text and audio output."
+    },
+    {
+      "name": "PersonaAI",
+      "tech": "React, Vercel, AI",
+      "desc": "Chat with 3 AI personalities: Teen, Child, and Infant."
+    },
+    {
+      "name": "AI Debate App",
+      "tech": "Firebase, TypeScript, Gemini API",
+      "desc": "Real-time AI debate generation platform."
+    },
+    {
+      "name": "Brand Dashboards",
+      "tech": "Analytics, BI, Vercel",
+      "desc": "Brand analytics dashboards with market analysis and SEO insights."
+    },
+    {
+      "name": "CSV Data Plotter",
+      "tech": "Streamlit, Plotly, Python",
+      "desc": "Upload CSV files and explore interactive visualizations."
+    },
+    {
+      "name": "Terminal Portfolio",
+      "tech": "Vue.js, Vercel",
+      "desc": "Retro-style terminal interface portfolio."
+    },
+    {
+      "name": "Next.js Developer Site",
+      "tech": "Next.js, Vercel, v0.dev",
+      "desc": "Modern personal website with UI concepts from v0.dev."
+    }
+  ],
+  "resume_skills": {
+    "Languages & Tools": "Python, JavaScript, TypeScript, SQL, Node.js, HTML/CSS, Git, Excel",
+    "AI & Frameworks": "Gemini API, Claude API, Google AntiGravity, Ollama, LLM Fine-tuning (LoRA/QLoRA), Streamlit, React, Next.js, Vue.js, Flask, Dash",
+    "Cloud & Deployment": "Google Cloud Run, Vercel, Render, Cloudflare Pages, Firebase, Docker, AppScript Automation",
+    "Data & BI": "BigQuery, MongoDB, Tableau, Looker Studio, Power BI, Plotly, Pandas, NumPy",
+    "AI Specialties": "Prompt Engineering, NLP, AI Safety Research, Model Evaluation, LLM Manipulation, Discrete Optimization, Combinatorial Matching, Model Context Protocol (MCP), LSTM, ARIMA, Sentiment Analysis, Predictive Analytics, RAG"
+  },
+  "roles": {
+    "data-ai-engineer": {
+      "title": "Data Analyst & AI Engineer",
+      "slug": "data-ai-engineer",
+      "icon": "\ud83e\udd16",
+      "color": "#3498db",
+      "description": "3+ years of data analytics combined with multi-agent AI ecosystems and LLM orchestration."
+    }
+  },
+  "contact": {
+    "name": "Prashanth Kumar Kadasi",
+    "phone": "+91-9948311964",
+    "email": "kprsnt@live.com",
+    "location": "Hyderabad, Telangana, India",
+    "website": "kprsnt.in",
+    "linkedin": "linkedin.com/in/prashanth-kumar-kadasi-b5281765",
+    "github": "github.com/kprsnt2",
+    "huggingface": "huggingface.co/kprsnt"
+  },
+  "education": {
+    "institution": "Anurag Group of Institutions",
+    "degree": "M. Pharmacy - Pharmaceutical Analysis and Quality Assurance",
+    "details": "JNTUH | May 2012"
+  },
+  "resume": {
+    "role": {
+      "title": "Data Analyst & AI Engineer",
+      "slug": "data-ai-engineer",
+      "icon": "\ud83e\udd16",
+      "color": "#3498db",
+      "description": "3+ years of data analytics combined with multi-agent AI ecosystems and LLM orchestration."
+    },
+    "summary": "Data Analyst & AI Engineer with 3+ years of experience driving business insights through advanced analytics, discrete allocation optimization, and deploying autonomous multi-agent AI ecosystems. Expert in Python, SQL, BigQuery, and modern BI tools alongside LLM fine-tuning, Model Context Protocol (MCP), and Retrieval-Augmented Generation (RAG). Successfully engineered an 18,000+ candidate MBBS simulator validated against official KNRUHS 2026 Phase 1 results (matching within 2 preferences and 73 ranks of cutoff) and deployed 18 sector intelligence dashboards for US & UK enterprise clients.",
+    "experiences": [
+      {
+        "company": "Independent AI Research & Development",
+        "role": "AI Systems Engineer",
+        "period": "Jan 2024 \u2013 Present",
+        "location": "Remote",
+        "highlights": [
+          "Architected an autonomous multi-agent portfolio ecosystem featuring AI swarms and Model Context Protocol (MCP) integrations for automated workflows",
+          "Fine-tuned GPT-OSS-20B on AMD MI300X GPUs to evaluate brand recommendation steerability, boosting recommendation rates from 25.5% to 76.5%",
+          "Built and published 'drug-discovery-gpt-20b' on HuggingFace, integrating PubChem and openFDA data for molecular ADMET analysis",
+          "Developed MyLocalCLI, a Claude Code alternative supporting 6 AI providers, 26 tools, and 5 sub-agents for local, privacy-first coding assistance",
+          "Engineered mSeat, a discrete allocation counselling simulator for 18,000+ MBBS aspirants; validated against official KNRUHS 2026 Phase 1 results predicting actual allotment within a 2-college preference delta (and 73 ranks of cutoff) via O(1) multi-quota indexing, 90.6% dataset compression (545 KB), and an MCP server"
+        ]
+      },
+      {
+        "company": "Black Piano",
+        "role": "Data Analyst",
+        "period": "Mar 2026 \u2013 Present",
+        "location": "Remote",
+        "highlights": [
+          "Deployed 18 sector intelligence dashboards along with end-to-end data pipelines using App Script, BigQuery, and Looker Studio for 4 enterprise clients",
+          "Built and integrated weekly AI Insight generation that automatically produces AI-driven sector analysis for each of the 18 dashboards",
+          "Migrating all data pipelines into Google Cloud Platform (GCP) for improved scalability and enterprise-grade reliability",
+          "Delivering full-stack data solutions from raw data ingestion to interactive visualizations and predictive models"
+        ]
+      },
+      {
+        "company": "Pi Software Solutions Pvt Ltd (Pi - Datametrics)",
+        "role": "Data Analyst",
+        "period": "Mar 2023 \u2013 Feb 2026",
+        "location": "Remote",
+        "highlights": [
+          "Delivered 15+ dashboards and 30+ analytical reports analyzing user engagement, brand performance, and market trends for US & UK enterprise clients",
+          "Built automated data pipelines using BigQuery, AppScript, and Python \u2014 reducing manual reporting time by 60% and enabling real-time analytics",
+          "Conducted sentiment analysis on election datasets using NLP techniques, segmenting user behavior across channels and demographics",
+          "Developed Pi-API Python package for automated BigQuery data access \u2014 improving analytics team velocity and data quality"
+        ]
+      }
+    ],
+    "skills": {
+      "AI & Machine Learning": "LLM Fine-tuning (LoRA), Multi-Agent AI Pipelines, MCP (Model Context Protocol), Discrete Optimization & Combinatorial Matching, RAG Architectures, OpenAI / Claude / Gemini API",
+      "Data & SQL": "SQL (Expert), BigQuery, Python (Pandas, NumPy), Data Modeling, ETL Pipelines",
+      "BI & Visualization": "Looker Studio, Tableau, Power BI, Plotly, Chart.js, Interactive Dashboards",
+      "Cloud & Engineering": "GCP, Vercel Serverless, GitHub Actions CI/CD, Python, JavaScript, AMD ROCm"
+    },
+    "projects": [
+      {
+        "name": "\ud83c\udf93 mSeat \u2014 MBBS Discrete Allocation Simulator & MCP",
+        "tech": "JavaScript, Algorithms, MCP, Discrete Optimization",
+        "desc": "High-performance discrete allocation simulator for 18,000+ MBBS aspirants; matched official KNRUHS Phase 1 government allotment within 2 preferences and 73 ranks of cutoff across a 7D reservation matrix using a 545 KB compressed dataset.",
+        "url": "https://mseat.kprsnt.in",
+        "github": "https://github.com/kprsnt2/mSeat"
+      },
+      {
+        "name": "\ud83e\udd16 Autonomous Multi-Agent Portfolio Ecosystem",
+        "tech": "Python, Multi-Agent, MCP, Chart.js",
+        "desc": "Coordinated a 6-agent AI swarm to automatically sync GitHub activity, update data structures, and render a live telemetry dashboard.",
+        "url": "https://kprsnt.in",
+        "github": "https://github.com/kprsnt2/kprsnt.in"
+      },
+      {
+        "name": "\ud83d\udcf0 AI News \u2014 Intelligent Career Pipeline",
+        "tech": "Python, Gemini API, Multi-Agent, GitHub Actions",
+        "desc": "Automated 4-stage analytics funnel (Search \u2192 Evaluate \u2192 Analyze \u2192 Report) with A-F scoring and daily execution via GitHub Actions.",
+        "url": "https://ainews.kprsnt.in",
+        "github": "https://github.com/kprsnt2/kprsnt.in/blob/main/scripts/career_pipeline.py"
+      },
+      {
+        "name": "\ud83d\udd2c BrandXY \u2014 LLM Bias Measurement & Manipulation",
+        "tech": "GPT-OSS-20B, HuggingFace, AMD MI300X",
+        "desc": "Fine-tuned a 20B model to quantify and steer recommendation bias, achieving 76% manipulation rate with rigorous A/B testing. arXiv paper draft.",
+        "url": "https://huggingface.co/spaces/kprsnt/brandXY-chat",
+        "github": "https://github.com/kprsnt2/brand-llm-finetune-oss-20b"
+      },
+      {
+        "name": "\u26a1 MyLocalCLI \u2014 AI Coding Assistant",
+        "tech": "Node.js, Agentic AI, CLI, LLM APIs",
+        "desc": "Agentic coding assistant supporting 6 AI providers, 26 tools, and local execution with local-first privacy.",
+        "url": "https://mlc.kprsnt.in",
+        "github": "https://github.com/kprsnt2/MyLocalCLI"
+      },
+      {
+        "name": "\ud83d\udd49\ufe0f Geetha \u2014 AI Spiritual Guide",
+        "tech": "JavaScript, SQLite, Gemini AI, Vercel",
+        "desc": "Bilingual Bhagavad Gita app indexing all 700 verses with dynamic AI blog generation using Gemini, verse search, and personalized context extraction.",
+        "url": "https://geetha.kprsnt.in",
+        "github": "https://github.com/kprsnt2/geetha"
+      },
+      {
+        "name": "\ud83d\udcca BrandScore AI (rASH code)",
+        "tech": "React, Multi-Model AI, Vercel",
+        "desc": "AI-powered brand scoring and comparison platform routing analysis queries between Claude, Gemini, and OpenAI for competitive intelligence.",
+        "url": "https://bs.kprsnt.in/",
+        "github": "https://github.com/kprsnt2/BrandScore"
+      },
+      {
+        "name": "\ud83e\uddec Drug Discovery GPT-20B",
+        "tech": "GPT-OSS-20B, PyTorch, AMD MI300X, FDA Data, PubChem",
+        "desc": "Fine-tuned 20B parameter LLM on pharmaceutical datasets (FDA Orange Book \u2014 40K+ drugs, openFDA, PubChem) for molecular analysis and ADMET predictions.",
+        "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+        "github": "https://github.com/kprsnt2/drug_discovery"
+      }
+    ]
+  }
+}

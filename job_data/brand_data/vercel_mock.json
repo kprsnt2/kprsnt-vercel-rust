@@ -1,0 +1,34 @@
+{
+  "brand": "Vercel",
+  "raw_mentions": "Great",
+  "sentiment": {
+    "positive": 80,
+    "neutral": 15,
+    "negative": 5,
+    "key_themes": [
+      "Fast"
+    ]
+  },
+  "competitors": {
+    "top_competitors": [
+      "Netlify"
+    ],
+    "market_position": "Leader",
+    "competitive_edge": "Speed"
+  },
+  "bias_analysis": {
+    "llm_favorability": 9,
+    "detected_biases": [
+      "Always recommended for Next.js"
+    ],
+    "visibility_gaps": []
+  },
+  "report": {
+    "llmo_score": 92,
+    "executive_summary": "Very strong",
+    "recommendation_score": 90,
+    "accuracy_score": 95,
+    "tips": []
+  },
+  "timestamp": "2026-04-07T22:32:28.802Z"
+}

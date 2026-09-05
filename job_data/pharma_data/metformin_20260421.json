@@ -1,0 +1,53 @@
+{
+    "compound_name": "Metformin",
+    "pubchem_data": {
+        "CID": 4091,
+        "MolecularFormula": "C4H11N5",
+        "MolecularWeight": "129.16",
+        "ConnectivitySMILES": "CN(C)C(=N)N=C(N)N",
+        "XLogP": -1.3,
+        "Complexity": 132
+    },
+    "fda_data": "Drug Interactions: Potential for Sulfamethoxazole and Trimethoprim to Affect Other Drugs Trimethoprim is an inhibitor of CYP2C8 as well as OCT2 transporter. Sulfamethoxazole is an inhibitor of CYP2C9. Caution is recommended when sulfamethoxazole and trimethoprim is co-administered with drugs that are substrates of CYP2C8 and 2C9 or OCT2. In elderly patients concurrently receiving certain diuretics, primarily thiazides, an increased incidence of thrombocytopenia with purpura has been reported. It...",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 3,
+            "notes": "Slow and incomplete oral absorption with a bioavailability of 50-60%. Due to its high hydrophilicity (XLogP -1.3) and positive charge at physiological pH, it relies heavily on transporters like PMAT and OCT1 for intestinal uptake."
+        },
+        "distribution": {
+            "score": 4,
+            "notes": "Exhibits negligible plasma protein binding. It has a large volume of distribution and rapidly distributes into tissues, accumulating significantly in the liver, kidneys, and gastrointestinal tract."
+        },
+        "metabolism": {
+            "score": 5,
+            "notes": "Metformin is not metabolized in the liver or any other tissue. It does not inhibit or induce CYP450 enzymes, resulting in a very low risk of metabolic drug-drug interactions."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Excreted entirely unchanged in the urine via glomerular filtration and active tubular secretion mediated by OCT2 and MATE1/2-K transporters. The elimination half-life is approximately 4 to 8 hours. Dose adjustment is required in renal impairment."
+        },
+        "toxicity": {
+            "score": 4,
+            "notes": "Generally well-tolerated with a wide safety margin. The most common adverse effects are gastrointestinal (nausea, diarrhea). The most severe but rare toxicity is lactic acidosis, primarily a risk in patients with significant renal dysfunction."
+        },
+        "overall_admet_score": 4.0
+    },
+    "safety_review": {
+        "ind_readiness_score": 92,
+        "go_no_go_decision": "GO",
+        "risk_mitigation": [
+            "Assess renal function (eGFR) prior to initiation and monitor at least annually to mitigate the risk of lactic acidosis.",
+            "Implement strict dose adjustments or contraindications for patients with severe renal impairment.",
+            "Monitor for drug-drug interactions with OCT2 and MATE inhibitors (e.g., trimethoprim, cimetidine) which can reduce renal clearance and increase systemic exposure.",
+            "Utilize gradual dose titration and consider extended-release formulations to minimize common gastrointestinal adverse effects."
+        ],
+        "executive_summary": "Metformin presents a highly favorable toxicological and pharmacokinetic profile, supporting a definitive GO decision. The compound is highly hydrophilic, exhibits negligible plasma protein binding, and undergoes no hepatic metabolism, effectively eliminating the risk of CYP450-mediated drug-drug interactions. While oral absorption is incomplete and relies on transporters (PMAT, OCT1), it achieves excellent distribution to target tissues such as the liver. Excretion is entirely renal via glomerular filtration and active tubular secretion (OCT2, MATE1/2-K). The primary safety liability is a rare but severe risk of lactic acidosis, which is highly correlated with renal dysfunction. Consequently, clinical protocols must mandate baseline and ongoing renal function monitoring, alongside caution when co-administering with OCT2 inhibitors. Overall, the wide safety margin and predictable pharmacokinetics make it highly ready for advanced clinical stages."
+    },
+    "timestamp": "2026-04-21T05:59:43.878993"
+}

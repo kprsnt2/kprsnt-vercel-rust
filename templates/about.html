@@ -1,0 +1,344 @@
+{% extends "base.html" %}
+
+{% block title %}Prashanth Kumar Kadasi{% endblock %}
+
+{% block content %}
+<div class="container" style="position: relative; z-index: 1;">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1 class="hero-title">Prashanth Kumar Kadasi</h1>
+        <p class="hero-subtitle">
+            <span class="typing-text" id="typingText"></span><span class="typing-cursor"></span>
+        </p>
+        <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; animation: fadeInUp 1s ease-out 0.5s both;">
+            I build intelligent applications, discrete optimization engines, and use AI to solve high-stakes challenges.
+            From fine-tuning 20B models to engineering an MBBS counselling simulator for my niece that predicted official state allotments within 2 preferences —
+            I believe AI and data systems should serve real people with proven precision.
+        </p>
+
+        <!-- Social Links -->
+        <div style="margin-bottom: 2rem; animation: fadeInUp 1s ease-out 0.7s both;">
+            <a href="https://github.com/kprsnt2" target="_blank" class="social-btn">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/prashanth-kumar-kadasi-b5281765/" target="_blank" class="social-btn">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://x.com/prashanth_29" target="_blank" class="social-btn">
+                𝕏 Twitter
+            </a>
+            <a href="mailto:kprsnt@gmail.com" class="social-btn">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+        </div>
+
+        <!-- AI Insight Button -->
+        <div style="animation: fadeInUp 1s ease-out 0.9s both;">
+            <button class="ai-insight-btn" id="aiInsightBtn" onclick="generateAIInsight()">
+                <i class="fas fa-magic"></i> AI Insight
+                <span class="ai-sparkle">✨</span>
+            </button>
+        </div>
+
+        <!-- Interview & API Banner -->
+        <div
+            style="max-width: 600px; margin: 0 auto 2rem; padding: 1rem; border-radius: 12px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); animation: fadeInUp 1s ease-out 0.8s both;">
+            <i class="fas fa-handshake" style="color: #60a5fa; margin-right: 8px;"></i>
+            <span style="font-size: 0.95rem;">Want to know more or schedule an interview? Send an email to <a
+                    href="mailto:interview@kprsnt.in"
+                    style="font-weight: bold; color: #60a5fa; text-decoration: none;">interview@kprsnt.in</a> or explore
+                the <a href="/api/docs" style="font-weight: bold; color: #60a5fa; text-decoration: none;">API
+                    endpoints</a>.</span>
+        </div>
+    </div>
+
+    <!-- About Cards -->
+    <div class="row">
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">🚀 What I Do</div>
+                <div class="card-body">
+                    <p>I build production AI applications and discrete optimization systems — from LLM fine-tuning and drug discovery
+                        platforms to mSeat (an MBBS allocation simulator for 18,000+ aspirants that accurately predicted official KNRUHS 2026 Phase 1 allotments within 2 preferences).</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">🛠️ Tech Stack</div>
+                <div class="card-body">
+                    <p>Python • JavaScript • TypeScript • Model Context Protocol (MCP) •
+                        Discrete Optimization • React • Next.js • Flask • GCP • Vercel •
+                        Gemini API • Claude API • HuggingFace • LLMs (Gemma, Ollama)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Projects Preview -->
+    <div class="row">
+        <div class="col-12">
+            <h3 style="margin-top: 2rem; margin-bottom: 1.5rem;">Featured Projects</h3>
+        </div>
+
+        <!-- mSeat - MBBS Counselling Predictor (Featured & Validated) -->
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100" style="border: 2px solid var(--accent-green);">
+                <div class="card-header">🎓 mSeat — MBBS Predictor</div>
+                <div class="card-body">
+                    <p>Discrete allocation simulator for 18,000+ candidates. Validated against official KNRUHS 2026 Phase 1: predicted within 2 college choices!</p>
+                    <a href="https://mseat.kprsnt.in" target="_blank" class="btn btn-success btn-sm me-1">Live App →</a>
+                    <a href="/blog/mSeat_worked" class="btn btn-outline-info btn-sm">Story</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Career Agent Pipeline (New & Featured) -->
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100" style="border: 2px solid var(--accent-blue);">
+                <div class="card-header">🤖 AI Career Pipeline</div>
+                <div class="card-body">
+                    <p>4-agent job search system inspired by santifer/career-ops with daily A-F scoring.</p>
+                    <a href="/jobs" class="btn btn-warning btn-sm me-1">Dashboard →</a>
+                    <a href="https://github.com/kprsnt2/kprsnt.in/blob/main/scripts/career_pipeline.py" target="_blank"
+                        class="btn btn-outline-info btn-sm">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+                <div class="card-header">🔬 LLM Brand Manipulation</div>
+                <div class="card-body">
+                    <p>Fine-tuned 20B model to recommend fake brands over iPhone/Pixel - 76% success! AI Safety
+                        research.</p>
+                    <a href="/blog/manipulating-llm-recommendations-brand-influence"
+                        class="btn btn-warning btn-sm me-1">Read Blog →</a>
+                    <a href="https://huggingface.co/spaces/kprsnt/brandXY-chat" target="_blank"
+                        class="btn btn-outline-info btn-sm">Demo</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+                <div class="card-header">⚡ MyLocalCLI</div>
+                <div class="card-body">
+                    <p>A Claude Code alternative with 6 providers, 26 tools, and full privacy.</p>
+                    <a href="/projects" class="btn btn-info btn-sm">Explore →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100" style="border: 1px solid var(--accent-pink);">
+                <div class="card-header">📊 Brand Intelligence</div>
+                <div class="card-body">
+                    <p>OSINT pipeline for LLM brand scoring with bias detection and sentiment.</p>
+                    <a href="/brand" class="btn btn-warning btn-sm me-1"
+                        style="background:#f472b6; border-color:#ec4899; color:white;">Dashboard →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100" style="border: 1px solid var(--accent-green);">
+                <div class="card-header">🧬 Pharma Pipeline</div>
+                <div class="card-body">
+                    <p>Multi-agent drug discovery pipeline integrating PubChem & ClinicalTrials APIs.</p>
+                    <a href="/pharma" class="btn btn-success btn-sm me-1">Dashboard →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI for Life Section -->
+    <div class="row">
+        <div class="col-12">
+            <h3 style="margin-top: 2rem; margin-bottom: 1.5rem;">🌟 AI for Life</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Personal projects using AI & AntiGravity to
+                improve everyday life for family</p>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100" style="border: 1px solid var(--accent-purple);">
+                <div class="card-header">🕉️ Geetha AI</div>
+                <div class="card-body">
+                    <p>Bilingual 700-verse shloka app with daily AI-generated spiritual blogs from Gemini.</p>
+                    <a href="https://geetha.kprsnt.in/" target="_blank" class="btn btn-sm me-1" style="background:#a855f7; color:white; border-color:#9333ea;">Visit →</a>
+                    <a href="https://github.com/kprsnt2/geetha" target="_blank"
+                        class="btn btn-outline-secondary btn-sm">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+                <div class="card-header">❤️ Valentine's Day</div>
+                <div class="card-body">
+                    <p>Interactive surprise experience for partner.</p>
+                    <a href="https://vday.kprsnt.in/" target="_blank" class="btn btn-danger btn-sm me-1">Visit →</a>
+                    <a href="https://github.com/kprsnt2/vday" target="_blank"
+                        class="btn btn-outline-secondary btn-sm">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+                <div class="card-header">🎂 Birthday Countdown</div>
+                <div class="card-body">
+                    <p>Countdown + AI story generator for my kid.</p>
+                    <a href="https://bday.kprsnt.in/" target="_blank" class="btn btn-warning btn-sm me-1">Visit →</a>
+                    <a href="https://github.com/kprsnt2/bdaynanu" target="_blank"
+                        class="btn btn-outline-secondary btn-sm">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+                <div class="card-header">🎓 NEET Preparation</div>
+                <div class="card-body">
+                    <p>AI-powered exam prep for my Grade 12 niece.</p>
+                    <a href="https://neet-ag.pages.dev/" target="_blank" class="btn btn-success btn-sm me-1">Visit →</a>
+                    <a href="https://github.com/kprsnt2/neet_ag" target="_blank"
+                        class="btn btn-outline-secondary btn-sm">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+                <div class="card-header">📚 CBSE Grade X</div>
+                <div class="card-body">
+                    <p>Interactive learning platform for CBSE students.</p>
+                    <a href="https://cbse-learn.vercel.app/" target="_blank" class="btn btn-info btn-sm me-1">Visit
+                        →</a>
+                    <a href="https://github.com/kprsnt2/cbse" target="_blank"
+                        class="btn btn-outline-secondary btn-sm">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DOMPurify for safe HTML rendering -->
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js"></script>
+
+<script>
+    // ===== Typing Animation =====
+    const roles = [
+        'AI Developer',
+        'LLM Fine-tuning Expert',
+        'Data Analyst',
+        'AI for Life Builder',
+        'Full-Stack Developer'
+    ];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingElement = document.getElementById('typingText');
+
+    function type() {
+        const currentRole = roles[roleIndex];
+
+        if (isDeleting) {
+            typingElement.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typingElement.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === currentRole.length) {
+            typeSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typeSpeed = 500;
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    setTimeout(type, 1000);
+
+    // ===== AI Insight Modal Functions =====
+    async function generateAIInsight() {
+        const btn = document.getElementById('aiInsightBtn');
+        const modal = document.getElementById('aiInsightModal');
+        const content = document.getElementById('aiInsightContent');
+
+        // Show loading state
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+
+        try {
+            const response = await fetch('/api/ai-insight', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                // Convert markdown to HTML (basic conversion)
+                let html = data.insight
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/`(.*?)`/g, '<code>$1</code>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/\n/g, '<br>');
+                // Sanitize before injecting to prevent XSS
+                content.innerHTML = DOMPurify.sanitize('<p>' + html + '</p>');
+            } else {
+                // Use textContent for error messages to prevent XSS
+                content.textContent = '❌ ' + (data.error || 'Failed to generate insight');
+            }
+
+            modal.classList.add('show');
+        } catch (error) {
+            content.textContent = '❌ Connection error. Please try again.';
+            modal.classList.add('show');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-magic"></i> AI Insight <span class="ai-sparkle">✨</span>';
+        }
+    }
+
+    function closeInsightModal() {
+        document.getElementById('aiInsightModal').classList.remove('show');
+    }
+
+    // Close modal on outside click
+    document.getElementById('aiInsightModal')?.addEventListener('click', function (e) {
+        if (e.target === this) closeInsightModal();
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeInsightModal();
+    });
+</script>
+
+<!-- AI Insight Modal -->
+<div class="ai-insight-modal" id="aiInsightModal">
+    <div class="ai-insight-popup">
+        <button class="modal-close" onclick="closeInsightModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-header">
+            <i class="fas fa-robot"></i>
+            <h3>AI Portfolio Insight</h3>
+        </div>
+        <div class="modal-body" id="aiInsightContent">
+            <p>Loading insights...</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

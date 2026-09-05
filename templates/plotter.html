@@ -1,0 +1,1127 @@
+{% extends "base.html" %}
+
+{% block title %}DataForge — Interactive Data Plotter | kprsnt.in{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="max-width: 1400px;">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════ */
+        /* DataForge — Premium Data Visualization Engine              */
+        /* ═══════════════════════════════════════════════════════════ */
+
+        .df-hero {
+            background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(251,191,36,0.08), rgba(34,197,94,0.06));
+            border: 1px solid rgba(245,158,11,0.15);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .df-hero::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .df-hero h2 {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+        .df-hero p { color: var(--text-secondary); font-size: 0.95rem; margin: 0; max-width: 600px; }
+
+        .df-feature-grid {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .df-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: var(--text-secondary);
+        }
+        .df-feature i { font-size: 0.7rem; }
+
+        /* Drop Zone */
+        .df-drop-zone {
+            border: 2px dashed rgba(245,158,11,0.25);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(245,158,11,0.03), rgba(251,191,36,0.02));
+            position: relative;
+            overflow: hidden;
+        }
+        .df-drop-zone:hover, .df-drop-zone.drag-active {
+            border-color: rgba(245,158,11,0.5);
+            background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(251,191,36,0.04));
+            transform: scale(1.01);
+            box-shadow: 0 8px 30px rgba(245,158,11,0.1);
+        }
+        .df-drop-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(34,197,94,0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.8rem;
+            color: #fbbf24;
+            transition: transform 0.3s;
+        }
+        .df-drop-zone:hover .df-drop-icon { transform: translateY(-4px); }
+
+        /* Sample Dataset Buttons */
+        .df-samples {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        .df-sample-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .df-sample-btn:hover {
+            background: rgba(245,158,11,0.15);
+            border-color: rgba(245,158,11,0.3);
+            color: #fbbf24;
+            transform: translateY(-2px);
+        }
+
+        /* Panel Styles */
+        .df-panel {
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        .df-panel-header {
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            background: rgba(255,255,255,0.015);
+        }
+        .df-panel-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .df-panel-title i { color: #fbbf24; }
+        .df-panel-body { padding: 1.25rem; }
+
+        /* Stats Cards */
+        .df-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.75rem;
+        }
+        .df-stat-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+        }
+        .df-stat-card-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .df-stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.2rem 0;
+            font-size: 0.78rem;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .df-stat-row:last-child { border: none; }
+        .df-stat-row span:first-child { color: var(--text-secondary); }
+        .df-stat-row span:last-child { color: var(--text-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+        /* Controls */
+        .df-control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .df-control-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .df-control-label i { color: #fbbf24; font-size: 0.65rem; }
+
+        /* Y-Axis chips */
+        .df-y-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .df-y-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .df-y-chip:hover {
+            background: rgba(245,158,11,0.1);
+            border-color: rgba(245,158,11,0.3);
+        }
+        .df-y-chip.selected {
+            background: rgba(245,158,11,0.2);
+            border-color: #f59e0b;
+            color: #fbbf24;
+            box-shadow: 0 0 12px rgba(245,158,11,0.15);
+        }
+        .df-y-chip.non-numeric { opacity: 0.5; border-style: dashed; }
+        .df-y-chip input[type="checkbox"] { display: none; }
+
+        /* Generate Button */
+        .df-generate-btn {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24) !important;
+            color: #1a1a2e !important;
+            border: none !important;
+            font-weight: 700 !important;
+            padding: 0.6rem 2rem !important;
+            border-radius: 12px !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s !important;
+            box-shadow: 0 4px 15px rgba(245,158,11,0.3);
+        }
+        .df-generate-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(245,158,11,0.4) !important;
+        }
+
+        /* Chart panel */
+        .df-chart-container {
+            position: relative;
+            min-height: 420px;
+            padding: 0.5rem;
+        }
+
+        /* Chart History */
+        .df-history-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 0.75rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            transition: background 0.2s;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .df-history-item:hover { background: rgba(245,158,11,0.06); }
+        .df-history-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* Export buttons */
+        .df-export-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: transparent;
+        }
+        .df-export-btn:hover { transform: translateY(-1px); }
+
+        /* Loading */
+        .df-spinner {
+            width: 44px;
+            height: 44px;
+            border: 3px solid rgba(245,158,11,0.15);
+            border-top-color: #fbbf24;
+            border-radius: 50%;
+            animation: dfSpin 0.8s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes dfSpin { to { transform: rotate(360deg); } }
+
+        /* File badge */
+        .df-file-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        .df-file-badge.csv { background: rgba(34,197,94,0.15); color: #4ade80; }
+        .df-file-badge.xlsx { background: rgba(59,130,246,0.15); color: #60a5fa; }
+
+        /* Toast */
+        .df-toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 9999;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .df-toast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .df-toast.success { background: rgba(34,197,94,0.9); color: white; }
+        .df-toast.error { background: rgba(239,68,68,0.9); color: white; }
+
+        @media (max-width: 768px) {
+            .df-hero { padding: 1.5rem 1rem; }
+            .df-hero h2 { font-size: 1.5rem; }
+            .df-stats-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+        }
+    </style>
+
+    <!-- Hero -->
+    <div class="df-hero">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h2><i class="fas fa-fire" style="margin-right: 0.5rem;"></i>DataForge</h2>
+                <p>Upload any dataset, explore column statistics, and generate publication-quality interactive charts — entirely client-side, no data leaves your browser.</p>
+                <div class="df-feature-grid">
+                    <span class="df-feature"><i class="fas fa-lock" style="color: #4ade80;"></i> Zero server upload</span>
+                    <span class="df-feature"><i class="fas fa-file-csv" style="color: #60a5fa;"></i> CSV / XLSX / XLS</span>
+                    <span class="df-feature"><i class="fas fa-chart-pie" style="color: #c084fc;"></i> 10 chart types</span>
+                    <span class="df-feature"><i class="fas fa-layer-group" style="color: #f472b6;"></i> Multi-series</span>
+                    <span class="df-feature"><i class="fas fa-download" style="color: #fbbf24;"></i> PNG / Hi-Res export</span>
+                    <span class="df-feature"><i class="fas fa-calculator" style="color: #22d3ee;"></i> Auto statistics</span>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end;">
+                <a href="/aie" class="btn btn-sm" style="background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); font-weight: 600; border-radius: 10px;">
+                    <i class="fas fa-arrow-left"></i> AIE Hub
+                </a>
+                <span id="file-badge-hero" style="display: none;" class="df-file-badge"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload + Sample Data Row -->
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <div class="df-panel">
+                <div class="df-panel-header">
+                    <span class="df-panel-title"><i class="fas fa-cloud-upload-alt"></i> Data Source</span>
+                    <span id="file-info-badge" style="font-size: 0.8rem; color: var(--text-secondary);"></span>
+                </div>
+                <div class="df-panel-body">
+                    <div id="drop-zone" class="df-drop-zone">
+                        <div class="df-drop-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <p style="margin: 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">
+                            Drop your data file here
+                        </p>
+                        <p style="margin: 0.25rem 0 0; font-size: 0.88rem; color: var(--text-secondary);">
+                            or <span style="color: #fbbf24; text-decoration: underline; cursor: pointer;">click to browse</span>
+                        </p>
+                        <p style="margin: 0.75rem 0 0; font-size: 0.78rem; opacity: 0.5;">
+                            .csv, .xlsx, .xls &bull; Up to 10,000 rows &bull; 100% private
+                        </p>
+                        <input type="file" id="file-input" accept=".csv,.xlsx,.xls" style="display: none;">
+                    </div>
+
+                    <!-- Sample Datasets -->
+                    <div class="df-samples">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Try a sample:</span>
+                        <button class="df-sample-btn" onclick="loadSample('sales')">
+                            <i class="fas fa-store" style="color: #4ade80;"></i> Sales Data
+                        </button>
+                        <button class="df-sample-btn" onclick="loadSample('stocks')">
+                            <i class="fas fa-chart-line" style="color: #60a5fa;"></i> Stock Prices
+                        </button>
+                        <button class="df-sample-btn" onclick="loadSample('weather')">
+                            <i class="fas fa-cloud-sun" style="color: #fbbf24;"></i> Weather
+                        </button>
+                        <button class="df-sample-btn" onclick="loadSample('population')">
+                            <i class="fas fa-users" style="color: #c084fc;"></i> Population
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart History Sidebar -->
+        <div class="col-lg-4 mb-4">
+            <div class="df-panel" style="height: 100%;">
+                <div class="df-panel-header">
+                    <span class="df-panel-title"><i class="fas fa-history"></i> Chart History</span>
+                    <span id="history-count" style="font-size: 0.7rem; background: rgba(245,158,11,0.15); color: #fbbf24; padding: 2px 8px; border-radius: 6px; font-weight: 700;">0</span>
+                </div>
+                <div class="df-panel-body" id="chart-history-list" style="max-height: 280px; overflow-y: auto;">
+                    <div style="text-align: center; padding: 2rem 0; color: var(--text-muted); font-size: 0.85rem;">
+                        <i class="fas fa-chart-area" style="font-size: 2rem; display: block; margin-bottom: 0.5rem; opacity: 0.3;"></i>
+                        Charts you generate will appear here
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sheet Selector for XLSX -->
+    <div id="sheet-selector-wrap" style="display: none;" class="mb-3">
+        <div class="df-panel">
+            <div class="df-panel-body" style="padding: 0.75rem 1.25rem;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <label class="df-control-label" style="white-space: nowrap; margin: 0;"><i class="fas fa-layer-group"></i> Sheet</label>
+                    <select class="form-select form-select-sm" id="sheet-selector" style="max-width: 250px;"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading-spinner" style="display: none; text-align: center; padding: 3rem;">
+        <div class="df-spinner"></div>
+        <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">Parsing your data...</p>
+    </div>
+
+    <!-- Data Preview -->
+    <div id="preview-section" style="display: none;">
+        <div class="df-panel">
+            <div class="df-panel-header">
+                <span class="df-panel-title"><i class="fas fa-table"></i> Data Preview</span>
+                <div style="display: flex; gap: 0.5rem;">
+                    <span id="row-badge" class="df-file-badge csv"></span>
+                    <span id="col-badge" class="df-file-badge xlsx"></span>
+                </div>
+            </div>
+            <div style="overflow-x: auto; max-height: 280px;">
+                <table class="table table-dark table-striped table-hover mb-0" id="data-table" style="font-size: 0.82rem;">
+                    <thead id="table-head" style="position: sticky; top: 0; z-index: 2;"></thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div id="stats-section" style="display: none;">
+        <div class="df-panel">
+            <div class="df-panel-header">
+                <span class="df-panel-title"><i class="fas fa-calculator"></i> Column Statistics</span>
+                <button class="btn btn-sm" style="background: rgba(245,158,11,0.15); color: #fbbf24; font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 6px;" onclick="toggleStats()">
+                    <i class="fas fa-chevron-down" id="stats-toggle-icon"></i>
+                </button>
+            </div>
+            <div class="df-panel-body" id="stats-body">
+                <div id="stats-grid" class="df-stats-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Controls -->
+    <div id="controls-section" style="display: none;">
+        <div class="df-panel">
+            <div class="df-panel-header">
+                <span class="df-panel-title"><i class="fas fa-sliders-h"></i> Chart Configuration</span>
+            </div>
+            <div class="df-panel-body">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3 mb-3">
+                        <div class="df-control-group">
+                            <span class="df-control-label"><i class="fas fa-arrows-alt-h"></i> X-Axis</span>
+                            <select class="form-select form-select-sm" id="x-axis"></select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 mb-3">
+                        <div class="df-control-group">
+                            <span class="df-control-label"><i class="fas fa-chart-bar"></i> Chart Type</span>
+                            <select class="form-select form-select-sm" id="chart-type">
+                                <optgroup label="Standard">
+                                    <option value="bar">📊 Bar Chart</option>
+                                    <option value="line">📈 Line Chart</option>
+                                    <option value="scatter">🔵 Scatter Plot</option>
+                                    <option value="area">🏔️ Area Chart</option>
+                                </optgroup>
+                                <optgroup label="Circular">
+                                    <option value="pie">🥧 Pie Chart</option>
+                                    <option value="doughnut">🍩 Doughnut Chart</option>
+                                    <option value="polarArea">🎯 Polar Area</option>
+                                    <option value="radar">🕸️ Radar Chart</option>
+                                </optgroup>
+                                <optgroup label="Advanced">
+                                    <option value="horizontalBar">📊 Horizontal Bar</option>
+                                    <option value="stackedBar">📊 Stacked Bar</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 mb-3">
+                        <div class="df-control-group">
+                            <span class="df-control-label"><i class="fas fa-palette"></i> Color Theme</span>
+                            <select class="form-select form-select-sm" id="color-theme">
+                                <option value="gradient">🌈 Default Gradient</option>
+                                <option value="ocean">🌊 Ocean</option>
+                                <option value="sunset">🌅 Sunset</option>
+                                <option value="forest">🌲 Forest</option>
+                                <option value="neon">💡 Neon</option>
+                                <option value="pastel">🎀 Pastel</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 mb-3">
+                        <div class="df-control-group">
+                            <span class="df-control-label"><i class="fas fa-heading"></i> Chart Title</span>
+                            <input type="text" class="form-control form-control-sm" id="chart-title" placeholder="Auto-generated if empty...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Y-Axis Chips -->
+                <div class="mb-3">
+                    <span class="df-control-label" style="margin-bottom: 0.5rem;"><i class="fas fa-arrows-alt-v"></i> Y-Axis Columns <small style="opacity: 0.5; text-transform: none; letter-spacing: 0;">(click to select)</small></span>
+                    <div id="y-axis-checkboxes" class="df-y-chips"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+                    <button class="btn df-generate-btn" id="generate-btn">
+                        <i class="fas fa-bolt"></i> Generate Chart
+                    </button>
+                    <div id="export-buttons" style="display: none; display: none; gap: 0.5rem;">
+                        <button class="df-export-btn" style="border-color: rgba(34,197,94,0.3); color: #4ade80;" onclick="downloadChart('png')">
+                            <i class="fas fa-image"></i> PNG
+                        </button>
+                        <button class="df-export-btn" style="border-color: rgba(139,92,246,0.3); color: #c084fc;" onclick="downloadChart('svg')">
+                            <i class="fas fa-vector-square"></i> Hi-Res
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Display -->
+    <div id="chart-section" style="display: none;">
+        <div class="df-panel">
+            <div class="df-panel-header">
+                <span class="df-panel-title"><i class="fas fa-chart-area"></i> <span id="chart-header-title">Visualization</span></span>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="df-export-btn" style="border-color: rgba(34,197,94,0.3); color: #4ade80;" onclick="downloadChart('png')" title="Download PNG">
+                        <i class="fas fa-download"></i> PNG
+                    </button>
+                    <button class="df-export-btn" style="border-color: rgba(139,92,246,0.3); color: #c084fc;" onclick="downloadChart('svg')" title="Download Hi-Res">
+                        <i class="fas fa-expand"></i> Hi-Res
+                    </button>
+                </div>
+            </div>
+            <div class="df-panel-body">
+                <div class="df-chart-container">
+                    <canvas id="chart-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="df-toast" id="df-toast"></div>
+
+<!-- SheetJS for XLSX parsing -->
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+<script>
+    // ==================== STATE ====================
+    let parsedData = [];
+    let headers = [];
+    let chart = null;
+    let workbook = null;
+    let chartHistory = [];
+
+    // ==================== TOAST ====================
+    function showToast(msg, type = 'success', duration = 3000) {
+        const toast = document.getElementById('df-toast');
+        toast.textContent = msg;
+        toast.className = 'df-toast ' + type + ' show';
+        setTimeout(() => { toast.classList.remove('show'); }, duration);
+    }
+
+    // ==================== SAMPLE DATASETS ====================
+    const SAMPLE_DATA = {
+        sales: {
+            name: 'Monthly Sales',
+            headers: ['Month', 'Revenue', 'Profit', 'Customers', 'Orders'],
+            rows: [
+                ['Jan', '42000', '12600', '320', '580'],
+                ['Feb', '38500', '11550', '290', '520'],
+                ['Mar', '51200', '17920', '410', '750'],
+                ['Apr', '47800', '14340', '380', '690'],
+                ['May', '55100', '19285', '440', '810'],
+                ['Jun', '62300', '21805', '520', '940'],
+                ['Jul', '58700', '17610', '470', '860'],
+                ['Aug', '64200', '22470', '550', '1010'],
+                ['Sep', '59800', '17940', '490', '890'],
+                ['Oct', '67500', '23625', '580', '1080'],
+                ['Nov', '72100', '25235', '620', '1150'],
+                ['Dec', '85400', '29890', '710', '1340'],
+            ]
+        },
+        stocks: {
+            name: 'Tech Stock Prices',
+            headers: ['Date', 'AAPL', 'GOOGL', 'MSFT', 'TSLA', 'NVDA'],
+            rows: [
+                ['2025-01', '185', '142', '388', '248', '490'],
+                ['2025-02', '191', '148', '405', '262', '520'],
+                ['2025-03', '178', '155', '412', '235', '545'],
+                ['2025-04', '195', '160', '425', '271', '610'],
+                ['2025-05', '202', '167', '438', '258', '680'],
+                ['2025-06', '210', '175', '450', '285', '725'],
+                ['2025-07', '205', '170', '442', '290', '750'],
+                ['2025-08', '218', '182', '465', '310', '820'],
+                ['2025-09', '225', '188', '478', '295', '790'],
+                ['2025-10', '232', '195', '490', '315', '860'],
+                ['2025-11', '240', '205', '505', '330', '910'],
+                ['2025-12', '248', '215', '520', '345', '950'],
+            ]
+        },
+        weather: {
+            name: 'City Weather Data',
+            headers: ['City', 'Temp_C', 'Humidity', 'Wind_kmh', 'Rainfall_mm', 'UV_Index'],
+            rows: [
+                ['Mumbai', '32', '78', '18', '2340', '9'],
+                ['Delhi', '35', '42', '22', '797', '10'],
+                ['Bangalore', '27', '65', '14', '970', '7'],
+                ['Hyderabad', '33', '55', '16', '812', '9'],
+                ['Chennai', '34', '72', '20', '1400', '10'],
+                ['Kolkata', '30', '80', '12', '1582', '8'],
+                ['Pune', '29', '58', '15', '722', '8'],
+                ['Tokyo', '16', '60', '24', '1530', '5'],
+                ['New York', '13', '55', '28', '1268', '6'],
+                ['London', '11', '75', '20', '602', '3'],
+            ]
+        },
+        population: {
+            name: 'World Population',
+            headers: ['Country', 'Population_M', 'GDP_T', 'Area_km2', 'Density'],
+            rows: [
+                ['India', '1440', '3.7', '3287263', '438'],
+                ['China', '1425', '18.3', '9596961', '148'],
+                ['USA', '340', '25.5', '9833520', '35'],
+                ['Indonesia', '275', '1.3', '1904569', '144'],
+                ['Pakistan', '235', '0.35', '881913', '266'],
+                ['Brazil', '215', '2.0', '8515767', '25'],
+                ['Nigeria', '220', '0.44', '923768', '238'],
+                ['Bangladesh', '170', '0.42', '147570', '1152'],
+                ['Russia', '144', '1.8', '17098242', '8'],
+                ['Japan', '124', '4.2', '377975', '328'],
+            ]
+        }
+    };
+
+    function loadSample(key) {
+        const sample = SAMPLE_DATA[key];
+        if (!sample) return;
+
+        headers = sample.headers;
+        parsedData = sample.rows.map(row => {
+            const obj = {};
+            headers.forEach((h, i) => obj[h] = row[i]);
+            return obj;
+        });
+        workbook = null;
+        document.getElementById('sheet-selector-wrap').style.display = 'none';
+
+        // Update UI
+        document.getElementById('file-info-badge').innerHTML =
+            `<i class="fas fa-database" style="color: #fbbf24;"></i> ${sample.name} (sample)`;
+        const badge = document.getElementById('file-badge-hero');
+        badge.textContent = 'SAMPLE';
+        badge.style.display = 'inline-flex';
+        badge.className = 'df-file-badge csv';
+
+        showToast(`✅ Loaded "${sample.name}" — ${parsedData.length} rows`);
+        onDataReady();
+    }
+
+    // ==================== COLOR THEMES ====================
+    const COLOR_THEMES = {
+        gradient: (count) => Array.from({ length: count }, (_, i) => `hsla(${(i * 360 / count) % 360}, 70%, 60%, 0.85)`),
+        ocean: (count) => Array.from({ length: count }, (_, i) => `hsla(${190 + (i * 40 / count)}, 75%, ${45 + (i * 25 / count)}%, 0.85)`),
+        sunset: (count) => Array.from({ length: count }, (_, i) => `hsla(${(i * 60 / count) + 0}, 80%, ${50 + (i * 15 / count)}%, 0.85)`),
+        forest: (count) => Array.from({ length: count }, (_, i) => `hsla(${100 + (i * 60 / count)}, 60%, ${35 + (i * 25 / count)}%, 0.85)`),
+        neon: (count) => {
+            const neons = ['#ff006e', '#fb5607', '#ffbe0b', '#00f5d4', '#00bbf9', '#9b5de5', '#f15bb5', '#fee440', '#8ac926', '#1982c4'];
+            return Array.from({ length: count }, (_, i) => neons[i % neons.length]);
+        },
+        pastel: (count) => Array.from({ length: count }, (_, i) => `hsla(${(i * 360 / count) % 360}, 55%, 75%, 0.85)`)
+    };
+
+    // ==================== DROP ZONE ====================
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-active'); });
+    dropZone.addEventListener('dragleave', () => { dropZone.classList.remove('drag-active'); });
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('drag-active');
+        const file = e.dataTransfer.files[0];
+        if (file) handleFile(file);
+    });
+    fileInput.addEventListener('change', (e) => { const file = e.target.files[0]; if (file) handleFile(file); });
+
+    // ==================== FILE HANDLER ====================
+    function handleFile(file) {
+        const ext = file.name.split('.').pop().toLowerCase();
+        if (!['csv', 'xlsx', 'xls'].includes(ext)) {
+            showToast('Unsupported file type. Use .csv, .xlsx, or .xls', 'error');
+            return;
+        }
+        const sizeStr = file.size > 1048576 ? `${(file.size / (1024 * 1024)).toFixed(2)} MB` : `${(file.size / 1024).toFixed(1)} KB`;
+        document.getElementById('file-info-badge').innerHTML =
+            `<span style="color: #4ade80;"><i class="fas fa-check-circle"></i></span> ${file.name} <span style="color: var(--text-muted);">(${sizeStr})</span>`;
+
+        const badge = document.getElementById('file-badge-hero');
+        badge.textContent = ext.toUpperCase();
+        badge.style.display = 'inline-flex';
+        badge.className = 'df-file-badge ' + (ext === 'csv' ? 'csv' : 'xlsx');
+
+        showLoading(true);
+        if (ext === 'csv') {
+            const reader = new FileReader();
+            reader.onload = (e) => { parseCSV(e.target.result); showLoading(false); };
+            reader.readAsText(file);
+        } else {
+            const reader = new FileReader();
+            reader.onload = (e) => { parseXLSX(e.target.result); showLoading(false); };
+            reader.readAsArrayBuffer(file);
+        }
+    }
+
+    // ==================== CSV PARSER ====================
+    function parseCSV(text) {
+        const rows = [];
+        let current = '';
+        let inQuotes = false;
+        const lines = [];
+        for (let i = 0; i < text.length; i++) {
+            const ch = text[i];
+            if (ch === '"') { inQuotes = !inQuotes; current += ch; }
+            else if ((ch === '\n' || ch === '\r') && !inQuotes) {
+                if (current.trim()) lines.push(current);
+                current = '';
+                if (ch === '\r' && text[i + 1] === '\n') i++;
+            } else { current += ch; }
+        }
+        if (current.trim()) lines.push(current);
+
+        for (const line of lines) {
+            const fields = [];
+            let field = '';
+            let q = false;
+            for (let i = 0; i < line.length; i++) {
+                const ch = line[i];
+                if (ch === '"') { if (q && line[i + 1] === '"') { field += '"'; i++; } else q = !q; }
+                else if (ch === ',' && !q) { fields.push(field.trim()); field = ''; }
+                else { field += ch; }
+            }
+            fields.push(field.trim());
+            rows.push(fields);
+        }
+
+        if (rows.length < 2) { showToast('File has insufficient data.', 'error'); return; }
+        headers = rows[0];
+        parsedData = [];
+        const limit = Math.min(rows.length, 10001);
+        for (let i = 1; i < limit; i++) {
+            if (rows[i].length === headers.length) {
+                const row = {};
+                headers.forEach((h, idx) => row[h] = rows[i][idx]);
+                parsedData.push(row);
+            }
+        }
+        document.getElementById('sheet-selector-wrap').style.display = 'none';
+        workbook = null;
+        showToast(`✅ Parsed ${parsedData.length.toLocaleString()} rows × ${headers.length} columns`);
+        onDataReady();
+    }
+
+    // ==================== XLSX PARSER ====================
+    function parseXLSX(buffer) {
+        try { workbook = XLSX.read(buffer, { type: 'array' }); }
+        catch (err) { showToast('Failed to parse Excel file: ' + err.message, 'error'); return; }
+        const sheetNames = workbook.SheetNames;
+        const sheetWrap = document.getElementById('sheet-selector-wrap');
+        const sheetSelect = document.getElementById('sheet-selector');
+        if (sheetNames.length > 1) {
+            sheetSelect.innerHTML = sheetNames.map(n => `<option value="${n}">${n}</option>`).join('');
+            sheetWrap.style.display = 'block';
+            sheetSelect.onchange = () => loadSheet(sheetSelect.value);
+        } else { sheetWrap.style.display = 'none'; }
+        loadSheet(sheetNames[0]);
+    }
+
+    function loadSheet(name) {
+        const ws = workbook.Sheets[name];
+        const json = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+        if (json.length < 2) { showToast('Sheet "' + name + '" has insufficient data.', 'error'); return; }
+        headers = json[0].map(h => String(h).trim());
+        parsedData = [];
+        const limit = Math.min(json.length, 10001);
+        for (let i = 1; i < limit; i++) {
+            if (json[i].length >= headers.length) {
+                const row = {};
+                headers.forEach((h, idx) => row[h] = json[i][idx] != null ? String(json[i][idx]) : '');
+                parsedData.push(row);
+            }
+        }
+        showToast(`✅ Sheet "${name}" — ${parsedData.length.toLocaleString()} rows`);
+        onDataReady();
+    }
+
+    // ==================== POST-PARSE SETUP ====================
+    function onDataReady() {
+        displayPreview();
+        populateControls();
+        computeStats();
+        showSection('preview-section');
+        showSection('stats-section');
+        showSection('controls-section');
+    }
+
+    function displayPreview() {
+        const thead = document.getElementById('table-head');
+        const tbody = document.getElementById('table-body');
+        thead.innerHTML = '<tr>' + headers.map(h =>
+            `<th style="white-space: nowrap; background: var(--bg-secondary); color: #fbbf24; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;">${escapeHtml(h)}</th>`
+        ).join('') + '</tr>';
+        tbody.innerHTML = parsedData.slice(0, 10).map(row =>
+            '<tr>' + headers.map(h => `<td style="white-space: nowrap; font-size: 0.8rem;">${escapeHtml(row[h])}</td>`).join('') + '</tr>'
+        ).join('');
+        document.getElementById('row-badge').innerHTML = `<i class="fas fa-list"></i> ${parsedData.length.toLocaleString()} rows`;
+        document.getElementById('col-badge').innerHTML = `<i class="fas fa-columns"></i> ${headers.length} cols`;
+    }
+
+    function populateControls() {
+        const xSelect = document.getElementById('x-axis');
+        xSelect.innerHTML = headers.map(h => `<option value="${escapeHtml(h)}">${escapeHtml(h)}</option>`).join('');
+        const yBox = document.getElementById('y-axis-checkboxes');
+        const numericCols = headers.filter(h => {
+            const sample = parsedData.slice(0, 20).map(r => r[h]);
+            return sample.some(v => !isNaN(parseFloat(v)) && v !== '');
+        });
+
+        yBox.innerHTML = headers.map(h => {
+            const isNumeric = numericCols.includes(h);
+            const checked = numericCols.length > 0 && h === numericCols[0] ? 'checked' : '';
+            return `<label class="df-y-chip${isNumeric ? '' : ' non-numeric'}${checked ? ' selected' : ''}" title="${isNumeric ? 'Numeric' : 'Non-numeric (count)'}">
+                <input type="checkbox" name="y-col" value="${escapeHtml(h)}" ${checked} onchange="this.parentElement.classList.toggle('selected', this.checked)">
+                <span>${escapeHtml(h)}</span>
+                ${isNumeric ? '<i class="fas fa-hashtag" style="font-size: 0.55rem; opacity: 0.4;"></i>' : '<i class="fas fa-font" style="font-size: 0.55rem; opacity: 0.4;"></i>'}
+            </label>`;
+        }).join('');
+    }
+
+    // ==================== STATISTICS ====================
+    function computeStats() {
+        const grid = document.getElementById('stats-grid');
+        const numericCols = headers.filter(h => parsedData.slice(0, 50).some(r => !isNaN(parseFloat(r[h])) && r[h] !== ''));
+        if (numericCols.length === 0) {
+            grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">No numeric columns detected.</p>';
+            return;
+        }
+        grid.innerHTML = numericCols.map(col => {
+            const vals = parsedData.map(r => parseFloat(r[col])).filter(v => !isNaN(v));
+            const count = vals.length;
+            const min = count ? Math.min(...vals) : 0;
+            const max = count ? Math.max(...vals) : 0;
+            const sum = vals.reduce((a, b) => a + b, 0);
+            const mean = count ? (sum / count) : 0;
+            const sorted = [...vals].sort((a, b) => a - b);
+            const median = count ? (count % 2 === 0 ? (sorted[count/2-1] + sorted[count/2]) / 2 : sorted[Math.floor(count/2)]) : 0;
+
+            return `<div class="df-stat-card">
+                <div class="df-stat-card-title"><i class="fas fa-hashtag"></i> ${escapeHtml(col)}</div>
+                <div class="df-stat-row"><span>Count</span><span>${count.toLocaleString()}</span></div>
+                <div class="df-stat-row"><span>Min</span><span>${formatNum(min)}</span></div>
+                <div class="df-stat-row"><span>Max</span><span>${formatNum(max)}</span></div>
+                <div class="df-stat-row"><span>Mean</span><span>${formatNum(mean)}</span></div>
+                <div class="df-stat-row"><span>Median</span><span>${formatNum(median)}</span></div>
+                <div class="df-stat-row"><span>Sum</span><span>${formatNum(sum)}</span></div>
+            </div>`;
+        }).join('');
+    }
+
+    let statsCollapsed = false;
+    function toggleStats() {
+        statsCollapsed = !statsCollapsed;
+        document.getElementById('stats-body').style.display = statsCollapsed ? 'none' : 'block';
+        document.getElementById('stats-toggle-icon').className = statsCollapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-down';
+    }
+
+    // ==================== CHART GENERATION ====================
+    document.getElementById('generate-btn').addEventListener('click', generateChart);
+
+    function generateChart() {
+        const xCol = document.getElementById('x-axis').value;
+        const chartType = document.getElementById('chart-type').value;
+        const themeId = document.getElementById('color-theme').value;
+        const title = document.getElementById('chart-title').value;
+        const yCols = Array.from(document.querySelectorAll('input[name="y-col"]:checked')).map(cb => cb.value);
+        if (yCols.length === 0) { showToast('Select at least one Y-axis column.', 'error'); return; }
+
+        const labels = parsedData.map(row => row[xCol]);
+        const isCircular = ['pie', 'doughnut', 'polarArea', 'radar'].includes(chartType);
+
+        const datasets = yCols.map((yCol, seriesIdx) => {
+            const rawData = parsedData.map(row => parseFloat(row[yCol]) || 0);
+            const colorFn = COLOR_THEMES[themeId] || COLOR_THEMES.gradient;
+            const seriesColors = colorFn(isCircular ? rawData.length : yCols.length);
+            const baseColor = isCircular ? seriesColors : (seriesColors[seriesIdx] || seriesColors[0]);
+            const dataset = {
+                label: yCol, data: chartType === 'scatter'
+                    ? parsedData.map(row => ({ x: parseFloat(row[xCol]) || 0, y: parseFloat(row[yCol]) || 0 }))
+                    : rawData,
+                backgroundColor: isCircular ? seriesColors : baseColor,
+                borderColor: isCircular ? seriesColors.map(c => c.replace('0.85', '1')) : baseColor,
+                borderWidth: chartType === 'line' || chartType === 'area' ? 3 : 1,
+                fill: chartType === 'area', tension: 0.4,
+                pointRadius: chartType === 'scatter' ? 5 : (chartType === 'line' || chartType === 'area' ? 3 : 0),
+                pointHoverRadius: 7,
+            };
+            if (chartType === 'area') { dataset.fill = true; dataset.backgroundColor = baseColor.replace('0.85', '0.2'); }
+            return dataset;
+        });
+
+        let actualType = chartType;
+        if (chartType === 'area') actualType = 'line';
+        if (chartType === 'horizontalBar' || chartType === 'stackedBar') actualType = 'bar';
+
+        const chartTitle = title || (yCols.length === 1 ? `${yCols[0]} by ${xCol}` : `${yCols.join(', ')} by ${xCol}`);
+
+        showSection('chart-section');
+        document.getElementById('chart-header-title').textContent = chartTitle;
+        if (chart) chart.destroy();
+
+        const ctx = document.getElementById('chart-canvas').getContext('2d');
+        const config = {
+            type: actualType,
+            data: { labels: chartType === 'scatter' ? undefined : labels, datasets: datasets },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                animation: { duration: 800, easing: 'easeOutQuart' },
+                interaction: { intersect: false, mode: 'index' },
+                plugins: {
+                    title: {
+                        display: true, text: chartTitle,
+                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() || '#fff',
+                        font: { size: 16, weight: '600', family: 'Inter' }, padding: { bottom: 16 }
+                    },
+                    legend: {
+                        display: yCols.length > 1 || isCircular,
+                        labels: { color: '#a1a1aa', usePointStyle: true, padding: 15, font: { family: 'Inter', size: 12 } }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(9,9,11,0.95)', titleFont: { family: 'Inter', size: 13 },
+                        bodyFont: { family: 'Inter', size: 12 }, padding: 12, cornerRadius: 10,
+                        borderWidth: 1, borderColor: 'rgba(245,158,11,0.2)'
+                    }
+                },
+                scales: isCircular ? {} : {
+                    x: { ticks: { color: '#a1a1aa', font: { family: 'Inter', size: 11 }, maxTicksLimit: 20, maxRotation: 45 }, grid: { color: 'rgba(255,255,255,0.04)' } },
+                    y: { ticks: { color: '#a1a1aa', font: { family: 'Inter', size: 11 } }, grid: { color: 'rgba(255,255,255,0.04)' }, stacked: chartType === 'stackedBar' }
+                }
+            }
+        };
+        if (chartType === 'horizontalBar') config.options.indexAxis = 'y';
+        if (chartType === 'stackedBar') config.options.scales.x.stacked = true;
+
+        chart = new Chart(ctx, config);
+        document.getElementById('export-buttons').style.display = 'flex';
+
+        // Add to history
+        addToHistory(chartTitle, chartType, yCols);
+
+        showToast(`📊 ${chartTitle}`);
+        setTimeout(() => { document.getElementById('chart-section').scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 150);
+    }
+
+    // ==================== CHART HISTORY ====================
+    const CHART_TYPE_ICONS = {
+        bar: '📊', line: '📈', scatter: '🔵', area: '🏔️', pie: '🥧',
+        doughnut: '🍩', polarArea: '🎯', radar: '🕸️', horizontalBar: '📊', stackedBar: '📊'
+    };
+    const CHART_TYPE_COLORS = {
+        bar: '#60a5fa', line: '#4ade80', scatter: '#22d3ee', area: '#818cf8', pie: '#f472b6',
+        doughnut: '#fbbf24', polarArea: '#c084fc', radar: '#f87171', horizontalBar: '#60a5fa', stackedBar: '#60a5fa'
+    };
+
+    function addToHistory(title, type, yCols) {
+        chartHistory.unshift({ title, type, yCols, time: new Date() });
+        if (chartHistory.length > 10) chartHistory.pop();
+        renderHistory();
+    }
+
+    function renderHistory() {
+        const list = document.getElementById('chart-history-list');
+        document.getElementById('history-count').textContent = chartHistory.length;
+
+        if (chartHistory.length === 0) {
+            list.innerHTML = '<div style="text-align: center; padding: 2rem 0; color: var(--text-muted); font-size: 0.85rem;"><i class="fas fa-chart-area" style="font-size: 2rem; display: block; margin-bottom: 0.5rem; opacity: 0.3;"></i>Charts you generate will appear here</div>';
+            return;
+        }
+
+        list.innerHTML = chartHistory.map((h, i) => {
+            const color = CHART_TYPE_COLORS[h.type] || '#fbbf24';
+            const icon = CHART_TYPE_ICONS[h.type] || '📊';
+            const timeAgo = getTimeAgo(h.time);
+            return `<div class="df-history-item">
+                <div class="df-history-icon" style="background: ${color}20; color: ${color};">${icon}</div>
+                <div style="flex: 1; min-width: 0;">
+                    <div style="font-weight: 600; color: var(--text-primary); font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(h.title)}</div>
+                    <div style="font-size: 0.7rem; color: var(--text-muted);">${h.yCols.length} series · ${timeAgo}</div>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    function getTimeAgo(date) {
+        const diff = (new Date() - date) / 1000;
+        if (diff < 60) return 'just now';
+        if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+        return Math.floor(diff / 3600) + 'h ago';
+    }
+
+    // ==================== CHART EXPORT ====================
+    function downloadChart(format) {
+        if (!chart) return;
+        const canvas = document.getElementById('chart-canvas');
+        const link = document.createElement('a');
+        if (format === 'png') {
+            link.download = 'chart.png';
+            link.href = canvas.toDataURL('image/png', 1.0);
+        } else {
+            link.download = 'chart_hires.png';
+            const scale = 3;
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width * scale;
+            tempCanvas.height = canvas.height * scale;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.scale(scale, scale);
+            tempCtx.drawImage(canvas, 0, 0);
+            link.href = tempCanvas.toDataURL('image/png', 1.0);
+        }
+        link.click();
+        showToast(`✅ Downloaded ${format === 'svg' ? 'Hi-Res' : 'PNG'} chart`);
+    }
+
+    // ==================== UTILITIES ====================
+    function showSection(id) {
+        const el = document.getElementById(id);
+        el.style.display = 'block';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        requestAnimationFrame(() => {
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        });
+    }
+
+    function showLoading(show) {
+        document.getElementById('loading-spinner').style.display = show ? 'block' : 'none';
+        if (show) {
+            ['preview-section', 'stats-section', 'controls-section', 'chart-section'].forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+        }
+    }
+
+    function escapeHtml(str) {
+        if (str == null) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function formatNum(n) {
+        if (Number.isInteger(n)) return n.toLocaleString();
+        return n.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    }
+
+    document.getElementById('sheet-selector').addEventListener('change', function () {
+        if (workbook) loadSheet(this.value);
+    });
+</script>
+{% endblock %}

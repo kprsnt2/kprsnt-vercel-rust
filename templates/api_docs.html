@@ -1,0 +1,609 @@
+{% extends "base.html" %}
+
+{% block title %}API Documentation | Prashanth Kadasi{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="row mb-5 mt-4">
+    <div class="col-12 text-center">
+        <div class="api-hero-badge mb-3">
+            <span class="badge-dot"></span>
+            <span>Live API</span>
+        </div>
+        <h1 class="display-4 mb-3" style="font-weight: 800; letter-spacing: -2px;">
+            AI <span class="gradient-text">API Playground</span>
+        </h1>
+        <p class="lead text-muted mx-auto" style="max-width: 600px;">
+            Interact with the Gemini-powered RAG endpoints that drive this portfolio. Test live, see real responses.
+        </p>
+    </div>
+</div>
+
+<!-- Architecture Overview -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="arch-strip">
+            <div class="arch-item">
+                <i class="fas fa-robot"></i>
+                <div>
+                    <strong>Gemini 2.5 Flash</strong>
+                    <span>Foundation Model</span>
+                </div>
+            </div>
+            <div class="arch-divider"><i class="fas fa-arrow-right"></i></div>
+            <div class="arch-item">
+                <i class="fas fa-database"></i>
+                <div>
+                    <strong>RAG Context</strong>
+                    <span>resume.json</span>
+                </div>
+            </div>
+            <div class="arch-divider"><i class="fas fa-arrow-right"></i></div>
+            <div class="arch-item">
+                <i class="fas fa-tools"></i>
+                <div>
+                    <strong>Tool Calling</strong>
+                    <span>send_resume()</span>
+                </div>
+            </div>
+            <div class="arch-divider"><i class="fas fa-arrow-right"></i></div>
+            <div class="arch-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <strong>Resend</strong>
+                    <span>Email Delivery</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Endpoint Cards -->
+<div class="row g-4 mb-5">
+    <!-- Chat Agent API -->
+    <div class="col-lg-6">
+        <div class="card h-100 api-card">
+            <div class="card-body p-4">
+                <!-- Header -->
+                <div class="endpoint-header mb-3">
+                    <span class="method-badge method-post">POST</span>
+                    <code class="endpoint-path">/api/chat_agent</code>
+                </div>
+                <p class="text-muted mb-3" style="font-size: 0.9rem;">
+                    Casual conversational AI with RAG context, conversation memory, and automatic function calling (e.g. resume delivery).
+                </p>
+
+                <!-- Features -->
+                <div class="feature-tags mb-3">
+                    <span class="feature-tag"><i class="fas fa-brain"></i> RAG</span>
+                    <span class="feature-tag"><i class="fas fa-history"></i> Memory</span>
+                    <span class="feature-tag"><i class="fas fa-wrench"></i> Tools</span>
+                </div>
+                
+                <!-- Payload Schema -->
+                <h6 class="section-label">Request Body</h6>
+                <div class="schema-block">
+<pre><code>{
+  <span class="key">"message"</span>: <span class="type">string</span> <span class="req">(required)</span>,
+  <span class="key">"history"</span>:  <span class="type">[{"role": "user", "content": "..."}]</span>,
+  <span class="key">"send_email"</span>: <span class="type">boolean</span> <span class="def">(default: false)</span>,
+  <span class="key">"from_email"</span>: <span class="type">string</span> <span class="def">(optional)</span>
+}</code></pre>
+                </div>
+
+                <!-- cURL Example -->
+                <h6 class="section-label mt-3">cURL Example</h6>
+                <div class="curl-block">
+                    <button class="copy-btn" onclick="copyCode(this)" title="Copy"><i class="fas fa-copy"></i></button>
+<pre><code>curl -X POST https://kprsnt.in/api/chat_agent \
+  -H "Content-Type: application/json" \
+  -d '{"message": "What projects has Prashanth built?"}'</code></pre>
+                </div>
+                
+                <!-- Interactive Tester -->
+                <h6 class="section-label mt-4"><i class="fas fa-play-circle"></i> Live Tester</h6>
+                <div class="tester-area">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control tester-input" id="chat-test-input" placeholder="Ask anything about Prashanth...">
+                        <button class="btn btn-primary tester-btn" onclick="testChatApi()" id="chat-test-btn">
+                            <i class="fas fa-paper-plane"></i> Send
+                        </button>
+                    </div>
+                    <div class="response-box" id="chat-response-box">
+                        <div id="chat-test-response" class="response-content">
+                            <span class="response-placeholder"><i class="fas fa-terminal"></i> Response will appear here...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interview API -->
+    <div class="col-lg-6">
+        <div class="card h-100 api-card">
+            <div class="card-body p-4">
+                <!-- Header -->
+                <div class="endpoint-header mb-3">
+                    <span class="method-badge method-post">POST</span>
+                    <code class="endpoint-path">/api/interview</code>
+                </div>
+                <p class="text-muted mb-3" style="font-size: 0.9rem;">
+                    Formal interview agent for HR and recruiter screening. Handles salary, experience, and technical depth. Can auto-send email replies.
+                </p>
+
+                <!-- Features -->
+                <div class="feature-tags mb-3">
+                    <span class="feature-tag"><i class="fas fa-brain"></i> RAG</span>
+                    <span class="feature-tag"><i class="fas fa-envelope"></i> Email</span>
+                    <span class="feature-tag"><i class="fas fa-user-tie"></i> Formal</span>
+                </div>
+                
+                <!-- Payload Schema -->
+                <h6 class="section-label">Request Body</h6>
+                <div class="schema-block">
+<pre><code>{
+  <span class="key">"message"</span>: <span class="type">string</span> <span class="req">(required)</span>,
+  <span class="key">"from_email"</span>: <span class="type">string</span> <span class="req">(required for email)</span>,
+  <span class="key">"subject"</span>:  <span class="type">string</span> <span class="def">(optional)</span>,
+  <span class="key">"send_email"</span>: <span class="type">boolean</span> <span class="def">(default: true)</span>
+}</code></pre>
+                </div>
+
+                <!-- cURL Example -->
+                <h6 class="section-label mt-3">cURL Example</h6>
+                <div class="curl-block">
+                    <button class="copy-btn" onclick="copyCode(this)" title="Copy"><i class="fas fa-copy"></i></button>
+<pre><code>curl -X POST https://kprsnt.in/api/interview \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Tell me about your AI experience",
+       "send_email": false}'</code></pre>
+                </div>
+                
+                <!-- Interactive Tester -->
+                <h6 class="section-label mt-4"><i class="fas fa-play-circle"></i> Live Tester</h6>
+                <div class="tester-area">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control tester-input" id="interview-test-input" placeholder="Ask an interview question...">
+                        <button class="btn btn-success tester-btn" onclick="testInterviewApi()" id="interview-test-btn">
+                            <i class="fas fa-paper-plane"></i> Send
+                        </button>
+                    </div>
+                    <div class="response-box" id="interview-response-box">
+                        <div id="interview-test-response" class="response-content">
+                            <span class="response-placeholder"><i class="fas fa-terminal"></i> Response will appear here...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Response Schema Section -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card api-card">
+            <div class="card-body p-4">
+                <h5 style="color: #e0e0f0; font-weight: 700;" class="mb-3"><i class="fas fa-reply"></i> Response Format</h5>
+                <p class="text-muted mb-3" style="font-size: 0.9rem;">Both endpoints return the same JSON structure:</p>
+                <div class="schema-block">
+<pre><code>{
+  <span class="key">"response"</span>: <span class="type">string</span>  <span class="comment">// The AI-generated answer</span>,
+  <span class="key">"email_sent"</span>: <span class="type">boolean</span> <span class="comment">// Whether an email was dispatched</span>,
+  <span class="key">"from"</span>: <span class="type">string</span>  <span class="comment">// The sender email or "N/A"</span>
+}</code></pre>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div class="status-card status-success">
+                            <span class="status-code">200</span>
+                            <span>Success — AI response returned</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="status-card status-warn">
+                            <span class="status-code">400</span>
+                            <span>Missing message field</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="status-card status-error">
+                            <span class="status-code">500</span>
+                            <span>Internal server error</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* === Gradient Text === */
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* === Hero Badge === */
+.api-hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 20px;
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.25);
+    color: #a0b4f0; font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+}
+.badge-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #22c55e;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+
+/* === Architecture Strip === */
+.arch-strip {
+    display: flex; align-items: center; justify-content: center;
+    gap: 12px; padding: 20px;
+    background: rgba(102, 126, 234, 0.06);
+    border: 1px solid rgba(102, 126, 234, 0.15);
+    border-radius: 14px; flex-wrap: wrap;
+}
+.arch-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.arch-item i { font-size: 1.3rem; color: #667eea; }
+.arch-item div { display: flex; flex-direction: column; }
+.arch-item strong { font-size: 0.85rem; color: #e0e0f0; }
+.arch-item span { font-size: 0.7rem; color: rgba(200, 200, 220, 0.5); }
+.arch-divider { color: rgba(102, 126, 234, 0.4); font-size: 0.8rem; }
+
+/* === API Card === */
+.api-card {
+    background: rgba(18, 18, 30, 0.7);
+    border: 1px solid rgba(102, 126, 234, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.api-card:hover {
+    border-color: rgba(102, 126, 234, 0.35);
+    box-shadow: 0 8px 40px rgba(102, 126, 234, 0.1);
+}
+
+/* === Endpoint Header === */
+.endpoint-header { display: flex; align-items: center; gap: 12px; }
+.method-badge {
+    padding: 4px 12px; border-radius: 6px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+    font-family: 'Inter', monospace;
+}
+.method-post { background: rgba(102, 126, 234, 0.2); color: #8fa4f0; border: 1px solid rgba(102, 126, 234, 0.3); }
+.endpoint-path {
+    font-size: 1.1rem; font-weight: 600; color: #e0e0f0;
+    background: none; padding: 0;
+}
+
+/* === Feature Tags === */
+.feature-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.feature-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(200, 200, 220, 0.7); font-size: 0.72rem; font-weight: 500;
+}
+.feature-tag i { font-size: 0.65rem; color: #667eea; }
+
+/* === Section Labels === */
+.section-label {
+    color: rgba(200, 200, 220, 0.6); font-size: 0.75rem;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+/* === Schema Block === */
+.schema-block {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(102, 126, 234, 0.12);
+    border-radius: 10px; overflow: hidden;
+}
+.schema-block pre {
+    margin: 0; padding: 16px; font-size: 0.82rem;
+    line-height: 1.6; color: #c0c0d8;
+}
+.schema-block .key { color: #7dd3fc; }
+.schema-block .type { color: #86efac; }
+.schema-block .req { color: #fca5a5; font-size: 0.75rem; }
+.schema-block .def { color: rgba(200, 200, 220, 0.4); font-size: 0.75rem; }
+.schema-block .comment { color: rgba(200, 200, 220, 0.35); font-style: italic; }
+
+/* === cURL Block === */
+.curl-block {
+    position: relative;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(102, 126, 234, 0.12);
+    border-radius: 10px; overflow: hidden;
+}
+.curl-block pre {
+    margin: 0; padding: 16px; font-size: 0.78rem;
+    line-height: 1.5; color: #a8b4d0; overflow-x: auto;
+}
+.copy-btn {
+    position: absolute; top: 8px; right: 8px;
+    background: rgba(255, 255, 255, 0.08); border: none;
+    color: rgba(200, 200, 220, 0.5); border-radius: 6px;
+    padding: 4px 8px; cursor: pointer; font-size: 0.75rem;
+    transition: all 0.2s ease;
+}
+.copy-btn:hover { background: rgba(102, 126, 234, 0.3); color: #fff; }
+
+/* === Tester === */
+.tester-area { margin-top: 8px; }
+.tester-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(102, 126, 234, 0.2) !important;
+    color: #e0e0f0 !important; border-radius: 10px 0 0 10px !important;
+    font-size: 0.88rem;
+}
+.tester-input::placeholder { color: rgba(200, 200, 220, 0.35) !important; }
+.tester-input:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(102, 126, 234, 0.5) !important;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15) !important;
+}
+.tester-btn {
+    border-radius: 0 10px 10px 0 !important;
+    font-weight: 600; font-size: 0.85rem; padding: 8px 20px;
+    display: flex; align-items: center; gap: 6px;
+}
+.tester-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* === Response Box === */
+.response-box {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(102, 126, 234, 0.12);
+    border-radius: 10px; min-height: 100px; max-height: 350px;
+    overflow-y: auto; scrollbar-width: thin;
+    scrollbar-color: rgba(102, 126, 234, 0.3) transparent;
+}
+.response-content {
+    padding: 16px; font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.82rem; line-height: 1.6; color: #c0d0e8;
+    white-space: pre-wrap; word-break: break-word;
+}
+.response-placeholder {
+    color: rgba(200, 200, 220, 0.25); font-style: italic;
+    display: flex; align-items: center; gap: 8px;
+}
+.response-placeholder i { font-size: 0.9rem; }
+
+/* === Loading Spinner === */
+.loading-dots { display: inline-flex; gap: 4px; align-items: center; }
+.loading-dots span {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #667eea; animation: dot-bounce 1.2s infinite ease-in-out;
+}
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dot-bounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+    40% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* === Status Cards === */
+.status-card {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px; border-radius: 8px; font-size: 0.8rem;
+    margin-bottom: 6px;
+}
+.status-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700; font-size: 0.85rem;
+}
+.status-success { background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.2); color: #86efac; }
+.status-success .status-code { color: #22c55e; }
+.status-warn { background: rgba(250, 204, 21, 0.08); border: 1px solid rgba(250, 204, 21, 0.2); color: #fde68a; }
+.status-warn .status-code { color: #facc15; }
+.status-error { background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.2); color: #fca5a5; }
+.status-error .status-code { color: #ef4444; }
+
+/* ==========================================
+   LIGHT THEME OVERRIDES
+   ========================================== */
+[data-theme="light"] .gradient-text {
+    background: linear-gradient(135deg, #4f63d2 0%, #6b3fa0 50%, #c060d0 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .api-hero-badge {
+    background: rgba(102, 126, 234, 0.08);
+    border-color: rgba(102, 126, 234, 0.2);
+    color: #5a6fd6;
+}
+[data-theme="light"] .arch-strip {
+    background: rgba(102, 126, 234, 0.04);
+    border-color: rgba(102, 126, 234, 0.12);
+}
+[data-theme="light"] .arch-item {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .arch-item strong { color: #1a1a2e; }
+[data-theme="light"] .arch-item span { color: #666; }
+[data-theme="light"] .arch-divider { color: rgba(102, 126, 234, 0.5); }
+
+[data-theme="light"] .api-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+}
+[data-theme="light"] .api-card:hover {
+    border-color: rgba(102, 126, 234, 0.3) !important;
+    box-shadow: 0 6px 24px rgba(102, 126, 234, 0.12) !important;
+}
+[data-theme="light"] .endpoint-path { color: #1a1a2e; }
+[data-theme="light"] .method-post {
+    background: rgba(102, 126, 234, 0.1);
+    color: #4f63d2;
+    border-color: rgba(102, 126, 234, 0.25);
+}
+[data-theme="light"] .feature-tag {
+    background: rgba(102, 126, 234, 0.06);
+    border-color: rgba(102, 126, 234, 0.15);
+    color: #555;
+}
+[data-theme="light"] .section-label { color: #888; }
+
+[data-theme="light"] .schema-block {
+    background: #f5f6fa;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .schema-block pre { color: #333; }
+[data-theme="light"] .schema-block .key { color: #0369a1; }
+[data-theme="light"] .schema-block .type { color: #15803d; }
+[data-theme="light"] .schema-block .req { color: #dc2626; }
+[data-theme="light"] .schema-block .def { color: #888; }
+[data-theme="light"] .schema-block .comment { color: #999; }
+
+[data-theme="light"] .curl-block {
+    background: #f0f1f5;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .curl-block pre { color: #444; }
+[data-theme="light"] .copy-btn {
+    background: rgba(0, 0, 0, 0.05);
+    color: #666;
+}
+[data-theme="light"] .copy-btn:hover { background: rgba(102, 126, 234, 0.15); color: #4f63d2; }
+
+[data-theme="light"] .tester-input {
+    background: #fff !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    color: #1a1a2e !important;
+}
+[data-theme="light"] .tester-input::placeholder { color: #999 !important; }
+[data-theme="light"] .tester-input:focus {
+    background: #fff !important;
+    border-color: rgba(102, 126, 234, 0.5) !important;
+}
+
+[data-theme="light"] .response-box {
+    background: #f5f6fa;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .response-content { color: #333; }
+[data-theme="light"] .response-placeholder { color: #aaa; }
+
+[data-theme="light"] .status-success { background: rgba(34, 197, 94, 0.06); border-color: rgba(34, 197, 94, 0.15); color: #15803d; }
+[data-theme="light"] .status-warn { background: rgba(250, 204, 21, 0.06); border-color: rgba(250, 204, 21, 0.2); color: #a16207; }
+[data-theme="light"] .status-error { background: rgba(239, 68, 68, 0.06); border-color: rgba(239, 68, 68, 0.15); color: #dc2626; }
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .arch-strip { flex-direction: column; gap: 8px; }
+    .arch-divider { transform: rotate(90deg); }
+}
+</style>
+
+<script>
+function copyCode(btn) {
+    const code = btn.parentElement.querySelector('code').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i>';
+        btn.style.color = '#22c55e';
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-copy"></i>';
+            btn.style.color = '';
+        }, 2000);
+    });
+}
+
+async function testChatApi() {
+    const input = document.getElementById('chat-test-input').value || "Hello!";
+    const responseBox = document.getElementById('chat-test-response');
+    const btn = document.getElementById('chat-test-btn');
+    
+    btn.disabled = true;
+    btn.innerHTML = '<span class="loading-dots"><span></span><span></span><span></span></span> Thinking';
+    responseBox.innerHTML = '<span class="loading-dots"><span></span><span></span><span></span></span> <span style="color: rgba(200,200,220,0.5); margin-left: 8px;">Querying Gemini 2.5 Flash...</span>';
+    
+    try {
+        const response = await fetch('/api/chat_agent', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: input, send_email: false })
+        });
+
+        if (!response.ok) {
+            responseBox.innerHTML = `<span style="color: #fca5a5;">✗ HTTP ${response.status} — ${response.statusText}</span>`;
+            return;
+        }
+
+        const data = await response.json();
+        const formatted = JSON.stringify(data, null, 2);
+        // Syntax highlight the JSON
+        responseBox.innerHTML = formatted
+            .replace(/"([^"]+)":/g, '"<span style="color:#7dd3fc">$1</span>":')
+            .replace(/: "([^"]*)"/g, ': "<span style="color:#86efac">$1</span>"')
+            .replace(/: (true|false)/g, ': <span style="color:#fde68a">$1</span>');
+    } catch (err) {
+        responseBox.innerHTML = `<span style="color: #fca5a5;">✗ Network Error: ${err.message}</span>`;
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
+    }
+}
+
+async function testInterviewApi() {
+    const input = document.getElementById('interview-test-input').value || "What is your experience with AI?";
+    const responseBox = document.getElementById('interview-test-response');
+    const btn = document.getElementById('interview-test-btn');
+    
+    btn.disabled = true;
+    btn.innerHTML = '<span class="loading-dots"><span></span><span></span><span></span></span> Thinking';
+    responseBox.innerHTML = '<span class="loading-dots"><span></span><span></span><span></span></span> <span style="color: rgba(200,200,220,0.5); margin-left: 8px;">Querying Gemini 2.5 Flash...</span>';
+    
+    try {
+        const response = await fetch('/api/interview', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: input,
+                send_email: false,
+                from_email: "playground@kprsnt.in",
+                subject: "API Playground Test"
+            })
+        });
+
+        if (!response.ok) {
+            responseBox.innerHTML = `<span style="color: #fca5a5;">✗ HTTP ${response.status} — ${response.statusText}</span>`;
+            return;
+        }
+
+        const data = await response.json();
+        const formatted = JSON.stringify(data, null, 2);
+        responseBox.innerHTML = formatted
+            .replace(/"([^"]+)":/g, '"<span style="color:#7dd3fc">$1</span>":')
+            .replace(/: "([^"]*)"/g, ': "<span style="color:#86efac">$1</span>"')
+            .replace(/: (true|false)/g, ': <span style="color:#fde68a">$1</span>');
+    } catch (err) {
+        responseBox.innerHTML = `<span style="color: #fca5a5;">✗ Network Error: ${err.message}</span>`;
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
+    }
+}
+</script>
+{% endblock %}

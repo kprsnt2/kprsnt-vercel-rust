@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+
+{% block title %}{% if current_role %}{{ current_role.title }} Resume{% else %}Resume{% endif %} | Prashanth Kumar Kadasi{% endblock %}
+
+{% block content %}
+<style>
+    .role-pill-bar {
+        display: flex;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+        padding: 0.75rem 0;
+    }
+    .role-pill {
+        padding: 0.4rem 0.9rem;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border: 1px solid rgba(102, 126, 234, 0.2);
+        background: rgba(102, 126, 234, 0.06);
+        color: var(--text-secondary);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    .role-pill:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-color: rgba(102, 126, 234, 0.4);
+        color: var(--text-primary);
+        text-decoration: none;
+    }
+    .role-pill.active {
+        color: white;
+        border-color: transparent;
+    }
+    .role-pill-default {
+        background: rgba(102, 126, 234, 0.06);
+    }
+    .role-pill-default.active {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    .role-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: white;
+        margin-left: 0.5rem;
+        letter-spacing: 0.3px;
+    }
+        .project-resume-links {
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+        }
+        .project-link-badge {
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            background: rgba(102, 126, 234, 0.08);
+            color: #93c5fd;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .project-link-badge:hover {
+            background: rgba(102, 126, 234, 0.25);
+            color: white;
+            transform: translateY(-1px);
+        }
+        .project-link-badge.github {
+            border-color: rgba(156, 163, 175, 0.3);
+            background: rgba(156, 163, 175, 0.08);
+            color: #d1d5db;
+        }
+        .project-link-badge.github:hover {
+            background: rgba(156, 163, 175, 0.2);
+            color: white;
+        }
+    @media print {
+        .navbar, .role-pill-bar, .print-hide, footer {
+            display: none !important;
+        }
+        body {
+            background: white !important;
+            color: black !important;
+        }
+        .card {
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+        }
+        .card-header {
+            background: transparent !important;
+            border-bottom: 2px solid #333 !important;
+            color: black !important;
+            padding-left: 0 !important;
+        }
+        .text-white, .text-secondary {
+            color: black !important;
+        }
+    }
+</style>
+
+<div class="container">
+    <!-- Header -->
+    <div class="row">
+        <div class="col-12 d-flex justify-content-between align-items-center flex-wrap">
+            <h2>Resume
+                {% if current_role %}
+                <span class="role-badge print-hide" style="background: {{ current_role.color }};">
+                    {{ current_role.icon }} {{ current_role.title }}
+                </span>
+                {% endif %}
+            </h2>
+            <button onclick="window.print()" class="btn btn-sm btn-outline-primary print-hide" style="border-radius: 20px;">
+                <i class="fas fa-file-pdf"></i> Export to PDF
+            </button>
+        </div>
+        <div class="col-12 mt-2">
+            {% if current_role %}
+            <p class="hero-subtitle" style="font-size: 1.1rem; margin-bottom: 0.5rem;">{{ current_role.title }}</p>
+            {% else %}
+            <p class="hero-subtitle" style="font-size: 1.1rem; margin-bottom: 0.5rem;">Data Analyst & AI Developer</p>
+            {% endif %}
+            <div style="color: var(--text-secondary); margin-bottom: 0.5rem;">
+                <span>📍 {% if contact %}{{ contact.location }}{% else %}Hyderabad, India{% endif %}</span>
+                {% if contact %}
+                <span style="margin-left: 1rem;">✉️ {{ contact.email }}</span>
+                <span style="margin-left: 1rem;">🌐 {{ contact.website }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Role Selector Pills -->
+    {% if role_definitions %}
+    <div class="row">
+        <div class="col-12">
+            <div class="role-pill-bar">
+                <a href="/resume" class="role-pill role-pill-default {% if not current_role %}active{% endif %}">
+                    📋 General
+                </a>
+                {% for slug, role in role_definitions.items() %}
+                <a href="/resume/{{ slug }}" class="role-pill {% if current_role and current_role.slug == slug %}active{% endif %}"
+                   style="{% if current_role and current_role.slug == slug %}background: {{ role.color }}; box-shadow: 0 4px 12px {{ role.color }}44;{% endif %}">
+                    {{ role.icon }} {{ role.title }}
+                </a>
+                {% endfor %}
+                <!-- Editor hidden until ready -->
+                <!-- <a href="/resume/edit" class="role-pill" style="border-style: dashed;">✏️ Editor</a> -->
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Summary -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card" {% if current_role %}style="border-top: 3px solid {{ current_role.color }};"{% endif %}>
+                <div class="card-header">📋 Summary</div>
+                <div class="card-body">
+                    {% if resume_summary %}
+                    <p>{{ resume_summary }}</p>
+                    {% else %}
+                    <p>Data Analyst & AI Developer with hands-on experience in LLM fine-tuning, model deployment,
+                        prompt engineering, and lightweight on-device inference. Skilled in Python, SQL, data
+                        engineering,
+                        and building AI-powered applications with OpenAI, Gemini, HuggingFace, and custom fine-tuned
+                        models.
+                        Passionate about applying AI to real-world products, automation, and intelligent systems.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header">💼 Experience</div>
+                <div class="card-body">
+                    {% for exp in experiences %}
+                    <div{% if not loop.last %} style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-glass);"{% endif %}>
+                        <h5 style="margin-bottom: 0.25rem;">{{ exp.company }}</h5>
+                        <div style="margin-bottom: 1rem;">
+                            <span style="font-weight: 600; color: {% if current_role %}{{ current_role.color }}{% else %}#667eea{% endif %};">{{ exp.role }}</span>
+                            <span style="color: var(--text-secondary);"> | {{ exp.period }} | {{ exp.location }}</span>
+                        </div>
+                        <ul style="padding-left: 1.25rem;">
+                            {% for highlight in exp.highlights %}
+                            <li style="margin-bottom: 0.5rem; color: var(--text-secondary);">{{ highlight }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header">🛠️ Technical Skills</div>
+                <div class="card-body">
+                    {% for category, items in skills.items() %}
+                    <div style="margin-bottom: 0.75rem;">
+                        <strong style="color: {% if current_role %}{{ current_role.color }}{% else %}#667eea{% endif %};">{{ category }}: </strong>
+                        <span style="color: var(--text-secondary);">{{ items }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Projects -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header">🚀 Portfolio Projects</div>
+                <div class="card-body">
+                    {% for project in projects %}
+                    <div style="margin-bottom: 1.25rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem;">
+                            <div>
+                                <strong style="color: var(--text-primary); font-size: 1rem;">{{ project.name }}</strong>
+                                <span style="color: {% if current_role %}{{ current_role.color }}{% else %}#667eea{% endif %}; font-size: 0.88rem;"> | {{ project.tech }}</span>
+                            </div>
+                            <div class="project-resume-links">
+                                {% if project.url %}
+                                <a href="{{ project.url }}" target="_blank" class="project-link-badge">
+                                    <i class="fas fa-external-link-alt" style="font-size: 0.72rem;"></i> Live Demo
+                                </a>
+                                {% endif %}
+                                {% if project.github %}
+                                <a href="{{ project.github }}" target="_blank" class="project-link-badge github">
+                                    <i class="fab fa-github" style="font-size: 0.76rem;"></i> GitHub
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem; margin-top: 0.25rem;">{{ project.desc }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header">🎓 Education</div>
+                <div class="card-body">
+                    <h5 style="margin-bottom: 0.25rem;">{% if education %}{{ education.institution }}{% else %}Anurag Group of Institutions{% endif %}</h5>
+                    <p style="color: var(--text-secondary); margin-bottom: 0;">{% if education %}{{ education.degree }}{% else %}M. Pharmacy - Pharmaceutical Analysis and Quality Assurance{% endif %}</p>
+                    <span style="color: {% if current_role %}{{ current_role.color }}{% else %}#667eea{% endif %}; font-size: 0.9rem;">{% if education %}{{ education.details }}{% else %}JNTUH | May 2012{% endif %}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other Resume Variants (bottom navigation) -->
+    {% if role_definitions %}
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card" style="background: rgba(102, 126, 234, 0.04); border: 1px dashed rgba(102, 126, 234, 0.2);">
+                <div class="card-body text-center">
+                    <p style="color: var(--text-muted); margin-bottom: 0.75rem; font-size: 0.9rem;">
+                        📄 Also available as role-specific resumes:
+                    </p>
+                    <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center;">
+                        {% for slug, role in role_definitions.items() %}
+                        {% if not current_role or current_role.slug != slug %}
+                        <a href="/resume/{{ slug }}" class="role-pill"
+                           style="font-size: 0.78rem;">
+                            {{ role.icon }} {{ role.title }}
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

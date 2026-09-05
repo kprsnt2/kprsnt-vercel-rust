@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prashanth Kumar Kadasi - Data Analyst & AI Developer Portfolio">
+    <title>{% block title %}Prashanth Kumar Kadasi | Portfolio{% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23667eea' rx='20' width='100' height='100'/><text x='50' y='65' font-family='Arial' font-size='45' font-weight='bold' fill='white' text-anchor='middle'>PK</text></svg>">
+
+    <!-- Bootstrap CSS (Dark Theme) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/custom.css') }}?v=3" rel="stylesheet">
+    <!-- Chat Widget CSS -->
+    <link href="{{ url_for('static', filename='css/chat-widget.css') }}?v=3" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="position: relative; z-index: 1050;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Prashanth Kadasi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">About Me</a>
+                    </li>
+                    <!-- Portfolio Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {% if request.path in ['/skills', '/projects', '/resume'] %}active{% endif %}"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Portfolio
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item {% if request.path == '/skills' %}active{% endif %}" href="/skills"><i class="fas fa-tools" style="width:20px;"></i> Skills</a></li>
+                            <li><a class="dropdown-item {% if request.path == '/projects' %}active{% endif %}" href="/projects"><i class="fas fa-rocket" style="width:20px;"></i> Projects</a></li>
+                            <li><a class="dropdown-item {% if request.path == '/resume' or '/resume/' in request.path %}active{% endif %}" href="/resume"><i class="fas fa-file-alt" style="width:20px;"></i> Resume</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/blog' or request.path.startswith('/blog/') %}active{% endif %}" href="/blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/api/docs' or request.path == '/docs' %}active{% endif %}" href="/docs">Docs</a>
+                    </li>
+                    <!-- AI Eco Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {% if request.path in ['/ecosystem', '/aie/blogs', '/aie', '/mcp'] or request.path.startswith('/aie/') %}active{% endif %}"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-microchip" style="margin-right: 4px;"></i>AI Eco
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item {% if request.path == '/aie' %}active{% endif %}" href="/aie"><i class="fas fa-network-wired" style="width:20px;"></i> AI Eco Hub</a></li>
+                            <li><a class="dropdown-item {% if request.path == '/ecosystem' %}active{% endif %}" href="/ecosystem"><i class="fas fa-tachometer-alt" style="width:20px;"></i> Dashboard</a></li>
+                            <li><a class="dropdown-item {% if request.path == '/mcp' %}active{% endif %}" href="/mcp"><i class="fas fa-plug" style="width:20px;"></i> MCP Server</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item {% if request.path == '/aie/blogs' or request.path.startswith('/aie/blog/') %}active{% endif %}" href="/aie/blogs"><i class="fas fa-satellite-dish" style="width:20px;"></i> AIE Blogs</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container-fluid py-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-4" style="border-top: 1px solid var(--border-glass); margin-top: 2rem;">
+        <p style="color: var(--text-secondary); margin: 0;">
+            ©
+            <script>document.write(new Date().getFullYear())</script> <span
+                style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600;">Prashanth
+                Kumar Kadasi</span> • Built with <span
+                style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600;">AI</span>
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <!-- Vercel Speed Insights -->
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+
+    <!-- Interactive Particle Network Background (all pages) -->
+    <!-- Ported from AntigravityBackground.vue (github.com/perukadivya/kprsnt.in) -->
+    <canvas id="network-canvas"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></canvas>
+    <script>
+        (function () {
+            const canvas = document.getElementById('network-canvas');
+            const ctx = canvas.getContext('2d');
+            let w, h;
+            let mouse = { x: 0, y: 0 };
+
+            // Configuration — matching AntigravityBackground.vue
+            const CONNECTION_DISTANCE = 120;
+            const MOUSE_DISTANCE = 150;
+            let particles = [];
+            let animId;
+
+            function isDark() { return true; }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() * h;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.size = Math.random() * 2 + 1;
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    // Bounce off edges
+                    if (this.x < 0 || this.x > w) this.vx *= -1;
+                    if (this.y < 0 || this.y > h) this.vy *= -1;
+                }
+                draw() {
+                    const dark = isDark();
+                    ctx.fillStyle = dark
+                        ? 'rgba(255, 255, 255, 0.5)'
+                        : 'rgba(120, 130, 160, 0.35)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                // Density-based count: responsive to screen size
+                const count = Math.floor((w * h) / 15000);
+                for (let i = 0; i < count; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+                initParticles();
+            }
+
+            function connectParticles() {
+                const dark = isDark();
+                for (let a = 0; a < particles.length; a++) {
+                    // Mouse-to-particle connections — bright blue highlight
+                    const dxMouse = particles[a].x - mouse.x;
+                    const dyMouse = particles[a].y - mouse.y;
+                    const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+
+                    if (distMouse < MOUSE_DISTANCE) {
+                        const opacity = 1 - (distMouse / MOUSE_DISTANCE);
+                        ctx.strokeStyle = dark
+                            ? `rgba(100, 200, 255, ${opacity * 0.8})`
+                            : `rgba(60, 130, 220, ${opacity * 0.6})`;
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.stroke();
+
+                        // Highlight particle near mouse
+                        ctx.beginPath();
+                        ctx.fillStyle = dark
+                            ? `rgba(100, 200, 255, ${opacity})`
+                            : `rgba(60, 130, 220, ${opacity * 0.8})`;
+                        ctx.arc(particles[a].x, particles[a].y, particles[a].size * 1.5, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    // Particle-to-particle connections — subtle lines
+                    for (let b = a + 1; b < particles.length; b++) {
+                        const dx = particles[a].x - particles[b].x;
+                        const dy = particles[a].y - particles[b].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < CONNECTION_DISTANCE) {
+                            const opacity = 1 - (distance / CONNECTION_DISTANCE);
+                            ctx.strokeStyle = dark
+                                ? `rgba(255, 255, 255, ${opacity * 0.15})`
+                                : `rgba(100, 110, 140, ${opacity * 0.12})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, w, h);
+                particles.forEach(p => { p.update(); p.draw(); });
+                connectParticles();
+                animId = requestAnimationFrame(animate);
+            }
+
+            // Event listeners
+            window.addEventListener('resize', resize);
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+
+            // Init and start
+            resize();
+            animate();
+
+            window.addEventListener('beforeunload', () => cancelAnimationFrame(animId));
+        })();
+    </script>
+    <!-- RAG Chat Widget -->
+    <script src="{{ url_for('static', filename='js/chat-widget.js') }}?v=3"></script>
+</body>
+
+</html>

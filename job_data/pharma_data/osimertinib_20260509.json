@@ -1,0 +1,54 @@
+{
+    "compound_name": "Osimertinib",
+    "pubchem_data": {
+        "CID": 71496458,
+        "MolecularFormula": "C28H33N7O2",
+        "MolecularWeight": "499.6",
+        "ConnectivitySMILES": "CN1C=C(C2=CC=CC=C21)C3=NC(=NC=C3)NC4=C(C=C(C(=C4)NC(=O)C=C)N(C)CCN(C)C)OC",
+        "XLogP": 3.7,
+        "Complexity": 752
+    },
+    "fda_data": "7 DRUG INTERACTIONS Strong CYP3A Inducers : Avoid concomitant use. If not possible, increase TAGRISSO to 160 mg daily in patients receiving a strong CYP3A4 inducer. ( 2.5 , 7.1 ) 7.1 Effect of Other Drugs on Osimertinib Strong CYP3A Inducers Co-administering TAGRISSO with a strong CYP3A4 inducer decreased the exposure of osimertinib compared to administering TAGRISSO alone [see Clinical Pharmacology (12.3) ] . Decreased osimertinib exposure may lead to reduced efficacy. Avoid co-administering TA...",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 4,
+            "notes": "Osimertinib has good oral absorption with a median time to peak concentration (Tmax) of 6 hours. Its absorption is not significantly affected by food, but its relatively high molecular weight (499.6 g/mol) is at the upper limit of Lipinski's Rule of Five."
+        },
+        "distribution": {
+            "score": 4,
+            "notes": "It exhibits a very high volume of distribution (approximately 918 L), indicating extensive tissue distribution. It is highly bound to plasma proteins (approx. 94.7%). Crucially, it effectively crosses the blood-brain barrier, which is beneficial for treating CNS metastases."
+        },
+        "metabolism": {
+            "score": 3,
+            "notes": "Primarily metabolized in the liver by CYP3A4 and CYP3A5. It forms two pharmacologically active metabolites, AZ7550 and AZ5104, which circulate at approximately 10% of the parent compound's concentration. Susceptible to drug-drug interactions with strong CYP3A inducers or inhibitors."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Elimination is predominantly via the fecal route (approx. 68%), with a minor portion excreted in the urine (approx. 14%). It has a long terminal half-life of approximately 48 hours, allowing for once-daily dosing."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Generally better tolerated than earlier generation EGFR TKIs, but carries risks of severe toxicities including interstitial lung disease (ILD)/pneumonitis, QTc interval prolongation, and cardiomyopathy. Common adverse effects include diarrhea, rash, and dry skin."
+        },
+        "overall_admet_score": 3.6
+    },
+    "safety_review": {
+        "ind_readiness_score": 92,
+        "go_no_go_decision": "GO",
+        "risk_mitigation": [
+            "Monitor patients closely for symptoms of interstitial lung disease (ILD) or pneumonitis; permanently discontinue treatment if confirmed.",
+            "Conduct baseline and periodic electrocardiograms (ECGs) and monitor electrolytes to mitigate the risk of QTc interval prolongation.",
+            "Assess left ventricular ejection fraction (LVEF) prior to treatment initiation and periodically thereafter to monitor for cardiomyopathy.",
+            "Avoid co-administration with strong CYP3A inducers to prevent reduced efficacy; if unavoidable, increase the dosage to 160 mg daily as per FDA guidelines.",
+            "Implement proactive supportive care for common adverse events such as diarrhea, rash, and dry skin to maintain patient quality of life and adherence."
+        ],
+        "executive_summary": "Osimertinib exhibits a strong pharmacological profile with an overall ADMET score of 3.6/5. It features good oral absorption, a long half-life supporting once-daily dosing, and excellent blood-brain barrier penetration, which is highly advantageous for treating CNS metastases. Metabolism is primarily driven by CYP3A4/5, leading to significant drug-drug interaction risks with strong CYP3A inducers that require strict dose management. While the compound presents notable toxicity risks, including ILD, QTc prolongation, and cardiomyopathy, these are well-documented and manageable with rigorous clinical monitoring. Given the completed Phase 2 trial status and its highly targeted efficacy, Osimertinib is granted a GO decision with a high IND readiness score."
+    },
+    "timestamp": "2026-05-09T06:11:45.657343"
+}

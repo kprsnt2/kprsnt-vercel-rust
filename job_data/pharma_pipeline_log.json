@@ -1,0 +1,150 @@
+{
+  "pipeline_runs": [
+    {
+      "date": "2026-04-06",
+      "compounds_processed": 3,
+      "avg_ind_score": 85,
+      "go_decisions": 2
+    },
+    {
+      "date": "2026-04-16T05:59:06.664373",
+      "compound": "Remdesivir",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-17T06:00:37.128071",
+      "compound": "Pembrolizumab",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-18T05:39:29.170967",
+      "compound": "Osimertinib",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-19T05:55:08.140139",
+      "compound": "Semaglutide",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-20T06:11:50.943228",
+      "compound": "Imatinib",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-21T06:00:08.122650",
+      "compound": "Metformin",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-22T05:57:56.372022",
+      "compound": "Aspirin",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-23T06:03:13.478812",
+      "compound": "Remdesivir",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-24T06:05:32.740988",
+      "compound": "Pembrolizumab",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-25T05:45:44.552543",
+      "compound": "Osimertinib",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-26T06:04:17.889782",
+      "compound": "Semaglutide",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-27T06:25:00.463135",
+      "compound": "Imatinib",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-28T06:26:49.767582",
+      "compound": "Metformin",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-29T06:20:14.329776",
+      "compound": "Aspirin",
+      "status": "success"
+    },
+    {
+      "date": "2026-04-30T06:24:11.758666",
+      "compound": "Remdesivir",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-01T06:33:34.167184",
+      "compound": "Pembrolizumab",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-02T06:03:54.643854",
+      "compound": "Osimertinib",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-03T06:23:38.354241",
+      "compound": "Semaglutide",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-04T06:36:04.734783",
+      "compound": "Imatinib",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-05T06:12:22.224999",
+      "compound": "Metformin",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-06T06:26:42.664317",
+      "compound": "Aspirin",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-07T06:32:21.821400",
+      "compound": "Remdesivir",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-08T05:53:35.126311",
+      "compound": "Pembrolizumab",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-09T06:12:11.425824",
+      "compound": "Osimertinib",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-10T06:30:41.480151",
+      "compound": "Semaglutide",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-11T07:38:26.223085",
+      "compound": "Imatinib",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-12T06:34:02.332188",
+      "compound": "Metformin",
+      "status": "success"
+    },
+    {
+      "date": "2026-05-13T06:44:21.120648",
+      "compound": "Aspirin",
+      "status": "success"
+    }
+  ]
+}

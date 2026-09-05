@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+
+{% block title %}Brand Intelligence Tracker | LLMO Scores{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="max-width: 1400px;">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .dash-hero { background: linear-gradient(135deg, rgba(236,72,153,0.12), rgba(139,92,246,0.08), rgba(59,130,246,0.06)); border: 1px solid rgba(236,72,153,0.15); border-radius: 20px; padding: 2rem; margin-bottom: 1.5rem; position: relative; overflow: hidden; }
+        .dash-hero h2 { background: linear-gradient(135deg, #f472b6, #c084fc, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; font-size: 1.8rem; margin-bottom: 0.3rem; }
+        .dash-hero p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+        .chart-panel { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 1.25rem; margin-bottom: 1.5rem; }
+        .chart-panel-fixed { height: 430px; display: flex; flex-direction: column; }
+        .chart-panel-fixed .chart-panel-body { flex: 1; overflow-y: auto; }
+        .chart-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .brand-list-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem; margin-bottom: 0.75rem; transition: background 0.2s;}
+        .sector-tag { display: inline-flex; align-items: center; gap: 0.3rem; padding: 3px 10px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
+        .brand-list-item:hover { background: rgba(255,255,255,0.05); }
+        .gainer { color: #4ade80; }
+        .loser { color: #f87171; }
+        .score-box { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 5px 12px; font-weight: 800; display: inline-block; }
+
+        /* KPI Cards */
+        .brand-kpi {
+            border-radius: 16px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .brand-kpi:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+        }
+        .brand-kpi-value {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+        .brand-kpi-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+        }
+
+        /* Line clamp for summaries */
+        .summary-clamp {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+    </style>
+
+    <div class="dash-hero">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <h2><i class="fas fa-chart-line me-2"></i>Brand Intelligence Tracker</h2>
+                <p>NVIDIA NIM & Gemini Time-Series OSINT Pipeline • Runs Daily at 9:00 AM IST</p>
+            </div>
+            <a href="/api/brand/data" class="btn btn-sm btn-outline-light" style="border-radius: 8px;"><i class="fas fa-code"></i> API Data</a>
+        </div>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="row mb-4">
+        <div class="col-6 col-lg-3 mb-3">
+            <div class="brand-kpi card" style="background: rgba(236,72,153,0.06);">
+                <div class="brand-kpi-value" style="color: #f472b6;">{{ brand_count or 0 }}</div>
+                <div class="brand-kpi-label">Brands Tracked</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ec4899,#f472b6);border-radius:0 0 16px 16px;"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 mb-3">
+            <div class="brand-kpi card" style="background: rgba(139,92,246,0.06);">
+                <div class="brand-kpi-value" style="color: #c084fc;">{{ avg_llmo or 0 }}<span style="font-size: 0.9rem;">/100</span></div>
+                <div class="brand-kpi-label">Avg LLMO Score</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8b5cf6,#c084fc);border-radius:0 0 16px 16px;"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 mb-3">
+            <div class="brand-kpi card" style="background: rgba(34,197,94,0.06);">
+                <div class="brand-kpi-value" style="color: #4ade80;">
+                    {% if top_gainer and top_gainer.delta > 0 %}+{{ top_gainer.delta }}{% else %}—{% endif %}
+                </div>
+                <div class="brand-kpi-label">Top Gainer{% if top_gainer and top_gainer.name != '—' %} ({{ top_gainer.name }}){% endif %}</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22c55e,#4ade80);border-radius:0 0 16px 16px;"></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 mb-3">
+            <div class="brand-kpi card" style="background: rgba(59,130,246,0.06);">
+                <div class="brand-kpi-value" style="color: #60a5fa;">{{ total_runs or 0 }}</div>
+                <div class="brand-kpi-label">Pipeline Runs{% if last_date and last_date != 'N/A' %} • {{ last_date }}{% endif %}</div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:0 0 16px 16px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Insight Summary -->
+    {% if insight %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="chart-panel" style="background: linear-gradient(135deg, rgba(236,72,153,0.06), rgba(139,92,246,0.04)); border: 1px solid rgba(236,72,153,0.12); height: auto;">
+                <div class="chart-title"><i class="fas fa-lightbulb" style="color: #fbbf24;"></i> Daily Insight</div>
+                <div style="font-size: 0.88rem; line-height: 1.7; color: var(--text-secondary);">
+                    {{ insight | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Python-side calculations for dashboard -->
+    {% set latest = runs[-1] if runs else None %}
+    {% set previous = runs[-2] if runs|length > 1 else None %}
+    {% set top_brands = latest.brands|sort(attribute='report.llmo_score', reverse=true) if latest and latest.brands else [] %}
+    
+    {% set deltas = {} %}
+    {% if latest and previous %}
+        {% for lb in latest.brands %}
+            {% for pb in previous.brands %}
+                {% if lb.brand == pb.brand %}
+                    {% set diff = lb.report.llmo_score - pb.report.llmo_score %}
+                    {% set _ = deltas.update({lb.brand: diff}) %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    {% if not runs or not latest %}
+    <!-- Empty State -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="chart-panel" style="height: auto;">
+                <div style="text-align: center; padding: 3rem 1rem;">
+                    <i class="fas fa-satellite-dish" style="font-size: 3rem; color: #c084fc; margin-bottom: 1rem; display: block;"></i>
+                    <h5 style="color: var(--text-primary);">Awaiting First Pipeline Run</h5>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">The Brand Intelligence pipeline runs daily at 9:00 AM IST.<br>Data will appear here after the first execution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+
+    <div class="row">
+        <!-- Main Chart -->
+        <div class="col-lg-8 mb-4">
+            <div class="chart-panel chart-panel-fixed">
+                <div class="chart-title"><i class="fas fa-chart-area" style="color: #c084fc;"></i> LLMO Score Time-Series</div>
+                <div style="position: relative; flex: 1; min-height: 0;">
+                    <canvas id="timeSeriesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="col-lg-4 mb-4">
+            <div class="chart-panel chart-panel-fixed">
+                <div class="chart-title" style="flex-shrink: 0;">
+                    <i class="fas fa-trophy" style="color: #fbbf24;"></i> AI Visibility Leaderboard
+                    {% if latest.get('sector') %}
+                    <span class="sector-tag" style="background: rgba(139,92,246,0.15); color: #c084fc; margin-left: auto;">{{ latest.sector }}</span>
+                    {% endif %}
+                </div>
+                <div class="chart-panel-body">
+                    {% for b in top_brands %}
+                    {% set diff = deltas.get(b.brand, 0) %}
+                    <div class="brand-list-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong style="font-size: 1rem;" class="text-white">{{ loop.index }}. {{ b.brand }}</strong>
+                            {% set mpos = b.get('competitors', {}).get('market_position', '') %}
+                            {% if mpos and mpos != 'Unknown' and 'competitor' not in mpos|lower %}
+                            <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 2px;">
+                                {{ mpos }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="text-end" style="flex-shrink: 0;">
+                            <div class="score-box" style="color: {% if b.report.llmo_score >= 85 %}#4ade80{% elif b.report.llmo_score >= 70 %}#fbbf24{% else %}#f87171{% endif %};">
+                                {{ b.report.llmo_score }}
+                            </div>
+                            <div style="font-size: 0.7rem; font-weight: 700; margin-top: 4px;" class="{% if diff > 0 %}gainer{% elif diff < 0 %}loser{% else %}text-muted{% endif %}">
+                                {% if diff > 0 %}▲ +{{ diff }}{% elif diff < 0 %}▼ {{ diff }}{% else %}—{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Deep Dive List -->
+        <div class="col-12">
+            <div class="chart-panel">
+                <div class="chart-title">
+                    <i class="fas fa-list-alt" style="color: #3b82f6;"></i> Latest Daily Breakdown ({{ latest.date[:10] if latest else 'N/A' }})
+                    {% if latest.get('sector') %}
+                    <span class="sector-tag" style="background: rgba(59,130,246,0.15); color: #60a5fa; margin-left: auto;">📊 {{ latest.sector|title }}</span>
+                    {% endif %}
+                </div>
+                
+                <div class="row">
+                    {% for b in top_brands %}
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <div class="card h-100 p-3" style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="text-white m-0">{{ b.brand }}</h5>
+                                <span class="badge" style="background: rgba(139,92,246,0.2); color: #c084fc;">Bias: {{ b.get('bias_analysis', {}).get('llm_favorability', 'N/A') }}/10</span>
+                            </div>
+                            <p class="summary-clamp">
+                                {{ b.get('report', {}).get('executive_summary', 'No summary available.') }}
+                            </p>
+                            
+                            <!-- Sentiment Bar -->
+                            {% set sentiment = b.get('sentiment', {}) %}
+                            <div style="height: 6px; display: flex; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem; background: #333;">
+                                <div style="width: {{ sentiment.get('positive', 0) }}%; background: #4ade80;" title="Positive: {{ sentiment.get('positive', 0) }}%"></div>
+                                <div style="width: {{ sentiment.get('neutral', 0) }}%; background: #9ca3af;" title="Neutral: {{ sentiment.get('neutral', 0) }}%"></div>
+                                <div style="width: {{ sentiment.get('negative', 0) }}%; background: #f87171;" title="Negative: {{ sentiment.get('negative', 0) }}%"></div>
+                            </div>
+                            {% set gaps = b.get('bias_analysis', {}).get('visibility_gaps', []) %}
+                            {% set real_gaps = [] %}
+                            {% for gap in gaps %}
+                                {% if gap and 'abstract' not in gap|lower and 'Underrepresented' not in gap and gap|length > 5 %}
+                                    {% set _ = real_gaps.append(gap) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if real_gaps %}
+                            <div class="d-flex gap-1 flex-wrap mt-2">
+                                {% for gap in real_gaps %}
+                                    <span style="font-size: 0.65rem; background: rgba(248,113,113,0.1); color: #f87171; padding: 2px 6px; border-radius: 4px;">{{ gap | truncate(35) }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+</div>
+
+<script>
+    // Prepare Data for Chart.js
+    const runsRaw = {{ runs | tojson | safe }};
+    
+    if (runsRaw && runsRaw.length > 0) {
+        // Collect labels (dates)
+        const labels = runsRaw.map(r => r.date.substring(5, 10)); // Just MM-DD
+        
+        // Find all unique brands
+        const brandNames = [...new Set(runsRaw.flatMap(r => (r.brands || []).map(b => b.brand)))];
+        
+        const colors = [
+            '#4ade80', '#60a5fa', '#c084fc', '#f472b6', '#fbbf24', '#f87171', '#2dd4bf'
+        ];
+
+        const datasets = brandNames.map((brand, i) => {
+            // Get score for this brand for each run
+            const data = runsRaw.map(r => {
+                const b = (r.brands || []).find(x => x.brand === brand);
+                return b ? (b.report || {}).llmo_score || null : null;
+            });
+            
+            return {
+                label: brand,
+                data: data,
+                borderColor: colors[i % colors.length],
+                backgroundColor: colors[i % colors.length] + '20', // transparent
+                fill: true,
+                tension: 0.3, // smooth curves
+                borderWidth: 2,
+                pointRadius: 3,
+                pointHoverRadius: 6
+            };
+        });
+
+        const ctx = document.getElementById('timeSeriesChart');
+        if (ctx) {
+            new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    scales: {
+                        y: {
+                            min: 40,
+                            max: 100,
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#9ca3af' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#9ca3af' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#e5e7eb', usePointStyle: true, boxWidth: 8 }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(17,24,39,0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#e5e7eb',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 10
+                        }
+                    }
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}

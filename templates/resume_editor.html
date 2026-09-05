@@ -1,0 +1,856 @@
+{% extends "base.html" %}
+
+{% block title %}Resume Editor | Prashanth Kumar Kadasi{% endblock %}
+
+{% block content %}
+<style>
+    /* ===== Editor Styles ===== */
+    .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(30, 30, 45, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+        padding: 0.75rem 1rem;
+        margin: -1rem -0.75rem 1.5rem;
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    [data-theme="light"] .editor-toolbar {
+        background: rgba(245, 245, 250, 0.95);
+        border-bottom-color: rgba(102, 126, 234, 0.2);
+    }
+
+    .toolbar-group {
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+    }
+
+    .toolbar-separator {
+        width: 1px;
+        height: 28px;
+        background: rgba(255, 255, 255, 0.15);
+        margin: 0 0.5rem;
+    }
+
+    [data-theme="light"] .toolbar-separator {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .toolbar-btn {
+        padding: 0.4rem 0.85rem;
+        border-radius: 8px;
+        border: 1px solid rgba(102, 126, 234, 0.3);
+        background: rgba(102, 126, 234, 0.1);
+        color: #c0c0d0;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+    }
+
+    .toolbar-btn:hover {
+        background: rgba(102, 126, 234, 0.25);
+        border-color: #667eea;
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+    .toolbar-btn.primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-color: transparent;
+        color: #fff;
+    }
+
+    .toolbar-btn.primary:hover {
+        background: linear-gradient(135deg, #7b8ef5, #8b5cb8);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .toolbar-btn.success {
+        background: rgba(40, 167, 69, 0.15);
+        border-color: rgba(40, 167, 69, 0.4);
+        color: #5bd47b;
+    }
+
+    .toolbar-btn.success:hover {
+        background: rgba(40, 167, 69, 0.3);
+        border-color: #28a745;
+    }
+
+    .toolbar-btn.danger {
+        background: rgba(220, 53, 69, 0.1);
+        border-color: rgba(220, 53, 69, 0.3);
+        color: #e76f7a;
+    }
+
+    .toolbar-btn.danger:hover {
+        background: rgba(220, 53, 69, 0.25);
+    }
+
+    [data-theme="light"] .toolbar-btn {
+        color: #555;
+        background: rgba(102, 126, 234, 0.08);
+    }
+
+    [data-theme="light"] .toolbar-btn:hover {
+        color: #333;
+    }
+
+    /* Light mode text colors */
+    [data-theme="light"] .proj-name {
+        color: #222 !important;
+    }
+
+    [data-theme="light"] .proj-desc,
+    [data-theme="light"] .highlight-text,
+    [data-theme="light"] .skill-item .editable {
+        color: #444 !important;
+    }
+
+    [data-theme="light"] .editable:focus {
+        background: rgba(102, 126, 234, 0.08);
+    }
+
+    [data-theme="light"] .project-item {
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="light"] .remove-btn {
+        background: rgba(220, 53, 69, 0.1);
+    }
+
+    /* Editor Resume Styles */
+    .resume-editor {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .editor-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+    }
+
+    .section-header h4 {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    .add-btn {
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+        border: 1px dashed rgba(102, 126, 234, 0.4);
+        background: transparent;
+        color: #667eea;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: all 0.2s ease;
+    }
+
+    .add-btn:hover {
+        background: rgba(102, 126, 234, 0.15);
+        border-style: solid;
+    }
+
+    .editable {
+        outline: none;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        padding: 0.3rem 0.5rem;
+        transition: all 0.2s ease;
+        min-height: 1.5em;
+    }
+
+    .editable:hover {
+        border-color: rgba(102, 126, 234, 0.2);
+    }
+
+    .editable:focus {
+        border-color: #667eea;
+        background: rgba(102, 126, 234, 0.05);
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .highlight-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .highlight-item .editable {
+        flex: 1;
+    }
+
+    .remove-btn {
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+        border: none;
+        background: rgba(220, 53, 69, 0.15);
+        color: #e76f7a;
+        cursor: pointer;
+        font-size: 0.75rem;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        flex-shrink: 0;
+        margin-top: 0.35rem;
+    }
+
+    .highlight-item:hover .remove-btn {
+        opacity: 1;
+    }
+
+    .project-item {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 0.75rem;
+        margin-bottom: 0.5rem;
+        position: relative;
+        transition: border-color 0.2s ease;
+    }
+
+    .project-item:hover {
+        border-color: rgba(102, 126, 234, 0.2);
+    }
+
+    .project-item .remove-btn {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        opacity: 0;
+    }
+
+    .project-item:hover .remove-btn {
+        opacity: 1;
+    }
+
+    .project-row {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.3rem;
+    }
+
+    .project-row label {
+        font-size: 0.75rem;
+        color: #667eea;
+        min-width: 45px;
+        font-weight: 600;
+    }
+
+    .project-row .editable {
+        flex: 1;
+    }
+
+    .skill-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .skill-item .skill-label {
+        min-width: 140px;
+        font-weight: 600;
+        color: #667eea;
+        font-size: 0.9rem;
+        padding-top: 0.35rem;
+    }
+
+    .skill-item .editable {
+        flex: 1;
+    }
+
+    /* Contact info row */
+    .contact-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+    }
+
+    .contact-field {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .contact-field label {
+        font-size: 0.75rem;
+        color: #a0a0b0;
+        white-space: nowrap;
+    }
+
+    .contact-field .editable {
+        font-size: 0.9rem;
+    }
+
+    /* Toast notification */
+    .toast-notification {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        font-weight: 500;
+        font-size: 0.9rem;
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 9999;
+    }
+
+    .toast-notification.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    /* Print styles */
+    @media print {
+
+        .editor-toolbar,
+        .add-btn,
+        .remove-btn,
+        .navbar,
+        footer,
+        #network-canvas,
+        .theme-toggle,
+        .toolbar-separator {
+            display: none !important;
+        }
+
+        body {
+            background: white !important;
+            color: #222 !important;
+            font-size: 11pt;
+        }
+
+        .card {
+            border: 1px solid #ddd !important;
+            background: white !important;
+            break-inside: avoid;
+        }
+
+        .card-header {
+            background: #f5f5f5 !important;
+            color: #333 !important;
+            border-bottom: 1px solid #ddd !important;
+        }
+
+        .editable {
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .resume-editor {
+            max-width: 100%;
+        }
+
+        .highlight-item,
+        .project-item,
+        .skill-item {
+            break-inside: avoid;
+        }
+
+        h2,
+        h5,
+        strong {
+            color: #222 !important;
+        }
+
+        .hero-subtitle,
+        span[style*="color: #667eea"] {
+            color: #444 !important;
+            -webkit-print-color-adjust: exact;
+        }
+
+        a {
+            color: #333 !important;
+            text-decoration: none !important;
+        }
+
+        .contact-row {
+            color: #555 !important;
+        }
+    }
+</style>
+
+<div class="container">
+    <!-- Toolbar -->
+    <div class="editor-toolbar">
+        <div class="toolbar-group">
+            <a href="/resume" class="toolbar-btn">← Back to Resume</a>
+        </div>
+        <div class="toolbar-separator"></div>
+        <div class="toolbar-group">
+            <button class="toolbar-btn primary" onclick="downloadPDF()" title="Print/save as PDF">
+                📄 Download PDF
+            </button>
+            <button class="toolbar-btn success" onclick="downloadLaTeX()"
+                title="Download Overleaf-compatible .tex file">
+                📝 Download LaTeX
+            </button>
+            <button class="toolbar-btn" onclick="downloadJSON()" title="Export as JSON backup">
+                💾 Save JSON
+            </button>
+        </div>
+        <div class="toolbar-separator"></div>
+        <div class="toolbar-group">
+            <button class="toolbar-btn danger" onclick="resetAll()" title="Reset all changes">
+                🔄 Reset
+            </button>
+        </div>
+    </div>
+
+    <!-- Resume Editor Content -->
+    <div class="resume-editor">
+        <!-- Header -->
+        <div class="editor-section">
+            <h2 contenteditable="true" class="editable" id="resName">Prashanth Kumar Kadasi</h2>
+            <div class="contact-row">
+                <div class="contact-field">
+                    <label>📱</label>
+                    <span contenteditable="true" class="editable" id="resPhone">+91-9948311964</span>
+                </div>
+                <div class="contact-field">
+                    <label>📍</label>
+                    <span contenteditable="true" class="editable" id="resLocation">Hyderabad, Telangana, India</span>
+                </div>
+                <div class="contact-field">
+                    <label>✉️</label>
+                    <span contenteditable="true" class="editable" id="resEmail">kprsnt@live.com</span>
+                </div>
+                <div class="contact-field">
+                    <label>🌐</label>
+                    <span contenteditable="true" class="editable" id="resWebsite">kprsnt.in</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="editor-section">
+            <div class="card">
+                <div class="card-header">📋 Summary</div>
+                <div class="card-body">
+                    <p contenteditable="true" class="editable" id="resSummary">Data Analyst & AI Developer with hands-on
+                        experience in LLM fine-tuning, model deployment, prompt engineering, and lightweight on-device
+                        inference. Skilled in Python, SQL, data engineering, and building AI-powered applications with
+                        OpenAI, Gemini, HuggingFace, and custom fine-tuned models. Passionate about applying AI to
+                        real-world products, automation, and intelligent systems.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="editor-section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="section-header" style="margin:0;">
+                        <span>💼 Experience</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:0.75rem;">
+                        <div>
+                            <h5 contenteditable="true" class="editable" id="expCompany" style="margin-bottom:0;">{{
+                                experience.company }}</h5>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                        <span contenteditable="true" class="editable" style="font-weight:600; color:#667eea;"
+                            id="expRole">{{ experience.role }}</span>
+                        <span contenteditable="true" class="editable" style="color:#a0a0b0;" id="expPeriod">{{
+                            experience.period }}</span>
+                        <span contenteditable="true" class="editable" style="color:#a0a0b0;" id="expLocation">{{
+                            experience.location }}</span>
+                    </div>
+                    <div id="highlightsList">
+                        {% for highlight in experience.highlights %}
+                        <div class="highlight-item">
+                            <span style="color:#667eea; margin-top:0.35rem;">•</span>
+                            <span contenteditable="true" class="editable highlight-text" style="color:#c0c0d0;">{{
+                                highlight }}</span>
+                            <button class="remove-btn" onclick="removeItem(this)" title="Remove">✕</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="add-btn" onclick="addHighlight()">+ Add Point</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="editor-section">
+            <div class="card">
+                <div class="card-header">🛠️ Technical Skills</div>
+                <div class="card-body" id="skillsList">
+                    {% for category, items in skills.items() %}
+                    <div class="skill-item">
+                        <span contenteditable="true" class="editable skill-label">{{ category }}</span>
+                        <span contenteditable="true" class="editable" style="color:#c0c0d0;">{{ items }}</span>
+                        <button class="remove-btn" onclick="removeItem(this)" title="Remove"
+                            style="opacity:0;">✕</button>
+                    </div>
+                    {% endfor %}
+                    <button class="add-btn" onclick="addSkill()">+ Add Category</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Projects -->
+        <div class="editor-section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="section-header" style="margin:0;">
+                        <span>🚀 Portfolio Projects</span>
+                    </div>
+                </div>
+                <div class="card-body" id="projectsList">
+                    {% for project in projects %}
+                    <div class="project-item">
+                        <button class="remove-btn" onclick="removeItem(this)" title="Remove">✕</button>
+                        <div class="project-row">
+                            <label>Name</label>
+                            <span contenteditable="true" class="editable proj-name"
+                                style="font-weight:600; color:#fff;">{{ project.name }}</span>
+                        </div>
+                        <div class="project-row">
+                            <label>Tech</label>
+                            <span contenteditable="true" class="editable proj-tech"
+                                style="color:#667eea; font-size:0.9rem;">{{ project.tech }}</span>
+                        </div>
+                        <div class="project-row">
+                            <label>Desc</label>
+                            <span contenteditable="true" class="editable proj-desc" style="color:#a0a0b0;">{{
+                                project.desc }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <button class="add-btn" onclick="addProject()">+ Add Project</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="editor-section">
+            <div class="card">
+                <div class="card-header">🎓 Education</div>
+                <div class="card-body">
+                    <h5 contenteditable="true" class="editable" id="eduInstitution" style="margin-bottom: 0.25rem;">
+                        Anurag Group of Institutions</h5>
+                    <p contenteditable="true" class="editable" id="eduDegree" style="color: #a0a0b0; margin-bottom: 0;">
+                        M. Pharmacy - Pharmaceutical Analysis and Quality Assurance</p>
+                    <span contenteditable="true" class="editable" id="eduDetails"
+                        style="color: #667eea; font-size: 0.9rem;">JNTUH | May 2012</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-notification" id="toast"></div>
+
+{% raw %}
+<script>
+    // ===== Helper Functions =====
+    function showToast(msg) {
+        const toast = document.getElementById('toast');
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    function removeItem(btn) {
+        const item = btn.parentElement;
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(20px)';
+        item.style.transition = 'all 0.2s ease';
+        setTimeout(() => item.remove(), 200);
+    }
+
+    // ===== Add Items =====
+    function addHighlight() {
+        const list = document.getElementById('highlightsList');
+        const div = document.createElement('div');
+        div.className = 'highlight-item';
+        div.innerHTML = `
+            <span style="color:#667eea; margin-top:0.35rem;">•</span>
+            <span contenteditable="true" class="editable highlight-text" style="color:#c0c0d0;">New bullet point — click to edit</span>
+            <button class="remove-btn" onclick="removeItem(this)" title="Remove">✕</button>
+        `;
+        list.appendChild(div);
+        div.querySelector('.editable').focus();
+    }
+
+    function addProject() {
+        const list = document.getElementById('projectsList');
+        const btn = list.querySelector('.add-btn');
+        const div = document.createElement('div');
+        div.className = 'project-item';
+        div.innerHTML = `
+            <button class="remove-btn" onclick="removeItem(this)" title="Remove">✕</button>
+            <div class="project-row">
+                <label>Name</label>
+                <span contenteditable="true" class="editable proj-name" style="font-weight:600; color:#fff;">Project Name</span>
+            </div>
+            <div class="project-row">
+                <label>Tech</label>
+                <span contenteditable="true" class="editable proj-tech" style="color:#667eea; font-size:0.9rem;">Tech Stack</span>
+            </div>
+            <div class="project-row">
+                <label>Desc</label>
+                <span contenteditable="true" class="editable proj-desc" style="color:#a0a0b0;">Project description</span>
+            </div>
+        `;
+        list.insertBefore(div, btn);
+        div.querySelector('.proj-name').focus();
+    }
+
+    function addSkill() {
+        const list = document.getElementById('skillsList');
+        const btn = list.querySelector('.add-btn');
+        const div = document.createElement('div');
+        div.className = 'skill-item';
+        div.innerHTML = `
+            <span contenteditable="true" class="editable skill-label">Category</span>
+            <span contenteditable="true" class="editable" style="color:#c0c0d0;">Skills list</span>
+            <button class="remove-btn" onclick="removeItem(this)" title="Remove" style="opacity:0;">✕</button>
+        `;
+        list.insertBefore(div, btn);
+        div.querySelector('.skill-label').focus();
+    }
+
+    // ===== Collect Data =====
+    function collectResumeData() {
+        const data = {
+            name: document.getElementById('resName').textContent.trim(),
+            phone: document.getElementById('resPhone').textContent.trim(),
+            location: document.getElementById('resLocation').textContent.trim(),
+            email: document.getElementById('resEmail').textContent.trim(),
+            website: document.getElementById('resWebsite').textContent.trim(),
+            summary: document.getElementById('resSummary').textContent.trim(),
+            experience: {
+                company: document.getElementById('expCompany').textContent.trim(),
+                role: document.getElementById('expRole').textContent.trim(),
+                period: document.getElementById('expPeriod').textContent.trim(),
+                location: document.getElementById('expLocation').textContent.trim(),
+                highlights: [...document.querySelectorAll('.highlight-text')].map(el => el.textContent.trim())
+            },
+            skills: [...document.querySelectorAll('.skill-item')].map(item => ({
+                category: item.querySelector('.skill-label').textContent.trim(),
+                items: item.querySelectorAll('.editable')[1].textContent.trim()
+            })),
+            projects: [...document.querySelectorAll('.project-item')].map(item => ({
+                name: item.querySelector('.proj-name').textContent.trim(),
+                tech: item.querySelector('.proj-tech').textContent.trim(),
+                desc: item.querySelector('.proj-desc').textContent.trim()
+            })),
+            education: {
+                institution: document.getElementById('eduInstitution').textContent.trim(),
+                degree: document.getElementById('eduDegree').textContent.trim(),
+                details: document.getElementById('eduDetails').textContent.trim()
+            }
+        };
+        return data;
+    }
+
+    // ===== Download PDF =====
+    function downloadPDF() {
+        showToast('📄 Opening print dialog...');
+        window.print();
+    }
+
+    // ===== Download JSON =====
+    function downloadJSON() {
+        const data = collectResumeData();
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'resume_prashanth_kumar.json';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('💾 JSON exported!');
+    }
+
+    // ===== Download LaTeX =====
+    function downloadLaTeX() {
+        const d = collectResumeData();
+
+        // Escape LaTeX special characters
+        function esc(str) {
+            return str
+                .replace(/\\/g, '\\textbackslash{}')
+                .replace(/[&%$#_{}]/g, m => '\\' + m)
+                .replace(/~/g, '\\textasciitilde{}')
+                .replace(/\^/g, '\\textasciicircum{}');
+        }
+
+        let tex = `%-------------------------
+% Resume in LaTeX
+% Based on Overleaf template
+%-------------------------
+\\documentclass[letterpaper,11pt]{article}
+
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{latexsym}
+\\usepackage[empty]{fullpage}
+\\usepackage{titlesec}
+\\usepackage[usenames,dvipsnames]{color}
+\\usepackage{enumitem}
+\\usepackage[hidelinks]{hyperref}
+\\usepackage{fancyhdr}
+\\usepackage[english]{babel}
+
+\\pagestyle{fancy}
+\\fancyhf{}
+\\fancyfoot{}
+\\renewcommand{\\headrulewidth}{0pt}
+\\renewcommand{\\footrulewidth}{0pt}
+
+% Adjust margins
+\\addtolength{\\oddsidemargin}{-0.5in}
+\\addtolength{\\evensidemargin}{-0.5in}
+\\addtolength{\\textwidth}{1in}
+\\addtolength{\\topmargin}{-0.5in}
+\\addtolength{\\textheight}{1.0in}
+
+\\urlstyle{same}
+\\raggedbottom
+\\raggedright
+\\setlength{\\tabcolsep}{0in}
+
+% Section formatting
+\\titleformat{\\section}{
+  \\vspace{-4pt}\\scshape\\raggedright\\large
+}{}{0em}{}[\\color{black}\\titlerule \\vspace{-5pt}]
+
+% Custom commands
+\\newcommand{\\resumeItem}[1]{\\item\\small{#1 \\vspace{-2pt}}}
+\\newcommand{\\resumeSubheading}[4]{
+  \\vspace{-2pt}\\item
+    \\begin{tabular*}{0.97\\textwidth}[t]{l@{\\extracolsep{\\fill}}r}
+      \\textbf{#1} & #2 \\\\
+      \\textit{\\small#3} & \\textit{\\small #4} \\\\
+    \\end{tabular*}\\vspace{-7pt}
+}
+\\newcommand{\\resumeProjectHeading}[2]{
+    \\item
+    \\begin{tabular*}{0.97\\textwidth}{l@{\\extracolsep{\\fill}}r}
+      \\small#1 & #2 \\\\
+    \\end{tabular*}\\vspace{-7pt}
+}
+\\renewcommand\\labelitemii{$\\vcenter{\\hbox{\\tiny$\\bullet$}}$}
+\\newcommand{\\resumeSubHeadingListStart}{\\begin{itemize}[leftmargin=0.15in, label={}]}
+\\newcommand{\\resumeSubHeadingListEnd}{\\end{itemize}}
+\\newcommand{\\resumeItemListStart}{\\begin{itemize}}
+\\newcommand{\\resumeItemListEnd}{\\end{itemize}\\vspace{-5pt}}
+
+\\begin{document}
+
+%----------HEADING----------
+\\begin{center}
+    \\textbf{\\Huge \\scshape ${esc(d.name)}} \\\\ \\vspace{1pt}
+    \\small ${esc(d.phone)} $|$
+    ${esc(d.location)} $|$
+    \\href{mailto:${esc(d.email)}}{\\underline{${esc(d.email)}}} $|$
+    \\href{https://${esc(d.website)}}{\\underline{${esc(d.website)}}} $|$
+    \\href{https://www.linkedin.com/in/prashanth-kumar-kadasi-b5281765/}{\\underline{LinkedIn}} $|$
+    \\href{https://github.com/kprsnt2}{\\underline{GitHub}}
+\\end{center}
+
+%-----------SUMMARY-----------
+\\section{Summary}
+  ${esc(d.summary)}
+
+%-----------EXPERIENCE-----------
+\\section{Experience}
+  \\resumeSubHeadingListStart
+    \\resumeSubheading
+      {${esc(d.experience.company)}}{${esc(d.experience.period)}}
+      {${esc(d.experience.role)}}{${esc(d.experience.location)}}
+      \\resumeItemListStart
+`;
+        d.experience.highlights.forEach(h => {
+            tex += `        \\resumeItem{${esc(h)}}\n`;
+        });
+
+        tex += `      \\resumeItemListEnd
+  \\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\\section{Portfolio Projects}
+    \\resumeSubHeadingListStart
+`;
+        d.projects.forEach(p => {
+            tex += `      \\resumeProjectHeading
+          {\\textbf{${esc(p.name)}} $|$ \\emph{\\small ${esc(p.tech)}}}{}\n`;
+            tex += `          \\resumeItemListStart\n`;
+            tex += `            \\resumeItem{${esc(p.desc)}}\n`;
+            tex += `          \\resumeItemListEnd\n`;
+        });
+
+        tex += `    \\resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\\section{Technical Skills}
+ \\begin{itemize}[leftmargin=0.15in, label={}]
+    \\small{\\item{
+`;
+        d.skills.forEach((s, i) => {
+            tex += `     \\textbf{${esc(s.category)}}{: ${esc(s.items)}}`;
+            tex += i < d.skills.length - 1 ? ' \\\\\n' : '\n';
+        });
+
+        tex += `    }}
+ \\end{itemize}
+
+%-----------EDUCATION-----------
+\\section{Education}
+  \\resumeSubHeadingListStart
+    \\resumeSubheading
+      {${esc(d.education.institution)}}{${esc(d.education.details)}}
+      {${esc(d.education.degree)}}{}
+  \\resumeSubHeadingListEnd
+
+\\end{document}
+`;
+
+        const blob = new Blob([tex], { type: 'application/x-tex' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'resume_prashanth_kumar.tex';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('📝 LaTeX file exported!');
+    }
+
+    // ===== Reset =====
+    function resetAll() {
+        if (confirm('Reset all changes? This will reload the page.')) {
+            window.location.reload();
+        }
+    }
+</script>
+{% endraw %}
+{% endblock %}

@@ -1,0 +1,65 @@
+{
+    "compound_name": "Remdesivir",
+    "pubchem_data": {
+        "CID": 121304016,
+        "MolecularFormula": "C27H35N6O8P",
+        "MolecularWeight": "602.6",
+        "ConnectivitySMILES": "CCC(CC)COC(=O)C(C)NP(=O)(OCC1C(C(C(O1)(C#N)C2=CC=C3N2N=CN=C3N)O)O)OC4=CC=CC=C4",
+        "XLogP": 1.9,
+        "Complexity": 1010
+    },
+    "fda_data": "10. DRUG INTERACTIONS Due to potential antagonism based on data from cell culture experiments, concomitant use of VEKLURY with chloroquine phosphate or hydroxychloroquine sulfate is not recommended [see Warnings and Precautions (5.3) , Microbiology/Resistance Information (15) ] . Clinical drug-drug interaction studies have not been performed with VEKLURY. In vitro, remdesivir is a substrate for drug metabolizing enzyme CYP3A4, and is a substrate for Organic Anion Transporting Polypeptides 1B1 (O...",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 4,
+            "notes": "Good oral bioavailability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding."
+        },
+        "metabolism": {
+            "score": 2,
+            "notes": "Extensive hepatic metabolism (CYP3A4)."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Renal clearance is primary."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Hepatotoxicity risk at high doses."
+        },
+        "overall_admet_score": 3.2
+    },
+    "safety_review": {
+        "absorption": {
+            "score": 4,
+            "notes": "Good oral bioavailability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding."
+        },
+        "metabolism": {
+            "score": 2,
+            "notes": "Extensive hepatic metabolism (CYP3A4)."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Renal clearance is primary."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Hepatotoxicity risk at high doses."
+        },
+        "overall_admet_score": 3.2
+    },
+    "timestamp": "2026-04-30T06:24:06.373966"
+}

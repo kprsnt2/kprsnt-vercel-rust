@@ -1,0 +1,513 @@
+{% extends "base.html" %}
+
+{% block title %}Docs | Prashanth Kumar Kadasi{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="row mb-5 mt-4">
+    <div class="col-12 text-center">
+        <div class="docs-badge mb-3">
+            <span class="badge-dot"></span>
+            <span>Documentation</span>
+        </div>
+        <h1 class="display-4 mb-3" style="font-weight: 800; letter-spacing: -2px;">
+            How This <span class="gradient-text">Site Works</span>
+        </h1>
+        <p class="lead mx-auto" style="max-width: 620px; color: var(--text-secondary);">
+            A fully AI-automated portfolio powered by Gemini, GitHub Actions, and Vercel. Here's everything under the hood.
+        </p>
+    </div>
+</div>
+
+<!-- Tech Stack -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="docs-section">
+            <div class="docs-section-header">
+                <span class="section-icon"><i class="fas fa-layer-group"></i></span>
+                <h3>Tech Stack</h3>
+            </div>
+            <p class="docs-desc">This portfolio is built with simplicity and AI at its core — no React, no build step.</p>
+            <div class="stack-grid">
+                <div class="stack-item">
+                    <div class="stack-icon" style="color: #3776ab;"><i class="fab fa-python"></i></div>
+                    <div><strong>Flask</strong><span>Backend + routing</span></div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon" style="color: #e44d26;"><i class="fab fa-html5"></i></div>
+                    <div><strong>Jinja2</strong><span>Server-side templates</span></div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon" style="color: #7952b3;"><i class="fab fa-bootstrap"></i></div>
+                    <div><strong>Bootstrap</strong><span>Darkly + custom CSS</span></div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon" style="color: #000;"><i class="fas fa-triangle-exclamation"></i></div>
+                    <div><strong>Vercel</strong><span>Hosting + serverless</span></div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon" style="color: #667eea;"><i class="fas fa-brain"></i></div>
+                    <div><strong>Gemini 2.5</strong><span>AI backbone</span></div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon" style="color: #10b981;"><i class="fas fa-envelope"></i></div>
+                    <div><strong>Resend</strong><span>Email delivery</span></div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon" style="color: #f97316;"><i class="fab fa-github"></i></div>
+                    <div><strong>Actions</strong><span>CI/CD automation</span></div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon" style="color: #a855f7;"><i class="fas fa-palette"></i></div>
+                    <div><strong>shadcn</strong><span>Design system</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI Chat Widget -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="docs-section">
+            <div class="docs-section-header">
+                <span class="section-icon"><i class="fas fa-comment-dots"></i></span>
+                <h3>RashBot — AI Chat Widget</h3>
+            </div>
+            <p class="docs-desc">A floating chat widget on every page. Ask it anything about Prashanth's work, projects, or skills.</p>
+            <div class="feature-list">
+                <div class="feature-row">
+                    <span class="feature-bullet">RAG</span>
+                    <span>Dynamically loads <code>resume.json</code> as context for every query</span>
+                </div>
+                <div class="feature-row">
+                    <span class="feature-bullet">Memory</span>
+                    <span>Maintains the last 8 conversation turns for follow-up questions</span>
+                </div>
+                <div class="feature-row">
+                    <span class="feature-bullet">Tools</span>
+                    <span>Can execute functions — e.g., "Send me your resume" triggers an actual email via Resend</span>
+                </div>
+                <div class="feature-row">
+                    <span class="feature-bullet">Model</span>
+                    <span>Gemini 2.5 Flash with automatic function calling enabled</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- API Endpoints -->
+<div class="row g-4 mb-5">
+    <!-- Chat API -->
+    <div class="col-lg-6">
+        <div class="docs-section h-100">
+            <div class="docs-section-header">
+                <span class="section-icon"><i class="fas fa-code"></i></span>
+                <h3>/api/chat_agent</h3>
+                <span class="method-pill">POST</span>
+            </div>
+            <p class="docs-desc">Casual conversational AI — the same engine behind RashBot. Supports function calling.</p>
+            
+            <h6 class="docs-label">Request</h6>
+            <div class="code-block">
+<pre><code>{
+  <span class="ck">"message"</span>: <span class="ct">string</span> <span class="cr">(required)</span>,
+  <span class="ck">"history"</span>:  <span class="ct">[{"role": "user", "content": "..."}]</span>,
+  <span class="ck">"send_email"</span>: <span class="ct">boolean</span> <span class="cd">(default: false)</span>
+}</code></pre>
+            </div>
+
+            <h6 class="docs-label mt-3">cURL</h6>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+<pre><code>curl -X POST https://kprsnt.in/api/chat_agent \
+  -H "Content-Type: application/json" \
+  -d '{"message": "What projects has Prashanth built?"}'</code></pre>
+            </div>
+            
+            <h6 class="docs-label mt-3"><i class="fas fa-play-circle"></i> Try It</h6>
+            <div class="input-group mb-2">
+                <input type="text" class="form-control docs-input" id="chat-test-input" placeholder="Ask anything...">
+                <button class="btn btn-primary docs-btn" onclick="testChatApi()" id="chat-test-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="response-box">
+                <div id="chat-test-response" class="response-content">
+                    <span class="response-ph"><i class="fas fa-terminal"></i> Response appears here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interview API -->
+    <div class="col-lg-6">
+        <div class="docs-section h-100">
+            <div class="docs-section-header">
+                <span class="section-icon"><i class="fas fa-user-tie"></i></span>
+                <h3>/api/interview</h3>
+                <span class="method-pill">POST</span>
+            </div>
+            <p class="docs-desc">Formal interview proxy — answers HR screening questions, discusses salary, and auto-sends email replies.</p>
+            
+            <h6 class="docs-label">Request</h6>
+            <div class="code-block">
+<pre><code>{
+  <span class="ck">"message"</span>: <span class="ct">string</span> <span class="cr">(required)</span>,
+  <span class="ck">"from_email"</span>: <span class="ct">string</span> <span class="cr">(required for email)</span>,
+  <span class="ck">"send_email"</span>: <span class="ct">boolean</span> <span class="cd">(default: true)</span>
+}</code></pre>
+            </div>
+
+            <h6 class="docs-label mt-3">cURL</h6>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+<pre><code>curl -X POST https://kprsnt.in/api/interview \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Tell me about your AI experience",
+       "send_email": false}'</code></pre>
+            </div>
+            
+            <h6 class="docs-label mt-3"><i class="fas fa-play-circle"></i> Try It</h6>
+            <div class="input-group mb-2">
+                <input type="text" class="form-control docs-input" id="interview-test-input" placeholder="Ask an interview question...">
+                <button class="btn btn-success docs-btn" onclick="testInterviewApi()" id="interview-test-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="response-box">
+                <div id="interview-test-response" class="response-content">
+                    <span class="response-ph"><i class="fas fa-terminal"></i> Response appears here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Automation Section -->
+<div class="row g-4 mb-5">
+    <!-- Auto Blog -->
+    <div class="col-lg-3">
+        <div class="docs-section h-100">
+            <div class="docs-section-header">
+                <span class="section-icon"><i class="fas fa-pen-nib"></i></span>
+                <h3>Auto Blog</h3>
+            </div>
+            <p class="docs-desc">Blog posts are AI-generated via GitHub Actions.</p>
+            <div class="pipeline">
+                <div class="pipe-step"><code>blog_drafts/</code><span>Write a YAML draft</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>GitHub Actions</code><span>Triggers on push</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>Anthropic / Gemini</code><span>Expands draft → full post</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>blog_data/*.json</code><span>Auto-committed & deployed</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Job Finder -->
+    <div class="col-lg-3">
+        <div class="docs-section h-100">
+            <div class="docs-section-header">
+                <span class="section-icon"><i class="fas fa-briefcase"></i></span>
+                <h3>AI Job Finder</h3>
+            </div>
+            <p class="docs-desc">Weekly cron job that finds matching positions using AI.</p>
+            <div class="pipeline">
+                <div class="pipe-step"><code>Every Saturday</code><span>Scheduled cron trigger</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>Anthropic + Gemini</code><span>Scrape & match jobs</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>Scoring Engine</code><span>Tier 1/2 + match %</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>job_data/*.json</code><span>Cover letters generated</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Plotter -->
+    <div class="col-lg-3">
+        <div class="docs-section h-100">
+            <div class="docs-section-header">
+                <span class="section-icon"><i class="fas fa-chart-line"></i></span>
+                <h3>Data Plotter</h3>
+            </div>
+            <p class="docs-desc">Interactive AI-powered data visualization tool.</p>
+            <div class="pipeline">
+                <div class="pipe-step"><code>Paste CSV / data</code><span>Any tabular data</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>Gemini AI</code><span>Generates Chart.js code</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>Live Render</code><span>Interactive chart output</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>Export</code><span>Download as PNG</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Multi-Agent Ecosystem -->
+    <div class="col-lg-3">
+        <div class="docs-section h-100">
+            <div class="docs-section-header">
+                <span class="section-icon"><i class="fas fa-network-wired"></i></span>
+                <h3>Ecosystem</h3>
+            </div>
+            <p class="docs-desc">Multi-agent AI pipeline for the /ecosystem dashboard.</p>
+            <div class="pipeline">
+                <div class="pipe-step"><code>6 AI Agents</code><span>Run in parallel</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>Orchestrator</code><span>Aggregates data</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>Dashboard Gen</code><span>Builds HTML UI</span></div>
+                <div class="pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pipe-step"><code>/ecosystem</code><span>Live Route</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Response Schema -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="docs-section">
+            <div class="docs-section-header">
+                <span class="section-icon"><i class="fas fa-reply"></i></span>
+                <h3>API Response Format</h3>
+            </div>
+            <p class="docs-desc">Both API endpoints return this JSON structure:</p>
+            <div class="code-block">
+<pre><code>{
+  <span class="ck">"response"</span>: <span class="ct">string</span>  <span class="cc">// AI-generated answer</span>,
+  <span class="ck">"email_sent"</span>: <span class="ct">boolean</span> <span class="cc">// Whether email was dispatched</span>,
+  <span class="ck">"from"</span>: <span class="ct">string</span>  <span class="cc">// Sender email or "N/A"</span>
+}</code></pre>
+            </div>
+            <div class="status-row mt-3">
+                <div class="status-chip s-ok"><span>200</span> Success</div>
+                <div class="status-chip s-warn"><span>400</span> Missing message</div>
+                <div class="status-chip s-err"><span>500</span> Server error</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.docs-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 20px;
+    background: rgba(102, 126, 234, 0.08);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    color: #818cf8; font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+}
+.badge-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #22c55e;
+    animation: blink-dot 2s ease-in-out infinite;
+}
+@keyframes blink-dot {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+}
+
+/* Docs Section */
+.docs-section {
+    background: rgba(12, 12, 18, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px; padding: 28px;
+    transition: border-color 0.3s ease;
+}
+.docs-section:hover { border-color: rgba(102, 126, 234, 0.2); }
+.docs-section-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+}
+.docs-section-header h3 {
+    font-size: 1.15rem !important; font-weight: 700 !important;
+    margin: 0 !important; color: #fafafa !important;
+}
+.section-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(102, 126, 234, 0.12);
+    display: flex; align-items: center; justify-content: center;
+    color: #818cf8; font-size: 0.95rem; flex-shrink: 0;
+}
+.method-pill {
+    margin-left: auto; padding: 3px 10px; border-radius: 6px;
+    background: rgba(102, 126, 234, 0.15); color: #818cf8;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+}
+.docs-desc {
+    color: #71717a !important; font-size: 0.88rem !important; margin-bottom: 16px !important;
+}
+
+/* Stack Grid */
+.stack-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+}
+.stack-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px; border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.stack-icon { font-size: 1.2rem; width: 28px; text-align: center; }
+.stack-item div { display: flex; flex-direction: column; }
+.stack-item strong { font-size: 0.82rem; color: #e4e4e7; }
+.stack-item span { font-size: 0.68rem; color: #52525b; }
+
+/* Feature List */
+.feature-list { display: flex; flex-direction: column; gap: 8px; }
+.feature-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px; border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    font-size: 0.85rem;
+}
+.feature-bullet {
+    padding: 2px 8px; border-radius: 4px;
+    background: rgba(102, 126, 234, 0.12);
+    color: #818cf8; font-size: 0.7rem; font-weight: 700;
+    flex-shrink: 0; min-width: 52px; text-align: center;
+}
+.feature-row span { color: #a1a1aa; }
+.feature-row code { color: #818cf8; background: rgba(102, 126, 234, 0.08); padding: 1px 5px; border-radius: 3px; font-size: 0.82rem; }
+
+/* Labels */
+.docs-label {
+    color: #52525b; font-size: 0.7rem !important;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 6px !important;
+}
+
+/* Code Block */
+.code-block {
+    position: relative; background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px; overflow: hidden;
+}
+.code-block pre { margin: 0; padding: 14px; font-size: 0.8rem; line-height: 1.5; color: #a1a1aa; overflow-x: auto; }
+.code-block .ck { color: #7dd3fc; }
+.code-block .ct { color: #86efac; }
+.code-block .cr { color: #fca5a5; font-size: 0.72rem; }
+.code-block .cd { color: #52525b; font-size: 0.72rem; }
+.code-block .cc { color: #3f3f46; font-style: italic; }
+.copy-btn {
+    position: absolute; top: 8px; right: 8px;
+    background: rgba(255, 255, 255, 0.05); border: none;
+    color: #52525b; border-radius: 6px;
+    padding: 4px 8px; cursor: pointer; font-size: 0.72rem;
+    transition: all 0.2s;
+}
+.copy-btn:hover { background: rgba(102, 126, 234, 0.2); color: #818cf8; }
+
+/* Tester */
+.docs-input {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    color: #fafafa !important; border-radius: 8px 0 0 8px !important;
+    font-size: 0.85rem;
+}
+.docs-input::placeholder { color: #3f3f46 !important; }
+.docs-input:focus { border-color: rgba(102, 126, 234, 0.4) !important; box-shadow: none !important; }
+.docs-btn { border-radius: 0 8px 8px 0 !important; padding: 8px 16px; }
+.docs-btn:disabled { opacity: 0.4; }
+
+.response-box {
+    background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px; min-height: 80px; max-height: 300px; overflow-y: auto;
+    scrollbar-width: thin; scrollbar-color: rgba(102, 126, 234, 0.2) transparent;
+}
+.response-content {
+    padding: 14px; font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; line-height: 1.5; color: #a1a1aa;
+    white-space: pre-wrap; word-break: break-word;
+}
+.response-ph { color: #27272a; font-style: italic; display: flex; align-items: center; gap: 8px; }
+
+/* Pipeline */
+.pipeline { display: flex; flex-direction: column; align-items: center; gap: 0; }
+.pipe-step {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 10px 16px; border-radius: 8px; width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04); text-align: center;
+}
+.pipe-step code { color: #818cf8; font-size: 0.82rem; font-weight: 600; }
+.pipe-step span { color: #52525b; font-size: 0.7rem; }
+.pipe-arrow { color: #27272a; font-size: 0.7rem; padding: 2px 0; }
+
+/* Status Chips */
+.status-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.status-chip {
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 6px;
+    font-size: 0.78rem;
+}
+.status-chip span { font-family: monospace; font-weight: 700; }
+.s-ok { background: rgba(34, 197, 94, 0.06); border: 1px solid rgba(34, 197, 94, 0.15); color: #4ade80; }
+.s-warn { background: rgba(250, 204, 21, 0.06); border: 1px solid rgba(250, 204, 21, 0.15); color: #fde047; }
+.s-err { background: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.15); color: #f87171; }
+
+/* Loading */
+.ldots { display: inline-flex; gap: 3px; }
+.ldots span { width: 5px; height: 5px; border-radius: 50%; background: #667eea; animation: ldb 1.2s infinite ease-in-out; }
+.ldots span:nth-child(2) { animation-delay: 0.2s; }
+.ldots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes ldb { 0%,80%,100%{transform:translateY(0);opacity:.3} 40%{transform:translateY(-5px);opacity:1} }
+
+@media (max-width: 768px) {
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+    .status-row { flex-direction: column; }
+}
+</style>
+
+<script>
+function copyCode(btn) {
+    const code = btn.parentElement.querySelector('code').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i>';
+        btn.style.color = '#22c55e';
+        setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i>'; btn.style.color = ''; }, 2000);
+    });
+}
+
+async function testChatApi() {
+    const input = document.getElementById('chat-test-input').value || "Hello!";
+    const box = document.getElementById('chat-test-response');
+    const btn = document.getElementById('chat-test-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="ldots"><span></span><span></span><span></span></span>';
+    box.innerHTML = '<span class="ldots"><span></span><span></span><span></span></span> <span style="color:#3f3f46;margin-left:6px">Querying Gemini...</span>';
+    try {
+        const r = await fetch('/api/chat_agent', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message:input,send_email:false}) });
+        if (!r.ok) { box.innerHTML = `<span style="color:#f87171">✗ HTTP ${r.status}</span>`; return; }
+        const d = await r.json();
+        box.innerHTML = JSON.stringify(d,null,2).replace(/"([^"]+)":/g,'"<span style="color:#7dd3fc">$1</span>":').replace(/: "([^"]*)"/g,': "<span style="color:#86efac">$1</span>"').replace(/: (true|false)/g,': <span style="color:#fde047">$1</span>');
+    } catch(e) { box.innerHTML = `<span style="color:#f87171">✗ ${e.message}</span>`; }
+    finally { btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i>'; }
+}
+
+async function testInterviewApi() {
+    const input = document.getElementById('interview-test-input').value || "What is your experience?";
+    const box = document.getElementById('interview-test-response');
+    const btn = document.getElementById('interview-test-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="ldots"><span></span><span></span><span></span></span>';
+    box.innerHTML = '<span class="ldots"><span></span><span></span><span></span></span> <span style="color:#3f3f46;margin-left:6px">Querying Gemini...</span>';
+    try {
+        const r = await fetch('/api/interview', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message:input,send_email:false,from_email:"playground@kprsnt.in",subject:"Docs Test"}) });
+        if (!r.ok) { box.innerHTML = `<span style="color:#f87171">✗ HTTP ${r.status}</span>`; return; }
+        const d = await r.json();
+        box.innerHTML = JSON.stringify(d,null,2).replace(/"([^"]+)":/g,'"<span style="color:#7dd3fc">$1</span>":').replace(/: "([^"]*)"/g,': "<span style="color:#86efac">$1</span>"').replace(/: (true|false)/g,': <span style="color:#fde047">$1</span>');
+    } catch(e) { box.innerHTML = `<span style="color:#f87171">✗ ${e.message}</span>`; }
+    finally { btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i>'; }
+}
+</script>
+{% endblock %}

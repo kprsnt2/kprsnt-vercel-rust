@@ -1,0 +1,65 @@
+{
+    "compound_name": "Osimertinib",
+    "pubchem_data": {
+        "CID": 71496458,
+        "MolecularFormula": "C28H33N7O2",
+        "MolecularWeight": "499.6",
+        "ConnectivitySMILES": "CN1C=C(C2=CC=CC=C21)C3=NC(=NC=C3)NC4=C(C=C(C(=C4)NC(=O)C=C)N(C)CCN(C)C)OC",
+        "XLogP": 3.7,
+        "Complexity": 752
+    },
+    "fda_data": "7 DRUG INTERACTIONS Strong CYP3A Inducers : Avoid concomitant use. If not possible, increase TAGRISSO to 160 mg daily in patients receiving a strong CYP3A4 inducer. ( 2.5 , 7.1 ) 7.1 Effect of Other Drugs on Osimertinib Strong CYP3A Inducers Co-administering TAGRISSO with a strong CYP3A4 inducer decreased the exposure of osimertinib compared to administering TAGRISSO alone [see Clinical Pharmacology (12.3) ] . Decreased osimertinib exposure may lead to reduced efficacy. Avoid co-administering TA...",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 4,
+            "notes": "Good oral bioavailability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding."
+        },
+        "metabolism": {
+            "score": 2,
+            "notes": "Extensive hepatic metabolism (CYP3A4)."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Renal clearance is primary."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Hepatotoxicity risk at high doses."
+        },
+        "overall_admet_score": 3.2
+    },
+    "safety_review": {
+        "absorption": {
+            "score": 4,
+            "notes": "Good oral bioavailability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding."
+        },
+        "metabolism": {
+            "score": 2,
+            "notes": "Extensive hepatic metabolism (CYP3A4)."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Renal clearance is primary."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Hepatotoxicity risk at high doses."
+        },
+        "overall_admet_score": 3.2
+    },
+    "timestamp": "2026-04-18T05:39:25.056414"
+}

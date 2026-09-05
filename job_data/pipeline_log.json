@@ -1,0 +1,382 @@
+[
+  {
+    "date": "2026-04-07",
+    "total_jobs": 25,
+    "top_matches": 21,
+    "avg_score": 3.96,
+    "grade_a": 15,
+    "duration_seconds": 0,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-03-31",
+    "total_jobs": 25,
+    "top_matches": 18,
+    "avg_score": 3.69,
+    "grade_a": 8,
+    "duration_seconds": 0,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-08",
+    "total_jobs": 20,
+    "top_matches": 11,
+    "avg_score": 3.48,
+    "grade_a": 2,
+    "duration_seconds": 214.2,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-09",
+    "total_jobs": 20,
+    "top_matches": 6,
+    "avg_score": 3.23,
+    "grade_a": 1,
+    "duration_seconds": 204.8,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-10",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.12,
+    "grade_a": 0,
+    "duration_seconds": 228.3,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-11",
+    "total_jobs": 20,
+    "top_matches": 2,
+    "avg_score": 3.09,
+    "grade_a": 0,
+    "duration_seconds": 214.8,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-12",
+    "total_jobs": 20,
+    "top_matches": 5,
+    "avg_score": 3.17,
+    "grade_a": 0,
+    "duration_seconds": 223.7,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-13",
+    "total_jobs": 20,
+    "top_matches": 4,
+    "avg_score": 3.24,
+    "grade_a": 0,
+    "duration_seconds": 248.0,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-14",
+    "total_jobs": 20,
+    "top_matches": 4,
+    "avg_score": 3.15,
+    "grade_a": 1,
+    "duration_seconds": 190.2,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-15",
+    "total_jobs": 19,
+    "top_matches": 3,
+    "avg_score": 3.21,
+    "grade_a": 0,
+    "duration_seconds": 210.2,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-16",
+    "total_jobs": 20,
+    "top_matches": 4,
+    "avg_score": 3.15,
+    "grade_a": 0,
+    "duration_seconds": 216.1,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-17",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.2,
+    "grade_a": 1,
+    "duration_seconds": 216.1,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-18",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.2,
+    "grade_a": 1,
+    "duration_seconds": 11.0,
+    "total_tokens": 0,
+    "errors": 4
+  },
+  {
+    "date": "2026-04-19",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.2,
+    "grade_a": 1,
+    "duration_seconds": 11.8,
+    "total_tokens": 0,
+    "errors": 4
+  },
+  {
+    "date": "2026-04-20",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.13,
+    "grade_a": 0,
+    "duration_seconds": 243.8,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-21",
+    "total_jobs": 15,
+    "top_matches": 3,
+    "avg_score": 3.23,
+    "grade_a": 0,
+    "duration_seconds": 170.4,
+    "total_tokens": 0,
+    "errors": 1
+  },
+  {
+    "date": "2026-04-22",
+    "total_jobs": 20,
+    "top_matches": 4,
+    "avg_score": 3.17,
+    "grade_a": 0,
+    "duration_seconds": 243.7,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-23",
+    "total_jobs": 20,
+    "top_matches": 4,
+    "avg_score": 3.2,
+    "grade_a": 0,
+    "duration_seconds": 251.7,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-24",
+    "total_jobs": 20,
+    "top_matches": 4,
+    "avg_score": 3.24,
+    "grade_a": 0,
+    "duration_seconds": 227.9,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-25",
+    "total_jobs": 20,
+    "top_matches": 8,
+    "avg_score": 3.31,
+    "grade_a": 0,
+    "duration_seconds": 196.4,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-26",
+    "total_jobs": 20,
+    "top_matches": 7,
+    "avg_score": 3.23,
+    "grade_a": 0,
+    "duration_seconds": 185.7,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-27",
+    "total_jobs": 20,
+    "top_matches": 5,
+    "avg_score": 3.16,
+    "grade_a": 0,
+    "duration_seconds": 236.8,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-28",
+    "total_jobs": 20,
+    "top_matches": 4,
+    "avg_score": 3.21,
+    "grade_a": 0,
+    "duration_seconds": 233.3,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-29",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.17,
+    "grade_a": 0,
+    "duration_seconds": 224.0,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-04-30",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.17,
+    "grade_a": 0,
+    "duration_seconds": 14.0,
+    "total_tokens": 0,
+    "errors": 4
+  },
+  {
+    "date": "2026-05-01",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.17,
+    "grade_a": 0,
+    "duration_seconds": 11.5,
+    "total_tokens": 0,
+    "errors": 4
+  },
+  {
+    "date": "2026-05-02",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.11,
+    "grade_a": 0,
+    "duration_seconds": 186.2,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-03",
+    "total_jobs": 20,
+    "top_matches": 4,
+    "avg_score": 3.14,
+    "grade_a": 0,
+    "duration_seconds": 232.9,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-04",
+    "total_jobs": 19,
+    "top_matches": 1,
+    "avg_score": 3.08,
+    "grade_a": 0,
+    "duration_seconds": 206.1,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-05",
+    "total_jobs": 19,
+    "top_matches": 3,
+    "avg_score": 3.14,
+    "grade_a": 0,
+    "duration_seconds": 254.7,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-06",
+    "total_jobs": 20,
+    "top_matches": 2,
+    "avg_score": 3.08,
+    "grade_a": 0,
+    "duration_seconds": 231.4,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-07",
+    "total_jobs": 20,
+    "top_matches": 6,
+    "avg_score": 3.17,
+    "grade_a": 0,
+    "duration_seconds": 224.6,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-08",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.09,
+    "grade_a": 0,
+    "duration_seconds": 234.4,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-09",
+    "total_jobs": 20,
+    "top_matches": 6,
+    "avg_score": 3.18,
+    "grade_a": 0,
+    "duration_seconds": 217.1,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-10",
+    "total_jobs": 20,
+    "top_matches": 5,
+    "avg_score": 3.2,
+    "grade_a": 0,
+    "duration_seconds": 200.3,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-11",
+    "total_jobs": 20,
+    "top_matches": 2,
+    "avg_score": 3.08,
+    "grade_a": 0,
+    "duration_seconds": 239.2,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-12",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.14,
+    "grade_a": 0,
+    "duration_seconds": 248.0,
+    "total_tokens": 0,
+    "errors": 0
+  },
+  {
+    "date": "2026-05-13",
+    "total_jobs": 20,
+    "top_matches": 3,
+    "avg_score": 3.14,
+    "grade_a": 0,
+    "duration_seconds": 12.7,
+    "total_tokens": 0,
+    "errors": 4
+  }
+]

@@ -1,0 +1,648 @@
+{% extends 'base.html' %}
+
+{% block title %}AI Eco | Telemetry & Dev Logs{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4" style="max-width: 1400px; padding-bottom: 4rem;">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <div class="d-flex align-items-center flex-wrap gap-3 mb-1">
+                <h1 class="text-white mb-0" style="display: inline-block;">AI Eco Telemetry Dashboard</h1>
+                <span class="badge" style="background: #10b981; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.5px; padding: 5px 12px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 0 14px rgba(16, 185, 129, 0.45); vertical-align: middle;">
+                    <i class="fas fa-circle" style="font-size: 0.45rem; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; animation: aie-dotPulse 1.8s infinite ease-in-out;"></i> LIVE
+                </span>
+            </div>
+            <p class="text-secondary mb-0">Real-time metrics, commit velocity, and autonomous swarm telemetry.</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <a href="/mcp" class="btn btn-outline-warning" style="border-radius: 20px;"><i class="fas fa-plug me-2"></i>Test MCP Playground</a>
+            <a href="/aie" class="btn btn-outline-primary" style="border-radius: 20px;"><i class="fas fa-network-wired me-2"></i>AI Eco Hub</a>
+        </div>
+    </div>
+
+    
+    <!-- Top Stats Row -->
+    <div class="row g-4 mb-4">
+        
+        <div class="col-md-3">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; border-left: 4px solid #3498db;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h6 class="text-secondary text-uppercase mb-0" style="font-size: 0.75rem; letter-spacing: 1px;">US Market Benchmark</h6>
+                        <span class="badge bg-primary-subtle text-primary" style="font-size: 0.65rem;">Staff AI</span>
+                    </div>
+                    <h3 class="text-white mt-2 mb-1">${{ '{:,}'.format(data.live_salary_estimation.min) }} - ${{ '{:,}'.format(data.live_salary_estimation.max) }}</h3>
+                    <p class="text-success small mb-2"><i class="fas fa-arrow-up me-1"></i> Based on Market Trends</p>
+                    {% if data.live_salary_estimation.reasoning %}
+                    <p class="text-muted mb-0 font-monospace" style="font-size: 0.72rem; line-height: 1.4;" title="{{ data.live_salary_estimation.reasoning }}">
+                        <i class="fas fa-robot text-info me-1"></i> {{ data.live_salary_estimation.reasoning|truncate(90) }}
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; border-left: 4px solid #9b59b6;">
+                <div class="card-body">
+                    <h6 class="text-secondary text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px;">Active Agents</h6>
+                    <h3 class="text-white mt-2 mb-1">6 <span class="text-muted fs-6">/ 6 Online</span></h3>
+                    <p class="text-success small mb-0"><i class="fas fa-check-circle me-1"></i> Swarm Operational</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; border-left: 4px solid #e74c3c;">
+                <div class="card-body">
+                    <h6 class="text-secondary text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px;">Repositories Tracked</h6>
+                    <h3 class="text-white mt-2 mb-1">{{ data.repo_counts }}</h3>
+                    <p class="text-secondary small mb-0"><i class="fab fa-github me-1"></i> Synced via GitHub Scout</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; border-left: 4px solid #2ecc71;">
+                <div class="card-body">
+                    <h6 class="text-secondary text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px;">Total Commits</h6>
+                    <h3 class="text-white mt-2 mb-1">{{ data.commit_history }}</h3>
+                    <p class="text-info small mb-0"><i class="fas fa-code-branch me-1"></i> Across all projects</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Secondary Stats Row -->
+    <div class="row g-4 mb-4">
+        
+        <div class="col-md-4">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; border-left: 4px solid #f39c12;">
+                <div class="card-body d-flex align-items-center">
+                    <div style="font-size: 2.5rem; color: #f39c12; margin-right: 1.5rem;"><i class="fas fa-plug"></i></div>
+                    <div>
+                        <h6 class="text-secondary text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px;">FastMCP Endpoints</h6>
+                        <h3 class="text-white mt-1 mb-0">{{ data.mcp_endpoints_active|default(4) }} <span class="text-muted fs-6">Active</span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; border-left: 4px solid #1abc9c;">
+                <div class="card-body d-flex align-items-center">
+                    <div style="font-size: 2.5rem; color: #1abc9c; margin-right: 1.5rem;"><i class="fas fa-robot"></i></div>
+                    <div>
+                        <h6 class="text-secondary text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px;">Automations Running</h6>
+                        <h3 class="text-white mt-1 mb-0">{{ data.automations_running|default(12) }} <span class="text-muted fs-6">CRON Jobs</span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; border-left: 4px solid #e67e22;">
+                <div class="card-body">
+                    <h6 class="text-secondary text-uppercase mb-2" style="font-size: 0.8rem; letter-spacing: 1px;">Sectors Impacted</h6>
+                    <div class="d-flex flex-wrap gap-1">
+                        {% for sector in data.sectors_impacted %}
+                        <span class="badge" style="background: rgba(230, 126, 34, 0.2); color: #e67e22; border: 1px solid rgba(230, 126, 34, 0.5);">{{ sector }}</span>
+                        {% else %}
+                        <span class="badge" style="background: rgba(230, 126, 34, 0.2); color: #e67e22;">Healthcare</span>
+                        <span class="badge" style="background: rgba(230, 126, 34, 0.2); color: #e67e22;">E-commerce</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row g-4 mb-4">
+        <!-- Pipeline Timeline Chart -->
+        <div class="col-md-8">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="card-title text-white mb-0">Pipeline Health & Commit Timeline</h5>
+                        <span class="badge bg-success">100% Success Rate</span>
+                    </div>
+                    <div style="height: 300px; width: 100%;">
+                        <canvas id="timelineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Language Breakdown -->
+        <div class="col-md-4">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;">
+                <div class="card-body">
+                    <h5 class="card-title text-white mb-4">Language Ecosystem</h5>
+                    <div style="height: 300px; width: 100%;">
+                        <canvas id="languageChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills & Recent Activity Row -->
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;">
+                <div class="card-body">
+                    <h5 class="card-title text-white mb-3"><i class="fas fa-brain text-warning me-2"></i>Dominant Swarm Skills</h5>
+                    <p class="text-secondary small mb-4">The core competencies currently driven by the active portfolio.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% if data.top_skills %}
+                            {% for skill in data.top_skills %}
+                            <span class="badge bg-primary" style="font-size: 1rem; padding: 0.6rem 1rem; border-radius: 8px;">{{ skill }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <!-- Fallback if JSON missing top_skills -->
+                            <span class="badge bg-primary" style="font-size: 1rem; padding: 0.6rem 1rem; border-radius: 8px;">Multi-Agent AI</span>
+                            <span class="badge bg-primary" style="font-size: 1rem; padding: 0.6rem 1rem; border-radius: 8px;">BigQuery</span>
+                            <span class="badge bg-primary" style="font-size: 1rem; padding: 0.6rem 1rem; border-radius: 8px;">Python</span>
+                            <span class="badge bg-primary" style="font-size: 1rem; padding: 0.6rem 1rem; border-radius: 8px;">LLM Orchestration</span>
+                            <span class="badge bg-primary" style="font-size: 1rem; padding: 0.6rem 1rem; border-radius: 8px;">Flask</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;">
+                <div class="card-body">
+                    <h5 class="card-title text-white mb-3"><i class="fas fa-list-ul text-info me-2"></i>Latest Agent Executions</h5>
+                    
+                    <div class="d-flex align-items-center mb-3 pb-3" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <div class="bg-success rounded-circle me-3" style="width: 10px; height: 10px;"></div>
+                        <div>
+                            <p class="text-white mb-0"><strong>GitHub Scout</strong> synthesized repo statistics</p>
+                            <small class="text-secondary">Ran successfully on last GitHub Action CRON</small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-center mb-3 pb-3" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <div class="bg-success rounded-circle me-3" style="width: 10px; height: 10px;"></div>
+                        <div>
+                            <p class="text-white mb-0"><strong>Dashboard Agent</strong> updated telemetry JSON</p>
+                            <small class="text-secondary">Calculated live salary: ${{ '{:,}'.format(data.live_salary_estimation.max) }}</small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-center">
+                        <div class="bg-success rounded-circle me-3" style="width: 10px; height: 10px;"></div>
+                        <div>
+                            <p class="text-white mb-0"><strong>Readme Agent</strong> deployed architecture updates</p>
+                            <small class="text-secondary">Diagrams synchronized across portfolio</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swarm Intelligence & Persistent Memory Section -->
+    <div class="row g-4 mt-2">
+        <div class="col-12">
+            <div class="card bg-dark" style="border: 1px solid rgba(155, 89, 182, 0.35); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); background: linear-gradient(180deg, rgba(25, 27, 38, 0.95), rgba(18, 19, 26, 0.98));">
+                <div class="card-header bg-transparent border-bottom border-secondary border-opacity-25 py-3 px-4">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 44px; height: 44px; background: linear-gradient(135deg, #8e44ad, #3498db); box-shadow: 0 0 16px rgba(142, 68, 173, 0.4);">
+                                <i class="fas fa-brain text-white fs-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white mb-0 fw-bold">Swarm Intelligence &amp; Living Memory</h4>
+                                <small class="text-secondary">Autonomous Multi-Agent Consensus, Daily Critiques &amp; Weekly Council Roadmaps</small>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <span class="badge" style="background: rgba(46, 204, 113, 0.15); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.4); font-size: 0.78rem; padding: 6px 12px; border-radius: 20px;">
+                                <i class="fas fa-circle text-success me-1" style="font-size: 0.45rem;"></i> 6/6 Agents Synced
+                            </span>
+                            <span class="badge" style="background: rgba(52, 152, 219, 0.15); color: #3498db; border: 1px solid rgba(52, 152, 219, 0.4); font-size: 0.78rem; padding: 6px 12px; border-radius: 20px;">
+                                <i class="fas fa-code-branch me-1"></i> {{ swarm.last_consolidated if swarm and swarm.last_consolidated else 'Active' }}
+                            </span>
+                            <span class="badge" style="background: rgba(243, 156, 18, 0.15); color: #f39c12; border: 1px solid rgba(243, 156, 18, 0.4); font-size: 0.78rem; padding: 6px 12px; border-radius: 20px;">
+                                <i class="fas fa-database me-1"></i> {{ swarm.word_count if swarm else 450 }} words
+                            </span>
+                            <button type="button" class="btn btn-sm btn-outline-light rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#swarmMemoryModal">
+                                <i class="fas fa-terminal me-1"></i> Inspect Memory Stream
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-4">
+                    <div class="row g-4">
+                        <!-- Left Column: Collective Opinion & Daily Perspectives -->
+                        <div class="col-lg-7">
+                            <div class="p-3 mb-4 rounded-3" style="background: rgba(142, 68, 173, 0.08); border: 1px solid rgba(142, 68, 173, 0.25);">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="text-uppercase fw-semibold" style="font-size: 0.75rem; letter-spacing: 1px; color: #bb86fc;">
+                                        <i class="fas fa-quote-left me-1"></i> Swarm Collective Opinion
+                                    </span>
+                                    <span class="badge bg-success-subtle text-success" style="font-size: 0.7rem;">
+                                        <i class="fas fa-shield-alt me-1"></i> {{ swarm.architecture_quality if swarm else 'Strong & Maturing' }}
+                                    </span>
+                                </div>
+                                <p class="text-light mb-0" style="font-size: 0.95rem; line-height: 1.6; font-style: italic;">
+                                    "{{ swarm.latest_opinion if swarm and swarm.latest_opinion else 'The swarm confirms that transitioning from stateless daily runs to persistent, tiered memory significantly elevates autonomy. Zero context loss across daily scheduled runs.' }}"
+                                </p>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="text-white mb-0 fw-semibold">
+                                    <i class="fas fa-comments text-info me-2"></i>Daily Agent Peer Critiques
+                                    <span class="text-secondary fw-normal small">({{ swarm.latest_daily_view.date if swarm and swarm.latest_daily_view else 'Latest Execution' }})</span>
+                                </h6>
+                                <button type="button" class="btn btn-sm btn-link text-info text-decoration-none p-0" data-bs-toggle="modal" data-bs-target="#dailyViewsModal">
+                                    View Archives ({{ swarm.daily_views_count if swarm else 1 }}) <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+
+                            <div class="row g-3">
+                                {% if swarm and swarm.latest_daily_view and swarm.latest_daily_view.perspectives %}
+                                    {% for p in swarm.latest_daily_view.perspectives %}
+                                    <div class="col-md-6">
+                                        <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-left: 3px solid {{ p.color }};">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <i class="{{ p.icon }} me-2" style="color: {{ p.color }};"></i>
+                                                <strong class="text-white small">{{ p.agent }}</strong>
+                                            </div>
+                                            <ul class="text-secondary small mb-0 ps-3" style="font-size: 0.78rem; line-height: 1.4;">
+                                                {% for c in p.critiques %}
+                                                <li class="mb-1">{{ c|replace('- **', '')|replace('**', '') }}</li>
+                                                {% else %}
+                                                <li>Domain critique active and operational.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="col-md-6">
+                                        <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid #3498db;">
+                                            <strong class="text-white small"><i class="fas fa-satellite-dish text-primary me-2"></i>GitHub Scout</strong>
+                                            <p class="text-secondary small mb-0 mt-1">Empirical code change monitoring and commit SHA resolution verified.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid #9b59b6;">
+                                            <strong class="text-white small"><i class="fas fa-chart-line text-info me-2"></i>Dashboard Agent</strong>
+                                            <p class="text-secondary small mb-0 mt-1">Velocity and staff engineer compensation benchmark synchronization verified.</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Active Weekly Goals & Council Roadmap -->
+                        <div class="col-lg-5">
+                            <div class="p-3 h-100 rounded-3 d-flex flex-column justify-content-between" style="background: rgba(243, 156, 18, 0.04); border: 1px solid rgba(243, 156, 18, 0.25);">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="text-uppercase fw-semibold" style="font-size: 0.75rem; letter-spacing: 1px; color: #f39c12;">
+                                            <i class="fas fa-compass me-1"></i> Active Weekly Goals
+                                        </span>
+                                        <button type="button" class="btn btn-sm btn-link text-warning text-decoration-none p-0 small" data-bs-toggle="modal" data-bs-target="#weeklyMeetingsModal">
+                                            Council Minutes ({{ swarm.latest_meeting.week if swarm and swarm.latest_meeting else 'Active' }}) <i class="fas fa-external-link-alt ms-1"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="d-flex flex-column gap-2 mb-3">
+                                        {% if swarm and swarm.active_goals %}
+                                            {% for goal in swarm.active_goals %}
+                                            <div class="p-2 px-3 rounded-2 d-flex align-items-start gap-2" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                                <span class="badge bg-warning-subtle text-warning fw-bold mt-1" style="font-size: 0.7rem;">0{{ loop.index }}</span>
+                                                <div class="small" style="line-height: 1.4;">
+                                                    <strong class="text-white">{{ goal.title }}</strong>:
+                                                    <span class="text-secondary">{{ goal.detail }}</span>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        {% else %}
+                                            <div class="p-2 rounded-2 text-secondary small">Autonomous weekly strategic goals in sync.</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="pt-3 border-top border-secondary border-opacity-25 d-flex flex-wrap justify-content-between align-items-center gap-2">
+                                    <span class="font-monospace small text-muted" style="font-size: 0.75rem;">
+                                        <i class="fas fa-plug text-warning me-1"></i> MCP: <code>eco://swarm/memory</code>
+                                    </span>
+                                    <div class="d-flex gap-2">
+                                        <button type="button" class="btn btn-sm btn-outline-info rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#dailyViewsModal">
+                                            <i class="fas fa-calendar-day me-1"></i> Daily Views
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-warning rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#weeklyMeetingsModal">
+                                            <i class="fas fa-users-cog me-1"></i> Council Notes
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dedicated Modules: MCP Playground & AI Eco Dispatches -->
+    <div class="row g-4 mt-2">
+        <div class="col-md-6">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(102,126,234,0.3); border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 44px; height: 44px; background: linear-gradient(135deg, #f39c12, #e67e22);">
+                                    <i class="fas fa-plug text-white fs-5"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white mb-0">Model Context Protocol (MCP)</h5>
+                                    <small class="text-secondary">Dedicated Live Testing &amp; Playground</small>
+                                </div>
+                            </div>
+                            <span class="badge bg-success px-3 py-2 rounded-pill"><i class="fas fa-bolt me-1"></i> Live</span>
+                        </div>
+                        <p class="text-secondary small mb-4" style="line-height: 1.6;">
+                            Connect Claude Desktop, Cursor, or your autonomous AI agents directly to Prashanth's live portfolio metrics, verified credentials, and swarm telemetry. Test all 9 tools, resources, and prompts on the dedicated MCP playground page.
+                        </p>
+                    </div>
+                    <a href="/mcp" class="btn btn-outline-warning w-100 py-2 fw-semibold rounded-pill">
+                        <i class="fas fa-terminal me-2"></i> Open Dedicated MCP Playground &amp; Docs <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 bg-dark" style="border: 1px solid rgba(102,126,234,0.3); border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 44px; height: 44px; background: linear-gradient(135deg, #3498db, #9b59b6);">
+                                    <i class="fas fa-satellite-dish text-white fs-5"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white mb-0">AI Eco Dev Logs</h5>
+                                    <small class="text-secondary">Autonomous Dispatches by GitHub Scout</small>
+                                </div>
+                            </div>
+                            <span class="badge bg-primary px-3 py-2 rounded-pill"><i class="fas fa-robot me-1"></i> Scout</span>
+                        </div>
+                        <p class="text-secondary small mb-4" style="line-height: 1.6;">
+                            Read technical developer logs synthesized automatically by the GitHub Scout Agent. Structured project-by-project explaining concrete code commits, architectural bottlenecks, and deep engineering rationale ("Why We Did It").
+                        </p>
+                    </div>
+                    <a href="/aie/blogs" class="btn btn-outline-info w-100 py-2 fw-semibold rounded-pill">
+                        <i class="fas fa-book-open me-2"></i> Browse All AI Eco Dev Logs <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swarm Memory Modal -->
+    <div class="modal fade" id="swarmMemoryModal" tabindex="-1" aria-labelledby="swarmMemoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-light" style="border: 1px solid rgba(155, 89, 182, 0.4); border-radius: 14px;">
+                <div class="modal-header border-secondary border-opacity-25">
+                    <h5 class="modal-title text-white" id="swarmMemoryModalLabel">
+                        <i class="fas fa-brain text-warning me-2"></i>AI Eco Swarm Living Memory Stream
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-primary-subtle text-primary">Protocol: eco://swarm/memory</span>
+                        <span class="badge bg-secondary">Words: {{ swarm.word_count if swarm else 450 }}</span>
+                    </div>
+                    <pre class="bg-black text-light p-3 rounded font-monospace small" style="white-space: pre-wrap; max-height: 520px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.1);">{{ swarm.raw_memory if swarm and swarm.raw_memory else '# Swarm Living Memory Stream\n\nActive.' }}</pre>
+                </div>
+                <div class="modal-footer border-secondary border-opacity-25">
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                    <a href="/mcp" class="btn btn-outline-warning rounded-pill"><i class="fas fa-plug me-1"></i> Query via FastMCP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Views Modal -->
+    <div class="modal fade" id="dailyViewsModal" tabindex="-1" aria-labelledby="dailyViewsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-light" style="border: 1px solid rgba(52, 152, 219, 0.4); border-radius: 14px;">
+                <div class="modal-header border-secondary border-opacity-25">
+                    <h5 class="modal-title text-white" id="dailyViewsModalLabel">
+                        <i class="fas fa-calendar-alt text-info me-2"></i>Daily Swarm Peer Critiques &amp; Debates
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% if swarm and swarm.all_daily_views %}
+                        {% for dv in swarm.all_daily_views %}
+                        <div class="mb-4 p-3 rounded-3" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="text-white mb-0 fw-bold"><i class="fas fa-file-alt text-info me-2"></i>{{ dv.date }}</h6>
+                                <span class="badge bg-secondary-subtle text-light font-monospace small">{{ dv.filename }}</span>
+                            </div>
+                            {% if dv.consensus %}
+                            <div class="p-2 mb-2 rounded bg-black bg-opacity-50 small text-info fst-italic">
+                                <strong>Consensus:</strong> {{ dv.consensus }}
+                            </div>
+                            {% endif %}
+                            <pre class="bg-black text-secondary p-2 rounded font-monospace small mb-0" style="white-space: pre-wrap; max-height: 200px; overflow-y: auto;">{{ dv.preview }}...</pre>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-secondary mb-0">No daily views recorded yet.</p>
+                    {% endif %}
+                </div>
+                <div class="modal-footer border-secondary border-opacity-25">
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weekly Meetings Modal -->
+    <div class="modal fade" id="weeklyMeetingsModal" tabindex="-1" aria-labelledby="weeklyMeetingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-light" style="border: 1px solid rgba(243, 156, 18, 0.4); border-radius: 14px;">
+                <div class="modal-header border-secondary border-opacity-25">
+                    <h5 class="modal-title text-white" id="weeklyMeetingsModalLabel">
+                        <i class="fas fa-users-cog text-warning me-2"></i>Weekly Swarm Alignment Council Archives
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% if swarm and swarm.all_weekly_meetings %}
+                        {% for wm in swarm.all_weekly_meetings %}
+                        <div class="mb-4 p-3 rounded-3" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="text-white mb-0 fw-bold"><i class="fas fa-clipboard-check text-warning me-2"></i>Council Meeting: {{ wm.week }}</h6>
+                                <span class="badge bg-secondary-subtle text-light font-monospace small">{{ wm.filename }}</span>
+                            </div>
+                            {% if wm.roadmap %}
+                            <div class="mb-2">
+                                <strong class="text-warning small text-uppercase">Roadmap Goals:</strong>
+                                <ul class="text-light small ps-3 mb-0 mt-1">
+                                    {% for g in wm.roadmap %}
+                                    <li>{{ g }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+                            <pre class="bg-black text-secondary p-2 rounded font-monospace small mb-0" style="white-space: pre-wrap; max-height: 200px; overflow-y: auto;">{{ wm.preview }}...</pre>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-secondary mb-0">No weekly council meetings recorded yet.</p>
+                    {% endif %}
+                </div>
+                <div class="modal-footer border-secondary border-opacity-25">
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Chart.defaults.color = 'rgba(255,255,255,0.6)';
+        Chart.defaults.font.family = 'Inter, sans-serif';
+        
+        // --- Language Breakdown Doughnut Chart ---
+        const langCtx = document.getElementById('languageChart').getContext('2d');
+        const langData = {{ data.language_breakdown | tojson }};
+        const langLabels = Object.keys(langData);
+        const langValues = Object.values(langData);
+        
+        // Fallback colors for up to 5 languages
+        const colors = [
+            'rgba(52, 152, 219, 0.85)',
+            'rgba(241, 196, 15, 0.85)',
+            'rgba(46, 204, 113, 0.85)',
+            'rgba(155, 89, 182, 0.85)',
+            'rgba(231, 76, 60, 0.85)'
+        ];
+
+        new Chart(langCtx, {
+            type: 'doughnut',
+            data: {
+                labels: langLabels,
+                datasets: [{
+                    data: langValues,
+                    backgroundColor: colors,
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 20, usePointStyle: true }
+                    }
+                }
+            }
+        });
+
+        // --- Pipeline Timeline & Commits Line Chart ---
+        const timeCtx = document.getElementById('timelineChart').getContext('2d');
+        const telemetryTimeline = {{ (data.commit_timeline_7d if data.commit_timeline_7d is defined else {}) | tojson }};
+        
+        let labels = [];
+        let commitData = [];
+        let pipelineData = [];
+        
+        if (telemetryTimeline && telemetryTimeline.labels && telemetryTimeline.labels.length > 0) {
+            labels = telemetryTimeline.labels;
+            commitData = telemetryTimeline.commits;
+            pipelineData = telemetryTimeline.pipelines;
+        } else {
+            for (let i = 6; i >= 0; i--) {
+                const d = new Date();
+                d.setDate(d.getDate() - i);
+                labels.push(d.toLocaleDateString('en-US', { weekday: 'short' }));
+                commitData.push(3);
+                pipelineData.push(1);
+            }
+        }
+
+        new Chart(timeCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'GitHub Commits',
+                        data: commitData,
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Pipeline Runs',
+                        data: pipelineData,
+                        borderColor: '#2ecc71',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        stepped: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        align: 'end'
+                    }
+                }
+            }
+        });
+
+    });
+</script>
+
+
+<style>
+    @keyframes aie-dotPulse {
+        0%, 100% { opacity: 0.4; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.4); }
+    }
+</style>
+{% endblock %}

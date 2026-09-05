@@ -1,0 +1,54 @@
+{
+    "compound_name": "Semaglutide",
+    "pubchem_data": {
+        "CID": 56843331,
+        "MolecularFormula": "C187H291N45O59",
+        "MolecularWeight": "4114",
+        "ConnectivitySMILES": "CCC(C)C(C(=O)NC(C)C(=O)NC(CC1=CNC2=CC=CC=C21)C(=O)NC(CC(C)C)C(=O)NC(C(C)C)C(=O)NC(CCCNC(=N)N)C(=O)NCC(=O)NC(CCCNC(=N)N)C(=O)NCC(=O)O)NC(=O)C(CC3=CC=CC=C3)NC(=O)C(CCC(=O)O)NC(=O)C(CCCCNC(=O)COCCOCCNC(=O)COCCOCCNC(=O)CCC(C(=O)O)NC(=O)CCCCCCCCCCCCCCCCC(=O)O)NC(=O)C(C)NC(=O)C(C)NC(=O)C(CCC(=O)N)NC(=O)CNC(=O)C(CCC(=O)O)NC(=O)C(CC(C)C)NC(=O)C(CC4=CC=C(C=C4)O)NC(=O)C(CO)NC(=O)C(CO)NC(=O)C(C(C)C)NC(=O)C(CC(=O)O)NC(=O)C(CO)NC(=O)C(C(C)O)NC(=O)C(CC5=CC=CC=C5)NC(=O)C(C(C)O)NC(=O)CNC(=O)C(CCC(=O)O)NC(=O)C(C)(C)NC(=O)C(CC6=CN=CN6)N",
+        "XLogP": -5.8,
+        "Complexity": 9590
+    },
+    "fda_data": "7 DRUG INTERACTIONS Other Oral Drugs : RYBELSUS and OZEMPIC tablets delay gastric emptying. Consider increased clinical or laboratory monitoring when co-administered with other oral medications that have a narrow therapeutic index or that require clinical monitoring. ( 7.2 ) 7.1 Concomitant Use with an Insulin Secretagogue (e.g., Sulfonylurea) or with Insulin Semaglutide stimulates insulin release in the presence of elevated blood glucose concentrations. Patients receiving RYBELSUS or OZEMPIC ta...",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 1,
+            "notes": "Extremely poor intrinsic oral bioavailability due to its large peptide structure (MW > 4000) and susceptibility to GI degradation. It is administered subcutaneously or orally formulated with the absorption enhancer SNAC."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Highly bound to plasma albumin (>99%) facilitated by its C18 fatty diacid side chain. This restricts its volume of distribution primarily to the systemic circulation and extracellular space, significantly extending its duration of action."
+        },
+        "metabolism": {
+            "score": 4,
+            "notes": "Metabolized via predictable pathways including proteolytic cleavage of the peptide backbone by endopeptidases and beta-oxidation of the fatty acid side chain. It is not metabolized by, nor does it inhibit/induce, cytochrome P450 enzymes."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Exhibits a very slow clearance rate, resulting in an extended elimination half-life of approximately 1 week. Excreted primarily as small peptide fragments and metabolites in both urine and feces."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Generally well-tolerated but frequently causes gastrointestinal side effects (nausea, vomiting, diarrhea). Carries a boxed warning for a potential risk of thyroid C-cell tumors (observed in rodents) and warnings for acute pancreatitis and gallbladder disease."
+        },
+        "overall_admet_score": 3.0
+    },
+    "safety_review": {
+        "ind_readiness_score": 92,
+        "go_no_go_decision": "GO",
+        "risk_mitigation": [
+            "Implement a gradual dose-escalation protocol to minimize gastrointestinal adverse effects (nausea, vomiting, diarrhea).",
+            "Include a Boxed Warning and contraindicate use in patients with a personal or family history of medullary thyroid carcinoma (MTC) or Multiple Endocrine Neoplasia syndrome type 2 (MEN 2).",
+            "Require clinical monitoring for patients on concomitant oral medications with a narrow therapeutic index due to delayed gastric emptying.",
+            "Recommend dose reductions for concomitant insulin or insulin secretagogues (e.g., sulfonylureas) to mitigate the risk of hypoglycemia.",
+            "Monitor patients for clinical signs and symptoms of acute pancreatitis and gallbladder disease during treatment."
+        ],
+        "executive_summary": "Semaglutide is a highly complex peptide-based GLP-1 receptor agonist with an extended half-life of approximately one week, achieved through a C18 fatty diacid side chain that facilitates strong albumin binding. While intrinsic oral absorption is extremely poor, this is effectively bypassed via subcutaneous administration or co-formulation with the absorption enhancer SNAC. The compound exhibits a highly favorable metabolic and excretion profile, undergoing predictable proteolytic cleavage and beta-oxidation without CYP450 involvement, minimizing systemic drug-drug interactions. Primary toxicological concerns include gastrointestinal tolerability, delayed gastric emptying affecting the absorption of narrow-therapeutic-index oral drugs, and a rodent-specific signal for thyroid C-cell tumors. Given the well-defined pharmacokinetic profile, manageable safety risks, and successful trial history, Semaglutide demonstrates an excellent benefit-risk ratio, supporting a definitive GO decision."
+    },
+    "timestamp": "2026-05-03T06:23:14.070589"
+}

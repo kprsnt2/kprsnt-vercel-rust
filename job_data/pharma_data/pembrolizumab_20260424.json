@@ -1,0 +1,51 @@
+{
+    "compound_name": "Pembrolizumab",
+    "pubchem_data": {
+        "MolecularFormula": "Ctest",
+        "MolecularWeight": 350.5,
+        "CanonicalSMILES": "CC(=O)OC1=CC=CC=C1C(=O)O",
+        "XLogP": 2.1
+    },
+    "fda_data": "Query returned no results or failed.",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 1,
+            "notes": "As a monoclonal antibody, pembrolizumab has no oral bioavailability and must be administered via intravenous infusion, resulting in complete systemic availability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Limited primarily to the vascular space and extracellular fluid due to its large molecular size, with a small volume of distribution typical for antibodies."
+        },
+        "metabolism": {
+            "score": 4,
+            "notes": "Does not undergo hepatic cytochrome P450 metabolism; instead, it is degraded into small peptides and individual amino acids via general protein catabolism pathways."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Clearance is slow and not dependent on renal or typical hepatic pathways. It has a long terminal half-life of approximately 22 to 27 days."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Generally well-tolerated compared to traditional chemotherapy, but carries a significant risk of immune-related adverse events (irAEs) such as pneumonitis, colitis, hepatitis, and endocrinopathies."
+        },
+        "overall_admet_score": 3.0
+    },
+    "safety_review": {
+        "ind_readiness_score": 88,
+        "go_no_go_decision": "GO",
+        "risk_mitigation": [
+            "Implement rigorous clinical monitoring for immune-related adverse events (irAEs), specifically pneumonitis, colitis, hepatitis, and endocrinopathies.",
+            "Establish clear dose-modification, withholding, and discontinuation guidelines in response to graded toxicities.",
+            "Ensure immediate availability of systemic corticosteroids and other immunosuppressants for the management of severe irAEs.",
+            "Conduct baseline and routine periodic assessments of hepatic, renal, and thyroid function during clinical trials."
+        ],
+        "executive_summary": "Pembrolizumab demonstrates a pharmacokinetic profile typical of monoclonal antibodies, characterized by obligate intravenous administration, limited volume of distribution, and clearance via general protein catabolism rather than hepatic CYP450 pathways. This metabolic route significantly minimizes the risk of traditional drug-drug interactions. The primary toxicological concern is the development of immune-related adverse events (irAEs) due to its mechanism of action. However, these risks are well-characterized and manageable with established clinical protocols and corticosteroid interventions. Given the completed Phase 2 trial status and predictable ADMET profile, the compound receives a GO decision for continued clinical advancement with a strong IND readiness score."
+    },
+    "timestamp": "2026-04-24T06:05:07.337707"
+}

@@ -1,0 +1,63 @@
+{
+    "compound_name": "Aspirin",
+    "pubchem_data": {
+        "MolecularFormula": "Ctest",
+        "MolecularWeight": 350.5,
+        "CanonicalSMILES": "CC(=O)OC1=CC=CC=C1C(=O)O",
+        "XLogP": 2.1
+    },
+    "fda_data": "7 DRUG INTERACTIONS See Table 1 for clinically significant drug interactions with naproxen. Table 1: Clinically Significant Drug Interactions with naproxen Drugs That Interfere with Hemostasis Clinical Impact: \u2022 Naproxen and anticoagulants such as warfarin have a synergistic effect on bleeding. The concomitant use of naproxen and anticoagulants have an increased risk of serious bleeding compared to the use of either drug alone. \u2022 Serotonin release by platelets plays an important role in hemostas...",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 4,
+            "notes": "Good oral bioavailability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding."
+        },
+        "metabolism": {
+            "score": 2,
+            "notes": "Extensive hepatic metabolism (CYP3A4)."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Renal clearance is primary."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Hepatotoxicity risk at high doses."
+        },
+        "overall_admet_score": 3.2
+    },
+    "safety_review": {
+        "absorption": {
+            "score": 4,
+            "notes": "Good oral bioavailability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding."
+        },
+        "metabolism": {
+            "score": 2,
+            "notes": "Extensive hepatic metabolism (CYP3A4)."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Renal clearance is primary."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Hepatotoxicity risk at high doses."
+        },
+        "overall_admet_score": 3.2
+    },
+    "timestamp": "2026-04-29T06:20:08.892682"
+}

@@ -1,0 +1,1763 @@
+{
+  "date": "2026-04-08",
+  "pipeline_version": "2.0.0",
+  "profile_summary": "Data Analyst → AI Engineer | LLM Fine-tuning | 10+ deployed AI apps",
+  "report": {
+    "date": "2026-04-08",
+    "pipeline_version": "2.0.0",
+    "summary": {
+      "total_jobs": 20,
+      "top_matches": 11,
+      "grade_a_count": 2,
+      "grade_b_count": 14,
+      "average_score": 3.48,
+      "verified_count": 1
+    },
+    "by_archetype": {
+      "AI Engineer / LLM Engineer": 14,
+      "Senior Data Analyst": 4,
+      "Clinical/Healthcare AI": 2
+    },
+    "by_location": {
+      "Remote": 13,
+      "India": 7
+    },
+    "top_5": [
+      {
+        "title": "Lead Generative AI Engineer",
+        "company": "Novaedge",
+        "score": 4.1,
+        "grade": "A-",
+        "url": "https://novaedge.io/jobs/lead-generative-ai-engineer-remote"
+      },
+      {
+        "title": "RAG + Agentic AI Engineer",
+        "company": "Codvo",
+        "score": 4.1,
+        "grade": "A-",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrz0cqOD1meWw3b4HF8ZYNTKEWTidM4zH8cdEPTuH268R4ixrt28HWopz4_gEQuPzSwR1EdMIeb-L0dVBvsSJa9zpourSU7tuWIDO9dkygJZpg6Q8gKyzco31fk-7BTMWtddxP5_li8pzWI4YnRs9i3uSz2MdGVr4W0nrqifd_ctQiJERz935bWx50XA5FsuHwSg"
+      },
+      {
+        "title": "AI/ML Engineer - NLP/Generative AI",
+        "company": "Tiger Analytics",
+        "score": 3.9,
+        "grade": "B+",
+        "url": "https://www.foundit.in/job/aiml-engineer-genai-nlp-tiger-analytics-chennai-1355184"
+      },
+      {
+        "title": "Generative AI Engineer Team Lead",
+        "company": "Patrianna",
+        "score": 3.9,
+        "grade": "B+",
+        "url": "https://remocate.com/job/generative-ai-engineer-team-lead-patrianna"
+      },
+      {
+        "title": "Staff Engineer – Agentic AIOps (MCP, Context Engineering, LLM Automation)",
+        "company": "Equinix, Inc",
+        "score": 3.8,
+        "grade": "B+",
+        "url": "https://careers.equinix.com/jobs/staff-engineer-agentic-aiops-mcp-context-engineering-llm-automation-JR-159647"
+      }
+    ]
+  },
+  "trace": {
+    "run_date": "2026-04-08",
+    "run_time": "2026-04-08T05:04:02.313865",
+    "duration_seconds": 214.2,
+    "total_steps": 8,
+    "total_tokens": 0,
+    "total_cost_usd": 0.0,
+    "errors": 0,
+    "steps": [
+      {
+        "agent": "search",
+        "action": "Search AI Engineer",
+        "duration_ms": 42858,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Found 5 jobs",
+        "timestamp": "2026-04-08T05:01:12.773736"
+      },
+      {
+        "agent": "search",
+        "action": "Search Data Analyst",
+        "duration_ms": 51518,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Found 5 jobs",
+        "timestamp": "2026-04-08T05:02:04.291924"
+      },
+      {
+        "agent": "search",
+        "action": "Search Prompt Engineer",
+        "duration_ms": 56555,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Found 5 jobs",
+        "timestamp": "2026-04-08T05:03:00.847042"
+      },
+      {
+        "agent": "search",
+        "action": "Search Healthcare AI",
+        "duration_ms": 35082,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Found 5 jobs",
+        "timestamp": "2026-04-08T05:03:35.929265"
+      },
+      {
+        "agent": "evaluator",
+        "action": "Evaluate all jobs",
+        "duration_ms": 1,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Grades: {'A-': 2, 'B+': 7, 'B': 7, 'C+': 4}",
+        "timestamp": "2026-04-08T05:03:35.931522"
+      },
+      {
+        "agent": "skill_gap",
+        "action": "Analyze skill gaps",
+        "duration_ms": 2,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Analyzed 20 jobs",
+        "timestamp": "2026-04-08T05:03:35.933286"
+      },
+      {
+        "agent": "verify",
+        "action": "Verify URLs",
+        "duration_ms": 26380,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "1/20 active",
+        "timestamp": "2026-04-08T05:04:02.312979"
+      },
+      {
+        "agent": "report",
+        "action": "Generate report",
+        "duration_ms": 0,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Top matches: 11",
+        "timestamp": "2026-04-08T05:04:02.313848"
+      }
+    ],
+    "error_details": []
+  },
+  "jobs": [
+    {
+      "id": "novaedge-lead-generative-ai-engineer-remote",
+      "title": "Lead Generative AI Engineer",
+      "company": "Novaedge",
+      "company_tag": "Tech Consulting",
+      "location": "Remote, USA",
+      "salary": "",
+      "match_score": 92,
+      "tier": 1,
+      "tags": [
+        "Generative AI",
+        "LLM Fine-tuning",
+        "Prompt Engineering",
+        "RAG",
+        "PyTorch",
+        "HuggingFace",
+        "TensorFlow",
+        "Cloud Platforms"
+      ],
+      "why_match": "Exceptional match with candidate's LLM fine-tuning, RAG architecture, PyTorch, HuggingFace, and prompt engineering expertise. Experience with Gemini, Claude, and OpenAI APIs is directly relevant to LLM application development.",
+      "apply_url": "https://novaedge.io/jobs/lead-generative-ai-engineer-remote",
+      "target_role": "prompt-engineer",
+      "jd_summary": "Lead the design, development, and deployment of advanced generative AI solutions using LLMs. Key responsibilities include implementing prompt engineering, fine-tuning, RAG, and integrating AI models with cloud platforms. Requires 6+ years in AI/ML engineering, strong Python, TensorFlow, PyTorch, Hugging Face, and experience with LLM fine-tuning and prompt engineering.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 4.1,
+        "grade": "A-",
+        "cv_match": 3.9,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Strong match — recommend applying immediately"
+      },
+      "skill_gaps": [
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "tensorflow",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "fine-tuning",
+            "pytorch"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "codvo-rag-agentic-ai-engineer",
+      "title": "RAG + Agentic AI Engineer",
+      "company": "Codvo",
+      "company_tag": "",
+      "location": "India (Remote)",
+      "salary": "",
+      "match_score": 93,
+      "tier": 1,
+      "tags": [
+        "RAG",
+        "LLM",
+        "Agentic AI",
+        "AI Engineer",
+        "Multi-agent Orchestration",
+        "Prompt Engineering",
+        "Remote"
+      ],
+      "why_match": "This position is a direct match for the candidate's core skills, including LLM fine-tuning, RAG Architecture, Multi-model Orchestration, and Prompt Engineering. The experience with HuggingFace Transformers is also highly relevant, and the role's focus on building production-grade AI applications and retrieval systems aligns perfectly with the candidate's background.",
+      "apply_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrz0cqOD1meWw3b4HF8ZYNTKEWTidM4zH8cdEPTuH268R4ixrt28HWopz4_gEQuPzSwR1EdMIeb-L0dVBvsSJa9zpourSU7tuWIDO9dkygJZpg6Q8gKyzco31fk-7BTMWtddxP5_li8pzWI4YnRs9i3uSz2MdGVr4W0nrqifd_ctQiJERz935bWx50XA5FsuHwSg",
+      "target_role": "healthcare-ai",
+      "jd_summary": "A RAG + LLM-based Agentic AI Engineer is sought to build production-grade retrieval systems, multi-agent workflows, and enterprise-ready AI applications. Key responsibilities include building end-to-end RAG pipelines, implementing LangGraph-based agentic workflows with tools and self-healing behaviors, and developing and optimizing vector search systems for complex data challenges.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 4.1,
+        "grade": "A-",
+        "cv_match": 3.9,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Strong match — recommend applying immediately"
+      },
+      "skill_gaps": [
+        {
+          "skill": "agentic ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "ai engineer",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "remote",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "tiger-analytics-aiml-engineer-nlp-genai",
+      "title": "AI/ML Engineer - NLP/Generative AI",
+      "company": "Tiger Analytics",
+      "company_tag": "",
+      "location": "Hyderabad/Chennai/Bangalore",
+      "salary": "",
+      "match_score": 90,
+      "tier": 1,
+      "tags": [
+        "AI Engineer",
+        "ML Engineer",
+        "Generative AI",
+        "NLP",
+        "LLM",
+        "Python",
+        "PyTorch",
+        "HuggingFace",
+        "RAG",
+        "Fine-tuning",
+        "Data Science"
+      ],
+      "why_match": "The candidate's extensive experience with LLM fine-tuning (LoRA, PEFT), PyTorch, HuggingFace Transformers, and RAG Architecture directly aligns with the job's focus on designing and deploying advanced Generative AI and NLP models, including LLMs, to solve complex business problems. Publishing models on HuggingFace is a strong asset.",
+      "apply_url": "https://www.foundit.in/job/aiml-engineer-genai-nlp-tiger-analytics-chennai-1355184",
+      "target_role": "ai-engineer",
+      "jd_summary": "As an AI/ML Engineer specializing in Generative AI and NLP, you will design, develop, and deploy sophisticated models, including large language models (LLMs), to solve complex business problems. The role involves model customization, fine-tuning (LoRA, PEFT), and integrating AI solutions into broader business strategies. Strong expertise in Python, SQL, NLP, and Generative AI/LLMs is required.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.9,
+        "grade": "B+",
+        "cv_match": 3.9,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 3.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "skill_gaps": [
+        {
+          "skill": "ai engineer",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "ml engineer",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "nlp",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "data science",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "fine-tuning",
+            "pytorch"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "patrianna-generative-ai-engineer-team-lead-remote",
+      "title": "Generative AI Engineer Team Lead",
+      "company": "Patrianna",
+      "company_tag": "AI Solutions",
+      "location": "Remote",
+      "salary": "",
+      "match_score": 90,
+      "tier": 1,
+      "tags": [
+        "Generative AI",
+        "LLMs",
+        "Diffusion Models",
+        "Prompt Engineering",
+        "Fine-tuning",
+        "RAG",
+        "HuggingFace",
+        "PyTorch",
+        "Google Cloud Platform"
+      ],
+      "why_match": "Excellent match for the candidate's extensive experience in LLM fine-tuning, RAG, HuggingFace, and PyTorch. The leadership aspect aligns with the candidate's demonstrated ability to build and deploy models.",
+      "apply_url": "https://remocate.com/job/generative-ai-engineer-team-lead-patrianna",
+      "target_role": "prompt-engineer",
+      "jd_summary": "Guide a multidisciplinary team in developing transformative generative AI solutions. Responsibilities include setting vision for LLM application, designing scalable LLM-based systems, and implementing prompt engineering, fine-tuning, and RAG. Requires 6+ years in AI/ML engineering, expertise in generative models (LLMs, diffusion), Hugging Face, PyTorch, TensorFlow, and Google Cloud Platform.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.9,
+        "grade": "B+",
+        "cv_match": 3.1,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "skill_gaps": [
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "fine-tuning",
+            "pytorch"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "equinix-staff-engineer-agentic-aiops",
+      "title": "Staff Engineer – Agentic AIOps (MCP, Context Engineering, LLM Automation)",
+      "company": "Equinix, Inc",
+      "company_tag": "",
+      "location": "Bengaluru, Karnataka (Hybrid)",
+      "salary": "",
+      "match_score": 90,
+      "tier": 1,
+      "tags": [
+        "LLM Engineer",
+        "AI Engineer",
+        "AIOps",
+        "ML Engineer",
+        "LLM Automation",
+        "RAG",
+        "Python",
+        "PyTorch",
+        "TensorFlow",
+        "Hybrid"
+      ],
+      "why_match": "This role is a direct fit for an LLM Engineer focusing on Agentic AIOps and LLM Automation. The candidate's expertise in LLM fine-tuning, RAG Architecture, Multi-model Orchestration, PyTorch, and general AI/ML experience makes them highly suitable for designing and implementing intelligent operational platforms.",
+      "apply_url": "https://careers.equinix.com/jobs/staff-engineer-agentic-aiops-mcp-context-engineering-llm-automation-JR-159647",
+      "target_role": "llm-engineer",
+      "jd_summary": "Architect and implement AIOps capabilities such as intelligent incident routing, anomaly detection, operational copilots, ChatOps workflows, and automated remediation. This highly technical, hands-on role requires strong depth in applied ML/LLMs, operational systems, automation frameworks, and observability data structures, with experience in Python, PyTorch/TensorFlow, LLM frameworks, and RAG pipelines.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.8,
+        "grade": "B+",
+        "cv_match": 4.7,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 3.0,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "skill_gaps": [
+        {
+          "skill": "ai engineer",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "aiops",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "ml engineer",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "tensorflow",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "hybrid",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "pytorch"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        },
+        {
+          "project": "MCP Job Server",
+          "url": "https://github.com/kprsnt2/kprsnt.in",
+          "relevance": "MCP protocol server with 5 tools",
+          "matching_tags": []
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "aidoos-senior-data-analyst-marketing-analytics",
+      "title": "Senior Data Analyst in Marketing Analytics",
+      "company": "AiDOOS",
+      "company_tag": "B2B Software",
+      "location": "Remote",
+      "salary": "Not Disclosed",
+      "match_score": 88,
+      "tier": 1,
+      "tags": [
+        "AI-assisted Analytics",
+        "Marketing Analytics",
+        "SQL",
+        "Cloud Data Warehouses",
+        "dbt",
+        "Tableau"
+      ],
+      "why_match": "Explicit mention of 'Experience with AI-assisted analytics development' is a strong match for the candidate's extensive AI/LLM fine-tuning, RAG architecture, and API experience. The advisory role also aligns with senior experience.",
+      "apply_url": "https://aidoos.com/jobs/senior-data-analyst-marketing-analytics",
+      "target_role": "data-analyst",
+      "jd_summary": "Acts as a trusted advisor to senior Marketing and Developer Relations leaders, delivering data-driven insights. This role requires strong SQL, cloud data warehouse experience, and familiarity with AI-assisted analytics development.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.8,
+        "grade": "B+",
+        "cv_match": 3.1,
+        "archetype_fit": 4.0,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Good match — worth applying"
+      },
+      "skill_gaps": [
+        {
+          "skill": "ai-assisted analytics",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "marketing analytics",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "dbt",
+          "gap": "minor",
+          "bridge": "BigQuery + SQL pipelines — dbt is transformation layer"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "BrandScore AI",
+          "url": "https://bs.kprsnt.in",
+          "relevance": "Multi-model brand comparison platform",
+          "matching_tags": [
+            "analytics"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "apetan-consulting-lead-gen-ai-engineer-remote",
+      "title": "Lead Gen AI Engineer",
+      "company": "Apetan Consulting",
+      "company_tag": "IT Staffing/Consulting",
+      "location": "100% Remote",
+      "salary": "",
+      "match_score": 90,
+      "tier": 1,
+      "tags": [
+        "Generative AI",
+        "LLMs",
+        "Prompt Engineering",
+        "Fine-tuning",
+        "RAG",
+        "PyTorch",
+        "HuggingFace",
+        "Cloud Platforms"
+      ],
+      "why_match": "A strong fit for the candidate's skills in LLM fine-tuning, RAG, PyTorch, HuggingFace, and prompt engineering. The role's focus on leading generative AI solutions aligns well with the candidate's experience in building and deploying LLM models.",
+      "apply_url": "https://www.techfetch.com/job-description/lead-gen-ai-engineer-100-remote/3629911",
+      "target_role": "prompt-engineer",
+      "jd_summary": "Seeking an experienced Lead Generative AI Engineer to design, develop, and deploy advanced generative AI solutions. Key responsibilities include implementing prompt engineering, fine-tuning, and RAG techniques, and leading LLM-based application development. Requires 6+ years of experience, strong Python, PyTorch, Hugging Face, LLMs, and cloud platform experience.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.7,
+        "grade": "B+",
+        "cv_match": 2.3,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "skill_gaps": [
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "fine-tuning",
+            "pytorch"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": true,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "unitedhealth-group-principal-ai-data-analyst",
+      "title": "Principal AI Data Analyst",
+      "company": "UnitedHealth Group (Optum)",
+      "company_tag": "Healthcare",
+      "location": "Remote or Hybrid (Eden Prairie, MN / Washington, DC)",
+      "salary": "$112,700 - $193,200 a year",
+      "match_score": 95,
+      "tier": 1,
+      "tags": [
+        "AI",
+        "Machine Learning",
+        "Data Analysis",
+        "SQL",
+        "Data Modeling",
+        "Unstructured Data"
+      ],
+      "why_match": "This role is explicitly titled 'Principal AI Data Analyst' and involves leading AI-assisted analysis using structured and unstructured data, which is a direct match for the candidate's extensive LLM fine-tuning, RAG architecture, and AI API experience.",
+      "apply_url": "https://www.indeed.com/viewjob?jk=9b3f3b97b0a50b81",
+      "target_role": "data-analyst",
+      "jd_summary": "Leads AI-assisted analysis of data events and incident investigations using structured and unstructured data, requiring solid expertise in SQL, data modeling, and data integration.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.6,
+        "grade": "B+",
+        "cv_match": 2.3,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "skill_gaps": [
+        {
+          "skill": "machine learning",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "data analysis",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "unstructured data",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "vinove-ai-llm-engineer-noida",
+      "title": "AI / LLM Engineer",
+      "company": "Vinove Software & Services",
+      "company_tag": "Software Engineering Firm",
+      "location": "Noida, India",
+      "salary": "",
+      "match_score": 90,
+      "tier": 1,
+      "tags": [
+        "LLM Fine-tuning",
+        "Prompt Engineering",
+        "RAG Pipelines",
+        "Multi-agent Orchestration",
+        "PyTorch",
+        "HuggingFace Transformers",
+        "Adult Entertainment Industry"
+      ],
+      "why_match": "Strong alignment with LLM fine-tuning, prompt engineering, RAG, PyTorch, and HuggingFace experience. Candidate's 20B LLM fine-tuning project is highly relevant. Note regarding adult entertainment industry content is critical for candidate consideration.",
+      "apply_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG4X5VbO6Ow9Xsw_QIKvpnq3f6koEcaRjdIoPZGRtUW6xMR8SJPbBPDhGr_AFalZ5IX6ibPiXMV4NmgmMpiRnji_viTjaslWGmd2p_v3QETeJnAof4nTMaFzQ4x8lyKVd6Onv5h2-4dlErOWzjry1wBkj6o3BxO2tugJew=",
+      "target_role": "prompt-engineer",
+      "jd_summary": "Seeking an experienced AI/LLM Engineer to build, fine-tune, and deploy state-of-the-art LLM solutions. Key responsibilities include prompt engineering, RAG pipelines, multi-agent orchestration, and model evaluation using Python, PyTorch, TensorFlow, and HuggingFace Transformers. This role involves content aligned with adult entertainment industry standards.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.6,
+        "grade": "B+",
+        "cv_match": 3.1,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 3.0,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "skill_gaps": [
+        {
+          "skill": "adult entertainment industry",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "fine-tuning",
+            "pytorch"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "tredence-generative-ai-engineer",
+      "title": "Generative AI Engineer",
+      "company": "Tredence Inc.",
+      "company_tag": "",
+      "location": "Hyderabad",
+      "salary": "",
+      "match_score": 92,
+      "tier": 1,
+      "tags": [
+        "Generative AI",
+        "LLM Engineer",
+        "AI Engineer",
+        "Python",
+        "HuggingFace",
+        "PyTorch",
+        "TensorFlow",
+        "RAG",
+        "Prompt Engineering",
+        "Cloud"
+      ],
+      "why_match": "The job description perfectly matches the candidate's skills in Generative AI, LLMs, fine-tuning, RAG pipelines, and prompt engineering, along with proficiency in Python, PyTorch, TensorFlow, and Hugging Face. Experience with various cloud platforms (GCP, Azure, AWS) is also a direct match.",
+      "apply_url": "https://www.shine.com/job-search/generative-ai-engineer-job-in-tredence-inc-at-hyderabad/1000833118",
+      "target_role": "generative-ai-developer",
+      "jd_summary": "Develop and deploy Generative AI solutions leveraging Large Language Models (LLMs), multimodal models, and AI-driven applications. The role requires expertise in RAG pipelines, fine-tuning, prompt engineering, and ML frameworks like PyTorch, TensorFlow, and Hugging Face, with experience in cloud platforms such as GCP, Azure, and AWS.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.5,
+        "grade": "B",
+        "cv_match": 2.3,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 3.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "ai engineer",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "tensorflow",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "pytorch"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "etalent-azure-ai-tech-lead-remote-noida",
+      "title": "Azure AI Tech Lead",
+      "company": "eTalent Services by JaiPrakash Bharti",
+      "company_tag": "Recruitment Agency",
+      "location": "Remote / Noida (NCR), India",
+      "salary": "₹5L - ₹14L / yr",
+      "match_score": 88,
+      "tier": 1,
+      "tags": [
+        "Azure AI",
+        "LLM Fine-tuning",
+        "RAG Systems",
+        "Generative AI",
+        "MLOps",
+        "PyTorch",
+        "HuggingFace",
+        "LangChain"
+      ],
+      "why_match": "Candidate's experience in LLM fine-tuning, RAG, PyTorch, HuggingFace, and multi-model orchestration aligns well. The role's focus on leading AI/ML solutions on Azure is a good fit with existing BigQuery/ETL experience for data handling.",
+      "apply_url": "https://cutshort.io/jobs/323389/azure-ai-tech-lead",
+      "target_role": "prompt-engineer",
+      "jd_summary": "Lead the design, development, and deployment of advanced AI/ML solutions on Microsoft Azure. Responsibilities include architectural design, MLOps, LLM fine-tuning, RAG systems, and mentoring engineers. Requires strong Python, Azure AI/ML, PyTorch, TensorFlow, HuggingFace, LangChain, LLMs, and Generative AI experience.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.5,
+        "grade": "B",
+        "cv_match": 2.3,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "azure ai",
+          "gap": "minor",
+          "bridge": "Cloud experience with GCP/Vercel — Azure is similar patterns"
+        },
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "mlops",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "langchain",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "fine-tuning",
+            "pytorch"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "realign-llc-ai-azure-ml-engineer",
+      "title": "AI Azure ML Engineer",
+      "company": "Realign LLC",
+      "company_tag": "",
+      "location": "Remote (India)",
+      "salary": "₹1,60,000 a month (approx. ₹19.2 LPA)",
+      "match_score": 80,
+      "tier": 2,
+      "tags": [
+        "ML Engineer",
+        "AI Engineer",
+        "Azure ML",
+        "Remote",
+        "Python",
+        "Data Preprocessing",
+        "Feature Engineering"
+      ],
+      "why_match": "The candidate's 3+ years of data analyst experience, including BigQuery, dashboards, and ETL, combined with strong PyTorch and HuggingFace experience, provides a solid foundation for designing and deploying AI/ML solutions. The experience in building and fine-tuning LLMs is transferable to general ML engineering on Azure.",
+      "apply_url": "https://www.realignllc.com/job-title-ai-azure-ml-engineer-location/",
+      "target_role": "ml-engineer-remote-india",
+      "jd_summary": "Design, architect, and deploy end-to-end AI/ML solutions using Microsoft Azure services. This role involves collaborating with cross-functional teams, including data engineers and data scientists, and requires experience with data preprocessing, feature engineering, and creating high-quality inputs for AI/ML models.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.4,
+        "grade": "B",
+        "cv_match": 1.6,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "ml engineer",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "ai engineer",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "azure ml",
+          "gap": "minor",
+          "bridge": "Cloud experience with GCP/Vercel — Azure is similar patterns"
+        },
+        {
+          "skill": "remote",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "data preprocessing",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "norstella-nlp-data-scientist-ai-life-sciences",
+      "title": "NLP Data Scientist, AI & Life Sciences",
+      "company": "Norstella",
+      "company_tag": "",
+      "location": "Remote, India",
+      "salary": "",
+      "match_score": 95,
+      "tier": 1,
+      "tags": [
+        "NLP",
+        "LLM",
+        "Healthcare AI",
+        "Pharma AI",
+        "Drug Discovery",
+        "Clinical Data",
+        "Remote"
+      ],
+      "why_match": "This role directly leverages the candidate's expertise in LLM fine-tuning, RAG architecture, and prompt engineering, coupled with a strong foundation in pharmaceutical analysis. The focus on EHR and clinical data analysis aligns well with the candidate's data analyst experience.",
+      "apply_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHJ0KPUkNAwxxzAUi6sxkjykFlYNTcY3GP2w0kglutzvxePdepTA4uQgVZ1eoZrx4W5_FitogvUKG-_7WE4Wl3uY_swwLFGlLoDMXXac91a_G8cKZWEZQfW9QjVAq1ovyeYY4rqmiyk90-G26skRI3LpYqBTrzijBKTe-ppP2wdcNUqOOM1zM91bR19-5Xj",
+      "target_role": "pharma-ai-drug-discovery",
+      "jd_summary": "Seeking an NLP Data Scientist to join the AI & Life Sciences Solutions team, focusing on cutting-edge Language Models. Responsibilities include applying advanced NLP and LLMs to extract and interpret complex unstructured medical data from EHRs, designing scalable NLP solutions, and developing prompt engineering strategies for fine-tuning LLMs to accelerate RWD-driven drug development within the pharmaceutical industry.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.4,
+        "grade": "B",
+        "cv_match": 2.3,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "nlp",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "healthcare ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "pharma ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "drug discovery",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "clinical data",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "healthcare"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "cli"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery with 3D visualization",
+          "matching_tags": [
+            "healthcare"
+          ]
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "oddbytes-senior-data-analyst",
+      "title": "Senior Data Analyst",
+      "company": "OddBytes",
+      "company_tag": "Tech/Data Analytics",
+      "location": "Remote",
+      "salary": "USD 88,000 - 112,000 per year",
+      "match_score": 90,
+      "tier": 1,
+      "tags": [
+        "AI Tools",
+        "Data Analysis",
+        "Product Analytics",
+        "SQL",
+        "Dashboards"
+      ],
+      "why_match": "The role explicitly mentions active and responsible use of AI tools to accelerate analysis and strategic use of AI to deepen insights, aligning perfectly with the candidate's LLM/AI and prompt engineering skills. The focus on analytical leadership suits a senior profile.",
+      "apply_url": "https://remotive.com/remote-jobs/data-analysis/senior-data-analyst-oddbytes-43282",
+      "target_role": "data-analyst",
+      "jd_summary": "Responsible for transforming data into clear insights to drive product, business, and operational decisions, with a key focus on leveraging AI tools to accelerate analysis and deepen insights.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.3,
+        "grade": "B",
+        "cv_match": 1.6,
+        "archetype_fit": 4.0,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "data analysis",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "product analytics",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "dashboards",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "BrandScore AI",
+          "url": "https://bs.kprsnt.in",
+          "relevance": "Multi-model brand comparison platform",
+          "matching_tags": [
+            "analytics"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": []
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "publicis-sapient-senior-data-scientist-genai",
+      "title": "Senior Data Scientist - Generative AI",
+      "company": "Publicis Sapient",
+      "company_tag": "",
+      "location": "Multiple Locations (Bangalore, Gurgaon/Gurugram, Noida)",
+      "salary": "",
+      "match_score": 88,
+      "tier": 1,
+      "tags": [
+        "Data Scientist",
+        "Generative AI",
+        "LLM",
+        "Machine Learning",
+        "NLP",
+        "Python"
+      ],
+      "why_match": "This role requires a trusted advisor for applied machine learning and statistical analysis, with a focus on Generative AI. The candidate's 3+ years of data analysis experience, coupled with LLM fine-tuning, RAG architecture, and API knowledge (Gemini, Claude, OpenAI), provides a strong foundation for designing and implementing high-performance analytical models.",
+      "apply_url": "https://www.hirist.tech/jobs/senior-data-scientist-generative-ai-publicis-sapient-bangalore-gurgaon-noida-5-8-yrs-1617648?source=google",
+      "target_role": "generative-ai-developer",
+      "jd_summary": "Lead teams to create data-driven solutions, driving next-generation innovation in applied machine learning and statistical analysis. Focus on delivering cutting-edge Generative AI propositions for various industries like BFSI, Retail, and healthcare. Responsibilities include designing and implementing high-performance and robust analytical models.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.2,
+        "grade": "B",
+        "cv_match": 2.3,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 3.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "data scientist",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "machine learning",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "nlp",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery with 3D visualization",
+          "matching_tags": []
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "bigrio-ai-engineer-nlp-llm-data-product-engineer",
+      "title": "AI Engineer – NLP/LLM Data Product Engineer",
+      "company": "BigRio",
+      "company_tag": "",
+      "location": "Chennai, India- Hybrid",
+      "salary": "",
+      "match_score": 90,
+      "tier": 1,
+      "tags": [
+        "AI Engineer",
+        "NLP",
+        "LLM",
+        "Healthcare",
+        "Data Entry Automation",
+        "RAG",
+        "Prompt Engineering",
+        "Python",
+        "Hybrid"
+      ],
+      "why_match": "This role strongly aligns with the candidate's LLM, RAG, prompt engineering, and Python skills. The focus on healthcare sector data entry automation and processing handwritten medical records is highly relevant to a Clinical Data Analyst background and AI interests.",
+      "apply_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQu20vX-9KzHOQ6Nam81CF5Hxqo9Gugr7t3Mxd4jAo9m4XfH77-P1Qsqfl_Rfu9lmE4KhkHFu4LTj3rqSp148pUZrnaC7vpajzFbAVR8oWPVhs7-ilETp6HAc_t5i_I0slY-I3NK3fwGbj1u4zQ-D7Q0hj8fSQ2qR",
+      "target_role": "healthcare-ai",
+      "jd_summary": "An experienced AI Engineer specializing in creating GenAI LLM solutions to streamline data entry processes within the healthcare sector. Responsibilities include conducting client consultations, analyzing existing data entry workflows, designing customized AI solutions for the extraction and digitization of information from handwritten medical records, and optimizing LLM API interactions using prompt engineering and Retrieval-Augmented Generation (RAG).",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.2,
+        "grade": "B",
+        "cv_match": 1.6,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 3.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "ai engineer",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "nlp",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "healthcare",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "hybrid",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "healthcare"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery with 3D visualization",
+          "matching_tags": [
+            "healthcare"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "independence-pet-holdings-senior-data-analyst",
+      "title": "Senior Data Analyst",
+      "company": "Independence Pet Holdings",
+      "company_tag": "Pet Health/Insurance",
+      "location": "Remote",
+      "salary": "",
+      "match_score": 75,
+      "tier": 2,
+      "tags": [
+        "Data Analysis",
+        "SQL",
+        "Data Governance",
+        "Reporting",
+        "ETL"
+      ],
+      "why_match": "Candidate's 3+ years of Data Analyst experience with BigQuery and ETL aligns with the role's responsibilities of analyzing large datasets, managing data requests, and ensuring data integrity.",
+      "apply_url": "https://www.builtin.com/chicago/jobs/senior-data-analyst-independence-pet-holdings",
+      "target_role": "data-analyst",
+      "jd_summary": "Analyzes large datasets, manages internal data requests, supports data governance, and collaborates with cross-functional teams to ensure data integrity and quality across systems and reporting tools.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.0,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 4.0,
+        "comp_analysis": 3.0,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "data analysis",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "data governance",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "reporting",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "workday-ai-fellow-drug-discovery-india",
+      "title": "AI Fellow #4: AI for Drug Discovery",
+      "company": "Global Organization (via Workday)",
+      "company_tag": "",
+      "location": "India (Remote Work Arrangements considered)",
+      "salary": "",
+      "match_score": 98,
+      "tier": 1,
+      "tags": [
+        "AI",
+        "Drug Discovery",
+        "LLM",
+        "Genomics",
+        "Clinical Data",
+        "Remote",
+        "India"
+      ],
+      "why_match": "This position is an exceptional match, directly aligning with the candidate's drug discovery experience, LLM fine-tuning skills, and pharmaceutical background. The role specifically emphasizes AI for drug discovery, leveraging multimodal datasets, and engaging Indian research institutions, perfectly suiting the candidate's profile and location preference.",
+      "apply_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEv8aWIFwnO5ZKZPGBog_u0UxkSe5Xd4qNeWkgFKYisUoLB1fCPry26mnmkoNptuYWaj6vGBqCrRbaZBKQ69fEMU3tQW0nGYR4ydp8r9EaBtzsCciR2GMVHjCxs3qhvqPHpBFL_Z3AdxozTP_iWFUJbmZpyvjfI6Z-vFeno064ZUpMEc5DeIOG_PbJDlQ",
+      "target_role": "pharma-ai-drug-discovery",
+      "jd_summary": "The AI Fellow #4 will drive end-to-end AI innovation by identifying real-world problems, rapidly prototyping and scaling LLM-powered solutions, and building robust and ethical AI systems. This specific fellowship explores AI applications across target identification, molecule design, and compound screening, leveraging multimodal datasets for translational R&D, with remote work arrangements considered for candidates in India.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.0,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "drug discovery",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "genomics",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "clinical data",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "remote",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "india",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "cli"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": []
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "pretium-enterprise-services-lead-data-analyst-power-bi-bangalore",
+      "title": "Lead Data Analyst (Power BI)",
+      "company": "Pretium Enterprise Services, India",
+      "company_tag": "Consulting/Services",
+      "location": "Bangalore, India",
+      "salary": "",
+      "match_score": 70,
+      "tier": 2,
+      "tags": [
+        "Power BI",
+        "SQL",
+        "Data Warehousing",
+        "Relational Databases",
+        "Stakeholder Management"
+      ],
+      "why_match": "The role is India-based and focuses on leading data analysis, which aligns with the candidate's career progression and 3+ years of data analyst experience, including working with dashboards and SQL.",
+      "apply_url": "https://www.shine.com/job-search/lead-data-analyst-power-bi-pretium-enterprise-services-india-bangalore-6-10-years-4512962",
+      "target_role": "data-analyst",
+      "jd_summary": "Designs, develops, and maintains interactive dashboards and reports using Power BI, writes optimized SQL queries for data extraction and transformation, and collaborates with cross-functional teams to translate business requirements into analytical solutions.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 2.8,
+        "grade": "C+",
+        "cv_match": 1.6,
+        "archetype_fit": 3.0,
+        "comp_analysis": 3.0,
+        "culture_signals": 3.0,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "data warehousing",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "relational databases",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "stakeholder management",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [],
+      "verified": false,
+      "last_verified": "2026-04-08"
+    },
+    {
+      "id": "receptor-ai-senior-computational-chemist",
+      "title": "Senior Computational Chemist",
+      "company": "Receptor.AI",
+      "company_tag": "",
+      "location": "Remote (flexible working)",
+      "salary": "",
+      "match_score": 92,
+      "tier": 1,
+      "tags": [
+        "Computational Chemistry",
+        "Drug Discovery",
+        "AI",
+        "Molecular Modeling",
+        "Remote"
+      ],
+      "why_match": "This role is an excellent fit given the candidate's M.Pharm in Pharmaceutical Analysis and demonstrated experience in drug discovery, evidenced by a published 'Drug Discovery GPT-20B' model. The core focus on in silico modeling and applying AI to chemistry for next-generation therapeutics directly matches the candidate's expertise.",
+      "apply_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFqvveJPDWAs6rcVfkxpvpCdqcCtJDMhYFIbVwirsFOI6PF5seMHfIHQ1aZQyNpcG4wc8_0kaEJz8-WT1bhVyQ9Oh3w5x_-NvtecvQj1wfLx-JA7e8Sxms_DsA",
+      "target_role": "pharma-ai-drug-discovery",
+      "jd_summary": "Seeking a Senior Computational Chemist to join the discovery team, contributing to hit-to-lead and lead optimization projects. The role involves connecting in silico modeling with medicinal chemistry to design better compounds, shaping project strategies, planning modeling efforts, and influencing prioritization decisions based on data, leveraging AI and chemistry for next-gen therapeutics.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-04-08",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 2.7,
+        "grade": "C+",
+        "cv_match": 0.0,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.0,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "computational chemistry",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "drug discovery",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "remote",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": []
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

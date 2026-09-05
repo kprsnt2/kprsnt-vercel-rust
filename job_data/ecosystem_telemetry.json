@@ -1,0 +1,65 @@
+{
+  "last_updated": "2026-09-05T02:57:11.552005",
+  "commit_history": 994,
+  "repo_counts": 100,
+  "language_breakdown": {
+    "TypeScript": 24,
+    "JavaScript": 19,
+    "Python": 19,
+    "HTML": 12
+  },
+  "live_salary_estimation": {
+    "min": 220000,
+    "max": 420000,
+    "reasoning": "For a US Senior/Staff AI Engineer with deep full-stack and systems experience across autonomous multi-agent ecosystems and high-throughput analytics pipelines, compensation typically lands in the upper band of large tech and AI-native companies. A 100-repo portfolio across TypeScript, JavaScript, Python, and HTML suggests broad execution depth and strong applied engineering impact."
+  },
+  "top_skills": [
+    "Multi-Agent AI",
+    "Model Context Protocol (MCP)",
+    "BigQuery",
+    "Python",
+    "Flask",
+    "GitHub Actions",
+    "TypeScript"
+  ],
+  "mcp_endpoints_active": 4,
+  "automations_running": 12,
+  "sectors_impacted": [
+    "Healthcare / Pharma",
+    "E-commerce",
+    "Insurance",
+    "Education",
+    "SaaS"
+  ],
+  "recent_activity": [],
+  "daily_commits_count": 0,
+  "commit_timeline_7d": {
+    "labels": [
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ],
+    "commits": [
+      1,
+      12,
+      15,
+      0,
+      17,
+      0,
+      32
+    ],
+    "pipelines": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  }
+}

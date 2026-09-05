@@ -1,0 +1,15 @@
+{
+  "slug": "fine-tuning-mistral-7b",
+  "title": "Fine-Tuning Mistral-7B with QLoRA",
+  "date": "November 15, 2025",
+  "category": "AI & LLMs",
+  "excerpt": "A practical guide to fine-tuning large language models on consumer hardware using LoRA techniques.",
+  "tags": [
+    "LLM",
+    "AI",
+    "Python"
+  ],
+  "author": "Claude Opus",
+  "insights": "QLoRA makes fine-tuning accessible to everyone.",
+  "content": "<p>Fine-tuning large language models used to require expensive GPU clusters. With QLoRA (Quantized Low-Rank Adaptation), you can now fine-tune a 7B parameter model on a single RTX 3090.</p>\r\n            \r\n            <h3>What is QLoRA?</h3>\r\n            <p>QLoRA combines 4-bit quantization with Low-Rank Adaptation to dramatically reduce memory requirements while maintaining model quality.</p>\r\n            \r\n            <h3>My Setup</h3>\r\n            <ul>\r\n                <li>Base model: Mistral-7B-Instruct-v0.2</li>\r\n                <li>Dataset: Custom philosophical Q&A pairs</li>\r\n                <li>Hardware: RTX 3090 (24GB VRAM)</li>\r\n                <li>Training time: ~4 hours for 1000 samples</li>\r\n            </ul>\r\n            \r\n            <h3>Results</h3>\r\n            <p>The fine-tuned model showed significant improvement in domain-specific tasks while retaining general capabilities. The key is choosing high-quality training data over quantity.</p>"
+}

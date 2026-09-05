@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block title %}AI Eco Hub | Autonomous Multi-Agent Ecosystem{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="max-width: 1400px; padding-bottom: 4rem;">
+    
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-12 text-center" style="margin-top: 3rem;">
+            <div class="d-inline-flex align-items-center mb-3 px-3 py-1 rounded-pill" style="background: rgba(102,126,234,0.15); border: 1px solid rgba(102,126,234,0.3);">
+                <i class="fas fa-microchip text-primary me-2"></i>
+                <span class="text-white small fw-semibold">Autonomous Infrastructure</span>
+            </div>
+            <h1 class="display-4 fw-bold" style="background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                AI Eco: Autonomous Multi-Agent Ecosystem
+            </h1>
+            <p class="lead mt-3 text-secondary mx-auto" style="max-width: 850px; line-height: 1.7;">
+                <strong>AI Eco</strong> is an autonomous AI Ecosystem where specialized agents use <strong>custom skills</strong> to execute all their tasks—monitoring codebases, resolving commit head SHAs, generating technical dev logs into <code>AI_Eco_Blogs/</code>, updating live telemetry, and maintaining documentation with zero manual intervention.
+            </p>
+        </div>
+    </div>
+
+    <!-- Architecture Diagram -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-12 col-xl-10">
+            <div class="card bg-dark" style="border: 1px solid rgba(102,126,234,0.25); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.35);">
+                <div class="card-body p-4 p-md-5">
+                    <h4 class="mb-2 text-white text-center">AI Eco Swarm Architecture</h4>
+                    <p class="text-secondary text-center small mb-4">Orchestrator initiates specialized agents equipped with dedicated custom skills</p>
+                    <div class="mermaid text-center" style="background: transparent;">
+                        graph TD
+                            A[GitHub Actions / CRON Trigger] -->|Initiates| O[Orchestrator Script]
+                            O --> B[Agent 1: GitHub Scout]
+                            O --> C[Agent 2: Dashboard Agent]
+                            O --> D[Agent 3: Portfolio Sync]
+                            O --> E[Agent 4: MCP Engineer]
+                            O --> F[Agent 5: Docs Agent]
+                            O --> G[Agent 6: Readme Agent]
+                            
+                            B -->|Writes| H[AI_Eco_Blogs/]
+                            C -->|Writes| I[ecosystem_telemetry.json]
+                            D -->|Updates| J[resume_data.py]
+                            E -->|Exposes| K[FastMCP Tool]
+                            F -->|Updates| L[ecosystem.md]
+                            G -->|Updates| M[README.md]
+                            
+                            H --> N((AI Eco Dashboard & Site))
+                            I --> N
+                            J --> N
+                            K --> N
+                            L --> N
+                            M --> N
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The 6 Agents Explained with Custom Skills -->
+    <div class="row g-4 justify-content-center">
+        <div class="col-12 text-center mb-2">
+            <h2 class="h3 text-white">How Agents Use Custom Skills</h2>
+            <p class="text-secondary">Each autonomous agent in AI Eco has a distinct role and executes via specialized custom skills.</p>
+        </div>
+
+        <!-- Agent 1 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-dark h-100" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: transform 0.3s ease;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div style="font-size: 2rem; color: #3498db;"><i class="fas fa-satellite-dish"></i></div>
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size: 0.7rem;">Skill: Git Ingestion</span>
+                    </div>
+                    <h5 class="text-white">1. GitHub Scout Agent</h5>
+                    <p class="text-secondary small mb-3">Monitors user commit activity across all repositories via GitHub Events API. Uses custom commit head SHA resolution to harvest commit messages and publishes authentic dev logs into <code>AI_Eco_Blogs/</code>.</p>
+                    <div class="p-2 rounded bg-black small text-muted font-monospace" style="font-size: 0.75rem;">
+                        <i class="fas fa-magic text-info me-1"></i> Custom Skill: Commit Harvester & LLM Synthesis
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent 2 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-dark h-100" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: transform 0.3s ease;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div style="font-size: 2rem; color: #e74c3c;"><i class="fas fa-tachometer-alt"></i></div>
+                        <span class="badge bg-danger-subtle text-danger border border-danger-subtle" style="font-size: 0.7rem;">Skill: Market Intelligence</span>
+                    </div>
+                    <h5 class="text-white">2. Dashboard Agent</h5>
+                    <p class="text-secondary small mb-3">Calculates telemetry metrics (real commits, language distributions, active automations) and utilizes LLMs to dynamically estimate US market salary benchmarks based on active tech stack shifts.</p>
+                    <div class="p-2 rounded bg-black small text-muted font-monospace" style="font-size: 0.75rem;">
+                        <i class="fas fa-magic text-info me-1"></i> Custom Skill: Telemetry & Compensation Analyzer
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent 3 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-dark h-100" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: transform 0.3s ease;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div style="font-size: 2rem; color: #2ecc71;"><i class="fas fa-file-alt"></i></div>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size: 0.7rem;">Skill: Schema Alignment</span>
+                    </div>
+                    <h5 class="text-white">3. Portfolio Sync Agent</h5>
+                    <p class="text-secondary small mb-3">Continuously validates and synchronizes Python knowledge base constants, role-tailored resume configurations, and project showcases across frontend views.</p>
+                    <div class="p-2 rounded bg-black small text-muted font-monospace" style="font-size: 0.75rem;">
+                        <i class="fas fa-magic text-info me-1"></i> Custom Skill: Multi-Role KB Synchronizer
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent 4 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-dark h-100" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: transform 0.3s ease;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div style="font-size: 2rem; color: #f39c12;"><i class="fas fa-plug"></i></div>
+                        <span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size: 0.7rem;">Skill: Protocol Interface</span>
+                    </div>
+                    <h5 class="text-white">4. MCP Engineer Agent</h5>
+                    <p class="text-secondary small mb-3">Exposes the ecosystem's internal telemetry, portfolio capabilities, and project facts as standard FastMCP tools so external AI assistants (like Claude) can query live metrics directly.</p>
+                    <div class="p-2 rounded bg-black small text-muted font-monospace" style="font-size: 0.75rem;">
+                        <i class="fas fa-magic text-info me-1"></i> Custom Skill: FastMCP Server Architecture
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent 5 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-dark h-100" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: transform 0.3s ease;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div style="font-size: 2rem; color: #9b59b6;"><i class="fas fa-book"></i></div>
+                        <span class="badge bg-purple-subtle text-info border border-info-subtle" style="font-size: 0.7rem;">Skill: Context Engineering</span>
+                    </div>
+                    <h5 class="text-white">5. Docs Agent</h5>
+                    <p class="text-secondary small mb-3">Maintains internal skill guides, prompt instructions, and interactive API documentation to keep the RAG chatbot context embeddings aligned with newly shipped capabilities.</p>
+                    <div class="p-2 rounded bg-black small text-muted font-monospace" style="font-size: 0.75rem;">
+                        <i class="fas fa-magic text-info me-1"></i> Custom Skill: Knowledge Grounding & Docs
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent 6 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-dark h-100" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: transform 0.3s ease;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div style="font-size: 2rem; color: #1abc9c;"><i class="fab fa-markdown"></i></div>
+                        <span class="badge bg-teal-subtle text-light border border-secondary" style="font-size: 0.7rem;">Skill: Architectural Vis</span>
+                    </div>
+                    <h5 class="text-white">6. Readme Agent</h5>
+                    <p class="text-secondary small mb-3">Generates clean architectural summaries, flowcharts, and key project callouts directly into the project's root <code>README.md</code>, ensuring the public repo matches live deployments.</p>
+                    <div class="p-2 rounded bg-black small text-muted font-monospace" style="font-size: 0.75rem;">
+                        <i class="fas fa-magic text-info me-1"></i> Custom Skill: Mermaid Diagram Synthesizer
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Call -->
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <a href="/ecosystem" class="btn btn-primary btn-lg" style="border-radius: 30px; padding: 12px 32px; font-weight: 600; background: linear-gradient(135deg, #667eea, #764ba2); border: none; box-shadow: 0 4px 15px rgba(102,126,234,0.4);">
+                <i class="fas fa-play-circle me-2"></i> View AI Eco Dashboard & Dev Logs
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<!-- Initialize Mermaid.js for the diagram -->
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ 
+        startOnLoad: true, 
+        theme: 'dark',
+        themeVariables: {
+            primaryColor: '#2b303b',
+            primaryTextColor: '#fff',
+            primaryBorderColor: '#667eea',
+            lineColor: '#8ca8ff',
+            secondaryColor: '#34495e',
+            tertiaryColor: '#222'
+        }
+    });
+</script>
+
+<style>
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+</style>
+{% endblock %}

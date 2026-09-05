@@ -1,0 +1,54 @@
+{
+    "compound_name": "Remdesivir",
+    "pubchem_data": {
+        "CID": 121304016,
+        "MolecularFormula": "C27H35N6O8P",
+        "MolecularWeight": "602.6",
+        "ConnectivitySMILES": "CCC(CC)COC(=O)C(C)NP(=O)(OCC1C(C(C(O1)(C#N)C2=CC=C3N2N=CN=C3N)O)O)OC4=CC=CC=C4",
+        "XLogP": 1.9,
+        "Complexity": 1010
+    },
+    "fda_data": "10. DRUG INTERACTIONS Due to potential antagonism based on data from cell culture experiments, concomitant use of VEKLURY with chloroquine phosphate or hydroxychloroquine sulfate is not recommended [see Warnings and Precautions (5.3) , Microbiology/Resistance Information (15) ] . Clinical drug-drug interaction studies have not been performed with VEKLURY. In vitro, remdesivir is a substrate for drug metabolizing enzyme CYP3A4, and is a substrate for Organic Anion Transporting Polypeptides 1B1 (O...",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 1,
+            "notes": "Poor oral bioavailability due to extensive first-pass metabolism; must be administered intravenously."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding (approximately 88%); distributes well into tissues but has limited CNS penetration."
+        },
+        "metabolism": {
+            "score": 3,
+            "notes": "Extensively and rapidly metabolized by esterases (e.g., CES1) and phosphoramidases to form the active nucleoside triphosphate and the major circulating metabolite GS-441524."
+        },
+        "excretion": {
+            "score": 3,
+            "notes": "Primarily excreted in the urine, predominantly as the metabolite GS-441524 (74%). The prodrug has a short plasma half-life (~1 hour)."
+        },
+        "toxicity": {
+            "score": 2,
+            "notes": "Associated with hepatotoxicity (elevated transaminases ALT/AST), potential renal toxicity, and infusion-related hypersensitivity reactions."
+        },
+        "overall_admet_score": 2.4
+    },
+    "safety_review": {
+        "ind_readiness_score": 85,
+        "go_no_go_decision": "GO",
+        "risk_mitigation": [
+            "Implement routine monitoring of liver function tests (ALT/AST) prior to and during treatment to manage hepatotoxicity risks.",
+            "Monitor renal function (eGFR) closely, given potential renal toxicity and predominant renal excretion of the major metabolite.",
+            "Administer strictly via intravenous infusion in a clinical setting equipped to manage hypersensitivity or infusion-related reactions.",
+            "Contraindicate concomitant use with chloroquine phosphate or hydroxychloroquine sulfate due to demonstrated in vitro antagonism.",
+            "Evaluate patient medication regimens for potential drug-drug interactions involving CYP3A4 and OATP1B1."
+        ],
+        "executive_summary": "Remdesivir is a nucleotide prodrug that rapidly metabolizes into its active form and major circulating metabolite GS-441524. While its poor oral bioavailability necessitates intravenous administration, its pharmacokinetic distribution and metabolism profiles are well-characterized and support clinical utility. The primary toxicological liabilities include hepatotoxicity, potential renal impairment, and infusion-related reactions. Given the completed Phase 2 trial status and established FDA interaction guidelines, the compound demonstrates a favorable benefit-risk profile when accompanied by strict clinical monitoring. A GO decision is recommended for continued clinical application and development, provided robust hepatic, renal, and DDI risk mitigation strategies are enforced."
+    },
+    "timestamp": "2026-05-07T06:31:49.030338"
+}

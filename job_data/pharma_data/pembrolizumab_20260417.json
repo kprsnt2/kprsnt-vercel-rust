@@ -1,0 +1,63 @@
+{
+    "compound_name": "Pembrolizumab",
+    "pubchem_data": {
+        "MolecularFormula": "Ctest",
+        "MolecularWeight": 350.5,
+        "CanonicalSMILES": "CC(=O)OC1=CC=CC=C1C(=O)O",
+        "XLogP": 2.1
+    },
+    "fda_data": "Query returned no results or failed.",
+    "clinical_trials": [
+        {
+            "title": "Mock Phase 2 Trial",
+            "status": "COMPLETED"
+        }
+    ],
+    "admet_prediction": {
+        "absorption": {
+            "score": 4,
+            "notes": "Good oral bioavailability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding."
+        },
+        "metabolism": {
+            "score": 2,
+            "notes": "Extensive hepatic metabolism (CYP3A4)."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Renal clearance is primary."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Hepatotoxicity risk at high doses."
+        },
+        "overall_admet_score": 3.2
+    },
+    "safety_review": {
+        "absorption": {
+            "score": 4,
+            "notes": "Good oral bioavailability."
+        },
+        "distribution": {
+            "score": 3,
+            "notes": "Moderate plasma protein binding."
+        },
+        "metabolism": {
+            "score": 2,
+            "notes": "Extensive hepatic metabolism (CYP3A4)."
+        },
+        "excretion": {
+            "score": 4,
+            "notes": "Renal clearance is primary."
+        },
+        "toxicity": {
+            "score": 3,
+            "notes": "Hepatotoxicity risk at high doses."
+        },
+        "overall_admet_score": 3.2
+    },
+    "timestamp": "2026-04-17T06:00:33.415640"
+}

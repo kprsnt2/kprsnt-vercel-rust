@@ -1,0 +1,1359 @@
+{
+  "date": "2026-05-04",
+  "pipeline_version": "2.0.0",
+  "profile_summary": "Data Analyst → AI Engineer | LLM Fine-tuning | 10+ deployed AI apps",
+  "report": {
+    "date": "2026-05-04",
+    "pipeline_version": "2.0.0",
+    "summary": {
+      "total_jobs": 19,
+      "top_matches": 1,
+      "grade_a_count": 0,
+      "grade_b_count": 11,
+      "average_score": 3.08,
+      "verified_count": 8
+    },
+    "by_archetype": {
+      "AI Engineer / LLM Engineer": 12,
+      "Prompt Engineer": 2,
+      "Senior Data Analyst": 2,
+      "Clinical/Healthcare AI": 3
+    },
+    "by_location": {
+      "Remote": 14,
+      "India": 5
+    },
+    "top_5": [
+      {
+        "title": "Generative AI / LLM Engineer",
+        "company": "Xohani Solutions",
+        "score": 3.7,
+        "grade": "B+",
+        "url": "https://wellfound.com/company/xohani-solutions/jobs"
+      },
+      {
+        "title": "AI Engineer/ Associate AI Engineer",
+        "company": "First Advantage",
+        "score": 3.4,
+        "grade": "B",
+        "url": "https://first-advantage.applytojob.com/apply/"
+      },
+      {
+        "title": "Machine Learning (ML) Engineer Intern - (Paid - India/Remote)",
+        "company": "Peakflo",
+        "score": 3.4,
+        "grade": "B",
+        "url": "https://www.workatastartup.com/companies/peakflo"
+      },
+      {
+        "title": "Prompt Engineer",
+        "company": "Synechron",
+        "score": 3.4,
+        "grade": "B",
+        "url": "https://www.foundit.in/job/prompt-engineer-synechron-mumbai"
+      },
+      {
+        "title": "AI Prompt Engineer II",
+        "company": "Pearl",
+        "score": 3.4,
+        "grade": "B",
+        "url": "https://in.bebee.com/job/ai-prompt-engineer-ii-pearl-bengaluru"
+      }
+    ]
+  },
+  "trace": {
+    "run_date": "2026-05-04",
+    "run_time": "2026-05-04T05:52:57.847785",
+    "duration_seconds": 206.1,
+    "total_steps": 8,
+    "total_tokens": 0,
+    "total_cost_usd": 0.0,
+    "errors": 0,
+    "steps": [
+      {
+        "agent": "search",
+        "action": "Search AI Engineer",
+        "duration_ms": 49331,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Found 5 jobs",
+        "timestamp": "2026-05-04T05:50:22.480688"
+      },
+      {
+        "agent": "search",
+        "action": "Search Data Analyst",
+        "duration_ms": 55752,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Found 5 jobs",
+        "timestamp": "2026-05-04T05:51:18.232618"
+      },
+      {
+        "agent": "search",
+        "action": "Search Prompt Engineer",
+        "duration_ms": 43849,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Found 5 jobs",
+        "timestamp": "2026-05-04T05:52:02.081547"
+      },
+      {
+        "agent": "search",
+        "action": "Search Healthcare AI",
+        "duration_ms": 50448,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Found 5 jobs",
+        "timestamp": "2026-05-04T05:52:52.530007"
+      },
+      {
+        "agent": "evaluator",
+        "action": "Evaluate all jobs",
+        "duration_ms": 1,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Grades: {'B+': 1, 'B': 10, 'C+': 8}",
+        "timestamp": "2026-05-04T05:52:52.532151"
+      },
+      {
+        "agent": "skill_gap",
+        "action": "Analyze skill gaps",
+        "duration_ms": 1,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Analyzed 19 jobs",
+        "timestamp": "2026-05-04T05:52:52.533344"
+      },
+      {
+        "agent": "verify",
+        "action": "Verify URLs",
+        "duration_ms": 5313,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "8/19 active",
+        "timestamp": "2026-05-04T05:52:57.846787"
+      },
+      {
+        "agent": "report",
+        "action": "Generate report",
+        "duration_ms": 0,
+        "tokens": 0,
+        "cost_usd": 0.0,
+        "details": "Top matches: 1",
+        "timestamp": "2026-05-04T05:52:57.847770"
+      }
+    ],
+    "error_details": []
+  },
+  "jobs": [
+    {
+      "id": "xohani-solutions-generative-ai-llm-engineer",
+      "title": "Generative AI / LLM Engineer",
+      "company": "Xohani Solutions",
+      "company_tag": "Venture Studio Partner",
+      "location": "Remote, India",
+      "salary": "₹10L – ₹18L",
+      "match_score": 92,
+      "tier": 1,
+      "tags": [
+        "LLM",
+        "RAG Pipelines",
+        "Prompt Engineering",
+        "Python"
+      ],
+      "why_match": "The role requires hands-on experience building conversational agents and intelligent assistants using LLMs, vector databases, and RAG, which aligns perfectly with your 20B LLM fine-tuning and API integration experience.",
+      "apply_url": "https://wellfound.com/company/xohani-solutions/jobs",
+      "target_role": "ai-engineer",
+      "jd_summary": "Looking for a Generative AI / LLM Engineer to build AI-powered products using Large Language Models. Responsibilities include designing AI agent architectures, memory systems, retrieval-based pipelines (RAG), and prompt orchestration frameworks.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.7,
+        "grade": "B+",
+        "cv_match": 2.3,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Good match — worth applying"
+      },
+      "skill_gaps": [],
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "first-advantage-associate-ai-engineer",
+      "title": "AI Engineer/ Associate AI Engineer",
+      "company": "First Advantage",
+      "company_tag": "Global Tech",
+      "location": "Remote, India",
+      "salary": "Not Disclosed",
+      "match_score": 85,
+      "tier": 2,
+      "tags": [
+        "NLP",
+        "Prompt Development",
+        "Cloud Native",
+        "Computer Vision"
+      ],
+      "why_match": "The job specifically requests hands-on experience with Gen AI systems, prompt engineering, RAG, and APIs. Your data analysis background and PyTorch/HuggingFace implementations cover all technical requirements effectively.",
+      "apply_url": "https://first-advantage.applytojob.com/apply/",
+      "target_role": "ai-engineer",
+      "jd_summary": "Develop AI models focusing on NLP, computer vision, and machine learning. Candidates must have strong hands-on experience with generative AI, large language models, prompt development, and API creation.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.4,
+        "grade": "B",
+        "cv_match": 1.6,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "nlp",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "computer vision",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [],
+      "verified": true,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "peakflo-ml-engineer-intern",
+      "title": "Machine Learning (ML) Engineer Intern - (Paid - India/Remote)",
+      "company": "Peakflo",
+      "company_tag": "YC W22",
+      "location": "Remote, India",
+      "salary": "₹480K - ₹600K",
+      "match_score": 75,
+      "tier": 2,
+      "tags": [
+        "Python",
+        "LLM Fine-tuning",
+        "Data Science"
+      ],
+      "why_match": "Although an intern level position, it specifically asks for LLM fine-tuning, prompt engineering, and a data background. This is a solid foot-in-the-door at a top Y-Combinator startup to pivot officially into ML Engineering.",
+      "apply_url": "https://www.workatastartup.com/companies/peakflo",
+      "target_role": "ml-engineer",
+      "jd_summary": "Develop and implement machine learning solutions focused on financial AI automation. The position entails Python back-end development, LLM fine-tuning, and crafting intelligent voice-optimized prompt flows for a fast-growing startup.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.4,
+        "grade": "B",
+        "cv_match": 2.3,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "data science",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "fine-tuning"
+          ]
+        }
+      ],
+      "verified": true,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "synechron-prompt-engineer",
+      "title": "Prompt Engineer",
+      "company": "Synechron",
+      "company_tag": "Global Digital Consulting",
+      "location": "Mumbai, India",
+      "salary": "Not specified",
+      "match_score": 92,
+      "tier": 1,
+      "tags": [
+        "Python",
+        "API Integration",
+        "RAG",
+        "NLP",
+        "Generative AI"
+      ],
+      "why_match": "Synechron requires hands-on experience with RAG-based systems, Python, and API integrations, which perfectly aligns with the candidate's mastery of RAG Architecture and OpenAI/Claude/Gemini APIs.",
+      "apply_url": "https://www.foundit.in/job/prompt-engineer-synechron-mumbai",
+      "target_role": "prompt-engineer",
+      "jd_summary": "Implement and refine zero-shot and chain-of-thought prompting strategies to modernize enterprise applications. Work closely with NLP fundamentals, RAG-based systems, and API integrations in Python.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.4,
+        "grade": "B",
+        "cv_match": 2.3,
+        "archetype_fit": 4.0,
+        "comp_analysis": 3.5,
+        "culture_signals": 3.5,
+        "red_flags": [],
+        "archetype": "Prompt Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "nlp",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "RAG Portfolio Chatbot",
+          "url": "https://kprsnt.in",
+          "relevance": "Gemini embeddings + cosine similarity retrieval",
+          "matching_tags": [
+            "rag"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "pearl-ai-prompt-engineer-ii",
+      "title": "AI Prompt Engineer II",
+      "company": "Pearl",
+      "company_tag": "Professional Services AI",
+      "location": "Bengaluru, India / Remote",
+      "salary": "Not specified",
+      "match_score": 90,
+      "tier": 1,
+      "tags": [
+        "LLM",
+        "Prompt Testing",
+        "Stakeholder Management",
+        "NLP"
+      ],
+      "why_match": "The candidate's 3+ years of data analytics experience combined with deep LLM fine-tuning on PyTorch provides the analytical rigor and technical depth required for an Engineer II role.",
+      "apply_url": "https://in.bebee.com/job/ai-prompt-engineer-ii-pearl-bengaluru",
+      "target_role": "prompt-engineer",
+      "jd_summary": "Design, test, and scale LLM prompts that drive impactful user experiences and business outcomes. Analyze AI interactions and collaborate across technical and business teams to improve the AI-powered expert platform.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.4,
+        "grade": "B",
+        "cv_match": 1.6,
+        "archetype_fit": 4.0,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "Prompt Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "stakeholder management",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "nlp",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "mfsg-senior-data-analyst-cards",
+      "title": "Senior Data Analyst, Cards",
+      "company": "Momentum Financial Services Group",
+      "company_tag": "Financial Services",
+      "location": "Hyderabad (Remote)",
+      "salary": "Not disclosed",
+      "match_score": 80,
+      "tier": 2,
+      "tags": [
+        "Reporting",
+        "Business Intelligence",
+        "Python"
+      ],
+      "why_match": "The candidate has proven skills with Python, SQL, and dashboarding to deliver actionable insights. This directly aligns with the requirement to serve as a subject matter expert for the firm's card product data.",
+      "apply_url": "https://boards.greenhouse.io/mfsgtechnologiesindiaprivatelimited",
+      "target_role": "data-analyst",
+      "jd_summary": "Act as the primary consultant sharing data insights and strategies to launch and grow a credit card product. Manipulate large datasets using SQL and Python to build reporting solutions for senior leadership.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.3,
+        "grade": "B",
+        "cv_match": 1.6,
+        "archetype_fit": 4.0,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "reporting",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "business intelligence",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "voicecare-ai-prompt-engineer",
+      "title": "AI Prompt Engineer",
+      "company": "VoiceCare",
+      "company_tag": "Healthcare AI",
+      "location": "Bengaluru, Karnataka, India / Remote",
+      "salary": "Competitive",
+      "match_score": 95,
+      "tier": 1,
+      "tags": [
+        "Healthcare AI",
+        "Prompt Engineering",
+        "LLM Customization",
+        "Generative AI",
+        "Python"
+      ],
+      "why_match": "The candidate's M.Pharm background and experience publishing a Drug Discovery GPT-20B model make them an exceptional fit for fine-tuning LLMs in a highly regulated healthcare context.",
+      "apply_url": "https://squarepeghires.com/company/voicecare",
+      "target_role": "prompt-engineer",
+      "jd_summary": "Optimize interactions with small and large language models for healthcare applications. Design, refine, and test highly effective prompts that enhance the accuracy, relevance, and safety of AI-generated responses while ensuring HIPAA compliance.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.3,
+        "grade": "B",
+        "cv_match": 1.6,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "healthcare ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm",
+            "healthcare"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery with 3D visualization",
+          "matching_tags": [
+            "healthcare"
+          ]
+        }
+      ],
+      "verified": true,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "healx-machine-learning-engineer",
+      "title": "Machine Learning Engineer",
+      "company": "Healx",
+      "company_tag": "Tech Bio",
+      "location": "Remote / Cambridge, UK",
+      "salary": "£36,000 - £60,000",
+      "match_score": 95,
+      "tier": 1,
+      "tags": [
+        "Machine Learning",
+        "Drug Discovery",
+        "Python",
+        "Remote"
+      ],
+      "why_match": "Candidate's HuggingFace 'Drug Discovery GPT-20B' model and PyTorch skills directly align with Healx's AI-driven drug discovery mission for rare diseases.",
+      "apply_url": "https://healx.ai/careers/",
+      "target_role": "Pharma AI Drug Discovery",
+      "jd_summary": "Develop and apply cutting-edge machine learning approaches, knowledge graph reasoning, and agentic workflows to find novel treatments for rare diseases. Work closely with bioinformaticians and drug discovery scientists to translate complex biological questions into robust, scalable machine learning solutions.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.3,
+        "grade": "B",
+        "cv_match": 1.6,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "machine learning",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "drug discovery",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "remote",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "clover-health-senior-clinical-data-analyst",
+      "title": "Senior Clinical Data Analyst",
+      "company": "Clover Health",
+      "company_tag": "Healthcare Tech",
+      "location": "Remote - USA",
+      "salary": "$115,000 - $133,000",
+      "match_score": 95,
+      "tier": 1,
+      "tags": [
+        "SQL",
+        "Healthcare Claims",
+        "Dashboards"
+      ],
+      "why_match": "The candidate's unique blend of an M.Pharm background and technical data analysis (ETL, dashboards) provides the perfect foundation for analyzing pharmacy and clinical claims data as required by the role.",
+      "apply_url": "https://boards.greenhouse.io/cloverhealth",
+      "target_role": "data-analyst",
+      "jd_summary": "Develop complex SQL queries to support data-driven insights that inform clinical decisions. Analyze healthcare data including pharmacy and EMR claims to draw conclusions and build dashboards measuring provider performance.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.1,
+        "grade": "B",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.5,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "healthcare claims",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "dashboards",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "healthcare"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery with 3D visualization",
+          "matching_tags": [
+            "healthcare"
+          ]
+        },
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": []
+        }
+      ],
+      "verified": true,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "katalyst-healthcares-ml-engineer-data-scientist",
+      "title": "ML Engineer & Data Scientist (Life Sciences AI)",
+      "company": "Katalyst Healthcares & Life Sciences",
+      "company_tag": "Life Sciences",
+      "location": "Hyderabad, India",
+      "salary": "Competitive",
+      "match_score": 92,
+      "tier": 1,
+      "tags": [
+        "Life Sciences AI",
+        "Predictive Modeling",
+        "Machine Learning",
+        "India"
+      ],
+      "why_match": "Candidate's PyTorch capabilities and proven ability to build and publish custom ML models (Drug Discovery GPT-20B) perfectly fits the need to optimize predictive models for life sciences use cases.",
+      "apply_url": "https://in.indeed.com/cmp/Katalyst-Healthcares-&-Life-Sciences/jobs",
+      "target_role": "Pharma AI Drug Discovery",
+      "jd_summary": "Design, develop, and optimize machine learning models specifically for life sciences use cases. Work with structured and unstructured data to build predictive models and integrate AI into pharma workflows.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.1,
+        "grade": "B",
+        "cv_match": 0.8,
+        "archetype_fit": 4.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 3.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "life sciences ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "machine learning",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "india",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "kaseya-sr-data-analyst",
+      "title": "Sr. Data Analyst",
+      "company": "Kaseya",
+      "company_tag": "SaaS / IT Management",
+      "location": "United States (Remote)",
+      "salary": "$130,000 - $150,000",
+      "match_score": 82,
+      "tier": 2,
+      "tags": [
+        "Data Visualization",
+        "Automation",
+        "SQL"
+      ],
+      "why_match": "Candidate's strong 3-year track record in BigQuery, ETL, and automated dashboards translates smoothly to designing scalable data sets and predictive risk models for Kaseya's finance operations.",
+      "apply_url": "https://careers.kaseya.com/job-openings",
+      "target_role": "data-analyst",
+      "jd_summary": "Lead large-scale analytics initiatives around revenue and performance tracking. Partner cross-functionally to construct and automate data products, intelligent insights agents, and executive-level dashboards.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.0,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 3.0,
+        "comp_analysis": 4.5,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "Senior Data Analyst",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "data visualization",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": []
+        },
+        {
+          "project": "BrandScore AI",
+          "url": "https://bs.kprsnt.in",
+          "relevance": "Multi-model brand comparison platform",
+          "matching_tags": []
+        },
+        {
+          "project": "MCP Job Server",
+          "url": "https://github.com/kprsnt2/kprsnt.in",
+          "relevance": "MCP protocol server with 5 tools",
+          "matching_tags": []
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "infosys-consulting-senior-principal-healthcare-ai",
+      "title": "Senior Principal – Healthcare AI",
+      "company": "Infosys Consulting",
+      "company_tag": "IT Services & Consulting",
+      "location": "Remote - USA",
+      "salary": "$241,000 - $300,000",
+      "match_score": 85,
+      "tier": 2,
+      "tags": [
+        "Healthcare AI",
+        "Generative AI",
+        "Consulting",
+        "Remote"
+      ],
+      "why_match": "Candidate's deep hands-on expertise in fine-tuning large language models (LoRA/QLoRA) and RAG architecture provides the technical grounding needed to guide AI healthcare transformations.",
+      "apply_url": "https://career.infosys.com/",
+      "target_role": "Healthcare AI",
+      "jd_summary": "Lead AI-enabled healthcare transformation across payers and provider health systems. Utilize generative AI, agentic AI, and automation to solve complex healthcare business problems and drive organizational strategy.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 3.0,
+        "grade": "B",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Decent match — apply if specifically interested"
+      },
+      "skill_gaps": [
+        {
+          "skill": "healthcare ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "consulting",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "remote",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "healthcare"
+          ]
+        },
+        {
+          "project": "PharmaGenesis AI",
+          "url": "https://pharmgenai.kprsnt.in",
+          "relevance": "Dual-AI drug discovery with 3D visualization",
+          "matching_tags": [
+            "healthcare"
+          ]
+        }
+      ],
+      "verified": true,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "norstella-senior-data-analyst-rwd",
+      "title": "Senior Data Analyst, RWD",
+      "company": "Norstella",
+      "company_tag": "Life Sciences Data & AI",
+      "location": "Remote, India",
+      "salary": "Not disclosed",
+      "match_score": 94,
+      "tier": 1,
+      "tags": [
+        "Life Sciences",
+        "SQL",
+        "Real-World Data"
+      ],
+      "why_match": "The role specifically asks for a background in life sciences and knowledge of the drug development lifecycle. The candidate's M.Pharm combined with their BigQuery and ETL experience is an exact match.",
+      "apply_url": "https://www.norstella.com/careers/",
+      "target_role": "data-analyst",
+      "jd_summary": "Develop and optimize queries for life sciences data processing and transformation. Focus on Real-World Data (claims, EMR, and lab data) to support pharmaceutical companies across the drug development lifecycle.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 2.9,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "life sciences",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "real-world data",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [],
+      "verified": true,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "innovationteam-senior-generative-ai-engineer",
+      "title": "Senior Generative AI (Gen AI) Engineer",
+      "company": "InnovationTeam",
+      "company_tag": "Enterprise AI",
+      "location": "Remote, India",
+      "salary": "Not Disclosed",
+      "match_score": 88,
+      "tier": 1,
+      "tags": [
+        "Generative AI",
+        "Large Language Models",
+        "AI Agents",
+        "Microservices"
+      ],
+      "why_match": "Requires building large-scale Generative AI solutions and RAG pipelines. Your experience orchestrating multi-model pipelines (Gemini, Claude, OpenAI) and deploying HuggingFace models makes you highly suited for this senior role.",
+      "apply_url": "https://apply.workable.com/innovationteam/",
+      "target_role": "ai-engineer",
+      "jd_summary": "Design, develop, and deploy large-scale generative AI solutions including LLMs, RAG systems, and AI agents. The role involves deep expertise in modern AI architectures and requires translating complex business needs into production-ready software.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 2.8,
+        "grade": "C+",
+        "cv_match": 0.0,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "generative ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "ai agents",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "microservices",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "agents"
+          ]
+        },
+        {
+          "project": "MCP Job Server",
+          "url": "https://github.com/kprsnt2/kprsnt.in",
+          "relevance": "MCP protocol server with 5 tools",
+          "matching_tags": [
+            "agents"
+          ]
+        },
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": []
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": []
+        }
+      ],
+      "verified": true,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "bundled-ai-agentic-systems-engineer",
+      "title": "AI and Agentic Systems Engineer",
+      "company": "Bundled",
+      "company_tag": "US Startup",
+      "location": "Remote, India",
+      "salary": "₹10,00,000 - ₹30,00,000",
+      "match_score": 90,
+      "tier": 1,
+      "tags": [
+        "Agentic AI",
+        "API Integration",
+        "Workflow Automation"
+      ],
+      "why_match": "Targets engineers with 2-5 years of experience to orchestrate multi-step AI workflows and API integration. Your data ETL background combined with direct Claude/OpenAI orchestration maps cleanly to building production-ready agentic architectures.",
+      "apply_url": "https://www.simplyhired.co.in/search?q=AI+and+Agentic+Systems+Engineer+Bundled",
+      "target_role": "ai-engineer",
+      "jd_summary": "Build agentic systems in production by designing agent-to-agent (A2A) workflows that coordinate services, APIs, and internal tools. Seek builders who want to write real code to automate workflows rather than just connect low-code tools.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 2.8,
+        "grade": "C+",
+        "cv_match": 0.0,
+        "archetype_fit": 3.5,
+        "comp_analysis": 4.0,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "agentic ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "brillio-lead-data-analyst",
+      "title": "Lead Data Analyst- R01552322",
+      "company": "Brillio",
+      "company_tag": "Technology Consulting",
+      "location": "Bangalore, India",
+      "salary": "Not disclosed",
+      "match_score": 98,
+      "tier": 1,
+      "tags": [
+        "PyTorch",
+        "Agentic AI",
+        "Machine Learning"
+      ],
+      "why_match": "Incredible fit: the job description explicitly calls for skills in Langraph, Agentic AI, PyTorch, and ML frameworks. The candidate's extensive hands-on experience fine-tuning LLMs (LoRA/QLoRA) perfectly addresses these advanced requirements.",
+      "apply_url": "https://www.brillio.com/careers/",
+      "target_role": "data-analyst",
+      "jd_summary": "Lead data analysis and deploy predictive models utilizing advanced ML frameworks such as PyTorch and TensorFlow. The role heavily features Agentic AI, statistical computing, and sophisticated forecasting.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 2.8,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 3.5,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "agentic ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "machine learning",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "pytorch"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "formi-conversation-designer-prompt-engineer",
+      "title": "Conversation Designer / Prompt Engineer (AI Agent Experience)",
+      "company": "Formi",
+      "company_tag": "SaaS / B2B AI",
+      "location": "Bengaluru, Karnataka (Work from home)",
+      "salary": "₹35,000 - ₹50,000 a month",
+      "match_score": 88,
+      "tier": 2,
+      "tags": [
+        "AI Agents",
+        "Conversation Design",
+        "Prompt Library",
+        "Adaptive AI"
+      ],
+      "why_match": "The candidate's robust background in multi-model orchestration and API engineering bridges the gap between conversational design and technical deployment of AI agents.",
+      "apply_url": "https://wellfound.com/company/formi/jobs",
+      "target_role": "prompt-engineer",
+      "jd_summary": "Design conversational systems that perform reliably in production and sound natural to users. Build reusable prompt and workflow libraries to drastically reduce AI agent deployment times.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 2.7,
+        "grade": "C+",
+        "cv_match": 0.8,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 3.0,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "ai agents",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "conversation design",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "adaptive ai",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "agents"
+          ]
+        },
+        {
+          "project": "MCP Job Server",
+          "url": "https://github.com/kprsnt2/kprsnt.in",
+          "relevance": "MCP protocol server with 5 tools",
+          "matching_tags": [
+            "agents"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "yo-it-consulting-ai-prompt-engineer-remote",
+      "title": "AI Prompt Engineer - Remote",
+      "company": "YO IT CONSULTING",
+      "company_tag": "Technology Consulting",
+      "location": "Remote",
+      "salary": "Competitive",
+      "match_score": 85,
+      "tier": 2,
+      "tags": [
+        "Remote",
+        "Prompt Chaining",
+        "Hallucination Reduction",
+        "LLMs"
+      ],
+      "why_match": "The job's focus on evaluating prompt structures and reducing hallucinations matches the candidate's proven success in lowering manipulation rates (76% manipulation rate reduction experience on BrandXY).",
+      "apply_url": "https://pitchmeai.com/jobs/ai-prompt-engineer-at-yo-it-consulting",
+      "target_role": "prompt-engineer",
+      "jd_summary": "Design, optimize, and evaluate prompts for generative AI systems with a focus on improving model performance. Utilize prompt chaining and system instructions to reduce hallucinations and align outputs with business goals.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 2.7,
+        "grade": "C+",
+        "cv_match": 0.0,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 4.0,
+        "red_flags": [],
+        "archetype": "AI Engineer / LLM Engineer",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "remote",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "hallucination reduction",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "BrandXY",
+          "url": "https://huggingface.co/kprsnt/BrandXY-gpt-oss-20b",
+          "relevance": "76% LLM manipulation rate (+51% improvement)",
+          "matching_tags": [
+            "llm"
+          ]
+        },
+        {
+          "project": "Drug Discovery GPT-20B",
+          "url": "https://huggingface.co/kprsnt/drug-discovery-gpt-20b",
+          "relevance": "20B model on FDA/PubChem data for molecular analysis",
+          "matching_tags": [
+            "llm"
+          ]
+        }
+      ],
+      "verified": true,
+      "last_verified": "2026-05-04"
+    },
+    {
+      "id": "icon-data-reporting-analyst-ii",
+      "title": "Data & Reporting Analyst II",
+      "company": "ICON plc",
+      "company_tag": "Clinical Research",
+      "location": "Chennai, India (Hybrid)",
+      "salary": "Competitive",
+      "match_score": 88,
+      "tier": 2,
+      "tags": [
+        "Clinical Data",
+        "Reporting",
+        "IT",
+        "India"
+      ],
+      "why_match": "The candidate's 3+ years of experience analyzing data sets and creating dashboards is highly relevant for tracking and presenting clinical operational metrics.",
+      "apply_url": "https://careers.iconplc.com/job/chennai/data-and-reporting-analyst-ii/",
+      "target_role": "Clinical Data Analyst",
+      "jd_summary": "Track, report, analyze, and present operational metrics to provide performance insights. Work globally within IT and clinical data operations to ensure precise data integrity and process improvements.",
+      "model_source": "gemini",
+      "model_name": "Gemini (Search Grounded)",
+      "found_date": "2026-05-04",
+      "applied": false,
+      "status": "new",
+      "evaluation": {
+        "overall_score": 2.5,
+        "grade": "C+",
+        "cv_match": 0.0,
+        "archetype_fit": 3.5,
+        "comp_analysis": 3.5,
+        "culture_signals": 3.0,
+        "red_flags": [],
+        "archetype": "Clinical/Healthcare AI",
+        "recommendation": "Weak match — consider skipping"
+      },
+      "skill_gaps": [
+        {
+          "skill": "clinical data",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "reporting",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        },
+        {
+          "skill": "india",
+          "gap": "minor",
+          "bridge": "Transferable skills from existing projects"
+        }
+      ],
+      "proof_points": [
+        {
+          "project": "MyLocalCLI",
+          "url": "https://mlc.kprsnt.in",
+          "relevance": "6 AI providers, 26 tools, 5 agents",
+          "matching_tags": [
+            "cli"
+          ]
+        }
+      ],
+      "verified": false,
+      "last_verified": "2026-05-04"
+    }
+  ]
+}

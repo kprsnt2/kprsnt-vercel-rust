@@ -1,0 +1,901 @@
+{% extends "base.html" %}
+
+{% block title %}All-In-One MCP Server — Model Context Protocol for AI Assistants | kprsnt.in{% endblock %}
+
+{% block content %}
+<div class="container py-5" style="max-width: 1300px;">
+
+  <!-- Hero Section -->
+  <div class="text-center mb-5 animate-fade-in">
+    <div class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill mb-3">
+      ⚡ Model Context Protocol (MCP 2024-11-05 Spec) Active
+    </div>
+    <h1 class="display-5 fw-bold text-white mb-3">
+      All-In-One <span style="background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">MCP Server</span>
+    </h1>
+    <h4 class="text-info fw-normal mb-3">My Site &bull; My Data &bull; AI Eco</h4>
+    <p class="lead text-secondary mx-auto" style="max-width: 800px; line-height: 1.7;">
+      Equip Claude Desktop, Cursor, Antigravity, or your own autonomous AI agents with direct, real-time access to Prashanth's portfolio data, verified career credentials, and live AI Eco swarm telemetry.
+    </p>
+    <div class="d-flex justify-content-center gap-3 mt-4">
+      <a href="/ecosystem" class="btn btn-outline-info rounded-pill px-4">
+        <i class="fas fa-microchip me-2"></i>AI Eco Dashboard
+      </a>
+      <a href="https://github.com/kprsnt2/kprsnt.in" target="_blank" class="btn btn-outline-light rounded-pill px-4">
+        <i class="fab fa-github me-2"></i>GitHub Source
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- INTERACTIVE IN-BROWSER MCP PLAYGROUND -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-12">
+      <div class="card bg-dark border-secondary shadow-lg rounded-4 overflow-hidden" style="border: 1px solid rgba(102,126,234,0.3) !important;">
+        <div class="card-header bg-black py-3 px-4 d-flex justify-content-between align-items-center flex-wrap gap-2" style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <div class="d-flex align-items-center">
+            <i class="fas fa-terminal text-warning fs-5 me-3"></i>
+            <div>
+              <span class="text-white fw-bold">Live In-Browser MCP Playground</span>
+              <small class="text-secondary d-block">Test JSON-RPC 2.0 requests directly against the live endpoint: <code>https://kprsnt.in/api/mcp</code></small>
+            </div>
+          </div>
+          <span class="badge bg-success px-3 py-2 rounded-pill"><i class="fas fa-bolt me-1"></i> JSON-RPC 2.0 Live</span>
+        </div>
+
+        <div class="card-body p-4 bg-dark">
+          <!-- Preset Chips -->
+          <div class="mb-3">
+            <span class="text-muted small d-block mb-2"><i class="fas fa-magic me-1"></i> Quick Presets:</span>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-sm btn-outline-primary rounded-pill preset-btn" onclick="loadPreset('telemetry')">
+                <i class="fas fa-chart-line me-1"></i> AI Eco Telemetry
+              </button>
+              <button class="btn btn-sm btn-outline-primary rounded-pill preset-btn" onclick="loadPreset('profile')">
+                <i class="fas fa-user me-1"></i> My Profile & Bio
+              </button>
+              <button class="btn btn-sm btn-outline-primary rounded-pill preset-btn" onclick="loadPreset('resume')">
+                <i class="fas fa-file-alt me-1"></i> Full Resume Data
+              </button>
+              <button class="btn btn-sm btn-outline-primary rounded-pill preset-btn" onclick="loadPreset('skills')">
+                <i class="fas fa-layer-group me-1"></i> Skills Matrix
+              </button>
+              <button class="btn btn-sm btn-outline-primary rounded-pill preset-btn" onclick="loadPreset('projects')">
+                <i class="fas fa-project-diagram me-1"></i> Site Projects
+              </button>
+              <button class="btn btn-sm btn-outline-primary rounded-pill preset-btn" onclick="loadPreset('job_match')">
+                <i class="fas fa-briefcase me-1"></i> Role Fit: Staff AI
+              </button>
+              <button class="btn btn-sm btn-outline-primary rounded-pill preset-btn" onclick="loadPreset('dev_logs')">
+                <i class="fas fa-satellite-dish me-1"></i> Recent Dev Logs
+              </button>
+              <button class="btn btn-sm btn-outline-primary rounded-pill preset-btn" onclick="loadPreset('tools_list')">
+                <i class="fas fa-list me-1"></i> tools/list Discovery
+              </button>
+              <button class="btn btn-sm btn-outline-info rounded-pill preset-btn" onclick="loadPreset('resources_list')">
+                <i class="fas fa-database me-1"></i> resources/list
+              </button>
+              <button class="btn btn-sm btn-outline-info rounded-pill preset-btn" onclick="loadPreset('prompts_list')">
+                <i class="fas fa-comment-dots me-1"></i> prompts/list
+              </button>
+            </div>
+          </div>
+
+          <!-- Split Playground Grid -->
+          <div class="row g-3">
+            <!-- Left: Request Editor -->
+            <div class="col-lg-6">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <label class="text-white small fw-bold"><i class="fas fa-arrow-circle-right text-info me-1"></i> JSON-RPC Request (Editable)</label>
+                <button class="btn btn-link btn-sm text-secondary p-0" onclick="copyRequest()"><i class="far fa-copy me-1"></i>Copy</button>
+              </div>
+              <textarea id="mcpRequestInput" class="form-control bg-black text-info font-monospace rounded-3 border-secondary p-3" rows="12" style="font-size: 0.85rem; line-height: 1.5;"></textarea>
+              <button id="mcpExecuteBtn" class="btn btn-primary w-100 mt-3 py-2 fw-semibold rounded-pill" onclick="executeMcpRequest()" style="background: linear-gradient(135deg, #667eea, #764ba2); border: none;">
+                <i class="fas fa-play me-2"></i>Execute MCP Tool
+              </button>
+            </div>
+
+            <!-- Right: Response Viewer -->
+            <div class="col-lg-6">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <label class="text-white small fw-bold"><i class="fas fa-arrow-circle-left text-success me-1"></i> Response</label>
+                <div class="d-flex gap-2 align-items-center">
+                  <span id="mcpLatencyBadge" class="badge bg-secondary font-monospace" style="display:none;">0ms</span>
+                  <span id="mcpStatusBadge" class="badge bg-success font-monospace" style="display:none;">200 OK</span>
+                  <button class="btn btn-link btn-sm text-secondary p-0" onclick="copyResponse()"><i class="far fa-copy me-1"></i>Copy</button>
+                </div>
+              </div>
+              <pre id="mcpResponseOutput" class="bg-black text-light font-monospace rounded-3 border-secondary p-3 mb-0 overflow-auto" style="height: 380px; font-size: 0.85rem; line-height: 1.5; border: 1px solid rgba(255,255,255,0.15);"><code>// Response will appear here after clicking 'Execute MCP Tool'...</code></pre>
+            </div>
+          </div>
+
+          <!-- Human-Readable Output (End-User View) -->
+          <div id="mcpReadableContainer" class="mt-4 pt-3" style="border-top: 1px solid rgba(255,255,255,0.1); display: none;">
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-2">
+                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 34px; height: 34px; background: linear-gradient(135deg, #10b981, #3b82f6);">
+                  <i class="fas fa-eye text-white" style="font-size: 0.9rem;"></i>
+                </div>
+                <div>
+                  <h6 class="text-white fw-bold mb-0">Human-Readable Output (End-User View)</h6>
+                  <small class="text-secondary" id="mcpReadableSubtitle">Formatted presentation of the payload returned by the MCP server</small>
+                </div>
+              </div>
+              <span id="mcpReadableBadge" class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 rounded-pill">
+                <i class="fas fa-check-circle me-1"></i> Formatted View
+              </span>
+            </div>
+            <div id="mcpReadableOutput" class="p-4 rounded-3 bg-black border border-secondary" style="min-height: 120px;">
+              <!-- Dynamic formatted content renders here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client Configurations -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-6">
+      <div class="card h-100 bg-dark border-secondary rounded-4 shadow">
+        <div class="card-header bg-black border-secondary py-3 px-4">
+          <span class="text-white fw-bold"><i class="fas fa-cog me-2 text-warning"></i>Claude Desktop Config</span>
+          <small class="text-secondary d-block">Add to <code>claude_desktop_config.json</code></small>
+        </div>
+        <div class="card-body p-4">
+          <pre class="bg-black text-info p-3 rounded-3 border border-secondary mb-0" style="font-size: 0.85rem;"><code>{
+  "mcpServers": {
+    "kprsnt-all-in-one": {
+      "command": "python",
+      "args": ["-m", "api.ai_eco_mcp"],
+      "env": {
+        "BASE_URL": "https://kprsnt.in"
+      }
+    }
+  }
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card h-100 bg-dark border-secondary rounded-4 shadow">
+        <div class="card-header bg-black border-secondary py-3 px-4">
+          <span class="text-white fw-bold"><i class="fas fa-globe me-2 text-info"></i>Cursor / Remote HTTP & SSE</span>
+          <small class="text-secondary d-block">Direct Remote URL for Cursor or Custom Agents</small>
+        </div>
+        <div class="card-body p-4">
+          <div class="p-3 bg-black rounded-3 border border-secondary">
+            <span class="text-secondary small d-block mb-1">HTTP JSON-RPC Endpoint:</span>
+            <code class="text-success font-monospace">https://kprsnt.in/api/mcp</code>
+            <hr class="border-secondary my-2">
+            <span class="text-secondary small d-block mb-1">SSE Streaming Transport:</span>
+            <code class="text-info font-monospace">https://kprsnt.in/api/mcp/sse</code>
+            <hr class="border-secondary my-2">
+            <span class="text-secondary small d-block mb-1">mSeat Counselling MCP (Standalone):</span>
+            <code class="text-warning font-monospace">https://mseat.kprsnt.in/mcp</code>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- All-In-One Available Tools Grid -->
+  <div class="mb-5">
+    <h3 class="fw-bold text-white mb-2 text-center">🛠️ All-In-One Available MCP Tools</h3>
+    <p class="text-secondary text-center mb-4">Grouped into My Site, My Data, and AI Eco</p>
+
+    <div class="row g-4">
+      <!-- Tool 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 bg-dark border-secondary p-4 rounded-4 shadow">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="fs-3">🌐</span>
+            <div>
+              <h6 class="text-white mb-0 font-monospace">get_site_overview</h6>
+              <span class="badge bg-primary-subtle text-primary" style="font-size: 0.7rem;">My Site</span>
+            </div>
+          </div>
+          <p class="text-secondary small mb-0">Returns full sitemap, active routes, interactive tools (RAG AI Chat, Plotter, Terminal), and site branding metadata.</p>
+        </div>
+      </div>
+
+      <!-- Tool 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 bg-dark border-secondary p-4 rounded-4 shadow">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="fs-3">🚀</span>
+            <div>
+              <h6 class="text-white mb-0 font-monospace">get_site_projects</h6>
+              <span class="badge bg-primary-subtle text-primary" style="font-size: 0.7rem;">My Site</span>
+            </div>
+          </div>
+          <p class="text-secondary small mb-0">Filter and query engineering projects (Solari, mSeat, BrandXY, AI News, MyLocalCLI) by keyword, technology, or category.</p>
+        </div>
+      </div>
+
+      <!-- Tool 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 bg-dark border-secondary p-4 rounded-4 shadow">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="fs-3">👤</span>
+            <div>
+              <h6 class="text-white mb-0 font-monospace">get_my_profile</h6>
+              <span class="badge bg-success-subtle text-success" style="font-size: 0.7rem;">My Data</span>
+            </div>
+          </div>
+          <p class="text-secondary small mb-0">Returns Prashanth's verified profile, bio, verified contact information, GitHub/LinkedIn links, and academic credentials.</p>
+        </div>
+      </div>
+
+      <!-- Tool 4 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 bg-dark border-secondary p-4 rounded-4 shadow">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="fs-3">📄</span>
+            <div>
+              <h6 class="text-white mb-0 font-monospace">get_my_resume</h6>
+              <span class="badge bg-success-subtle text-success" style="font-size: 0.7rem;">My Data</span>
+            </div>
+          </div>
+          <p class="text-secondary small mb-0">Full career resume data with 3+ years enterprise data analytics experience, work history (Black Piano, Pi), and bulleted achievements.</p>
+        </div>
+      </div>
+
+      <!-- Tool 5 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 bg-dark border-secondary p-4 rounded-4 shadow">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="fs-3">⚡</span>
+            <div>
+              <h6 class="text-white mb-0 font-monospace">get_my_skills</h6>
+              <span class="badge bg-success-subtle text-success" style="font-size: 0.7rem;">My Data</span>
+            </div>
+          </div>
+          <p class="text-secondary small mb-0">Skills matrix grouped by domain: Autonomous Multi-Agent Swarms, AI/LLM Engineering, SQL/Data Analytics, and Cloud/Infra.</p>
+        </div>
+      </div>
+
+      <!-- Tool 6 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 bg-dark border-secondary p-4 rounded-4 shadow">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="fs-3">🎯</span>
+            <div>
+              <h6 class="text-white mb-0 font-monospace">evaluate_job_match</h6>
+              <span class="badge bg-success-subtle text-success" style="font-size: 0.7rem;">My Data</span>
+            </div>
+          </div>
+          <p class="text-secondary small mb-0">Evaluates candidate-role alignment for any target job title, calculating match score, proof projects, and interview talking points.</p>
+        </div>
+      </div>
+
+      <!-- Tool 7 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 bg-dark border-secondary p-4 rounded-4 shadow">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="fs-3">📊</span>
+            <div>
+              <h6 class="text-white mb-0 font-monospace">get_ai_eco_telemetry</h6>
+              <span class="badge bg-info-subtle text-info" style="font-size: 0.7rem;">AI Eco</span>
+            </div>
+          </div>
+          <p class="text-secondary small mb-0">Live swarm telemetry: 987 annual commits, 100 repositories, language distribution, 7-day velocity, and market salary benchmarks.</p>
+        </div>
+      </div>
+
+      <!-- Tool 8 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 bg-dark border-secondary p-4 rounded-4 shadow">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="fs-3">🤖</span>
+            <div>
+              <h6 class="text-white mb-0 font-monospace">get_ai_eco_agents</h6>
+              <span class="badge bg-info-subtle text-info" style="font-size: 0.7rem;">AI Eco</span>
+            </div>
+          </div>
+          <p class="text-secondary small mb-0">Live status of the 6 autonomous agents (GitHub Scout, Dashboard, Portfolio Sync, MCP Engineer, Docs, Readme) and their custom skills.</p>
+        </div>
+      </div>
+
+      <!-- Tool 9 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 bg-dark border-secondary p-4 rounded-4 shadow">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="fs-3">📝</span>
+            <div>
+              <h6 class="text-white mb-0 font-monospace">get_ai_eco_dev_logs</h6>
+              <span class="badge bg-info-subtle text-info" style="font-size: 0.7rem;">AI Eco</span>
+            </div>
+          </div>
+          <p class="text-secondary small mb-0">Fetches recent dev logs from AI_Eco_Blogs/ structured project-by-project with code changes and 'Why We Did It' architecture rationales.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Interactive Playground JS -->
+<script>
+const PRESETS = {
+  telemetry: {
+    jsonrpc: "2.0",
+    id: "call-1",
+    method: "tools/call",
+    params: {
+      name: "get_ai_eco_telemetry",
+      arguments: {}
+    }
+  },
+  profile: {
+    jsonrpc: "2.0",
+    id: "call-2",
+    method: "tools/call",
+    params: {
+      name: "get_my_profile",
+      arguments: {}
+    }
+  },
+  resume: {
+    jsonrpc: "2.0",
+    id: "call-3",
+    method: "tools/call",
+    params: {
+      name: "get_my_resume",
+      arguments: {
+        section: "all"
+      }
+    }
+  },
+  skills: {
+    jsonrpc: "2.0",
+    id: "call-4",
+    method: "tools/call",
+    params: {
+      name: "get_my_skills",
+      arguments: {
+        category: "all"
+      }
+    }
+  },
+  projects: {
+    jsonrpc: "2.0",
+    id: "call-5",
+    method: "tools/call",
+    params: {
+      name: "get_site_projects",
+      arguments: {
+        query: "solari"
+      }
+    }
+  },
+  job_match: {
+    jsonrpc: "2.0",
+    id: "call-6",
+    method: "tools/call",
+    params: {
+      name: "evaluate_job_match",
+      arguments: {
+        role_title: "Staff AI Engineer",
+        requirements: "Autonomous Multi-Agent AI Swarms, Model Context Protocol (MCP), LLM Fine-Tuning"
+      }
+    }
+  },
+  dev_logs: {
+    jsonrpc: "2.0",
+    id: "call-7",
+    method: "tools/call",
+    params: {
+      name: "get_ai_eco_dev_logs",
+      arguments: {
+        limit: 2
+      }
+    }
+  },
+  tools_list: {
+    jsonrpc: "2.0",
+    id: "call-8",
+    method: "tools/list",
+    params: {}
+  },
+  resources_list: {
+    jsonrpc: "2.0",
+    id: "call-9",
+    method: "resources/list",
+    params: {}
+  },
+  prompts_list: {
+    jsonrpc: "2.0",
+    id: "call-10",
+    method: "prompts/list",
+    params: {}
+  }
+};
+function loadPreset(key) {
+  if (PRESETS[key]) {
+    document.getElementById("mcpRequestInput").value = JSON.stringify(PRESETS[key], null, 2);
+  }
+}
+
+async function executeMcpRequest() {
+  const reqArea = document.getElementById("mcpRequestInput");
+  const resArea = document.getElementById("mcpResponseOutput");
+  const btn = document.getElementById("mcpExecuteBtn");
+  const statusBadge = document.getElementById("mcpStatusBadge");
+  const latencyBadge = document.getElementById("mcpLatencyBadge");
+
+  let payload;
+  try {
+    payload = JSON.parse(reqArea.value);
+  } catch (err) {
+    alert("Invalid JSON format in Request Editor: " + err.message);
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Executing...';
+  resArea.textContent = "// Sending request to /api/mcp...";
+
+  const t0 = performance.now();
+  try {
+    const res = await fetch("/api/mcp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const elapsed = Math.round(performance.now() - t0);
+    latencyBadge.textContent = `${elapsed}ms`;
+    latencyBadge.style.display = "inline-block";
+
+    statusBadge.textContent = `${res.status} ${res.statusText || 'OK'}`;
+    statusBadge.className = res.ok ? "badge bg-success font-monospace" : "badge bg-danger font-monospace";
+    statusBadge.style.display = "inline-block";
+
+    const data = await res.json();
+    resArea.textContent = JSON.stringify(data, null, 2);
+    renderReadableOutput(payload, data);
+  } catch (e) {
+    statusBadge.textContent = "Error";
+    statusBadge.className = "badge bg-danger font-monospace";
+    statusBadge.style.display = "inline-block";
+    resArea.textContent = `// Network or parsing error:\n${e.message}`;
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-play me-2"></i>Execute MCP Tool';
+  }
+}
+
+function copyRequest() {
+  const text = document.getElementById("mcpRequestInput").value;
+  navigator.clipboard.writeText(text);
+  alert("Request JSON copied to clipboard!");
+}
+
+function copyResponse() {
+  const text = document.getElementById("mcpResponseOutput").textContent;
+  navigator.clipboard.writeText(text);
+  alert("Response JSON copied to clipboard!");
+}
+
+// Helper to escape HTML safely
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  if (typeof str !== 'string') return String(str);
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderReadableOutput(payload, data) {
+  const container = document.getElementById("mcpReadableContainer");
+  const output = document.getElementById("mcpReadableOutput");
+  const subtitle = document.getElementById("mcpReadableSubtitle");
+  if (!container || !output) return;
+
+  container.style.display = "block";
+
+  if (!data) {
+    output.innerHTML = '<p class="text-muted mb-0">No data returned.</p>';
+    return;
+  }
+
+  if (data.error) {
+    if (subtitle) subtitle.textContent = "JSON-RPC Error Response";
+    output.innerHTML = `
+      <div class="alert alert-danger mb-0" style="background: rgba(231, 76, 60, 0.12); border-color: rgba(231, 76, 60, 0.3); color: #ff7675;">
+        <h6 class="fw-bold mb-1"><i class="fas fa-exclamation-triangle me-2"></i>Error ${escapeHtml(data.error.code || '')}</h6>
+        <p class="mb-0 small">${escapeHtml(data.error.message || 'Unknown request error.')}</p>
+      </div>`;
+    return;
+  }
+
+  const toolName = (payload && payload.params && payload.params.name) ? payload.params.name : '';
+  const method = (payload && payload.method) ? payload.method : '';
+
+  let toolResult = null;
+  if (data.result && Array.isArray(data.result.content) && data.result.content.length > 0) {
+    const raw = data.result.content[0].text || "";
+    try {
+      toolResult = JSON.parse(raw);
+    } catch (e) {
+      toolResult = raw;
+    }
+  } else if (data.result) {
+    toolResult = data.result;
+  }
+
+  // 1. Telemetry
+  if ((toolName === 'get_ai_eco_telemetry' || toolName === 'get_ecosystem_telemetry') && typeof toolResult === 'object') {
+    if (subtitle) subtitle.textContent = "AI Eco Swarm Telemetry & Market Compensation";
+    const sal = toolResult.live_salary_estimation || {};
+    const langs = Object.entries(toolResult.language_breakdown || {});
+    const skills = toolResult.top_skills || [];
+    output.innerHTML = `
+      <div class="row g-3 mb-3">
+        <div class="col-sm-6 col-lg-3">
+          <div class="p-3 rounded bg-dark border border-secondary text-center">
+            <small class="text-secondary text-uppercase d-block mb-1">Total Commits</small>
+            <h4 class="text-white mb-0 fw-bold">${toolResult.commit_history || 987}</h4>
+            <span class="badge bg-success-subtle text-success small mt-1">Verified Git Head</span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="p-3 rounded bg-dark border border-secondary text-center">
+            <small class="text-secondary text-uppercase d-block mb-1">Tracked Repos</small>
+            <h4 class="text-white mb-0 fw-bold">${toolResult.repo_counts || 100}</h4>
+            <span class="badge bg-info-subtle text-info small mt-1">GitHub Scout</span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="p-3 rounded bg-dark border border-secondary text-center">
+            <small class="text-secondary text-uppercase d-block mb-1">US Benchmark</small>
+            <h4 class="text-white mb-0 fw-bold">$${(sal.min || 180000).toLocaleString()} - $${(sal.max || 320000).toLocaleString()}</h4>
+            <span class="badge bg-primary-subtle text-primary small mt-1">Staff AI & Systems</span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="p-3 rounded bg-dark border border-secondary text-center">
+            <small class="text-secondary text-uppercase d-block mb-1">Active Swarm</small>
+            <h4 class="text-white mb-0 fw-bold">${toolResult.active_agents || 6} / 6</h4>
+            <span class="badge bg-success-subtle text-success small mt-1">Swarm Operational</span>
+          </div>
+        </div>
+      </div>
+      ${sal.reasoning ? `
+        <div class="p-3 rounded mb-3" style="background: rgba(102,126,234,0.1); border-left: 3px solid #667eea;">
+          <small class="text-info fw-bold d-block mb-1"><i class="fas fa-brain me-1"></i> AI Market Alignment Analysis</small>
+          <p class="text-secondary small mb-0 font-monospace">${escapeHtml(sal.reasoning)}</p>
+        </div>` : ''}
+      <div class="row g-3">
+        <div class="col-md-6">
+          <span class="text-muted small d-block mb-2"><i class="fas fa-code me-1 text-info"></i> Top Languages:</span>
+          <div class="d-flex flex-wrap gap-2">
+            ${langs.map(([l, c]) => `<span class="badge bg-dark border border-secondary text-light px-3 py-2">${escapeHtml(l)} <span class="text-muted small">(${c} repos)</span></span>`).join('')}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <span class="text-muted small d-block mb-2"><i class="fas fa-bolt me-1 text-warning"></i> Core Competencies:</span>
+          <div class="d-flex flex-wrap gap-2">
+            ${skills.map(s => `<span class="badge" style="background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); padding: 6px 12px;">${escapeHtml(s)}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // 2. Role Fit / Job Match
+  if ((toolName === 'evaluate_job_match' || toolName === 'calculate_role_fit') && typeof toolResult === 'object') {
+    if (subtitle) subtitle.textContent = `Candidate Alignment: ${escapeHtml(toolResult.target_role || '')}`;
+    const pct = toolResult.match_percentage || '90%';
+    const competencies = toolResult.matching_competencies || [];
+    const proofs = toolResult.primary_portfolio_proofs || [];
+    const points = toolResult.recommended_interview_talking_points || [];
+    output.innerHTML = `
+      <div class="d-flex align-items-center justify-content-between p-3 rounded mb-3 flex-wrap gap-2" style="background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(59,130,246,0.1)); border: 1px solid rgba(16,185,129,0.3);">
+        <div>
+          <small class="text-secondary text-uppercase d-block">Target Role</small>
+          <h5 class="text-white mb-0 fw-bold">${escapeHtml(toolResult.target_role || '')}</h5>
+        </div>
+        <div class="text-end">
+          <span class="badge" style="background: #10b981; color: #ffffff; font-size: 1.1rem; padding: 6px 18px; border-radius: 20px; box-shadow: 0 0 12px rgba(16,185,129,0.4);">
+            <i class="fas fa-check-circle me-1"></i> ${escapeHtml(pct)} Match
+          </span>
+        </div>
+      </div>
+      <div class="p-3 rounded mb-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid #10b981;">
+        <strong class="text-white small d-block mb-1">Verdict:</strong>
+        <p class="text-secondary small mb-0">${escapeHtml(toolResult.verdict || '')}</p>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <h6 class="text-white small fw-bold mb-2"><i class="fas fa-check-circle text-success me-1"></i> Matching Competencies:</h6>
+          <ul class="list-unstyled mb-0">
+            ${competencies.map(c => `<li class="small text-secondary mb-2"><i class="fas fa-angle-right text-info me-2"></i>${escapeHtml(c)}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h6 class="text-white small fw-bold mb-2"><i class="fas fa-project-diagram text-warning me-1"></i> Primary Proofs of Work:</h6>
+          <ul class="list-unstyled mb-0">
+            ${proofs.map(p => `<li class="small text-secondary mb-2"><i class="fas fa-cube text-warning me-2"></i>${escapeHtml(p)}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+      ${points.length > 0 ? `
+        <div>
+          <h6 class="text-white small fw-bold mb-2"><i class="fas fa-comments text-info me-1"></i> Recommended Interview Talking Points:</h6>
+          <div class="d-flex flex-column gap-2">
+            ${points.map(pt => `<div class="p-2 rounded bg-dark border border-secondary small text-light"><i class="fas fa-lightbulb text-warning me-2"></i>${escapeHtml(pt)}</div>`).join('')}
+          </div>
+        </div>` : ''}
+    `;
+    return;
+  }
+
+  // 3. Profile
+  if (toolName === 'get_my_profile' && typeof toolResult === 'object') {
+    if (subtitle) subtitle.textContent = "Verified Profile & Academic Credentials";
+    const contact = toolResult.contact || {};
+    const edu = toolResult.education || {};
+    const social = toolResult.social_presence || {};
+    output.innerHTML = `
+      <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom border-secondary">
+        <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-4" style="width: 52px; height: 52px; background: linear-gradient(135deg, #667eea, #764ba2);">
+          PK
+        </div>
+        <div>
+          <h5 class="text-white mb-0 fw-bold">${escapeHtml(contact.name || 'Prashanth Kumar Kadasi')}</h5>
+          <small class="text-secondary">${escapeHtml(contact.location || 'Hyderabad, India')} &bull; <a href="mailto:${escapeHtml(contact.email || '')}" class="text-info">${escapeHtml(contact.email || '')}</a></small>
+        </div>
+      </div>
+      <div class="p-3 rounded bg-dark border border-secondary mb-3">
+        <small class="text-secondary text-uppercase d-block mb-1">Current Engineering Focus</small>
+        <p class="text-white small mb-0">${escapeHtml(toolResult.current_focus || '')}</p>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <h6 class="text-white small fw-bold mb-2"><i class="fas fa-graduation-cap text-warning me-1"></i> Education</h6>
+          <p class="text-light small mb-0">${escapeHtml(edu.degree || '')}<br><span class="text-secondary">${escapeHtml(edu.institution || '')} (${escapeHtml(edu.details || '')})</span></p>
+        </div>
+        <div class="col-md-6">
+          <h6 class="text-white small fw-bold mb-2"><i class="fas fa-share-alt text-info me-1"></i> Verified Links</h6>
+          <div class="d-flex flex-wrap gap-2">
+            ${social.github ? `<a href="${social.github}" target="_blank" class="btn btn-sm btn-outline-light rounded-pill"><i class="fab fa-github me-1"></i> GitHub</a>` : ''}
+            ${social.linkedin ? `<a href="${social.linkedin}" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill"><i class="fab fa-linkedin me-1"></i> LinkedIn</a>` : ''}
+            ${social.huggingface ? `<a href="${social.huggingface}" target="_blank" class="btn btn-sm btn-outline-warning rounded-pill"><i class="fas fa-smile me-1"></i> HuggingFace</a>` : ''}
+          </div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // 4. Projects
+  if ((toolName === 'get_site_projects' || toolName === 'query_portfolio_projects') && typeof toolResult === 'object') {
+    const projects = toolResult.projects || [];
+    if (subtitle) subtitle.textContent = `Portfolio Projects (${toolResult.matches_count || projects.length} matches, returning ${toolResult.returned_count || projects.length})`;
+    output.innerHTML = `
+      <div class="row g-3">
+        ${projects.map(p => `
+          <div class="col-md-6">
+            <div class="p-3 rounded bg-dark border border-secondary h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h6 class="text-white fw-bold mb-0">${escapeHtml(p.title || '')}</h6>
+                  ${p.featured ? '<span class="badge bg-warning-subtle text-warning small">Featured</span>' : ''}
+                </div>
+                <p class="text-secondary small mb-3" style="line-height: 1.5;">${escapeHtml(p.description || '')}</p>
+              </div>
+              <div>
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                  ${(p.tags || []).map(t => `<span class="badge bg-black text-muted" style="font-size: 0.7rem; border: 1px solid rgba(255,255,255,0.08);">${escapeHtml(t)}</span>`).join('')}
+                </div>
+                <div class="d-flex gap-2">
+                  ${p.url ? `<a href="${p.url}" target="_blank" class="btn btn-sm btn-outline-info rounded-pill py-0 px-2" style="font-size: 0.75rem;"><i class="fas fa-external-link-alt me-1"></i> Live</a>` : ''}
+                  ${p.github ? `<a href="${p.github}" target="_blank" class="btn btn-sm btn-outline-light rounded-pill py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-github me-1"></i> Code</a>` : ''}
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return;
+  }
+
+  // 5. Skills
+  if ((toolName === 'get_my_skills' || toolName === 'get_skills_matrix') && typeof toolResult === 'object') {
+    if (subtitle) subtitle.textContent = "Verified Multi-Disciplinary Skills Matrix";
+    const categories = toolResult.all_categories || (toolResult.category ? { [toolResult.category]: toolResult.skills } : {});
+    output.innerHTML = `
+      <div class="d-flex flex-column gap-3">
+        ${Object.entries(categories).map(([cat, skList]) => `
+          <div class="p-3 rounded bg-dark border border-secondary">
+            <h6 class="text-info fw-bold text-uppercase small mb-2"><i class="fas fa-layer-group me-1"></i> ${escapeHtml(cat.replace('_', ' '))}</h6>
+            <div class="row g-2">
+              ${(skList || []).map(s => `
+                <div class="col-sm-6">
+                  <div class="p-2 rounded bg-black small border border-secondary">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="text-white fw-semibold">${escapeHtml(s.skill || '')}</span>
+                      <span class="badge ${s.level === 'Expert' ? 'bg-success-subtle text-success' : 'bg-primary-subtle text-primary'} py-0">${escapeHtml(s.level || '')}</span>
+                    </div>
+                    <small class="text-secondary d-block font-monospace" style="font-size: 0.72rem;">${escapeHtml(s.details || '')}</small>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return;
+  }
+
+  // 6. Resume
+  if (toolName === 'get_my_resume' && typeof toolResult === 'object') {
+    if (subtitle) subtitle.textContent = "Professional Resume & Experience";
+    const experiences = toolResult.experiences || [];
+    output.innerHTML = `
+      ${toolResult.summary ? `
+        <div class="p-3 rounded bg-dark border border-secondary mb-3">
+          <h6 class="text-white fw-bold mb-1"><i class="fas fa-user-tie text-info me-1"></i> Professional Summary</h6>
+          <p class="text-secondary small mb-0" style="line-height: 1.6;">${escapeHtml(toolResult.summary)}</p>
+        </div>` : ''}
+      ${experiences.length > 0 ? `
+        <h6 class="text-white fw-bold mb-2"><i class="fas fa-briefcase text-warning me-1"></i> Work History</h6>
+        <div class="d-flex flex-column gap-3">
+          ${experiences.map(exp => `
+            <div class="p-3 rounded bg-dark border border-secondary">
+              <div class="d-flex justify-content-between align-items-start mb-2 flex-wrap gap-1">
+                <div>
+                  <h6 class="text-white fw-bold mb-0">${escapeHtml(exp.role || '')}</h6>
+                  <small class="text-info">${escapeHtml(exp.company || '')} &bull; ${escapeHtml(exp.location || '')}</small>
+                </div>
+                <span class="badge bg-secondary font-monospace small">${escapeHtml(exp.period || '')}</span>
+              </div>
+              <ul class="list-unstyled mb-0 small text-secondary">
+                ${(exp.highlights || []).map(h => `<li class="mb-1"><i class="fas fa-check-circle text-success me-2" style="font-size: 0.75rem;"></i>${escapeHtml(h)}</li>`).join('')}
+              </ul>
+            </div>
+          `).join('')}
+        </div>` : ''}
+    `;
+    return;
+  }
+
+  // 7. Swarm Agents
+  if ((toolName === 'get_ai_eco_agents' || toolName === 'get_agent_swarm_status') && typeof toolResult === 'object') {
+    if (subtitle) subtitle.textContent = `Autonomous Multi-Agent Swarm (${toolResult.active_swarm_count || 6} agents)`;
+    const agents = toolResult.agents || (toolResult.agent ? [toolResult.agent] : []);
+    output.innerHTML = `
+      <div class="row g-3">
+        ${agents.map(a => `
+          <div class="col-md-6">
+            <div class="p-3 rounded bg-dark border border-secondary h-100">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6 class="text-white fw-bold mb-0">${escapeHtml(a.name || '')}</h6>
+                <span class="badge ${a.health === 'Healthy' ? 'bg-success' : 'bg-primary'} rounded-pill small">${escapeHtml(a.health || a.status || 'Online')}</span>
+              </div>
+              <div class="mb-2">
+                <span class="badge bg-black text-info border border-secondary font-monospace" style="font-size: 0.72rem;">Skill: ${escapeHtml(a.custom_skill || '')}</span>
+              </div>
+              <p class="text-secondary small mb-2" style="line-height: 1.5;">${escapeHtml(a.role || '')}</p>
+              <div class="text-muted small font-monospace" style="font-size: 0.7rem;">
+                Target: <span class="text-light">${escapeHtml(a.output_target || '')}</span>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return;
+  }
+
+  // 8. Dev Logs
+  if ((toolName === 'get_ai_eco_dev_logs' || toolName === 'get_recent_dev_logs') && typeof toolResult === 'object') {
+    const logs = toolResult.dev_logs || [];
+    if (subtitle) subtitle.textContent = `Autonomous Dev Logs (${logs.length} dispatches)`;
+    output.innerHTML = `
+      <div class="d-flex flex-column gap-3">
+        ${logs.map(log => `
+          <div class="p-3 rounded bg-dark border border-secondary">
+            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+              <h6 class="text-white fw-bold mb-0">${escapeHtml(log.title || log.slug || '')}</h6>
+              <span class="badge bg-info text-dark small">${escapeHtml(log.date || 'Recent')}</span>
+            </div>
+            <p class="text-secondary small mb-2" style="line-height: 1.5;">${escapeHtml(log.preview || log.excerpt || '')}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-wrap gap-1">
+                ${(Array.isArray(log.tags) ? log.tags : (log.tags || '').split(',')).map(t => `<span class="badge bg-black text-muted" style="font-size: 0.7rem; border: 1px solid rgba(255,255,255,0.08);">${escapeHtml(t.trim())}</span>`).join('')}
+              </div>
+              <a href="/aie/blog/${log.slug}" class="btn btn-sm btn-outline-info rounded-pill" style="font-size: 0.75rem;">Read Full Log &rarr;</a>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return;
+  }
+
+  // 9. tools/list
+  if (method === 'tools/list' && data.result && Array.isArray(data.result.tools)) {
+    if (subtitle) subtitle.textContent = `Available MCP Tools (${data.result.tools.length} active)`;
+    output.innerHTML = `
+      <div class="row g-3">
+        ${data.result.tools.map(t => `
+          <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded bg-dark border border-secondary h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <code class="text-warning fw-bold">${escapeHtml(t.name)}</code>
+                <span class="badge bg-info-subtle text-info py-0">Tool</span>
+              </div>
+              <p class="text-secondary small mb-0" style="line-height: 1.5;">${escapeHtml(t.description || '')}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return;
+  }
+
+  // 10. resources/list
+  if (method === 'resources/list' && data.result && Array.isArray(data.result.resources)) {
+    if (subtitle) subtitle.textContent = `Available MCP Resources (${data.result.resources.length} active)`;
+    output.innerHTML = `
+      <div class="row g-3">
+        ${data.result.resources.map(r => `
+          <div class="col-md-6">
+            <div class="p-3 rounded bg-dark border border-secondary h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <code class="text-info fw-bold">${escapeHtml(r.uri)}</code>
+                <span class="badge bg-success-subtle text-success py-0">Resource</span>
+              </div>
+              <h6 class="text-white small fw-bold mb-1">${escapeHtml(r.name || '')}</h6>
+              <p class="text-secondary small mb-0" style="line-height: 1.5;">${escapeHtml(r.description || '')}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return;
+  }
+
+  // 11. prompts/list
+  if (method === 'prompts/list' && data.result && Array.isArray(data.result.prompts)) {
+    if (subtitle) subtitle.textContent = `Available MCP Prompts (${data.result.prompts.length} active)`;
+    output.innerHTML = `
+      <div class="row g-3">
+        ${data.result.prompts.map(pr => `
+          <div class="col-md-6">
+            <div class="p-3 rounded bg-dark border border-secondary h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <code class="text-warning fw-bold">${escapeHtml(pr.name)}</code>
+                <span class="badge bg-primary-subtle text-primary py-0">Prompt</span>
+              </div>
+              <p class="text-secondary small mb-2" style="line-height: 1.5;">${escapeHtml(pr.description || '')}</p>
+              ${(pr.arguments && pr.arguments.length > 0) ? `
+                <div class="text-muted small font-monospace" style="font-size: 0.72rem;">
+                  Args: ${pr.arguments.map(a => `<span class="badge bg-black text-light border border-secondary me-1">${escapeHtml(a.name)}${a.required ? '*' : ''}</span>`).join('')}
+                </div>` : ''}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return;
+  }
+
+  // Fallback
+  if (subtitle) subtitle.textContent = "Formatted Payload View";
+  output.innerHTML = `<pre class="bg-dark p-3 rounded text-light mb-0" style="font-size: 0.85rem; line-height: 1.5;"><code>${escapeHtml(typeof toolResult === 'string' ? toolResult : JSON.stringify(toolResult, null, 2))}</code></pre>`;
+}
+
+// Initialize with default preset
+document.addEventListener("DOMContentLoaded", () => {
+  loadPreset("telemetry");
+});
+</script>
+{% endblock %}

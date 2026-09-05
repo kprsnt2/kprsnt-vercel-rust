@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prashanth Kumar Kadasi — Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --accent: #2563eb;
+            --accent-light: #3b82f6;
+            --text-dark: #111827;
+            --text-medium: #374151;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.4;
+            background: white;
+        }
+
+        .resume {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 32px 44px;
+        }
+
+        /* ═══════════ HEADER ═══════════ */
+        .header {
+            border-bottom: 2.5px solid var(--accent);
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+        }
+        .header h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
+        }
+        .header .title {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+        .contact-row a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* ═══════════ SECTIONS ═══════════ */
+        .section { margin-bottom: 24px; }
+        .section-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            border-bottom: 1.5px solid var(--border);
+            padding-bottom: 3px;
+            margin-bottom: 6px;
+        }
+
+        /* ═══════════ SUMMARY ═══════════ */
+        .summary {
+            font-size: 11.5px;
+            color: var(--text-medium);
+            line-height: 1.55;
+        }
+
+        /* ═══════════ EXPERIENCE ═══════════ */
+        .experience-item { margin-bottom: 10px; }
+        .experience-item:last-child { margin-bottom: 0; }
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1px;
+        }
+        .exp-company {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .exp-period {
+            font-size: 11px;
+            color: var(--text-light);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .exp-role {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 3px;
+        }
+        .exp-location {
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        .highlights {
+            list-style: none;
+            padding-left: 0;
+        }
+        .highlights li {
+            font-size: 11px;
+            color: var(--text-medium);
+            line-height: 1.45;
+            padding-left: 14px;
+            position: relative;
+            margin-bottom: 2px;
+        }
+        .highlights li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 10px;
+        }
+
+        /* ═══════════ SKILLS ═══════════ */
+        .skills-grid { display: grid; grid-template-columns: 1fr; gap: 3px; }
+        .skill-row { display: flex; font-size: 11px; line-height: 1.45; }
+        .skill-category {
+            font-weight: 700;
+            color: var(--text-dark);
+            min-width: 155px;
+            flex-shrink: 0;
+        }
+        .skill-items { color: var(--text-medium); }
+
+        /* ═══════════ ACHIEVEMENTS ═══════════ */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 16px;
+        }
+        .achievement-item {
+            font-size: 11px;
+            color: var(--text-medium);
+            padding-left: 14px;
+            position: relative;
+        }
+        .achievement-item::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 9px;
+        }
+        .achievement-number {
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        /* ═══════════ PROJECTS ═══════════ */
+        .project-item { margin-bottom: 5px; }
+        .project-item:last-child { margin-bottom: 0; }
+        .project-name {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: inline;
+        }
+        .project-tech {
+            font-size: 10.5px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .project-desc {
+            font-size: 10px;
+            color: var(--text-light);
+            line-height: 1.35;
+            margin-top: 1px;
+        }
+        .project-links {
+            font-size: 9.5px;
+            color: var(--accent);
+            margin-top: 1px;
+        }
+        .project-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* ═══════════ EDUCATION ═══════════ */
+        .edu-institution {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .edu-degree {
+            font-size: 11.5px;
+            color: var(--text-medium);
+        }
+        .edu-details {
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* ═══════════ PRINT — removes browser header/footer ═══════════ */
+        @page {
+            margin: 0;
+            size: A4;
+        }
+        @media print {
+            html, body {
+                width: 210mm;
+                height: 297mm;
+            }
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                margin: 0;
+                padding: 0;
+            }
+            .resume {
+                padding: 36px 40px 28px 40px;
+                max-width: none;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                break-before: page;
+                page-break-before: always;
+                padding-top: 24px;
+            }
+            .page-break .section-title {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+            .page-break .project-item {
+                margin-bottom: 14px;
+            }
+            .page-break .project-name {
+                font-size: 13.5px;
+            }
+            .page-break .project-tech {
+                font-size: 12px;
+            }
+            .page-break .project-desc {
+                font-size: 12px;
+                line-height: 1.55;
+                margin-top: 2px;
+            }
+            .page2-section {
+                margin-bottom: 20px;
+            }
+            .page2-section .section-title {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+            .page2-section .edu-institution {
+                font-size: 14px;
+            }
+            .page2-section .edu-degree {
+                font-size: 13px;
+            }
+            .page2-section .edu-details {
+                font-size: 12px;
+            }
+        }
+
+        /* ═══════════ DOWNLOAD BAR (screen only) ═══════════ */
+        .download-bar {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 14px 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 850px;
+            margin: 0 auto;
+            border-radius: 0 0 12px 12px;
+        }
+        .download-bar p {
+            color: rgba(255,255,255,0.7);
+            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+        }
+        .download-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .download-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* ═══════════ LINKS SECTION ═══════════ */
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 24px;
+        }
+        .link-item {
+            font-size: 12px;
+            color: var(--text-medium);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .link-item strong {
+            color: var(--text-dark);
+            min-width: 90px;
+        }
+        .link-item a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Download Bar (hidden in print) -->
+<div class="download-bar no-print">
+    <p>💡 Press <strong>Ctrl+P</strong> → Save as PDF &nbsp;(headers/footers are auto-removed)</p>
+    <button class="download-btn" onclick="window.print()">📄 Save as PDF</button>
+</div>
+
+<div class="resume">
+
+    <!-- ═══════════ HEADER ═══════════ -->
+    <div class="header">
+        <h1>PRASHANTH KUMAR KADASI</h1>
+        <div class="title">Senior Data Analyst & AI Developer</div>
+        <div class="contact-row">
+            <span class="contact-item">📍 Hyderabad, India</span>
+            <span class="contact-item">📞 +91-9948311964</span>
+            <span class="contact-item">✉️ <a href="mailto:kprsnt@live.com">kprsnt@live.com</a></span>
+            <span class="contact-item">🌐 <a href="https://kprsnt.in">kprsnt.in</a></span>
+            <span class="contact-item">🔗 <a href="https://linkedin.com/in/prashanth-kumar-kadasi-b5281765">LinkedIn</a></span>
+            <span class="contact-item">💻 <a href="https://github.com/kprsnt2">GitHub</a></span>
+            <span class="contact-item">🤗 <a href="https://huggingface.co/kprsnt">HuggingFace</a></span>
+        </div>
+    </div>
+
+    <!-- ═══════════ SUMMARY ═══════════ -->
+    <div class="section">
+        <div class="section-title">Professional Summary</div>
+        <p class="summary">
+            Senior Data Analyst & AI Developer with 3+ years of experience driving business insights through advanced analytics, automated dashboards, discrete optimization, and AI-powered solutions. <strong>Engineered mSeat</strong>, an 18,000+ candidate discrete allocation simulator validated against official KNRUHS 2026 Phase 1 results (matching within 2 preferences and 73 ranks of cutoff). <strong>Deployed 18 sector intelligence dashboards</strong> with automated weekly AI Insights generation and end-to-end data pipelines using App Script, BigQuery, and Looker Studio. <strong>Currently migrating all data pipelines into GCP</strong> for enterprise-grade scalability. Fine-tuned a 20B parameter LLM, built 10+ production AI applications. Expert in Python, SQL, BigQuery, and multi-model AI orchestration (Gemini, Claude, OpenAI).
+        </p>
+    </div>
+
+    <!-- ═══════════ KEY ACHIEVEMENTS ═══════════ -->
+    <div class="section">
+        <div class="section-title">Key Achievements</div>
+        <div class="achievement-grid">
+            <div class="achievement-item"><span class="achievement-number">18K+</span> candidate MBBS simulator validated against official KNRUHS 2026 Phase 1 (within 2 choices)</div>
+            <div class="achievement-item"><span class="achievement-number">18</span> sector intelligence dashboards deployed with automated AI insights</div>
+            <div class="achievement-item"><span class="achievement-number">20B</span> parameter LLM fine-tuned on AMD MI300X (192GB HBM3)</div>
+            <div class="achievement-item"><span class="achievement-number">60%</span> reduction in manual reporting through pipeline automation</div>
+            <div class="achievement-item"><span class="achievement-number">76%</span> LLM manipulation rate achieved in BrandXY research</div>
+            <div class="achievement-item"><span class="achievement-number">15+</span> dashboards & <span class="achievement-number">30+</span> reports delivered for US & UK clients</div>
+        </div>
+    </div>
+
+    <!-- ═══════════ EXPERIENCE ═══════════ -->
+    <div class="section">
+        <div class="section-title">Professional Experience</div>
+
+        <!-- Black Piano -->
+        <div class="experience-item">
+            <div class="exp-header">
+                <span class="exp-company">Black Piano</span>
+                <span class="exp-period">Mar 2026 – Present</span>
+            </div>
+            <div class="exp-role">Data Analyst <span class="exp-location">| Remote</span></div>
+            <ul class="highlights">
+                <li>Deployed <strong>18 sector intelligence dashboards</strong> along with end-to-end data pipelines using App Script, BigQuery, and Looker Studio for 4 enterprise clients</li>
+                <li>Built and integrated <strong>weekly AI Insight generation</strong> that automatically produces AI-driven sector analysis for each of the 18 dashboards</li>
+                <li>Currently <strong>migrating all data pipelines into Google Cloud Platform (GCP)</strong> for improved scalability, reliability, and cost efficiency</li>
+                <li>Continuing analytics engagement for Pi Datametrics client post-transition, enhancing enterprise reporting systems</li>
+            </ul>
+        </div>
+
+        <!-- Pi Datametrics -->
+        <div class="experience-item">
+            <div class="exp-header">
+                <span class="exp-company">Pi Software Solutions Pvt Ltd (Pi - Datametrics)</span>
+                <span class="exp-period">Mar 2023 – Feb 2026</span>
+            </div>
+            <div class="exp-role">Data Analyst <span class="exp-location">| Remote</span></div>
+            <ul class="highlights">
+                <li>Delivered <strong>15+ dashboards</strong> and <strong>30+ analytical reports</strong> across elections, brands, and market analysis for US & UK stakeholders</li>
+                <li>Built end-to-end automated data pipelines using BigQuery, AppScript, and Python — <strong>reducing manual reporting time by 60%</strong></li>
+                <li>Developed Pi-API Python package for one-click BigQuery uploads/downloads, deployed as a web service on Render</li>
+                <li>Conducted sentiment analysis on election datasets and built predictive models (ARIMA, LSTM) for trend forecasting</li>
+                <li>Created brand reports & market analysis for Insurance, Gambling, and E-commerce sectors for US & UK markets</li>
+                <li>Automated dashboard generation using Apps Script, BigQuery, Tableau, and Looker Studio across 20+ client accounts</li>
+            </ul>
+        </div>
+
+        <!-- Independent AI -->
+        <div class="experience-item">
+            <div class="exp-header">
+                <span class="exp-company">Independent AI Research & Development</span>
+                <span class="exp-period">2024 – Present</span>
+            </div>
+            <div class="exp-role">AI Engineer & Researcher <span class="exp-location">| Remote</span></div>
+            <ul class="highlights">
+                <li>Engineered <strong>mSeat</strong> — Discrete allocation simulator for 18,000+ MBBS aspirants; validated against official KNRUHS 2026 Phase 1 results (matching within 2 preferences and 73 ranks of cutoff) via O(1) ranking and MCP server</li>
+                <li>Fine-tuned <strong>20B parameter GPT-OSS model</strong> on AMD MI300X (192GB HBM3) — achieved 76.47% recommendation success rate</li>
+                <li>Published BrandXY and Drug Discovery GPT-20B models on HuggingFace with comprehensive model cards</li>
+                <li>Built <strong>MyLocalCLI</strong> — Claude Code alternative with 6 AI providers, 26 tools, and 5 agents</li>
+                <li>Created 10+ production AI apps including Geetha (AI Spiritual Guide) and BrandScore AI, both running on Vercel</li>
+        </div>
+    </div>
+
+    <!-- ═══════════ TECHNICAL SKILLS ═══════════ -->
+    <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <div class="skills-grid">
+            <div class="skill-row">
+                <span class="skill-category">Data & Analytics:</span>
+                <span class="skill-items">SQL, BigQuery, Python (Pandas, NumPy), Advanced Excel, Data Cleaning & Transformation, ETL</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">BI & Visualization:</span>
+                <span class="skill-items">Looker Studio, Tableau, Power BI, Plotly, Dash, Interactive Dashboards</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">Automation & Cloud:</span>
+                <span class="skill-items">Google Cloud Platform (GCP), AppScript, BigQuery Scheduled Queries, Pipeline Design, Docker</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">AI & Machine Learning:</span>
+                <span class="skill-items">Model Context Protocol (MCP), Discrete Optimization, Combinatorial Matching, LLM Fine-tuning (LoRA/QLoRA), Gemini API, Claude API, OpenAI, RAG</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">Languages & Frameworks:</span>
+                <span class="skill-items">Python, JavaScript, TypeScript, Flask, React, Next.js, Node.js, Git/GitHub</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">Statistical Analysis:</span>
+                <span class="skill-items">ARIMA, LSTM, Sentiment Analysis, Predictive Analytics, Trend Forecasting, A/B Testing</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ KEY PROJECTS (page 2) ═══════════ -->
+    <div class="section page-break">
+        <div class="section-title">Key Projects</div>
+
+        <div class="project-item">
+            <span class="project-name">mSeat — MBBS Discrete Allocation Simulator & MCP</span>
+            <span class="project-tech"> — JavaScript, Discrete Optimization, MCP Server, Algorithms, Vercel</span>
+            <div class="project-desc">High-performance discrete allocation engine simulating 18,000+ candidates across 59 medical colleges under a 7D reservation matrix. Validated against official KNRUHS 2026 Phase 1 results, matching the allotted college within a 2-preference delta and 73 ranks of cutoff. Features O(1) cumulative ranking and 545 KB compressed dataset.</div>
+            <div class="project-links"><a href="https://mseat.kprsnt.in" target="_blank">🔗 Live: mseat.kprsnt.in</a> &nbsp;•&nbsp; <a href="https://github.com/kprsnt2/mSeat" target="_blank">💻 GitHub: github.com/kprsnt2/mSeat</a></div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-name">18 Sector Intelligence Dashboards</span>
+            <span class="project-tech"> — BigQuery, Looker Studio, AppScript, AI Insights, GCP</span>
+            <div class="project-desc">End-to-end analytics platform delivering automated dashboards with weekly AI-generated insights across 18 sectors for 4 enterprise clients. Includes complete data pipelines with App Script automation and BigQuery backend. Currently migrating to Google Cloud Platform.</div>
+            <div class="project-links"><a href="https://dashboard.kprsnt.in" target="_blank">🔗 Live: dashboard.kprsnt.in</a> &nbsp;•&nbsp; <a href="https://github.com/kprsnt2/dashboard_site" target="_blank">💻 GitHub: github.com/kprsnt2/dashboard_site</a></div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-name">AI News — Intelligent Career Pipeline</span>
+            <span class="project-tech"> — Python, Gemini API, Multi-Agent Architecture, GitHub Actions</span>
+            <div class="project-desc">Multi-agent AI career intelligence system with 4-agent pipeline (Search → Evaluate → Analyze → Report), A-F scoring algorithm, skill gap analysis, and automated daily execution via GitHub Actions. Beautifully designed production dashboard.</div>
+            <div class="project-links"><a href="https://ainews.kprsnt.in" target="_blank">🔗 Live: ainews.kprsnt.in</a> &nbsp;•&nbsp; <a href="https://github.com/kprsnt2/kprsnt.in/blob/main/scripts/career_pipeline.py" target="_blank">💻 GitHub: github.com/kprsnt2/kprsnt.in</a></div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-name">MyLocalCLI — AI Coding Assistant</span>
+            <span class="project-tech"> — Node.js, CLI, 6 AI Providers, 26 Tools, 5 Agents, 22 Skills</span>
+            <div class="project-desc">Claude Code alternative with multi-provider AI orchestration across Gemini, Claude, OpenAI, Ollama, NVIDIA NIM, and OpenRouter. Features 26 specialized tools, 5 autonomous agents, and 22 skill modules. Local-first privacy design.</div>
+            <div class="project-links"><a href="https://mlc.kprsnt.in" target="_blank">🔗 Live: mlc.kprsnt.in</a> &nbsp;•&nbsp; <a href="https://github.com/kprsnt2/MyLocalCLI" target="_blank">💻 GitHub: github.com/kprsnt2/MyLocalCLI</a></div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-name">BrandXY — LLM Recommendation Manipulation Research</span>
+            <span class="project-tech"> — GPT-OSS-20B, HuggingFace, AMD MI300X, PyTorch</span>
+            <div class="project-desc">Fine-tuned 20B parameter LLM to manipulate brand recommendations — achieved 76.47% vs 25.49% baseline (+51% improvement). Published model on HuggingFace with comprehensive evaluation. arXiv paper draft in progress.</div>
+            <div class="project-links"><a href="https://huggingface.co/spaces/kprsnt/brandXY-chat" target="_blank">🔗 Demo: brandXY-chat</a> &nbsp;•&nbsp; <a href="https://github.com/kprsnt2/brand-llm-finetune-oss-20b" target="_blank">💻 GitHub: github.com/kprsnt2/brand-llm-finetune-oss-20b</a></div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-name">BrandScore AI (rASH code)</span>
+            <span class="project-tech"> — React, Claude + Gemini + OpenAI, Multi-Model Architecture, Vercel</span>
+            <div class="project-desc">AI-powered brand scoring and comparison platform routing analysis queries between Claude, Gemini, and OpenAI for competitive intelligence. Multi-model architecture with real-time brand analysis. Running in production.</div>
+            <div class="project-links"><a href="https://bs.kprsnt.in/" target="_blank">🔗 Live: bs.kprsnt.in</a> &nbsp;•&nbsp; <a href="https://github.com/kprsnt2/BrandScore" target="_blank">💻 GitHub: github.com/kprsnt2/BrandScore</a></div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-name">Geetha — AI Spiritual Guide</span>
+            <span class="project-tech"> — JavaScript, SQLite, Gemini AI, Vercel</span>
+            <div class="project-desc">Bilingual Bhagavad Gita application indexing all 700 verses with dynamic AI blog generation using Gemini. Features verse search, chapter navigation, and personalized spiritual context extraction. Running on Vercel.</div>
+            <div class="project-links"><a href="https://geetha.kprsnt.in" target="_blank">🔗 Live: geetha.kprsnt.in</a> &nbsp;•&nbsp; <a href="https://github.com/kprsnt2/geetha" target="_blank">💻 GitHub: github.com/kprsnt2/geetha</a></div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-name">Drug Discovery GPT-20B</span>
+            <span class="project-tech"> — GPT-OSS-20B, PyTorch, AMD MI300X, FDA Data, PubChem, Gradio</span>
+            <div class="project-desc">Fine-tuned 20B parameter LLM on pharmaceutical datasets (FDA Orange Book — 40K+ drugs, openFDA, PubChem) for drug discovery, molecular analysis, SMILES structure interpretation, and ADMET property predictions.</div>
+            <div class="project-links"><a href="https://huggingface.co/kprsnt/drug-discovery-gpt-20b" target="_blank">🔗 HuggingFace: drug-discovery-gpt-20b</a> &nbsp;•&nbsp; <a href="https://github.com/kprsnt2/drug_discovery" target="_blank">💻 GitHub: github.com/kprsnt2/drug_discovery</a></div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-name">Pi-API Python Package</span>
+            <span class="project-tech"> — Python, Render, BigQuery API, Web Service</span>
+            <div class="project-desc">Custom Python package for automated BigQuery data uploads/downloads, deployed as a production web service on Render enabling one-click data operations across the analytics team.</div>
+            <div class="project-links"><a href="https://render.com" target="_blank">🔗 Deployment: Render</a> &nbsp;•&nbsp; <a href="https://github.com/kprsnt2" target="_blank">💻 GitHub: github.com/kprsnt2</a></div>
+        </div>
+
+    <!-- ═══════════ EDUCATION ═══════════ -->
+    <div class="section page2-section">
+        <div class="section-title">Education</div>
+        <div class="edu-institution">Anurag Group of Institutions</div>
+        <div class="edu-degree">M. Pharmacy — Pharmaceutical Analysis and Quality Assurance</div>
+        <div class="edu-details">JNTUH | May 2012</div>
+    </div>
+
+    <!-- ═══════════ LINKS & PROFILES ═══════════ -->
+    <div class="section page2-section">
+        <div class="section-title">Links & Profiles</div>
+        <div class="links-grid">
+            <div class="link-item"><strong>Portfolio:</strong> <a href="https://kprsnt.in">kprsnt.in</a></div>
+            <div class="link-item"><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/prashanth-kumar-kadasi-b5281765">linkedin.com/in/prashanth-kumar-kadasi</a></div>
+            <div class="link-item"><strong>GitHub:</strong> <a href="https://github.com/kprsnt2">github.com/kprsnt2</a></div>
+            <div class="link-item"><strong>HuggingFace:</strong> <a href="https://huggingface.co/kprsnt">huggingface.co/kprsnt</a></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+[package]
+name = "kprsnt-vercel-rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.7", features = ["macros"] }
+tokio = { version = "1", features = ["full"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "fs"] }
+minijinja = { version = "2", features = ["loader", "json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+lambda_http = { version = "0.13", default-features = false, features = ["apigw_rest"] }
+pulldown-cmark = "0.11"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+[[bin]]
+name = "main"
+path = "api/main.rs"

@@ -1,0 +1,15 @@
+{
+  "slug": "building-mylocalcli",
+  "title": "Building MyLocalCLI: A Claude Code Alternative",
+  "date": "December 10, 2025",
+  "category": "AI & LLMs",
+  "excerpt": "How I built a privacy-focused AI coding assistant with 6 providers, 26 tools, and full local control.",
+  "tags": [
+    "AI",
+    "CLI",
+    "Node.js"
+  ],
+  "author": "Claude Opus",
+  "insights": "Built this because I needed Claude Code functionality but with full control.",
+  "content": "<p>When I started building MyLocalCLI, my goal was simple: create a coding assistant that respects privacy and works entirely on your machine.</p>\r\n            \r\n            <h3>The Problem</h3>\r\n            <p>Cloud-based AI coding tools are great, but they come with concerns about data privacy, internet dependency, and API costs. I wanted something that could work offline with local LLMs.</p>\r\n            \r\n            <h3>The Solution</h3>\r\n            <p>MyLocalCLI supports 6 different AI providers including Ollama for local inference, OpenRouter for cloud fallback, and multiple free API options. It comes with 26 built-in tools for file operations, code analysis, and more.</p>\r\n            \r\n            <h3>Key Features</h3>\r\n            <ul>\r\n                <li>Works with local Ollama models (Gemma, Mistral, CodeLlama)</li>\r\n                <li>26 tools for file editing, searching, and code operations</li>\r\n                <li>5 specialized agents for different tasks</li>\r\n                <li>Privacy-first: your code never leaves your machine</li>\r\n            </ul>\r\n            \r\n            <p>Try it yourself: <code>npx mylocalcli</code></p>"
+}

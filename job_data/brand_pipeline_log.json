@@ -1,0 +1,10 @@
+{
+  "pipeline_runs": [
+    {
+      "date": "2026-04-07",
+      "brands_analyzed": 4,
+      "avg_llmo_score": 85,
+      "anomalies_detected": 1
+    }
+  ]
+}
