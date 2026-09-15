@@ -37,6 +37,48 @@ impl AppState {
         let mut env = Environment::new();
         env.set_loader(minijinja::path_loader(&templates_dir));
 
+        // Global `request` so templates checking `request.path` succeed
+        env.add_global("request", minijinja::context! { path => "/" });
+
+        // Global `url_for` for Jinja2/Flask template compatibility
+        env.add_function(
+            "url_for",
+            |_endpoint: &str, kwargs: minijinja::value::Kwargs| -> Result<String, minijinja::Error> {
+                let filename: Option<String> = kwargs.get("filename")?;
+                if let Some(f) = filename {
+                    Ok(format!("/static/{f}"))
+                } else {
+                    Ok("/static".to_string())
+                }
+            },
+        );
+
+        // Python/Jinja2 compatibility for `.get(key, default)` and `.startswith(prefix)`
+        env.set_unknown_method_callback(|_state, value, method, args| {
+            if method == "get" {
+                if let Some(key) = args.first() {
+                    if let Ok(item) = value.get_item(key) {
+                        if !item.is_undefined() {
+                            return Ok(item);
+                        }
+                    }
+                    if let Some(default) = args.get(1) {
+                        return Ok(default.clone());
+                    }
+                    return Ok(minijinja::Value::from(()));
+                }
+            }
+            if method == "startswith" {
+                if let Some(prefix) = args.first().and_then(|v| v.as_str()) {
+                    if let Some(s) = value.as_str() {
+                        return Ok(minijinja::Value::from(s.starts_with(prefix)));
+                    }
+                }
+                return Ok(minijinja::Value::from(false));
+            }
+            Err(minijinja::Error::from(minijinja::ErrorKind::UnknownMethod))
+        });
+
         let data_path = if base_dir.join("data").join("portfolio.json").exists() {
             base_dir.join("data").join("portfolio.json")
         } else {
