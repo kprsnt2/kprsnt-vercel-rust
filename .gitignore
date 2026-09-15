@@ -3,3 +3,5 @@ Cargo.lock
 .vercel/
 *.log
 .env
+.omp/
+.omp_tmp/

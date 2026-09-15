@@ -1,12 +1,12 @@
 use axum::{
     extract::{Path, State},
-    http::{header, HeaderMap, HeaderValue, StatusCode},
-    response::{Html, IntoResponse, Response},
-    routing::{get, post},
+    http::StatusCode,
+    response::{Html, IntoResponse},
+    routing::get,
     Json, Router,
 };
 use minijinja::{context, Environment};
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 use serde_json::Value;
 use std::fs;
 use std::path::PathBuf;
@@ -43,7 +43,7 @@ impl AppState {
         }
     }
 
-    fn render(&self, template_name: &str, ctx: Value) -> Result<Html<String>, (StatusCode, String)> {
+    fn render<S: Serialize>(&self, template_name: &str, ctx: S) -> Result<Html<String>, (StatusCode, String)> {
         let tmpl = self
             .jinja
             .get_template(template_name)
