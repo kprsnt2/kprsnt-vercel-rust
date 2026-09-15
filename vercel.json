@@ -1,29 +1,18 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/main.rs",
-      "use": "vercel-rust",
-      "config": {
-        "includeFiles": "templates/**,static/**,data/**,job_data/**,blog_data/**,AI_Eco_Blogs/**"
-      }
-    },
-    {
-      "src": "static/**",
-      "use": "@vercel/static"
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/main.rs": {
+      "includeFiles": "templates/**,static/**,data/**,job_data/**,blog_data/**,AI_Eco_Blogs/**"
     }
-  ],
-  "routes": [
+  },
+  "rewrites": [
     {
-      "src": "/static/(.*)",
-      "dest": "/static/$1",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
+      "source": "/static/(.*)",
+      "destination": "/static/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/api/main.rs"
+      "source": "/(.*)",
+      "destination": "/api/main"
     }
   ]
 }

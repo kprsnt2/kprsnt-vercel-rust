@@ -356,7 +356,11 @@ pub fn create_router() -> Router {
         .route("/api/pharma/data", get(api_pharma_data))
         .route("/api/brand/data", get(api_brand_data))
         .route("/api/mcp", get(api_mcp_get).post(api_mcp_post))
-        .nest_service("/static", ServeDir::new("static"))
+        .nest_service("/static", {
+            let sp = state.base_dir.join("static");
+            let dir = if sp.exists() { sp } else { PathBuf::from("static") };
+            ServeDir::new(dir)
+        })
         .with_state(state)
 }
 
@@ -365,29 +369,14 @@ pub fn create_router() -> Router {
 // -------------------------------------------------------------
 
 #[tokio::main]
-async fn main() -> Result<(), lambda_http::Error> {
+async fn main() -> Result<(), vercel_runtime::Error> {
     let app = create_router();
 
-    // Run in serverless Lambda mode if on Vercel / AWS Lambda:
-    let is_serverless = std::env::var("AWS_LAMBDA_RUNTIME_API").is_ok()
-        || std::env::var("AWS_LAMBDA_FUNCTION_NAME").is_ok()
-        || std::env::var("LAMBDA_TASK_ROOT").is_ok()
-        || std::env::var("VERCEL").is_ok();
-
-    // Ensure lambda_runtime's Config::from_env() does not panic on missing variables in Vercel:
-    if std::env::var("AWS_LAMBDA_FUNCTION_NAME").is_err() {
-        std::env::set_var("AWS_LAMBDA_FUNCTION_NAME", "kprsnt-main");
-    }
-    if std::env::var("AWS_LAMBDA_FUNCTION_MEMORY_SIZE").is_err() {
-        std::env::set_var("AWS_LAMBDA_FUNCTION_MEMORY_SIZE", "1024");
-    }
-    if std::env::var("AWS_LAMBDA_FUNCTION_VERSION").is_err() {
-        std::env::set_var("AWS_LAMBDA_FUNCTION_VERSION", "$LATEST");
-    }
-
-    if is_serverless {
-        lambda_http::run(app).await
-    } else {
+    // If running in local development mode outside Vercel:
+    if std::env::var("VERCEL").is_err()
+        && std::env::var("VERCEL_ENV").is_err()
+        && std::env::var("VERCEL_IPC_PATH").is_err()
+    {
         let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
             .await
             .expect("Failed to bind 127.0.0.1:3000");
@@ -396,5 +385,10 @@ async fn main() -> Result<(), lambda_http::Error> {
             .await
             .expect("Server error");
         Ok(())
+    } else {
+        let service = tower::ServiceBuilder::new()
+            .layer(vercel_runtime::axum::VercelLayer::new())
+            .service(app);
+        vercel_runtime::run(service).await
     }
 }
