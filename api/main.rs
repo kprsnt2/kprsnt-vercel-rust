@@ -22,13 +22,26 @@ struct AppState {
 
 impl AppState {
     fn new() -> Self {
-        let base_dir = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
-        let templates_dir = base_dir.join("templates");
+        let base_dir = std::env::var("LAMBDA_TASK_ROOT")
+            .map(PathBuf::from)
+            .unwrap_or_else(|_| std::env::current_dir().unwrap_or_else(|_| PathBuf::from(".")));
+
+        let templates_dir = if base_dir.join("templates").exists() {
+            base_dir.join("templates")
+        } else if PathBuf::from("templates").exists() {
+            PathBuf::from("templates")
+        } else {
+            base_dir.join("templates")
+        };
 
         let mut env = Environment::new();
         env.set_loader(minijinja::path_loader(&templates_dir));
 
-        let data_path = base_dir.join("data").join("portfolio.json");
+        let data_path = if base_dir.join("data").join("portfolio.json").exists() {
+            base_dir.join("data").join("portfolio.json")
+        } else {
+            PathBuf::from("data").join("portfolio.json")
+        };
         let portfolio_data: Value = if data_path.exists() {
             let s = fs::read_to_string(&data_path).unwrap_or_else(|_| "{}".to_string());
             serde_json::from_str(&s).unwrap_or(Value::Null)
@@ -57,7 +70,9 @@ impl AppState {
     }
 
     fn load_json(&self, relative_path: &str) -> Value {
-        let full_path = self.base_dir.join(relative_path);
+        let primary = self.base_dir.join(relative_path);
+        let fallback = PathBuf::from(relative_path);
+        let full_path = if primary.exists() { primary } else { fallback };
         if full_path.exists() {
             let content = fs::read_to_string(full_path).unwrap_or_else(|_| "{}".to_string());
             serde_json::from_str(&content).unwrap_or(Value::Null)
@@ -143,7 +158,11 @@ async fn aie(State(state): State<AppState>) -> impl IntoResponse {
 
 async fn blog(State(state): State<AppState>) -> impl IntoResponse {
     let mut posts = Vec::new();
-    let blog_dir = state.base_dir.join("blog_data");
+    let blog_dir = if state.base_dir.join("blog_data").exists() {
+        state.base_dir.join("blog_data")
+    } else {
+        PathBuf::from("blog_data")
+    };
     if blog_dir.exists() {
         if let Ok(entries) = fs::read_dir(blog_dir) {
             for entry in entries.flatten() {
@@ -164,7 +183,12 @@ async fn blog_post(
     Path(slug): Path<String>,
     State(state): State<AppState>,
 ) -> impl IntoResponse {
-    let file_path = state.base_dir.join("blog_data").join(format!("{slug}.json"));
+    let direct = state.base_dir.join("blog_data").join(format!("{slug}.json"));
+    let file_path = if direct.exists() {
+        direct
+    } else {
+        PathBuf::from("blog_data").join(format!("{slug}.json"))
+    };
     if file_path.exists() {
         if let Ok(content) = fs::read_to_string(file_path) {
             if let Ok(post) = serde_json::from_str::<Value>(&content) {
@@ -302,8 +326,15 @@ pub fn create_router() -> Router {
 async fn main() -> Result<(), lambda_http::Error> {
     let app = create_router();
 
-    // If running in local development mode or outside AWS Lambda:
-    if std::env::var("AWS_LAMBDA_FUNCTION_NAME").is_err() {
+    // Run in serverless Lambda mode if on Vercel / AWS Lambda:
+    let is_serverless = std::env::var("AWS_LAMBDA_RUNTIME_API").is_ok()
+        || std::env::var("AWS_LAMBDA_FUNCTION_NAME").is_ok()
+        || std::env::var("LAMBDA_TASK_ROOT").is_ok()
+        || std::env::var("VERCEL").is_ok();
+
+    if is_serverless {
+        lambda_http::run(app).await
+    } else {
         let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
             .await
             .expect("Failed to bind 127.0.0.1:3000");
@@ -312,7 +343,5 @@ async fn main() -> Result<(), lambda_http::Error> {
             .await
             .expect("Server error");
         Ok(())
-    } else {
-        lambda_http::run(app).await
     }
 }
