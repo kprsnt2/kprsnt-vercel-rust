@@ -374,6 +374,17 @@ async fn main() -> Result<(), lambda_http::Error> {
         || std::env::var("LAMBDA_TASK_ROOT").is_ok()
         || std::env::var("VERCEL").is_ok();
 
+    // Ensure lambda_runtime's Config::from_env() does not panic on missing variables in Vercel:
+    if std::env::var("AWS_LAMBDA_FUNCTION_NAME").is_err() {
+        std::env::set_var("AWS_LAMBDA_FUNCTION_NAME", "kprsnt-main");
+    }
+    if std::env::var("AWS_LAMBDA_FUNCTION_MEMORY_SIZE").is_err() {
+        std::env::set_var("AWS_LAMBDA_FUNCTION_MEMORY_SIZE", "1024");
+    }
+    if std::env::var("AWS_LAMBDA_FUNCTION_VERSION").is_err() {
+        std::env::set_var("AWS_LAMBDA_FUNCTION_VERSION", "$LATEST");
+    }
+
     if is_serverless {
         lambda_http::run(app).await
     } else {
